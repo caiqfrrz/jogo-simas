@@ -22,8 +22,6 @@ namespace Gerenciadores
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
 
-        Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
-
         while (jgd != nullptr)
         {
             obst = obstaculos->get_primeiro();
@@ -35,7 +33,11 @@ namespace Gerenciadores
                 {
                     if(aux2->ehDanoso())
                     {
+                        Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
+
                         aux->setVida(aux->getVida() - aux2->getDano());
+                        (aux)->TomarDano();
+
                         if(aux->getVida()<= 0)
                         {
                             jogadores->remove(*jgd);

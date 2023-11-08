@@ -17,6 +17,7 @@ namespace Entidades
             virtual void executar() = 0;
             virtual int getVida();
             virtual void setVida(int v);
+            virtual void TomarDano();
         };
     }
 }

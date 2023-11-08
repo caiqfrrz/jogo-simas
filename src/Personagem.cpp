@@ -23,5 +23,9 @@ namespace Entidades
         {
             vida = v;
         }
+        void Personagem::TomarDano()
+        {
+            corpo.setFillColor(sf::Color::Red);
+        }
     }
 }
