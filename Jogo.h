@@ -1,0 +1,21 @@
+#pragma once
+
+#include <SFML/Graphics.hpp>
+
+#include "Gerenciadores/Gerenciador_Grafico.h"
+#include "Gerenciadores/Gerenciador_Eventos.h"
+#include "Gerenciadores/Gerenciador_Estados.h"
+#include "Estados/Fases/FasePrimeira.h"
+
+class Jogo
+{
+private:
+    Gerenciadores::Gerenciador_Grafico* pGrafico;
+    Gerenciadores::Gerenciador_Eventos* pEventos;
+    Gerenciadores::Gerenciador_Estados* pEstados;
+
+public:
+    Jogo();
+    ~Jogo();
+    void executar();
+};
