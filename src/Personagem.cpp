@@ -6,6 +6,8 @@ namespace Entidades
     {
         Personagem::Personagem():
         Entidade(),
+        damaged((bool)0),
+        timer(),
         num_vidas(1),
         vida(10)
         {
@@ -26,6 +28,13 @@ namespace Entidades
         void Personagem::TomarDano()
         {
             corpo.setFillColor(sf::Color::Red);
+            damaged = true;
+            timer = clock();
+        }
+        void Personagem::ResetColor()
+        {
+             corpo.setFillColor(sf::Color::Green);
+             damaged = false;
         }
     }
 }

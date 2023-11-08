@@ -17,6 +17,13 @@ namespace Entidades
         void Jogador2::executar()
         {
             mover();
+
+            if(damaged)
+                if(clock() - 750 > timer)
+                {
+                    ResetColor();
+                    damaged = false;
+                }
         }
         void Jogador2::mover()
         {

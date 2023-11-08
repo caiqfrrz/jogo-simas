@@ -3,6 +3,8 @@
 
 #include "Gerenciadores/Gerenciador_Grafico.h"
 #include <SFML/Graphics.hpp>
+#include <stdio.h>
+#include <time.h>
 
 // Abstrata
 class Ente

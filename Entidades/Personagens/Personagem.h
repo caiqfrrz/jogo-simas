@@ -9,8 +9,10 @@ namespace Entidades
         class Personagem: public Entidade
         {
         protected:
+            bool damaged;
             int num_vidas;
             int vida;
+            clock_t timer;
         public:
             Personagem();
             ~Personagem();
@@ -18,6 +20,7 @@ namespace Entidades
             virtual int getVida();
             virtual void setVida(int v);
             virtual void TomarDano();
+            virtual void ResetColor();
         };
     }
 }
