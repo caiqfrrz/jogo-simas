@@ -38,12 +38,16 @@ namespace Gerenciadores
                         aux->setVida(aux->getVida() - aux2->getDano());
                         if(aux->getVida()<= 0)
                         {
-                            //jogadores->remove(*jgd);
+                            jogadores->remove(*jgd);
                         }
                     }
+                    if(jgd == nullptr)
+                        break;
                     (*jgd)->colidir();
                     (*obst)->colidir();
                 }
+                if(jgd == nullptr)
+                    break;
                 obst++;
             }
             jgd++;

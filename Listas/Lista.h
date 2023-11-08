@@ -99,7 +99,6 @@ namespace Listas
                             anterior->set_pProx(aux->get_pProx());
                         }
 
-                        aux->set_pProx(nullptr); // Evitar referências cruzadas
                         delete aux;
                         tamanho--;
                         return;

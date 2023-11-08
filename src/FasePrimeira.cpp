@@ -19,7 +19,10 @@ namespace Estados
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
-            pGG->centralizarCamera((((*(jogadores.get_primeiro()))->getPosicao())+((*(jogadores.get_primeiro()++))->getPosicao()))/(float)2);
+            if((jogadores.get_primeiro()++) != nullptr)
+                pGG->centralizarCamera((((*(jogadores.get_primeiro()))->getPosicao())+((*(jogadores.get_primeiro()++))->getPosicao()))/(float)2);
+            else
+                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
             jogadores.desenhar();
             inimigos.desenhar();
             obstaculos.desenhar();
