@@ -84,11 +84,12 @@ namespace Listas
                     return;
 
                 Elemento<TL>* aux = pPrimeiro;
+
                 Elemento<TL>* anterior = nullptr;
 
                 while (aux != nullptr)
                 {
-                    if (aux->get_pinfo() == elem)
+                    if ((aux->get_pinfo()) == elem)
                     {
                         if (aux == pPrimeiro)
                         {
@@ -99,7 +100,6 @@ namespace Listas
                             anterior->set_pProx(aux->get_pProx());
                         }
 
-                        delete aux;
                         tamanho--;
                         return;
                     }
