@@ -1,5 +1,5 @@
 #pragma once
-
+//coco
 
 #include "Gerenciadores/Gerenciador_Grafico.h"
 #include <SFML/Graphics.hpp>
