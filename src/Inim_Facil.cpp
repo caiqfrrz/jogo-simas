@@ -25,8 +25,10 @@ namespace Entidades
 
         void Inim_Facil::mover()
         {
+            
             Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
             Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores->get_primeiro()++;
+
 
             if(jgd != nullptr && jgd2 != nullptr)
             {
@@ -64,6 +66,22 @@ namespace Entidades
 
                 corpo.setPosition(corpo.getPosition() + velocidade);
             }
+            if(jgd2 == nullptr)
+            {
+                sf::Vector2f pos = (*jgd)->getPosicao();
+                sf::Vector2f direcao = pos - getPosicao();
+
+                float comprimento = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
+
+                if(comprimento != 0)
+                {
+                    direcao /= comprimento;
+                }
+                velocidade = direcao * 1.f;
+
+                corpo.setPosition(corpo.getPosition() + velocidade);
+            }
         }
     }
 }
+
