@@ -17,7 +17,7 @@ namespace Entidades
             int dano;
             Listas::ListaEntidades* jogadores;
         public:
-            Inim_Facil(Listas::ListaEntidades*jog = nullptr);
+            Inim_Facil(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
             ~Inim_Facil();
             void executar();
             void mover();

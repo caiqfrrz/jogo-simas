@@ -14,7 +14,7 @@ namespace Entidades
             int vida;
             clock_t timer;
         public:
-            Personagem();
+            Personagem(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
             ~Personagem();
             virtual void executar() = 0;
             virtual int getVida();

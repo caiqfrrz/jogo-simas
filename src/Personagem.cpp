@@ -4,8 +4,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Personagem::Personagem():
-        Entidade(),
+        Personagem::Personagem(sf::Vector2f pos):
+        Entidade(pos),
         damaged((bool)0),
         timer(),
         num_vidas(1),

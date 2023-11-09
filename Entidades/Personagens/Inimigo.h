@@ -11,7 +11,7 @@ namespace Entidades
         protected:
             int nivel_maldade;
         public:
-            Inimigo();
+            Inimigo(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
             ~Inimigo();
             virtual void executar();
         };

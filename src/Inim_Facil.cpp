@@ -4,9 +4,9 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Inim_Facil::Inim_Facil(Listas::ListaEntidades*jog):
+        Inim_Facil::Inim_Facil(Listas::ListaEntidades*jog, sf::Vector2f pos):
         jogadores(jog),
-        Inimigo(),
+        Inimigo(pos),
         vida(1),
         dano(1)
         {

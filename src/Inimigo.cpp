@@ -4,8 +4,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Inimigo::Inimigo():
-        Personagem(),
+        Inimigo::Inimigo(sf::Vector2f pos):
+        Personagem(pos),
         nivel_maldade(10)
         {
 

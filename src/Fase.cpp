@@ -35,8 +35,9 @@ namespace Estados
             jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
         }
         void Fase::criarInimMedios()
-        {
+        {/*
             inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Inim_Facil(&jogadores)));
+            */
         }
         void Fase::criarCenario(std::string caminho)
         {
@@ -70,6 +71,13 @@ namespace Estados
                         if(aux)
                             obstaculos.incluir(aux);
                         break;
+
+                    case 'E':
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inim_Facil(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                        if (aux)
+                            inimigos.incluir(aux);
+                        break;
+                        
                     default:
                         break;
                     }
