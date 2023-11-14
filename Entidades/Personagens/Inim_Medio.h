@@ -13,6 +13,7 @@ namespace Entidades
             int dano;
             std::vector<Projetil> projetil_vec;
             int recarregar;
+            int num_proj;
         public:
             Inim_Medio(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
             ~Inim_Medio();
