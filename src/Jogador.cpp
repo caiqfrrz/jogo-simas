@@ -16,14 +16,23 @@ namespace Entidades
         }
         void Jogador::executar()
         {
-            mover();
+            if(vida >= 0)
+            {
+                mover();
 
-            if(damaged)
-                if(clock() - 750 > timer)
-                {
-                    ResetColor();
-                    damaged = false;
-                }
+                if(damaged)
+                    if(clock() - 750 > timer)
+                    {
+                        ResetColor();
+                        damaged = false;
+                    }
+            
+            }
+            else
+            {
+                corpo.setFillColor(sf::Color(92, 20, 2));
+            }
+
         }
         void Jogador::mover()
         {
