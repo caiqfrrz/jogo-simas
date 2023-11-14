@@ -7,7 +7,8 @@ namespace Entidades
         Inim_Medio::Inim_Medio(sf::Vector2f pos):
         Inimigo(pos),
         dano(2),
-        recarregar(0)
+        recarregar(0),
+        num_proj(0)
         {
             corpo.setFillColor(sf::Color::Yellow);
 
@@ -26,7 +27,13 @@ namespace Entidades
         void Inim_Medio::executar()
         {
             //mover();
-            atirar();
+            if(0 == recarregar) 
+            {
+                atirar();
+                recarregar = 1000;
+            }
+            else
+                recarregar--;
         }
         void Inim_Medio::mover()
         {
@@ -36,10 +43,11 @@ namespace Entidades
         }
         void Inim_Medio::atirar()
         {
-            for(int i = 0; i< projetil_vec.size(); i++)
+            if(num_proj<50)
             {
-                projetil_vec[i].desenhar();
-                projetil_vec[i].atirar(12);
+                projetil_vec[num_proj].desenhar();
+                projetil_vec[num_proj].atirar(12);
+                num_proj++;
             }
         }
     }
