@@ -16,6 +16,7 @@ namespace Entidades
         Personagem::~Personagem()
         {
             num_vidas = 0;
+            vida = 0;
         }
         int Personagem::getVida()
         {
