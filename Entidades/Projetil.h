@@ -4,12 +4,14 @@
 
 namespace Entidades
 {
-    class Projetil
+    class Projetil : public Entidade
     {
     private:
     public:
-        Projetil();
+        Projetil(sf::Vector2f tam);
         ~Projetil();
         void executar();
+        void atirar(int vel);
+        void setPos(sf::Vector2f pos);
     };
 }
