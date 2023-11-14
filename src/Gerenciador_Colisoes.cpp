@@ -21,7 +21,7 @@ namespace Gerenciadores
     {
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
-
+        
         while (jgd != nullptr)
         {
             obst = obstaculos->get_primeiro();
@@ -37,22 +37,30 @@ namespace Gerenciadores
 
                         aux->setVida(aux->getVida() - aux2->getDano());
                         (aux)->TomarDano();
-
-                        if(aux->getVida()<= 0)
-                        {
-                            jogadores->remove(*jgd);
-                        }
                     }
-                    if(jgd == nullptr)
-                        break;
                     (*jgd)->colidir();
                     (*obst)->colidir();
                 }
-                if(jgd == nullptr)
-                    break;
                 obst++;
             }
             jgd++;
+        }
+
+        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+
+        while (inim != nullptr)
+        {
+            obst = obstaculos->get_primeiro();
+            while (obst != nullptr)
+            {
+                if (colidiu(*inim, *obst))
+                {
+                    (*inim)->colidir();
+                    (*obst)->colidir();
+                }
+                obst++;
+            }
+            inim++;
         }
     }
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2)

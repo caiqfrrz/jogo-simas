@@ -21,7 +21,7 @@ namespace Entidades
             ~Inim_Facil();
             void executar();
             void mover();
-            Entidade* getJogadorProx();
+            //Entidade* getJogadorProx();
         };
     }
 }

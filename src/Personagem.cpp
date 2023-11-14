@@ -31,6 +31,9 @@ namespace Entidades
             damaged = true;
             timer = clock();
         }
+        void Personagem::morreu()
+        {
+        }
         void Personagem::ResetColor()
         {
              corpo.setFillColor(sf::Color::Green);

@@ -32,7 +32,7 @@ namespace Estados
         void Fase::criarJogadores()
         {
             jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
-            jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
+            //jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
         }
         void Fase::criarInimMedios()
         {/*
@@ -75,6 +75,11 @@ namespace Estados
                     case 'E':
                         aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inim_Facil(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
                         if (aux)
+                            inimigos.incluir(aux);
+                        break;
+                    case 'I':
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inim_Medio(sf::Vector2f(j * TAM, i * TAM)));
+                        if(aux)
                             inimigos.incluir(aux);
                         break;
                         

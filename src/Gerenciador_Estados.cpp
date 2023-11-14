@@ -16,7 +16,6 @@ namespace Gerenciadores
     Gerenciador_Estados::Gerenciador_Estados():
     estadoAtual(1)
     {
-        // Colocar aqui o número de estados que você possui:
         estados.resize(2);
     }
 

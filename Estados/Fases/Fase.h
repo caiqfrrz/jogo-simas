@@ -4,6 +4,7 @@
 #include "../../Entidades/Personagens/Jogador.h"
 #include "../../Entidades/Personagens/Jogador2.h"
 #include "../../Entidades/Personagens/Inim_Facil.h"
+#include "../../Entidades/Personagens/Inim_Medio.h"
 #include "../../Entidades/Obstaculos/Obst_Facil.h"
 #include "../../Entidades/Obstaculos/Obst_Medio.h"
 #include "../../Listas/ListaEntidades.h"
@@ -30,9 +31,6 @@ namespace Estados
             void gerenciar_colisoes();
             void criarJogadores();
             void criarInimMedios();
-            Listas::ListaEntidades* getJogadores();
-            // Substituído
-            // void criarObstMedios();
             void criarCenario(std::string caminho);
         };
     }    

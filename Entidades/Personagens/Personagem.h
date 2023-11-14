@@ -20,6 +20,7 @@ namespace Entidades
             virtual int getVida();
             virtual void setVida(int v);
             virtual void TomarDano();
+            virtual void morreu();
             virtual void ResetColor();
         };
     }
