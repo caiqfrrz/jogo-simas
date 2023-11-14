@@ -35,6 +35,9 @@ namespace Gerenciadores
                     {
                         Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
 
+                        if(aux->getDamaged() == true)
+                            break;
+
                         aux->setVida(aux->getVida() - aux2->getDano());
                         (aux)->TomarDano();
                     }

@@ -22,6 +22,7 @@ namespace Entidades
             virtual void TomarDano();
             virtual void morreu();
             virtual void ResetColor();
+            bool getDamaged();
         };
     }
 }

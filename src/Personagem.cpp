@@ -40,5 +40,9 @@ namespace Entidades
              corpo.setFillColor(sf::Color::Green);
              damaged = false;
         }
+        bool Personagem::getDamaged()
+        {
+            return damaged;
+        }
     }
 }
