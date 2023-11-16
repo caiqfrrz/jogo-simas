@@ -1,5 +1,6 @@
 #include "../Estados/Fases/FasePrimeira.h"
 
+
 namespace Estados
 {
     namespace Fases

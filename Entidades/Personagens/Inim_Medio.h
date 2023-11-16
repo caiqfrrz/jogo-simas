@@ -11,7 +11,7 @@ namespace Entidades
         {
         private:
             int dano;
-            std::vector<Projetil> projetil_vec;
+            //std::vector<Projetil*> projetil_vec;
             int recarregar;
             int num_proj;
         public:

@@ -11,7 +11,6 @@ namespace Entidades
         Projetil(sf::Vector2f tam);
         ~Projetil();
         void executar();
-        void atirar(int vel);
-        void setPos(sf::Vector2f pos);
+        void atirar();
     };
 }

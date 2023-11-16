@@ -12,12 +12,7 @@ namespace Entidades
         {
             corpo.setFillColor(sf::Color::Yellow);
 
-            for(int i = 0; i< 50 ; i++)
-            {
-                Projetil novo = Projetil(sf::Vector2f(20, 5));
-                novo.setPos(this->getPosicao());
-                projetil_vec.push_back(novo);
-            }
+            Projetil* novo = new Projetil(sf::Vector2f(10, 5));
         }
 
         Inim_Medio::~Inim_Medio()
@@ -26,11 +21,13 @@ namespace Entidades
         }
         void Inim_Medio::executar()
         {
-            //mover();
-            if(0 == recarregar) 
+            if(recarregar == 0)
             {
-                atirar();
-                recarregar = 1000;
+                if(num_proj < projetil_vec.size())
+                {
+                    novo->executar();
+                    recarregar = 100;
+                }
             }
             else
                 recarregar--;
@@ -43,12 +40,7 @@ namespace Entidades
         }
         void Inim_Medio::atirar()
         {
-            if(num_proj<50)
-            {
-                projetil_vec[num_proj].desenhar();
-                projetil_vec[num_proj].atirar(12);
-                num_proj++;
-            }
+            
         }
     }
 }
