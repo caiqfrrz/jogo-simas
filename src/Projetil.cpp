@@ -7,7 +7,7 @@ namespace Entidades
     Projetil::Projetil(sf::Vector2f tam)
     {
         corpo.setSize(tam);
-        setPosicao(sf::Vector2f(0.f, 0.f));
+        velocidade = sf::Vector2f(-12, 0);
     }
     Projetil::~Projetil()
     {
@@ -20,7 +20,6 @@ namespace Entidades
     }
     void Projetil::atirar()
     {
-        velocidade = sf::Vector2f(-12, 0);
         corpo.move(velocidade);
     }
 }

@@ -1,4 +1,6 @@
 #pragma once
+#define TEMPO_RECARGA 100
+
 
 #include "Inimigo.h"
 #include "../Projetil.h"
@@ -11,7 +13,7 @@ namespace Entidades
         {
         private:
             int dano;
-            //std::vector<Projetil*> projetil_vec;
+            Projetil novo;
             int recarregar;
             int num_proj;
         public:
