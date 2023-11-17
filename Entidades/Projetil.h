@@ -12,5 +12,6 @@ namespace Entidades
         ~Projetil();
         void executar();
         void atirar();
+        void colidir();
     };
 }

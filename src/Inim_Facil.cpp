@@ -7,7 +7,7 @@ namespace Entidades
         Inim_Facil::Inim_Facil(Listas::ListaEntidades*jog, sf::Vector2f pos):
         jogadores(jog),
         Inimigo(pos),
-        vida(1),
+        vida(3),
         dano(1)
         {
             corpo.setFillColor(sf::Color::Magenta);

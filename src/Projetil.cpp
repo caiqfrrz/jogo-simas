@@ -22,4 +22,8 @@ namespace Entidades
     {
         corpo.move(velocidade);
     }
+    void Projetil::colidir()
+    {
+        setVelocidade(sf::Vector2f(0.f, 0.f));
+    }
 }

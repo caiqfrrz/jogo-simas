@@ -3,7 +3,6 @@
 
 
 #include "Inimigo.h"
-#include "../../Estados/Fases/Fase.h"
 #include "../../Listas/ListaEntidades.h"
 #include "../Projetil.h"
 #include <math.h>
@@ -16,10 +15,10 @@ namespace Entidades
         {
         private:
             Listas::ListaEntidades* jogadores;
+            int vida;
             int dano;
             Projetil novo;
             int recarregar;
-            int num_proj;
         public:
             bool firing;
             Inim_Medio(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
@@ -27,6 +26,7 @@ namespace Entidades
             void executar();
             void mover();
             void atirar();
+            Projetil* getProjetil();
         };
     }
 }

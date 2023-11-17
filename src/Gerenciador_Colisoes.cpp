@@ -50,12 +50,24 @@ namespace Gerenciadores
         }
 
         Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+        Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*inim);
 
         while (inim != nullptr)
         {
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
+                if(aux->getVida() == 5)
+                {
+                    Entidades::Personagens::Inim_Medio* aux = static_cast<Entidades::Personagens::Inim_Medio*>(*inim);
+                    Entidades::Projetil* proj = aux->getProjetil();
+                    Entidades::Entidade* aux2 = static_cast<Entidades::Entidade*>(proj);
+                    if(colidiu(aux2, *obst))
+                    {
+                        aux2->colidir();
+                        (*obst)->colidir();
+                    }
+                }
                 if (colidiu(*inim, *obst))
                 {
                     (*inim)->colidir();

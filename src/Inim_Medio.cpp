@@ -5,15 +5,16 @@ namespace Entidades
     namespace Personagens
     {
         Inim_Medio::Inim_Medio(Listas::ListaEntidades*jog, sf::Vector2f pos):
+        vida(5),
         jogadores(jog),
         Inimigo(pos),
         dano(2),
         recarregar(0),
-        num_proj(0),
         firing(false),
         novo(sf::Vector2f(10, 5))
         {
             corpo.setFillColor(sf::Color::Yellow);
+            setVida(5);
         }
 
         Inim_Medio::~Inim_Medio()
@@ -23,7 +24,7 @@ namespace Entidades
         void Inim_Medio::executar()
         {
             mover();
-            atirar();
+            //atirar();
         }
         void Inim_Medio::mover()
         {
@@ -67,12 +68,6 @@ namespace Entidades
 
                 velocidade = direcao * 1.f;
                 
-                
-                if(dist1 < 350 || dist2 < 350)
-                {
-                    corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
-                }
-
                 if(!firing)
                 {
                     if(getPosicao().x < posProx.x)
@@ -86,6 +81,14 @@ namespace Entidades
                         firing = true;
                     }
                 }
+                
+                if(dist1 < 350 || dist2 < 350)
+                {
+                    corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
+                    atirar();
+                }
+
+            
             }
             if(jgd2 == nullptr)
             {
@@ -103,11 +106,6 @@ namespace Entidades
                 }
                 velocidade = direcao * 1.f;
 
-                if(dist1 < 350)
-                {
-                    corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
-                }
-
                 if(!firing)
                 {
                     if(getPosicao().x < pos.x)
@@ -120,6 +118,12 @@ namespace Entidades
                         novo.setVelocidade(sf::Vector2f(-12, 0));
                         firing = true;
                     }
+                }
+
+                if(dist1 < 350)
+                {
+                    corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
+                    atirar();
                 }
             }
         }
@@ -139,6 +143,10 @@ namespace Entidades
                 recarregar--;
                 novo.executar();
             }
+        }
+        Projetil* Inim_Medio::getProjetil()
+        {
+            return &novo;
         }
     }
 }

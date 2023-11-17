@@ -5,7 +5,10 @@
 #include "../Entidades/Entidade.h"
 #include "../Entidades/Obstaculos/Obstaculo.h"
 #include "../Entidades/Obstaculos/Obst_Medio.h"
+#include "../Entidades/Projetil.h"
 #include "../Entidades/Personagens/Personagem.h"
+#include "../Entidades/Personagens/Inim_Medio.h"
+
 
 namespace Gerenciadores
 {
@@ -14,8 +17,8 @@ namespace Gerenciadores
     private:
         Listas::ListaEntidades *obstaculos;
         Listas::ListaEntidades *inimigos;
-    public:
         Listas::ListaEntidades *jogadores;
+    public:
         Gerenciador_Colisoes();
         ~Gerenciador_Colisoes();
 
