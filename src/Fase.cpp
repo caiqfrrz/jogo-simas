@@ -78,7 +78,7 @@ namespace Estados
                             inimigos.incluir(aux);
                         break;
                     case 'I':
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inim_Medio(sf::Vector2f(j * TAM, i * TAM)));
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inim_Medio(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
                         if(aux)
                             inimigos.incluir(aux);
                         break;
