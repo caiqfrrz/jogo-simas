@@ -27,7 +27,7 @@ namespace Gerenciadores
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
-                Entidades::Obstaculos::Obst_Medio* aux2 = static_cast<Entidades::Obstaculos::Obst_Medio*>(*obst);
+                Entidades::Obstaculos::Espinho* aux2 = static_cast<Entidades::Obstaculos::Espinho*>(*obst);
 
                 if (colidiu(*jgd, *obst))
                 {
@@ -57,17 +57,6 @@ namespace Gerenciadores
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
-                if(aux->getVida() == 5)
-                {
-                    Entidades::Personagens::Inim_Medio* aux = static_cast<Entidades::Personagens::Inim_Medio*>(*inim);
-                    Entidades::Projetil* proj = aux->getProjetil();
-                    Entidades::Entidade* aux2 = static_cast<Entidades::Entidade*>(proj);
-                    if(colidiu(aux2, *obst))
-                    {
-                        aux2->colidir();
-                        (*obst)->colidir();
-                    }
-                }
                 if (colidiu(*inim, *obst))
                 {
                     (*inim)->colidir();

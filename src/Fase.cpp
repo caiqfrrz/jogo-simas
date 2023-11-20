@@ -36,7 +36,7 @@ namespace Estados
         }
         void Fase::criarInimMedios()
         {/*
-            inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Inim_Facil(&jogadores)));
+            inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Fantasma(&jogadores)));
             */
         }
         void Fase::criarCenario(std::string caminho)
@@ -61,24 +61,24 @@ namespace Estados
                     {
                         // Plataforma:
                     case '0':
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM, i * TAM)));
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Caixa(sf::Vector2f(j * TAM, i * TAM)));
                         if (aux)
                             obstaculos.incluir(aux);
                         break;
 
                     case 'X':
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Medio(sf::Vector2f(j * TAM, i * TAM)));
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Espinho(sf::Vector2f(j * TAM, i * TAM)));
                         if(aux)
                             obstaculos.incluir(aux);
                         break;
 
                     case 'E':
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inim_Facil(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Fantasma(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
                         if (aux)
                             inimigos.incluir(aux);
                         break;
                     case 'I':
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Inim_Medio(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Atirador(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
                         if(aux)
                             inimigos.incluir(aux);
                         break;

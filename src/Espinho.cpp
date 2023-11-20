@@ -1,26 +1,26 @@
-#include "../Entidades/Obstaculos/Obst_Medio.h"
+#include "../Entidades/Obstaculos/Espinho.h"
 
 namespace Entidades
 {
     namespace Obstaculos
     {
-        Obst_Medio::Obst_Medio(sf::Vector2f pos):
+        Espinho::Espinho(sf::Vector2f pos):
         Obstaculo(pos, true)
         {
             corpo.setFillColor(sf::Color::Red);
         }
-        Obst_Medio::~Obst_Medio()
+        Espinho::~Espinho()
         {
 
         }
-        void Obst_Medio::executar()
+        void Espinho::executar()
         {
             
         }
-        int Obst_Medio::getDano()
+        int Espinho::getDano()
         {
             return dano;
         }
-        int Obst_Medio::dano = 1;
+        int Espinho::dano = 1;
     }
 }

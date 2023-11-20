@@ -4,10 +4,10 @@
 #include "../Listas/Lista.h"
 #include "../Entidades/Entidade.h"
 #include "../Entidades/Obstaculos/Obstaculo.h"
-#include "../Entidades/Obstaculos/Obst_Medio.h"
+#include "../Entidades/Obstaculos/Espinho.h"
 #include "../Entidades/Projetil.h"
 #include "../Entidades/Personagens/Personagem.h"
-#include "../Entidades/Personagens/Inim_Medio.h"
+#include "../Entidades/Personagens/Atirador.h"
 
 
 namespace Gerenciadores

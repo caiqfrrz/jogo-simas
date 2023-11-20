@@ -1,10 +1,10 @@
-#include "../Entidades/Personagens/Inim_Medio.h"   
+#include "../Entidades/Personagens/Atirador.h"   
 
 namespace Entidades
 {
     namespace Personagens
     {
-        Inim_Medio::Inim_Medio(Listas::ListaEntidades*jog, sf::Vector2f pos):
+        Atirador::Atirador(Listas::ListaEntidades*jog, sf::Vector2f pos):
         vida(5),
         jogadores(jog),
         Inimigo(pos),
@@ -17,16 +17,16 @@ namespace Entidades
             setVida(5);
         }
 
-        Inim_Medio::~Inim_Medio()
+        Atirador::~Atirador()
         {
 
         }
-        void Inim_Medio::executar()
+        void Atirador::executar()
         {
             mover();
             //atirar();
         }
-        void Inim_Medio::mover()
+        void Atirador::mover()
         {
             velocidade = sf::Vector2f(1.f, 0);
 
@@ -127,7 +127,7 @@ namespace Entidades
                 }
             }
         }
-        void Inim_Medio::atirar()
+        void Atirador::atirar()
         {
             sf::Vector2f z = this->getTamanho() / 2.f;
 
@@ -144,7 +144,7 @@ namespace Entidades
                 novo.executar();
             }
         }
-        Projetil* Inim_Medio::getProjetil()
+        Projetil* Atirador::getProjetil()
         {
             return &novo;
         }

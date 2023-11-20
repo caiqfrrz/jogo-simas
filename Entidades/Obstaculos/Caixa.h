@@ -6,13 +6,13 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        class Obst_Facil: public Obstaculo
+        class Caixa: public Obstaculo
         {
         private:
 
         public:
-            Obst_Facil(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
-            ~Obst_Facil();
+            Caixa(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
+            ~Caixa();
             void executar();
         };
     }

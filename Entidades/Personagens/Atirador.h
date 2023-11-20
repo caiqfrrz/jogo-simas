@@ -11,7 +11,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        class Inim_Medio : public Inimigo
+        class Atirador : public Inimigo
         {
         private:
             Listas::ListaEntidades* jogadores;
@@ -21,8 +21,8 @@ namespace Entidades
             int recarregar;
         public:
             bool firing;
-            Inim_Medio(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
-            ~Inim_Medio();
+            Atirador(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
+            ~Atirador();
             void executar();
             void mover();
             void atirar();

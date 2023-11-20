@@ -1,10 +1,10 @@
-#include "../Entidades/Personagens/Inim_Facil.h"
+#include "../Entidades/Personagens/Fantasma.h"
 //mudanca
 namespace Entidades
 {
     namespace Personagens
     {
-        Inim_Facil::Inim_Facil(Listas::ListaEntidades*jog, sf::Vector2f pos):
+        Fantasma::Fantasma(Listas::ListaEntidades*jog, sf::Vector2f pos):
         jogadores(jog),
         Inimigo(pos),
         vida(3),
@@ -13,17 +13,17 @@ namespace Entidades
             corpo.setFillColor(sf::Color::Magenta);
         }
 
-        Inim_Facil::~Inim_Facil()
+        Fantasma::~Fantasma()
         {
 
         }
 
-        void Inim_Facil::executar()
+        void Fantasma::executar()
         {
             mover();
         }
 
-        void Inim_Facil::mover()
+        void Fantasma::mover()
         {
             
             Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();

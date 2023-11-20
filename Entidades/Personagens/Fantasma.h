@@ -10,15 +10,15 @@ namespace Entidades
     namespace Personagens
     {
         // Inimigo 2
-        class Inim_Facil: public Inimigo
+        class Fantasma: public Inimigo
         {
         private:
             int vida;
             int dano;
             Listas::ListaEntidades* jogadores;
         public:
-            Inim_Facil(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
-            ~Inim_Facil();
+            Fantasma(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
+            ~Fantasma();
             void executar();
             void mover();
             //Entidade* getJogadorProx();
