@@ -23,7 +23,13 @@ namespace Gerenciadores
         if (pE)
             janela->draw(*pE->get_corpo());
     }
-    // Propaganda:
+    void Gerenciador_Grafico::desenharText(sf::Text *pT)
+    {
+        if(pT)
+        {
+            janela->draw(*pT);
+        }
+    }
     void Gerenciador_Grafico::desenharTextura(sf::Texture* pT)
     {
         if (pT)

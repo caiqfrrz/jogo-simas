@@ -1,5 +1,8 @@
 #include "../Entidades/Personagens/Jogador.h"
 #include <math.h>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 namespace Entidades
 {
@@ -13,6 +16,11 @@ namespace Entidades
         pontos(0)
         {
             corpo.setFillColor(sf::Color::Green);
+
+            if (!fonte.loadFromFile("arial.ttf"))
+            {
+                std::cout << "Nao carregou fonte" << std::endl;
+            }
         }
         Jogador::~Jogador()
         {
@@ -40,6 +48,18 @@ namespace Entidades
         }
         void Jogador::mover()
         {
+            std::stringstream x;
+
+            x << "Projeteis: " << vet_proj.size();
+            std::string str = x.str();
+
+            Design::Text texto(str);
+
+            texto.setFont(&fonte);
+            texto.setCor(sf::Color::White);
+            texto.setTamanho(30);
+            texto.executar();
+            
             if (pulando)
             {
                 velocidade += sf::Vector2f(0, -pulo);

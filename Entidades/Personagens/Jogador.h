@@ -3,6 +3,7 @@
 
 #include "Personagem.h"
 #include "../Projetil.h"
+#include "../../Design/Text.h"
 
 namespace Entidades
 {
@@ -15,6 +16,7 @@ namespace Entidades
             int recarga;
             float pulo;
             bool pulando;
+            sf::Font fonte;
             std::vector<Projetil> vet_proj;
             std::vector<sf::Vector2f> vet_pos;
             std::vector<bool> vet_dir;
