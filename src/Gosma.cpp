@@ -24,6 +24,18 @@ namespace Entidades
         {
             Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
             aux->lentidao(l);
+            /*if(pE->getVelocidade().x > 0)
+            {
+                pE->setVelocidade(pE->getVelocidade() - sf::Vector2f(força, 0));
+            }
+            if(pE->getVelocidade().x < 0)
+            {
+                pE->setVelocidade(pE->getVelocidade() + sf::Vector2f(força, 0));
+            }
+            else if(pE->getVelocidade().x == 0)
+            {
+                std::cout << "vel = 0" << std::endl;
+            }*/
         }
     }
 }

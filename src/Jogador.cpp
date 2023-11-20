@@ -48,6 +48,8 @@ namespace Entidades
         }
         void Jogador::mover()
         {
+            velocidade = sf::Vector2f(0,0);
+
             std::stringstream x;
 
             x << "Projeteis: " << vet_proj.size();
@@ -59,8 +61,6 @@ namespace Entidades
             texto.setCor(sf::Color::White);
             texto.setTamanho(30);
             texto.executar();
-
-            velocidade = sf::Vector2f(0, 0);
             
             if (pulando)
             {
@@ -74,7 +74,8 @@ namespace Entidades
                 }
             }
             if (!nochao)
-                velocidade += sf::Vector2f(0, 7.f); 
+                velocidade += sf::Vector2f(0, 7.f);
+
             
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
@@ -131,7 +132,7 @@ namespace Entidades
             {
                 if(lento)
                 {
-                    pulando = true;
+                    //pulando = true;
                 }
                 else
                 {

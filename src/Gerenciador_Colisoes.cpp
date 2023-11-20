@@ -38,13 +38,13 @@ namespace Gerenciadores
                         Entidades::Obstaculos::Gosma* aux2 = static_cast<Entidades::Obstaculos::Gosma*>(*obst);
                         aux2->passando(*jgd, true);
                     }
-                    else
+                    /*else
                     {
                         if(aux->getLento() == true)
                         {
                             aux->setLento(false);
                         }
-                    }
+                    }*/
                     
                     if(aux2->ehDanoso())
                     {
