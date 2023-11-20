@@ -9,6 +9,7 @@ namespace Entidades
         damaged((bool)0),
         timer(),
         num_vidas(1),
+        lento(false),
         vida(10)
         {
 
@@ -43,6 +44,10 @@ namespace Entidades
         bool Personagem::getDamaged()
         {
             return damaged;
+        }
+        void Personagem::lentidao(bool l)
+        {
+            lento = l;
         }
     }
 }

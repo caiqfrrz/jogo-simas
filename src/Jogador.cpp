@@ -59,6 +59,8 @@ namespace Entidades
             texto.setCor(sf::Color::White);
             texto.setTamanho(30);
             texto.executar();
+
+            velocidade = sf::Vector2f(0, 0);
             
             if (pulando)
             {
@@ -72,25 +74,64 @@ namespace Entidades
                 }
             }
             if (!nochao)
-                velocidade += sf::Vector2f(0, 7.f);  
+                velocidade += sf::Vector2f(0, 7.f); 
+
+            if(lento)
+            {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                {
+                    if (nochao)
+                    {
+                        velocidade = sf::Vector2f(1.f, 0);
+                    }
+                    else if (!nochao)
+                    {
+                        velocidade += sf::Vector2f(1.f, 0);
+                    }
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                {
+                    if (nochao)
+                    {
+                        velocidade = sf::Vector2f(-1.f, 0);
+                    }
+                    else if (!nochao)
+                    {
+                        velocidade += sf::Vector2f(-1.f, 0);
+                    }
+                }
+            }
             else
-                velocidade = sf::Vector2f(velocidade.x, 0.f);
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && nochao)
-                velocidade = sf::Vector2f(6.f, 0);
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !nochao)
-                velocidade += sf::Vector2f(4.f, 0);
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && nochao)
-                velocidade = sf::Vector2f(-6.f, 0);   
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !nochao)
-                velocidade += sf::Vector2f(-4.f, 0);
+            {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                {
+                    if (nochao)
+                    {
+                        velocidade = sf::Vector2f(6.f, 0);
+                    }
+                    else if (!nochao)
+                    {
+                        velocidade += sf::Vector2f(6.f, 0);
+                    }
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                {
+                    if (nochao)
+                    {
+                        velocidade = sf::Vector2f(-6.f, 0);
+                    }
+                    else if (!nochao)
+                    {
+                        velocidade += sf::Vector2f(-6.f, 0);
+                    }
+                }
+            } 
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && nochao)
             {
                 pulando = true;
                 pulo = 21.f;
             } 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                velocidade = sf::Vector2f(0, 0); 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && recarga == 0) 
             {
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -105,15 +146,16 @@ namespace Entidades
                 vet_pos.push_back(sf::Vector2f(this->getPosicao().x, this->getPosicao().y + 20.f));
                 recarga = TEMPO_RECARGA_JOG;
             }
+            std::cout << "Velocidade: " << velocidade.x << std::endl;
 
             if(recarga > 0)
                 recarga--;
 
             corpo.setPosition(corpo.getPosition() + velocidade);
-            velocidade = sf::Vector2f(0, 0);
             nochao = false;
             atirar();
         }
+        
 
         void Jogador::atirar()
         {

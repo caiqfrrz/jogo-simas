@@ -11,6 +11,7 @@ namespace Entidades
         protected:
             bool damaged;
             int num_vidas;
+            bool lento;
             int vida;
             clock_t timer;
         public:
@@ -23,6 +24,7 @@ namespace Entidades
             virtual void morreu();
             virtual void ResetColor();
             bool getDamaged();
+            void lentidao(bool l);
         };
     }
 }

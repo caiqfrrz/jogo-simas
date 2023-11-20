@@ -15,7 +15,7 @@ namespace Entidades
             ~Gosma();
 
             void executar();
-            void passando(Entidade* pE);
+            void passando(Entidade* pE, bool l);
         };
     }
 }

@@ -46,7 +46,7 @@ namespace Gerenciadores
                     if(aux2->ehGosma())
                     {
                         Entidades::Obstaculos::Gosma* aux2 = static_cast<Entidades::Obstaculos::Gosma*>(*obst);
-                        aux2->passando(*jgd);
+                        aux2->passando(*jgd, true);
                     }
                     (*jgd)->colidir();
                     (*obst)->colidir();

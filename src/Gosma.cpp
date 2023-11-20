@@ -1,4 +1,5 @@
 #include "../Entidades/Obstaculos/Gosma.h"
+#include "../Entidades/Personagens/Personagem.h"
 #include <iostream>
 
 namespace Entidades
@@ -19,24 +20,10 @@ namespace Entidades
         {
 
         }
-        void Gosma::passando(Entidade* pE)
+        void Gosma::passando(Entidade* pE, bool l)
         {
-            sf::Vector2f vel = pE->getVelocidade();
-
-            if(vel.x > 0)
-            {
-                pE->setVelocidade(pE->getVelocidade() - sf::Vector2f(5, 0));
-                std::cout << "entrou dir";
-            }
-            else if(vel.x < 0)
-            {
-                pE->setVelocidade(pE->getVelocidade() + sf::Vector2f(5, 0));
-                std::cout << "entrou esq";
-            }
-            else if(vel.x == 0) 
-            {
-                std::cout << "entrou 0";
-            }
+            Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
+            aux->lentidao(l);
         }
     }
 }
