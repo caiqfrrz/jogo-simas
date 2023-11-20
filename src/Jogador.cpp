@@ -66,7 +66,7 @@ namespace Entidades
             {
                 velocidade += sf::Vector2f(0, -pulo);
 
-                pulo -= 1.f;
+                pulo -= 0.8f;
 
                 if(pulo <= 0)
                 {
@@ -75,35 +75,20 @@ namespace Entidades
             }
             if (!nochao)
                 velocidade += sf::Vector2f(0, 7.f); 
-
-            if(lento)
+            
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                if(lento)
                 {
-                    if (nochao)
+                    if(!nochao)
                     {
-                        velocidade = sf::Vector2f(1.f, 0);
+                        lento = false;
                     }
-                    else if (!nochao)
-                    {
-                        velocidade += sf::Vector2f(1.f, 0);
-                    }
+                    else
+                        velocidade = sf::Vector2f(2.f, 0);
                 }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                {
-                    if (nochao)
-                    {
-                        velocidade = sf::Vector2f(-1.f, 0);
-                    }
-                    else if (!nochao)
-                    {
-                        velocidade += sf::Vector2f(-1.f, 0);
-                    }
-                }
-            }
-            else
-            {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                
+                if(!lento)
                 {
                     if (nochao)
                     {
@@ -114,7 +99,21 @@ namespace Entidades
                         velocidade += sf::Vector2f(6.f, 0);
                     }
                 }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            {
+                if(lento)
+                {
+                    if(!nochao)
+                    {
+                        lento = false;
+                    }
+                    else
+                        velocidade = sf::Vector2f(-2.f, 0);  
+                }
+                
+                if(!lento)
                 {
                     if (nochao)
                     {
@@ -125,12 +124,21 @@ namespace Entidades
                         velocidade += sf::Vector2f(-6.f, 0);
                     }
                 }
-            } 
+                
+            }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && nochao)
             {
-                pulando = true;
-                pulo = 21.f;
+                if(lento)
+                {
+                    pulando = true;
+                }
+                else
+                {
+                    pulando = true;
+                    pulo = 21.f;
+                }
+                
             } 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && recarga == 0) 
             {

@@ -25,6 +25,8 @@ namespace Entidades
             virtual void ResetColor();
             bool getDamaged();
             void lentidao(bool l);
+            bool getLento();
+            void setLento(bool b);
         };
     }
 }

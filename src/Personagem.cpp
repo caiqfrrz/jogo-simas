@@ -49,5 +49,15 @@ namespace Entidades
         {
             lento = l;
         }
+
+        bool Personagem::getLento()
+        {
+            return lento;
+        }
+
+        void Personagem::setLento(bool b)
+        {
+            lento = b;
+        }
     }
 }
