@@ -10,11 +10,13 @@ namespace Entidades
         {
         protected:
             bool danoso;
+            bool lento;
         public:
-            Obstaculo(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), bool dano = false);
+            Obstaculo(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), bool dano = false, bool l = false);
             ~Obstaculo();
             virtual void executar() = 0;
             virtual bool ehDanoso();
+            virtual bool ehGosma();
         };
     }
 }

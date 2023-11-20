@@ -72,6 +72,11 @@ namespace Estados
                             obstaculos.incluir(aux);
                         break;
 
+                    case 'O':
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Gosma(sf::Vector2f(j * TAM, i * TAM)));
+                        if(aux)
+                            obstaculos.incluir(aux);
+                        break;
                     case 'E':
                         aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Fantasma(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
                         if (aux)

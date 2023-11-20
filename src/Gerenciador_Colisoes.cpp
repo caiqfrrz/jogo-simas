@@ -27,19 +27,26 @@ namespace Gerenciadores
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
-                Entidades::Obstaculos::Espinho* aux2 = static_cast<Entidades::Obstaculos::Espinho*>(*obst);
+                Entidades::Obstaculos::Obstaculo* aux2 = static_cast<Entidades::Obstaculos::Obstaculo*>(*obst);
 
                 if (colidiu(*jgd, *obst))
                 {
+                    Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
+
                     if(aux2->ehDanoso())
                     {
-                        Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
+                        Entidades::Obstaculos::Espinho* aux2 = static_cast<Entidades::Obstaculos::Espinho*>(*obst);
 
                         if(aux->getDamaged() == true)
                             break;
 
                         aux->setVida(aux->getVida() - aux2->getDano());
                         (aux)->TomarDano();
+                    }
+                    if(aux2->ehGosma())
+                    {
+                        Entidades::Obstaculos::Gosma* aux2 = static_cast<Entidades::Obstaculos::Gosma*>(*obst);
+                        aux2->passando(*jgd);
                     }
                     (*jgd)->colidir();
                     (*obst)->colidir();

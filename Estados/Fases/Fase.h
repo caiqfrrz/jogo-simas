@@ -6,6 +6,7 @@
 #include "../../Entidades/Personagens/Fantasma.h"
 #include "../../Entidades/Obstaculos/Caixa.h"
 #include "../../Entidades/Obstaculos/Espinho.h"
+#include "../../Entidades/Obstaculos/Gosma.h"
 #include "../../Listas/ListaEntidades.h"
 #include "../../Gerenciadores/Gerenciador_Colisoes.h"
 #include "../Estado.h"

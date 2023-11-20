@@ -83,6 +83,7 @@ namespace Entidades
                 velocidade = sf::Vector2f(-6.f, 0);   
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !nochao)
                 velocidade += sf::Vector2f(-4.f, 0);
+
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && nochao)
             {
                 pulando = true;
@@ -109,7 +110,7 @@ namespace Entidades
                 recarga--;
 
             corpo.setPosition(corpo.getPosition() + velocidade);
-            velocidade = sf::Vector2f(0.f , 0.f);
+            velocidade = sf::Vector2f(0, 0);
             nochao = false;
             atirar();
         }
