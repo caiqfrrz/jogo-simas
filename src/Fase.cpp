@@ -3,6 +3,8 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 
 namespace Estados
 {
@@ -40,6 +42,16 @@ namespace Estados
         }
         void Fase::criarCenario(std::string caminho)
         {
+            srand(time(0));
+
+            int cont[2] = {0,0};
+            int num[2];
+
+            for(int i = 0; i < 2; i++)
+            {
+                num[i] = (int)rand() % 3 + 3;
+            }
+
             std::ifstream arquivo(caminho);
             if (!arquivo)
             {
@@ -77,16 +89,29 @@ namespace Estados
                             obstaculos.incluir(aux);
                         break;
                     case 'E':
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Fantasma(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
-                        if (aux)
-                            inimigos.incluir(aux);
+                    {
+                        if(cont[0] < num[0])
+                        {
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Fantasma(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                            if (aux)
+                                inimigos.incluir(aux);
+                            cont[0]++;
+                        }
                         break;
+                    }
+                    
                     case 'I':
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Atirador(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
-                        if(aux)
-                            inimigos.incluir(aux);
+                    {
+                        if(cont[1] < num[1])
+                        {
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Atirador(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                            if(aux)
+                                inimigos.incluir(aux);
+                            cont[1]++;
+                        }
                         break;
-                        
+                    }
+                    
                     default:
                         break;
                     }

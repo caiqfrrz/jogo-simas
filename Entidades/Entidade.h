@@ -15,7 +15,7 @@ namespace Entidades
         sf::Vector2f velocidade;
     public:
         Entidade(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
-        ~Entidade();
+        virtual ~Entidade();
         // Se for virtual puro n dá para fazer o cast (n sei o pq);
         virtual void executar() = 0;
         // Colocar a entidade com a qual colidiu para fazer mais ações:
