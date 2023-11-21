@@ -72,13 +72,16 @@ namespace Gerenciadores
                     Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*>(*jgd);
                     std::vector<Entidades::Projetil>* pVec = aux->getVetProj();
 
-                    for(int i = 0; i<pVec->size(); i++)
+                    if(pVec->size() > 0)
                     {
-                        Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(&pVec->at(i));
-                        if(colidiu(*inim, proj))
+                        for(int i = 0; i<pVec->size(); i++)
                         {
-                            Entidades::Personagens::Personagem* aux2 = static_cast<Entidades::Personagens::Personagem*>(*inim);
-                            aux2->setVida(aux2->getVida() - 1);
+                            Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(&pVec->at(i));
+                            if(colidiu(*inim, proj))
+                            {
+                                Entidades::Personagens::Personagem* aux2 = static_cast<Entidades::Personagens::Personagem*>(*inim);
+                                aux2->setVida(aux2->getVida() - 1);
+                            }
                         }
                     }
                 }
