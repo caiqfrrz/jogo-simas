@@ -1,4 +1,5 @@
 #include "../Listas/ListaEntidades.h"
+#include <iostream>
  
 namespace Listas
 {
@@ -35,11 +36,13 @@ namespace Listas
     void ListaEntidades::executar()
     {
         Lista<Entidades::Entidade>::Iterador aux = LEs.get_primeiro();
+
         while (aux != nullptr)
         {
             (*aux)->executar();
             aux++;
-        }        
+        }    
+
     }
     Lista<Entidades::Entidade>::Iterador ListaEntidades::get_primeiro()
     {

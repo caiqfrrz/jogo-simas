@@ -12,6 +12,7 @@ namespace Estados
         jogadores(),
         obstaculos(),
         inimigos(),
+        gP(&jogadores, &inimigos),
         Estado(i)
         {
             gC.set_inimigos(&inimigos);
@@ -35,9 +36,7 @@ namespace Estados
             //jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
         }
         void Fase::criarInimMedios()
-        {/*
-            inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Fantasma(&jogadores)));
-            */
+        {
         }
         void Fase::criarCenario(std::string caminho)
         {

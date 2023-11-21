@@ -1,23 +1,22 @@
 #pragma once
 
 #include "../Entidades/Personagens/Personagem.h"
+#include "../Entidades/Entidade.h"
 #include "../Listas/ListaEntidades.h"
+#include <iostream>
 
 namespace Gerenciadores
 {
     class Gerenciador_Personagens
     {
     private:
-        Entidades::Personagens::Personagem* Personagem;
         Listas::ListaEntidades* jogadores;
         Listas::ListaEntidades* inimigos;
 
-        Gerenciador_Personagens();
-
     public:
+        Gerenciador_Personagens(Listas::ListaEntidades* jog, Listas::ListaEntidades* inim);
         ~Gerenciador_Personagens();
-        void morreu();
-        void checarPersonagem();
+        void checarPersonagens();
 
     };
 }

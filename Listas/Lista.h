@@ -84,7 +84,6 @@ namespace Listas
                     return;
 
                 Elemento<TL>* aux = pPrimeiro;
-
                 Elemento<TL>* anterior = nullptr;
 
                 while (aux != nullptr)
@@ -93,14 +92,13 @@ namespace Listas
                     {
                         if (aux == pPrimeiro)
                         {
-                            pPrimeiro = aux->get_pProx();
+                            pPrimeiro = pPrimeiro->get_pProx();
                         }
                         else
                         {
                             anterior->set_pProx(aux->get_pProx());
                         }
                         tamanho--;
-                        delete aux;
                         return;
                     }
 
@@ -117,7 +115,6 @@ namespace Listas
                 Iterador(Elemento<TL>* a = nullptr):
                 atual(a)
                 {
-
                 }
                 ~Iterador()
                 {

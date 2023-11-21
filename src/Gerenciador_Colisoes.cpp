@@ -84,14 +84,14 @@ namespace Gerenciadores
                             if(colBala(*inim, proj))
                             {
                                 Entidades::Personagens::Personagem* aux2 = static_cast<Entidades::Personagens::Personagem*>(*inim);
-
+                                std::cout << "COLIDIU" << std::endl;
                                 if(proj->getAtivo() == true)
                                 {
                                     aux2->setVida(aux2->getVida() - 1);
                                     proj->setAtivo(false);
                                     proj->colidir();
                                 }
-                                std::cout << "vida" << aux2->getVida();
+                                //std::cout << "vida: " << aux2->getVida() << std::endl;
                             }
                         }
                     }

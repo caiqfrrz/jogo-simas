@@ -21,10 +21,7 @@ namespace Entidades
 
         void Fantasma::executar()
         {
-            if(getVida() <= 0)
-            {
-                corpo.setFillColor(sf::Color::Transparent);
-            }
+            std::cout << "entrou executar" << std::endl;
             mover();
         }
 

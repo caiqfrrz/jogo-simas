@@ -23,12 +23,8 @@ namespace Entidades
         }
         void Atirador::executar()
         {
-            if(getVida() <= 0)
-            {
-                corpo.setFillColor(sf::Color::Transparent);
-            }
-            else
-                mover();
+            std::cout << "entrou executar" << std::endl;
+            mover();
             //atirar();
         }
         void Atirador::mover()

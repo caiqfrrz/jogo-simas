@@ -17,6 +17,7 @@ namespace Estados
 
         void FasePrimeira::executar()
         {
+            gP.checarPersonagens();
             jogadores.executar();
             inimigos.executar();
             gerenciar_colisoes();
