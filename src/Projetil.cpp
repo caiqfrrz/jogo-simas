@@ -6,7 +6,8 @@
 
 namespace Entidades
 {
-    Projetil::Projetil(sf::Vector2f tam)
+    Projetil::Projetil(sf::Vector2f tam):
+    ativo(true)
     {
         corpo.setSize(tam);
         velocidade = sf::Vector2f(-12, 0);
@@ -26,11 +27,20 @@ namespace Entidades
     }
     void Projetil::colidir()
     {
-        
+        corpo.setFillColor(sf::Color::Transparent);
     }
     void Projetil::reset()
     {
         corpo.setFillColor(sf::Color::White);
+    }
+    bool Projetil::getAtivo()
+    {
+        return ativo;
+    }
+
+    void Projetil::setAtivo(bool b)
+    {
+        ativo = b;
     }
 
 }

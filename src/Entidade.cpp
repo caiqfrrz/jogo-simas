@@ -27,4 +27,11 @@ namespace Entidades
     {
         velocidade = v;
     }
+    void Entidade::setAtivo(bool b)
+    {
+    }
+    bool Entidade::getAtivo()
+    {
+        return NULL;
+    }
 }

@@ -26,5 +26,7 @@ namespace Entidades
         void setNochao(bool n) { nochao = n; }
         const sf::Vector2f getVelocidade () const { return velocidade; }
         void setVelocidade(sf::Vector2f v);
+        virtual bool getAtivo();
+        virtual void setAtivo(bool b);
     };
 }
