@@ -31,7 +31,6 @@ namespace Entidades
         }
         void Atirador::colidir()
         {
-            std::cout << "ye";
             pulando = true;
             pulo = 21.f;
             nochao = true;
@@ -43,7 +42,7 @@ namespace Entidades
             Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
             Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores->get_primeiro()++;
 
-            if (pulando)
+            if(pulando)
             {
                 velocidade += sf::Vector2f(0, -pulo);
 
@@ -54,6 +53,8 @@ namespace Entidades
                     pulando = false;
                 }
             }
+            if (!nochao)
+                velocidade += sf::Vector2f(0, 7.f);
 
             if(jgd != nullptr && jgd2 != nullptr)
             {
@@ -87,18 +88,18 @@ namespace Entidades
                     direcao /= comprimento;
                 }
 
-                velocidade = direcao * 1.f;
+                //velocidade = direcao * 1.f;
                 
                 if(!firing)
                 {
                     if(getPosicao().x < posProx.x)
                     {
-                        novo.setVelocidade(sf::Vector2f(12, 0));
+                        novo.setVelocidade(sf::Vector2f(12, novo.getVelocidade().y));
                         firing = true;
                     }
                     else
                     {
-                        novo.setVelocidade(sf::Vector2f(-12, 0));
+                        novo.setVelocidade(sf::Vector2f(-12, novo.getVelocidade().y));
                         firing = true;
                     }
                 }
