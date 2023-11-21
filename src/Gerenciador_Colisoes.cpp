@@ -21,6 +21,7 @@ namespace Gerenciadores
     {
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
+        bool gosmento = false;
         
         while (jgd != nullptr)
         {
@@ -28,16 +29,24 @@ namespace Gerenciadores
             while (obst != nullptr)
             {
                 Entidades::Obstaculos::Obstaculo* aux2 = static_cast<Entidades::Obstaculos::Obstaculo*>(*obst);
-
+                Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
                 if (colidiu(*jgd, *obst))
                 {
-                    Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
 
                     if(aux2->ehGosma())
+                    {
+                        gosmento = true;
+                    }
+                    else
+                        gosmento = false;
+
+                    if(gosmento)
                     {
                         Entidades::Obstaculos::Gosma* aux2 = static_cast<Entidades::Obstaculos::Gosma*>(*obst);
                         aux2->passando(*jgd, true);
                     }
+                    else
+                        (aux)->setLento(false);
                     else
                     {
                         if(aux->getLento() == true)
@@ -60,6 +69,7 @@ namespace Gerenciadores
                     (*jgd)->colidir();
                     (*obst)->colidir();
                 }
+                    
                 obst++;
             }
             jgd++;

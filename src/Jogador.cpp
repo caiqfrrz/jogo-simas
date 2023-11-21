@@ -13,6 +13,7 @@ namespace Entidades
         recarga(0),
         pulando(false),
         pulo(0.f),
+        last_key(1),
         pontos(0)
         {
             corpo.setFillColor(sf::Color::Green);
@@ -75,21 +76,17 @@ namespace Entidades
             }
             if (!nochao)
                 velocidade += sf::Vector2f(0, 7.f);
-
-            
+           
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
                 if(lento)
                 {
-                    if(!nochao)
+                    if (!nochao)
                     {
-                        lento = false;
+                        velocidade += sf::Vector2f(2.f, 0);
                     }
-                    else
-                        velocidade = sf::Vector2f(2.f, 0);
                 }
-                
-                if(!lento)
+                else
                 {
                     if (nochao)
                     {
@@ -100,21 +97,19 @@ namespace Entidades
                         velocidade += sf::Vector2f(6.f, 0);
                     }
                 }
+                last_key = 1;
                 
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
                 if(lento)
                 {
-                    if(!nochao)
+                    if (!nochao)
                     {
-                        lento = false;
+                        velocidade += sf::Vector2f(-2.f, 0);
                     }
-                    else
-                        velocidade = sf::Vector2f(-2.f, 0);  
                 }
-                
-                if(!lento)
+                else
                 {
                     if (nochao)
                     {
@@ -125,14 +120,15 @@ namespace Entidades
                         velocidade += sf::Vector2f(-6.f, 0);
                     }
                 }
-                
+                last_key = 0;
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && nochao)
             {
                 if(lento)
                 {
-                    //pulando = true;
+                    pulando = true;
+                    pulo = 15.f;
                 }
                 else
                 {
@@ -144,11 +140,11 @@ namespace Entidades
             } 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && recarga == 0) 
             {
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                if(last_key == 0)
                 {
                     vet_dir.push_back(false);
                 }
-                else
+                else if (last_key == 1)
                     vet_dir.push_back(true);
 
                 Projetil novoProj(sf::Vector2f(10, 5));

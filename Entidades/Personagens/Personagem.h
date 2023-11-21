@@ -12,7 +12,7 @@ namespace Entidades
             bool damaged;
             int num_vidas;
             bool lento;
-            int vida;
+            int vida; 
             clock_t timer;
         public:
             Personagem(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
