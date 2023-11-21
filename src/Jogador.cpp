@@ -29,7 +29,7 @@ namespace Entidades
         }
         void Jogador::executar()
         {
-            if(vida >= 0)
+            if(!morte)
             {
                 mover();
 
@@ -191,6 +191,10 @@ namespace Entidades
         std::vector<Projetil>* Jogador::getVetProj()
         {
             return &vet_proj;
+        }
+        void Jogador::morreu()
+        {
+            morte = true;
         }
     }
 }

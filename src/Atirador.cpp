@@ -157,6 +157,7 @@ namespace Entidades
 
             if(recarregar == 0)
             {
+                std::cout << "teste";
                 novo.setPosicao(this->getPosicao() + (z));
                 firing = false;
                 novo.executar();

@@ -10,6 +10,7 @@ namespace Entidades
         timer(),
         num_vidas(1),
         lento(false),
+        morte(false),
         vida(10)
         {
 

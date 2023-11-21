@@ -89,7 +89,6 @@ namespace Gerenciadores
                                 {
                                     aux2->setVida(aux2->getVida() - 1);
                                     proj->setAtivo(false);
-                                    proj->colidir();
                                 }
                                 //std::cout << "vida: " << aux2->getVida() << std::endl;
                             }

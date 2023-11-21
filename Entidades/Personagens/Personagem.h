@@ -12,6 +12,7 @@ namespace Entidades
             bool damaged;
             int num_vidas;
             bool lento;
+            bool morte;
             int vida; 
             clock_t timer;
         public:

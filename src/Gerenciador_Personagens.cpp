@@ -14,7 +14,6 @@ namespace Gerenciadores
     }
     void Gerenciador_Personagens::checarPersonagens()
     {
-        std::vector<Entidades::Entidade*> jgdRemove;
         std::vector<Entidades::Entidade*> inimRemove;
 
         Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
@@ -24,7 +23,7 @@ namespace Gerenciadores
             Entidades::Personagens::Personagem* jogadores = static_cast<Entidades::Personagens::Personagem*>(*jgd);
             if((jogadores)->getVida() <= 0)
             {
-                jgdRemove.push_back((*jgd));
+                jogadores->morreu();
             }
             jgd++;
         }
@@ -40,10 +39,6 @@ namespace Gerenciadores
             inim++;
         }
 
-        for(int i = 0; i<jgdRemove.size(); i++)
-        {
-            jogadores->remove(jgdRemove[i]);
-        }
         for(int i = 0; i<inimRemove.size(); i++)
         {
             inimigos->remove(inimRemove[i]);

@@ -27,6 +27,7 @@ namespace Entidades
             void executar();
             void mover();
             void atirar();
+            void morreu();
             std::vector<Projetil>* getVetProj();
         };
     }

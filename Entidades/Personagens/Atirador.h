@@ -6,6 +6,7 @@
 #include "../../Listas/ListaEntidades.h"
 #include "../Projetil.h"
 #include <math.h>
+#include<iostream>
 
 namespace Entidades
 {
