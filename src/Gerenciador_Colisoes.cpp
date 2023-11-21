@@ -21,6 +21,7 @@ namespace Gerenciadores
     {
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
         bool gosmento = false;
         
         while (jgd != nullptr)
@@ -32,7 +33,6 @@ namespace Gerenciadores
                 Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
                 if (colidiu(*jgd, *obst))
                 {
-
                     if(aux2->ehGosma())
                     {
                         gosmento = true;
@@ -65,26 +65,60 @@ namespace Gerenciadores
                     
                 obst++;
             }
+            while(inim != nullptr)
+            {
+                if(jgd != nullptr)
+                {
+                    Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*>(*jgd);
+                    std::vector<Entidades::Projetil>* pVec = aux->getVetProj();
+
+                    for(int i = 0; i<pVec->size(); i++)
+                    {
+                        Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(&pVec->at(i));
+                        if(colidiu(*inim, proj))
+                        {
+                            Entidades::Personagens::Personagem* aux2 = static_cast<Entidades::Personagens::Personagem*>(*inim);
+                            aux2->setVida(aux2->getVida() - 1);
+                        }
+                    }
+                }
+                inim++;
+            }
             jgd++;
         }
 
-        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
-        Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*inim);
+        inim = inimigos->get_primeiro();
 
         while (inim != nullptr)
         {
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
-                if (colidiu(*inim, *obst))
+                Entidades::Personagens::Inimigo* aux = static_cast<Entidades::Personagens::Inimigo*>(*inim);
+
+                if(aux->ehFantasma() == false)
                 {
-                    (*inim)->colidir();
-                    (*obst)->colidir();
+                    if (colidiu(*inim, *obst))
+                    {
+                        (*inim)->colidir();
+                        (*obst)->colidir();
+                    }
+                }
+                if(aux->ehAtirador())
+                {
+                    Entidades::Personagens::Atirador* aux = static_cast<Entidades::Personagens::Atirador*>(*inim);
+                    Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(aux->getProjetil());
+
+                    if(colidiu(proj, *obst))
+                    {
+                        proj->colidir();
+                    }
                 }
                 obst++;
             }
             inim++;
         }
+
     }
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2)
     {

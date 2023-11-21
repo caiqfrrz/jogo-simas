@@ -2,13 +2,13 @@
 
 #include "../Listas/ListaEntidades.h"
 #include "../Listas/Lista.h"
-#include "../Entidades/Entidade.h"
 #include "../Entidades/Obstaculos/Obstaculo.h"
 #include "../Entidades/Obstaculos/Espinho.h"
 #include "../Entidades/Obstaculos/Gosma.h"
 #include "../Entidades/Projetil.h"
 #include "../Entidades/Personagens/Personagem.h"
 #include "../Entidades/Personagens/Atirador.h"
+#include "../Entidades/Personagens/Jogador.h"
 
 
 namespace Gerenciadores

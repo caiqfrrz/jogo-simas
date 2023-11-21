@@ -151,7 +151,7 @@ namespace Entidades
                 vet_pos.push_back(sf::Vector2f(this->getPosicao().x, this->getPosicao().y + 20.f));
                 recarga = TEMPO_RECARGA_JOG;
             }
-            std::cout << "Velocidade: " << velocidade.x << std::endl;
+            //std::cout << "Velocidade: " << velocidade.x << std::endl;
 
             if(recarga > 0)
                 recarga--;
@@ -186,6 +186,10 @@ namespace Entidades
                 }
                 
             }
+        }
+        std::vector<Projetil>* Jogador::getVetProj()
+        {
+            return &vet_proj;
         }
     }
 }

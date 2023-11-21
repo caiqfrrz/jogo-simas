@@ -13,5 +13,6 @@ namespace Entidades
         void executar();
         void atirar();
         void colidir();
+        void reset();
     };
 }

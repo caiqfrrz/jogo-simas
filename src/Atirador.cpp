@@ -5,9 +5,9 @@ namespace Entidades
     namespace Personagens
     {
         Atirador::Atirador(Listas::ListaEntidades*jog, sf::Vector2f pos):
+        Inimigo(pos, false, true),
         vida(5),
         jogadores(jog),
-        Inimigo(pos),
         dano(2),
         recarregar(0),
         firing(false),
@@ -120,11 +120,13 @@ namespace Entidades
                     }
                 }
 
-                if(dist1 < 350)
+                if(dist1 < 450)
                 {
                     corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
                     atirar();
                 }
+                else
+                    recarregar = 0;
             }
         }
         void Atirador::atirar()

@@ -1,4 +1,6 @@
 #include<iostream>
+#include <time.h>
+#include <stdlib.h>
 
 #include "../Entidades/Projetil.h"
 
@@ -24,6 +26,11 @@ namespace Entidades
     }
     void Projetil::colidir()
     {
-        setVelocidade(sf::Vector2f(0.f, 0.f));
+        
     }
+    void Projetil::reset()
+    {
+        corpo.setFillColor(sf::Color::White);
+    }
+
 }
