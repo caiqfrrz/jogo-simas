@@ -99,8 +99,8 @@ namespace Listas
                         {
                             anterior->set_pProx(aux->get_pProx());
                         }
-
                         tamanho--;
+                        delete aux;
                         return;
                     }
 
