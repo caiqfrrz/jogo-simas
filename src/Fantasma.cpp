@@ -21,7 +21,6 @@ namespace Entidades
 
         void Fantasma::executar()
         {
-            std::cout << "entrou executar" << std::endl;
             mover();
         }
 

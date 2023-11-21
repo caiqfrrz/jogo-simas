@@ -23,7 +23,6 @@ namespace Entidades
         }
         void Atirador::executar()
         {
-            std::cout << "entrou executar" << std::endl;
             mover();
             //atirar();
         }
