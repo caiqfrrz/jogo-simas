@@ -67,7 +67,7 @@ namespace Entidades
                 velocidade += sf::Vector2f(0, -pulo);
 
                 pulo -= 0.8f;
-
+                nochao = false;
                 if(pulo <= 0)
                 {
                     pulando = false;
@@ -138,6 +138,7 @@ namespace Entidades
                 {
                     pulando = true;
                     pulo = 21.f;
+                    nochao = true;
                 }
                 
             } 
