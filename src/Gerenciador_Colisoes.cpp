@@ -47,13 +47,6 @@ namespace Gerenciadores
                     }
                     else
                         (aux)->setLento(false);
-                    else
-                    {
-                        if(aux->getLento() == true)
-                        {
-                            aux->setLento(false);
-                        }
-                    }
                     
                     if(aux2->ehDanoso())
                     {
