@@ -7,6 +7,8 @@ namespace Entidades
         Atirador::Atirador(Listas::ListaEntidades*jog, sf::Vector2f pos):
         Inimigo(pos, false, true),
         vida(5),
+        pulando(false),
+        pulo(0.f),
         jogadores(jog),
         dano(2),
         recarregar(0),
@@ -23,9 +25,16 @@ namespace Entidades
         }
         void Atirador::executar()
         {
-            std::cout << "entrou executar" << std::endl;
+            //std::cout << "entrou executar" << std::endl;
             mover();
             //atirar();
+        }
+        void Atirador::colidir()
+        {
+            std::cout << "ye";
+            pulando = true;
+            pulo = 21.f;
+            nochao = true;
         }
         void Atirador::mover()
         {
@@ -34,6 +43,17 @@ namespace Entidades
             Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
             Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores->get_primeiro()++;
 
+            if (pulando)
+            {
+                velocidade += sf::Vector2f(0, -pulo);
+
+                pulo -= 0.8f;
+                nochao = false;
+                if(pulo <= 0)
+                {
+                    pulando = false;
+                }
+            }
 
             if(jgd != nullptr && jgd2 != nullptr)
             {

@@ -115,6 +115,7 @@ namespace Gerenciadores
                     if (colidiu(*inim, *obst))
                     {
                         (*inim)->colidir();
+                        std::cout << "colidiu";
                         (*obst)->colidir();
                     }
                 }
@@ -126,6 +127,7 @@ namespace Gerenciadores
                     if(colidiu(proj, *obst))
                     {
                         proj->colidir();
+                        proj->setAtivo(false);
                     }
                 }
                 obst++;

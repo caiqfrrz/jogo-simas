@@ -15,6 +15,8 @@ namespace Entidades
         {
         private:
             Listas::ListaEntidades* jogadores;
+            float pulo;
+            bool pulando;
             int vida;
             int dano;
             Projetil novo;
@@ -26,6 +28,7 @@ namespace Entidades
             void executar();
             void mover();
             void atirar();
+            void colidir();
             Projetil* getProjetil();
         };
     }
