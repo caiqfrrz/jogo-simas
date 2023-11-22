@@ -9,19 +9,12 @@ namespace Entidades
     namespace Personagens
     {
         Jogador::Jogador():
-        Personagem(),
+        Personagem(sf::Vector2f(0, 0),true, false),
         recarga(0),
-        pulando(false),
-        pulo(0.f),
         last_key(1),
         pontos(0)
         {
             corpo.setFillColor(sf::Color::Green);
-
-            if (!fonte.loadFromFile("arial.ttf"))
-            {
-                std::cout << "Nao carregou fonte" << std::endl;
-            }
         }
         Jogador::~Jogador()
         {
@@ -50,18 +43,6 @@ namespace Entidades
         void Jogador::mover()
         {
             velocidade = sf::Vector2f(0,0);
-
-            std::stringstream x;
-
-            x << "Projeteis: " << vet_proj.size();
-            std::string str = x.str();
-
-            Design::Text texto(str);
-
-            texto.setFont(&fonte);
-            texto.setCor(sf::Color::White);
-            texto.setTamanho(30);
-            texto.executar();
             
             if (pulando)
             {
@@ -152,7 +133,6 @@ namespace Entidades
                 vet_pos.push_back(sf::Vector2f(this->getPosicao().x, this->getPosicao().y + 20.f));
                 recarga = TEMPO_RECARGA_JOG;
             }
-            //std::cout << "Velocidade: " << velocidade.x << std::endl;
 
             if(recarga > 0)
                 recarga--;
@@ -191,10 +171,6 @@ namespace Entidades
         std::vector<Projetil>* Jogador::getVetProj()
         {
             return &vet_proj;
-        }
-        void Jogador::morreu()
-        {
-            morte = true;
         }
     }
 }

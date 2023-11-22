@@ -25,9 +25,11 @@ namespace Entidades
         }
         void Atirador::executar()
         {
-            //std::cout << "entrou executar" << std::endl;
-            mover();
-            //atirar();
+            if(!morte)
+            {
+                desenhar();
+                mover();
+            }
         }
         void Atirador::colidir()
         {
@@ -45,7 +47,6 @@ namespace Entidades
             if(pulando)
             {
                 velocidade += sf::Vector2f(0, -pulo);
-
                 pulo -= 0.8f;
                 nochao = false;
                 if(pulo <= 0)
@@ -156,8 +157,8 @@ namespace Entidades
             sf::Vector2f z = this->getTamanho() / 2.f;
 
             if(recarregar == 0)
+            
             {
-                std::cout << "teste";
                 novo.setPosicao(this->getPosicao() + (z));
                 firing = false;
                 novo.executar();

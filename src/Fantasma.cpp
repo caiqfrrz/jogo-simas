@@ -21,8 +21,11 @@ namespace Entidades
 
         void Fantasma::executar()
         {
-            //std::cout << "entrou executar" << std::endl;
-            mover();
+            if(!morte)
+            {
+                mover();
+                desenhar();
+            }
         }
 
         void Fantasma::mover()

@@ -6,14 +6,16 @@
 
 namespace Entidades
 {
-    Projetil::Projetil(sf::Vector2f tam)
+    Projetil::Projetil(sf::Vector2f tam):
+    dano(1),
+    ativo(true)
     {
         corpo.setSize(tam);
         velocidade = sf::Vector2f(-12, 0);
     }
     Projetil::~Projetil()
     {
-    
+        
     }
     void Projetil::executar()
     {
@@ -31,6 +33,10 @@ namespace Entidades
     void Projetil::reset()
     {
         corpo.setFillColor(sf::Color::White);
+    }
+    int Projetil::getDano()
+    {
+        return dano;
     }
     bool Projetil::getAtivo()
     {

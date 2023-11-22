@@ -4,20 +4,22 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Personagem::Personagem(sf::Vector2f pos):
+        Personagem::Personagem(sf::Vector2f pos, bool pro, bool esp):
         Entidade(pos),
         damaged((bool)0),
         timer(),
-        num_vidas(1),
         lento(false),
         morte(false),
+        projetil(pro),
+        espada(esp),
+        pulando(false),
+        pulo(0.f),
         vida(10)
         {
 
         }
         Personagem::~Personagem()
         {
-            num_vidas = 0;
             vida = 0;
         }
         int Personagem::getVida()
@@ -28,14 +30,24 @@ namespace Entidades
         {
             vida = v;
         }
-        void Personagem::TomarDano()
+        void Personagem::TomarDano(int d)
         {
-            corpo.setFillColor(sf::Color::Red);
+            setVida(getVida() - d);
+            /*corpo.setFillColor(sf::Color::Red);
             damaged = true;
-            timer = clock();
+            timer = clock();*/
         }
         void Personagem::morreu()
         {
+            morte = true;
+        }
+        bool Personagem::usaArma()
+        {
+            return projetil;
+        }
+        bool Personagem::usaEspada()
+        {
+            return espada;
         }
         void Personagem::ResetColor()
         {

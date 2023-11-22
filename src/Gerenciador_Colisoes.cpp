@@ -22,8 +22,13 @@ namespace Gerenciadores
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
         Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
-        bool gosmento = false;
         
+        bool gosmento = false;
+
+        if((static_cast<Entidades::Personagens::Personagem*>(*jgd))->usaEspada())
+            std::cout << "entrou" << std::endl;
+            
+
         while (jgd != nullptr)
         {
             obst = obstaculos->get_primeiro();
@@ -34,13 +39,6 @@ namespace Gerenciadores
                 if (colidiu(*jgd, *obst))
                 {
                     if(aux2->ehGosma())
-                    {
-                        gosmento = true;
-                    }
-                    else
-                        gosmento = false;
-
-                    if(gosmento)
                     {
                         Entidades::Obstaculos::Gosma* aux2 = static_cast<Entidades::Obstaculos::Gosma*>(*obst);
                         aux2->passando(*jgd, true);
@@ -55,42 +53,34 @@ namespace Gerenciadores
                         if(aux->getDamaged() == true)
                             break;
 
-                        aux->setVida(aux->getVida() - aux2->getDano());
-                        (aux)->TomarDano();
+                        (aux)->TomarDano(aux2->getDano());
                     }
-                
                     (*jgd)->colidir();
                     (*obst)->colidir();
-                }
-                    
+                }   
                 obst++;
             }
 
-            inim = inimigos->get_primeiro();
-            jgd = jogadores->get_primeiro();
-
             while(inim != nullptr)
             {
-                if(jgd != nullptr)
+                if((static_cast<Entidades::Personagens::Personagem*>(*jgd))->usaArma())
                 {
-                    Entidades::Personagens::Jogador* aux = static_cast<Entidades::Personagens::Jogador*>(*jgd);
-                    std::vector<Entidades::Projetil>* pVec = aux->getVetProj();
+                    Entidades::Personagens::Jogador* jgd_atira = static_cast<Entidades::Personagens::Jogador*>(*jgd);
+                    std::vector<Entidades::Projetil>* pVec = jgd_atira->getVetProj();
 
                     if(pVec->size() > 0)
                     {
                         for(int i = 0; i<pVec->size(); i++)
                         {
                             Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(&pVec->at(i));
-                            if(colBala(*inim, proj))
+                            if(colisao_projetil(*inim, proj))
                             {
-                                Entidades::Personagens::Personagem* aux2 = static_cast<Entidades::Personagens::Personagem*>(*inim);
-                                std::cout << "COLIDIU" << std::endl;
-                                if(proj->getAtivo() == true)
+                                if(proj->getAtivo())
                                 {
-                                    aux2->setVida(aux2->getVida() - 1);
+                                    Entidades::Personagens::Personagem* inimigo = static_cast<Entidades::Personagens::Personagem*>(*inim);
+                                    inimigo->TomarDano((&pVec->at(i))->getDano());
                                     proj->setAtivo(false);
-                                }
-                                //std::cout << "vida: " << aux2->getVida() << std::endl;
+                                 }                   
                             }
                         }
                     }
@@ -183,7 +173,7 @@ namespace Gerenciadores
         return 0;
     }
 
-    int Gerenciador_Colisoes::colBala(Entidades::Entidade* e1, Entidades::Entidade* e2)
+    int Gerenciador_Colisoes::colisao_projetil(Entidades::Entidade* e1, Entidades::Entidade* e2)
     {
         sf::Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(),
         tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),

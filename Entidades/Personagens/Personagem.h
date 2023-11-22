@@ -10,20 +10,25 @@ namespace Entidades
         {
         protected:
             bool damaged;
-            int num_vidas;
             bool lento;
             bool morte;
+            bool pulando;
+            bool projetil;
+            bool espada;
+            float pulo;
             int vida; 
             clock_t timer;
         public:
-            Personagem(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
+            Personagem(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), bool pro = false, bool esp = false);
             ~Personagem();
             virtual void executar() = 0;
             virtual int getVida();
             virtual void setVida(int v);
-            virtual void TomarDano();
+            virtual void TomarDano(int d);
             virtual void morreu();
             virtual void ResetColor();
+            virtual bool usaArma(); 
+            virtual bool usaEspada();
             bool getDamaged();
             void lentidao(bool l);
             bool getLento();

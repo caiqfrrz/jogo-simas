@@ -34,8 +34,8 @@ namespace Estados
         }
         void Fase::criarJogadores()
         {
+            jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
             jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
-            //jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
         }
         void Fase::criarInimMedios()
         {
@@ -72,6 +72,12 @@ namespace Estados
                     {
                         // Plataforma:
                     case '0':
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Plataforma(sf::Vector2f(j * TAM, i * TAM)));
+                        if (aux)
+                            obstaculos.incluir(aux);
+                        break;
+
+                    case 'C':
                         aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Caixa(sf::Vector2f(j * TAM, i * TAM)));
                         if (aux)
                             obstaculos.incluir(aux);

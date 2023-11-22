@@ -7,6 +7,7 @@
 #include "../../Entidades/Obstaculos/Caixa.h"
 #include "../../Entidades/Obstaculos/Espinho.h"
 #include "../../Entidades/Obstaculos/Gosma.h"
+#include "../../Entidades/Obstaculos/Plataforma.h"
 #include "../../Listas/ListaEntidades.h"
 #include "../../Gerenciadores/Gerenciador_Colisoes.h"
 #include "../../Gerenciadores/Gerenciador_Personagens.h"

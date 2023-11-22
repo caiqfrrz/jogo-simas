@@ -84,7 +84,6 @@ namespace Listas
                     return;
 
                 Elemento<TL>* aux = pPrimeiro;
-
                 Elemento<TL>* anterior = nullptr;
 
                 while (aux != nullptr)
@@ -99,11 +98,11 @@ namespace Listas
                         {
                             anterior->set_pProx(aux->get_pProx());
                         }
-
+                        delete aux->get_pinfo();  
+                        delete aux;  
                         tamanho--;
                         return;
                     }
-
                     anterior = aux;
                     aux = aux->get_pProx();
                 }
