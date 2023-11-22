@@ -45,9 +45,22 @@ namespace Entidades
                 sf::Vector2f cords = this->getPosicao();
 
                 float dist1 = sqrt(pow(pos1.x - cords.x, 2) + pow(pos1.y - cords.y, 2));
-                float dist2 = sqrt(pow(pos2.x - cords.x, 2) + pow(pos2.y - cords.y, 2)); 
+                float dist2 = sqrt(pow(pos2.x - cords.x, 2) + pow(pos2.y - cords.y, 2));
 
-                if(dist1 >= dist2)
+                Entidades::Personagens::Personagem* jogador = static_cast<Entidades::Personagens::Personagem*>(*jgd); 
+                Entidades::Personagens::Personagem* jogador2 = static_cast<Entidades::Personagens::Personagem*>(*jgd2); 
+                            
+                if(jogador->getMorto() == true)
+                {
+                    jogadorMaisProx = *jgd2;
+                    float distMaisProx = dist2;
+                }
+                else if(jogador2->getMorto() == true)
+                {
+                    jogadorMaisProx = *jgd;
+                    float distMaisProx = dist1;
+                }
+                else if(dist1 >= dist2)
                 {
                     jogadorMaisProx = *jgd2;
                     float distMaisProx = dist2;
@@ -57,6 +70,7 @@ namespace Entidades
                     jogadorMaisProx = *jgd;
                     float distMaisProx = dist1;
                 }
+
                 sf::Vector2f posProx = jogadorMaisProx->getPosicao();
                 sf::Vector2f direcao = posProx - getPosicao();
 
