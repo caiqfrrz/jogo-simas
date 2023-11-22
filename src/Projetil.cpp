@@ -28,7 +28,7 @@ namespace Entidades
     }
     void Projetil::colidir()
     {
-        corpo.setFillColor(sf::Color::Transparent);
+        //corpo.setFillColor(sf::Color::Transparent);
     }
     void Projetil::reset()
     {
