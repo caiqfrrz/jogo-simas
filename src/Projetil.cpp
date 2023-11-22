@@ -26,9 +26,17 @@ namespace Entidades
     {
         corpo.move(velocidade);
     }
-    void Projetil::colidir()
+    void Projetil::colidir(Entidade* pE)
     {
         //corpo.setFillColor(sf::Color::Transparent);
+        Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
+
+        if(aux->getMorto == false)
+        {
+            aux->TomarDano(dano);
+            setAtivo(false);
+        }
+                
     }
     void Projetil::reset()
     {

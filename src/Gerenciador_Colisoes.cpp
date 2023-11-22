@@ -60,6 +60,36 @@ namespace Gerenciadores
             jgd++;
         }
     }
+
+    void Gerenciador_Colisoes::colbalaInim()
+    {
+        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();         
+
+        Entidades::Personagens::Jogador* jgd_atira = static_cast<Entidades::Personagens::Jogador*>(*jgd);
+        std::vector<Entidades::Projetil>* pVec = jgd_atira->getVetProj();
+
+        while (inim != nullptr)
+        {
+            if(pVec->size() > 0)
+            {
+                for(int i = 0; i<pVec->size(); i++)
+                {
+                    Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(&pVec->at(i));
+                    if(colisao_projetil(*inim, proj) == 1)
+                    {
+                        if(proj->getAtivo() == true)
+                        {
+                            proj->colidir(*inim);
+                        } 
+                    }     
+                }                
+            }
+        }
+
+    }
+
+
     void Gerenciador_Colisoes::colisao_simples()
     {
         colInimJogador();
@@ -138,7 +168,7 @@ namespace Gerenciadores
                     {
                         /*proj->colidir();
                         proj->setAtivo(false);*/
-                        aux->getProjetil()->colidir();
+                        //aux->getProjetil()->colidir();
                     }
                 }
                 obst++;
@@ -214,5 +244,4 @@ namespace Gerenciadores
 
         return 0;
     }
-
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entidade.h"
+#include "../Entidades/Personagens/Personagem.h"
 
 namespace Entidades
 {
@@ -14,7 +15,7 @@ namespace Entidades
         ~Projetil();
         void executar();
         void atirar();
-        void colidir();
+        void colidir(Entidade* pE);
         void reset();
         int getDano();
         bool getAtivo();
