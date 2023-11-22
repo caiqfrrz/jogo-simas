@@ -14,7 +14,6 @@ namespace Estados
         jogadores(),
         obstaculos(),
         inimigos(),
-        gP(&jogadores, &inimigos),
         Estado(i)
         {
             gC.set_inimigos(&inimigos);
@@ -26,6 +25,10 @@ namespace Estados
         Fase::~Fase()
         {
 
+        }
+        void Fase::checarVivos()
+        {
+            
         }
 
         void Fase::gerenciar_colisoes()

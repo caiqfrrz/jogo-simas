@@ -10,7 +10,6 @@
 #include "../../Entidades/Obstaculos/Plataforma.h"
 #include "../../Listas/ListaEntidades.h"
 #include "../../Gerenciadores/Gerenciador_Colisoes.h"
-#include "../../Gerenciadores/Gerenciador_Personagens.h"
 #include "../Estado.h"
 
 namespace Estados
@@ -25,7 +24,6 @@ namespace Estados
             Listas::ListaEntidades jogadores;
             Listas::ListaEntidades inimigos;
             Gerenciadores::Gerenciador_Colisoes gC;
-            Gerenciadores::Gerenciador_Personagens gP;
 
         public:
             Fase(int i = - 1);
@@ -36,6 +34,7 @@ namespace Estados
             void criarJogadores();
             void criarInimMedios();
             void criarCenario(std::string caminho);
+            virtual void checarVivos();
         };
     }    
 }

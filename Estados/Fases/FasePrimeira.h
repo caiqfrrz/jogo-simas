@@ -15,7 +15,7 @@ namespace Estados
         public:
             FasePrimeira();
             ~FasePrimeira();
-
+            void checarVivos();
             void executar();
         };
     }    
