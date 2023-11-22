@@ -16,7 +16,7 @@ namespace Entidades
             ~Gosma();
             void colidir(Entidade* pE);
             void executar();
-            void passando(Entidade* pE, bool l);
+            void colidir(Entidade* pE);
         };
     }
 }
