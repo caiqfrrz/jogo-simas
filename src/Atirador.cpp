@@ -15,6 +15,7 @@ namespace Entidades
         {
             corpo.setFillColor(sf::Color::Yellow);
             setVida(5);
+            grafico.setPers(static_cast<Personagem*>(this));
         }
 
         Atirador::~Atirador()
@@ -25,6 +26,7 @@ namespace Entidades
         {
             if(!morte)
             {
+                grafico.executar();
                 desenhar();
                 mover();
             }

@@ -14,6 +14,7 @@ namespace Entidades
         escudo(esp),
         pulando(false),
         pulo(0.f),
+        grafico(),
         vida(10)
         {
 

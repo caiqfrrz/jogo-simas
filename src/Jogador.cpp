@@ -15,6 +15,7 @@ namespace Entidades
         pontos(0)
         {
             corpo.setFillColor(sf::Color::Green);
+            grafico.setPers(static_cast<Personagem*>(this));
         }
         Jogador::~Jogador()
         {
@@ -24,6 +25,7 @@ namespace Entidades
         {
             if(!morte)
             {
+                grafico.executar();
                 mover();
 
                 if(damaged)

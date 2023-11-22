@@ -13,6 +13,7 @@ namespace Entidades
         pontos(0)
         {
             corpo.setFillColor(sf::Color::Green);
+            grafico.setPers(static_cast<Personagem*>(this));
         }
         Jogador2::~Jogador2()
         {
@@ -22,6 +23,7 @@ namespace Entidades
         {
             if(!morte)
             {
+                grafico.executar();
                 mover();
 
                 if(damaged)
@@ -126,7 +128,24 @@ namespace Entidades
                 {    
                     Escudo aux_escudo = Escudo();
                     aux_escudo.setDirecao(direcao);
-                    aux_escudo.setPosicao(sf::Vector2f(getPosicao().x+10, getPosicao().y+10));
+                    switch(direcao)
+                    {
+                        case(2):
+                        {
+                            aux_escudo.setPosicao(sf::Vector2f(getPosicao().x-2.5f, getPosicao().y-7.f));
+                            break;
+                        }
+                        case(1):
+                        {
+                            aux_escudo.setPosicao(sf::Vector2f(getPosicao().x+57.f, getPosicao().y-2.5f));
+                            break;
+                        }
+                        case(0):
+                        {
+                            aux_escudo.setPosicao(sf::Vector2f(getPosicao().x-7.f, getPosicao().y-2.5f));
+                            break;
+                        }
+                    }
                     aux_escudo.lancar();
                     fila_escudo.push_back(aux_escudo);
 

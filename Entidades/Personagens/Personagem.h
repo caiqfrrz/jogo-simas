@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Entidade.h"
+#include "../../Design/HUD.h"
 
 namespace Entidades
 {
@@ -17,6 +18,7 @@ namespace Entidades
             bool escudo;
             float pulo;
             int vida; 
+            Design::HUD grafico;
             clock_t timer;
         public:
             Personagem(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), bool pro = false, bool esp = false);

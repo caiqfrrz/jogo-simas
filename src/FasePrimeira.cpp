@@ -24,8 +24,9 @@ namespace Estados
             Entidades::Personagens::Personagem* jogador2 = static_cast<Entidades::Personagens::Personagem*>(*jgd2);
 
             gP.checarPersonagens();
-            jogadores.executar();
+            obstaculos.desenhar();
             inimigos.executar();
+            jogadores.executar();
             gerenciar_colisoes();
             if((jogadores.get_primeiro()++) != nullptr && jogador2->getMorto() == false && jogador->getMorto() == false)
                 pGG->centralizarCamera((((*(jogadores.get_primeiro()))->getPosicao())+((*(jogadores.get_primeiro()++))->getPosicao()))/(float)2);
@@ -40,7 +41,6 @@ namespace Estados
                 pGG->centralizarCamera(sf::Vector2f(0.f , 0.f));
             }
             jogadores.desenhar();
-            obstaculos.desenhar();
         }
     }    
 }

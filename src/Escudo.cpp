@@ -1,5 +1,4 @@
 #include "../Entidades/Escudo.h"
-#define CONTAGEM_PARAR 15
 
 namespace Entidades
 {
@@ -12,7 +11,6 @@ namespace Entidades
     opacidade(255),
     contagem(CONTAGEM_PARAR)
     {
-        velocidade = sf::Vector2f(1.5f, 0);
     }
     Escudo::~Escudo()
     {
@@ -24,10 +22,10 @@ namespace Entidades
         {
             if(direcao == 1)
             {
-                corpo.setSize(sf::Vector2f(5, 40));
+                corpo.setSize(sf::Vector2f(LARGURA_ESCUDO, COMPRIMENTO_ESCUDO));
                 if(contagem >= 0)
                 {
-                    corpo.move(sf::Vector2f(5.f, 0));
+                    corpo.move(sf::Vector2f(VEL_ESCUDO, 0));
                     contagem--;
                 }
                 else
@@ -39,10 +37,10 @@ namespace Entidades
             }
             else if(direcao == 0)
             {
-                corpo.setSize(sf::Vector2f(5, 40));
+                corpo.setSize(sf::Vector2f(LARGURA_ESCUDO, COMPRIMENTO_ESCUDO));
                 if(contagem >= 0)
                 {
-                    corpo.move(sf::Vector2f(-5.f, 0));
+                    corpo.move(sf::Vector2f(-VEL_ESCUDO, 0));
                     contagem--;
                 }
                 else
@@ -54,10 +52,10 @@ namespace Entidades
             }
             else
             {
-                corpo.setSize(sf::Vector2f(40, 5));
+                corpo.setSize(sf::Vector2f(COMPRIMENTO_ESCUDO, LARGURA_ESCUDO));
                 if(contagem >= 0)
                 {
-                    corpo.move(sf::Vector2f(0, -5.f));
+                    corpo.move(sf::Vector2f(0, -VEL_ESCUDO));
                     contagem--;
                 }
                 else

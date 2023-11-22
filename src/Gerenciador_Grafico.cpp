@@ -23,6 +23,11 @@ namespace Gerenciadores
         if (pE)
             janela->draw(*pE->get_corpo());
     }
+    void Gerenciador_Grafico::desenhar(sf::RectangleShape* pR)
+    {
+        if(pR)
+            janela->draw(*pR);
+    }
     void Gerenciador_Grafico::desenharText(sf::Text *pT)
     {
         if(pT)

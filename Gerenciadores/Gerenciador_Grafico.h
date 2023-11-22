@@ -24,6 +24,7 @@ namespace Gerenciadores
         ~Gerenciador_Grafico();
 
         void desenharEnte(Ente* pE);
+        void desenhar(sf::RectangleShape* pR);
         void desenharText(sf::Text* pT);
         void desenharTextura(sf::Texture* pT);
         const bool get_JanelaAberta() const;

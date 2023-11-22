@@ -12,6 +12,7 @@ namespace Entidades
         {
             setVida(2);
             corpo.setFillColor(sf::Color::Magenta);
+            grafico.setPers(static_cast<Personagem*>(this));
         }
 
         Fantasma::~Fantasma()
@@ -23,8 +24,9 @@ namespace Entidades
         {
             if(!morte)
             {
-                desenhar();
+                grafico.executar();
                 mover();
+                desenhar();
             }
         }
 
