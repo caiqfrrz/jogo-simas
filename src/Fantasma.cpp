@@ -23,7 +23,8 @@ namespace Entidades
         {
             Personagem* jogador = static_cast<Personagem*>(pE);
 
-            jogador->TomarDano(dano);
+            if(getMorto() == false)
+                jogador->TomarDano(dano);
         }
 
         void Fantasma::executar()

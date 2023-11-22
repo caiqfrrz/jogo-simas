@@ -34,9 +34,7 @@ namespace Entidades
         }
         void Atirador::colidir()
         {
-            pulando = true;
-            pulo = 21.f;
-            nochao = true;
+            //if(getMorto() == false);
         }
         void Atirador::mover()
         {

@@ -31,6 +31,7 @@ namespace Gerenciadores
         int colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2);
         int colisao_projetil(Entidades::Entidade* e1, Entidades::Entidade* e2);
         void colInimJogador();
+        void colJogadorObs();
 
     };
 }

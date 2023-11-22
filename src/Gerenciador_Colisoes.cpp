@@ -27,7 +27,7 @@ namespace Gerenciadores
         {
             while(inim != nullptr)
             {
-                if (colisao_projetil(*jgd, *inim))
+                if (colidiu(*jgd, *inim))
                 {
                     (*inim)->colidir(*jgd);
                 }
@@ -53,8 +53,7 @@ namespace Gerenciadores
                 Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
                 if (colidiu(*jgd, *obst))
                 {
-                    (*jgd)->colidir();
-                    (*obst)->colidir();
+                    (*obst)->colidir(*jgd);
                 }   
                 obst++;
             }
@@ -78,35 +77,7 @@ namespace Gerenciadores
         while (jgd != nullptr)
         {
             obst = obstaculos->get_primeiro();
-            while (obst != nullptr)
-            {
-                Entidades::Obstaculos::Obstaculo* aux2 = static_cast<Entidades::Obstaculos::Obstaculo*>(*obst);
-                Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
-                if (colidiu(*jgd, *obst))
-                {
-                    if(aux2->ehGosma())
-                    {
-                        Entidades::Obstaculos::Gosma* aux2 = static_cast<Entidades::Obstaculos::Gosma*>(*obst);
-                        aux2->passando(*jgd, true);
-                    }
-                    else
-                        (aux)->setLento(false);
-                    
-                    if(aux2->ehDanoso())
-                    {
-                        Entidades::Obstaculos::Espinho* aux2 = static_cast<Entidades::Obstaculos::Espinho*>(*obst);
-                        
-                        if(aux->getDamaged() == true)
-                            break;
-
-                        (aux)->TomarDano(aux2->getDano());
-                    }
-                    (*jgd)->colidir();
-                    (*obst)->colidir();
-                }   
-                obst++;
-            }
-
+            
             while(inim != nullptr)
             {
                 if((static_cast<Entidades::Personagens::Personagem*>(*jgd))->usaArma())

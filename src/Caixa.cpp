@@ -17,5 +17,11 @@ namespace Entidades
         {
             
         }
+        void Caixa::colidir(Entidade* pE)
+        {
+            Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
+
+            aux->setLento(false);
+        }
     }
 }

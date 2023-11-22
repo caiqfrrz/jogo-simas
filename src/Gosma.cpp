@@ -20,6 +20,12 @@ namespace Entidades
         {
 
         }
+        void Gosma::colidir(Entidade* pE)
+        {
+            Entidades::Personagens::Personagem* jogador = static_cast<Entidades::Personagens::Personagem*>(pE);
+
+            jogador->setLento(true);;
+        }
         void Gosma::passando(Entidade* pE, bool l)
         {
             Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);

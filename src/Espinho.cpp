@@ -17,6 +17,12 @@ namespace Entidades
         {
             
         }
+        void Espinho::colidir(Entidade* pE)
+        {
+            Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
+
+            aux->setLento(false);
+        }
         int Espinho::getDano()
         {
             return dano;
