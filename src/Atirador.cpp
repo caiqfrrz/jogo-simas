@@ -9,9 +9,10 @@ namespace Entidades
         vida(5),
         jogadores(jog),
         dano(2),
-        recarregar(0),
+        recarregar(0),  
+        dir(""),
         firing(false),
-        novo(sf::Vector2f(10, 5))
+                novo(sf::Vector2f(10, 5))
         {
             corpo.setFillColor(sf::Color::Yellow);
             setVida(5);
@@ -111,12 +112,14 @@ namespace Entidades
                     {
                         novo.setVelocidade(sf::Vector2f(12, novo.getVelocidade().y));
                         firing = true;
+                        dir = "direita";
                     }
                     else
                     {
                         novo.setVelocidade(sf::Vector2f(-12, novo.getVelocidade().y));
                         firing = true;
-                    }
+                        dir = "esquerda";
+                  }
                 }
                 
                 if(dist1 < 350 || dist2 < 350)
@@ -124,6 +127,8 @@ namespace Entidades
                     corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
                     atirar();
                 }
+                else
+                    recarregar = 0;
 
             
             }
@@ -149,14 +154,16 @@ namespace Entidades
                     {
                         novo.setVelocidade(sf::Vector2f(12, 0));
                         firing = true;
+                        dir = "direita";
                     }
                     else
                     {
                         novo.setVelocidade(sf::Vector2f(-12, 0));
                         firing = true;
+                        dir = "esquerda";
                     }
                 }
-
+                
                 if(dist1 < 450)
                 {
                     corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
@@ -169,11 +176,16 @@ namespace Entidades
         void Atirador::atirar()
         {
             sf::Vector2f z = this->getTamanho() / 2.f;
+            std::string direita = "direita";
+
+            if(dir == direita)
+                z.x += 50;
+            else
+                z.x -= 50;
 
             if(recarregar == 0)
-            
             {
-                novo.setPosicao(this->getPosicao() + (z));
+                novo.setPosicao(this->getPosicao() + (z) );
                 firing = false;
                 novo.executar();
                 recarregar = TEMPO_RECARGA;

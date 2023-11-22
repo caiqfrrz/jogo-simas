@@ -73,7 +73,7 @@ namespace Gerenciadores
                         for(int i = 0; i<pVec->size(); i++)
                         {
                             Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(&pVec->at(i));
-                            if(colisao_projetil(proj, *inim) == 1)
+                            if(colisao_projetil(*inim, proj) == 1)
                             {
                                 if(proj->getAtivo())
                                 {

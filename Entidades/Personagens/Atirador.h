@@ -20,6 +20,7 @@ namespace Entidades
             int dano;
             Projetil novo;
             int recarregar;
+            std::string dir;
         public:
             bool firing;
             Atirador(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));

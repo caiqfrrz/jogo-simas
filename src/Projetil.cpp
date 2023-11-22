@@ -28,11 +28,11 @@ namespace Entidades
     }
     void Projetil::colidir()
     {
-        //corpo.setFillColor(sf::Color::Transparent);
+        corpo.setFillColor(sf::Color::Transparent);
     }
     void Projetil::reset()
     {
-        corpo.setFillColor(sf::Color::White);
+        //corpo.setFillColor(sf::Color::White);
     }
     int Projetil::getDano()
     {
