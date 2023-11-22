@@ -103,7 +103,7 @@ namespace Entidades
                     direcao /= comprimento;
                 }
 
-                //velocidade = direcao * 1.f;
+                velocidade = direcao * 1.f;
                 
                 if(!firing)
                 {
