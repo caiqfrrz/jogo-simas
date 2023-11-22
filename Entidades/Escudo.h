@@ -25,8 +25,6 @@ namespace Entidades
         void executar();
         void setDirecao(short int dir);
         void lancar();
-        void getDano();
-        void colidir();
         void desaparecer();
         bool getDesapareceu();
     };
