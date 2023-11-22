@@ -20,6 +20,7 @@ namespace Entidades
         // Se for virtual puro n dá para fazer o cast (n sei o pq);
         virtual void executar() = 0;
         // Colocar a entidade com a qual colidiu para fazer mais ações:
+        virtual void colidir(Entidade* pE);
         virtual void colidir();
         const sf::Vector2f getPosicao() const { return corpo.getPosition(); }
         const sf::Vector2f getTamanho() const { return corpo.getSize(); }

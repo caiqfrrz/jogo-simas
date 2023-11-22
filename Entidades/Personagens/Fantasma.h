@@ -21,6 +21,7 @@ namespace Entidades
             ~Fantasma();
             void executar();
             void mover();
+            void colidir(Entidade* pE);
             //Entidade* getJogadorProx();
         };
     }

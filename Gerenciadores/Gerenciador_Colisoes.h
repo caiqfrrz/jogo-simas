@@ -30,6 +30,7 @@ namespace Gerenciadores
         // Tipos de colisão em relação à e1: 0 - sem colisão, 1 - pela esquerda, 2 - por cima, 3 - pela direita, 4 - por baixo.
         int colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2);
         int colisao_projetil(Entidades::Entidade* e1, Entidades::Entidade* e2);
+        void colInimJogador();
 
     };
 }

@@ -17,8 +17,30 @@ namespace Gerenciadores
     {
 
     }
+
+    void Gerenciador_Colisoes::colInimJogador()
+    {
+        Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+
+        while(jgd != nullptr)
+        {
+            while(inim != nullptr)
+            {
+                if (colidiu(*jgd, *inim))
+                {
+                    (*inim)->colidir(*jgd);
+                }
+                inim++;
+            }
+            jgd++;
+        }
+            
+    }
+
     void Gerenciador_Colisoes::colisao_simples()
     {
+        colInimJogador();
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
         Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();

@@ -19,6 +19,12 @@ namespace Entidades
         {
 
         }
+        void Fantasma::colidir(Entidade* pE)
+        {
+            Personagem* jogador = static_cast<Personagem*>(pE);
+
+            jogador->TomarDano(dano);
+        }
 
         void Fantasma::executar()
         {

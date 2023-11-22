@@ -16,9 +16,14 @@ namespace Entidades
     {
         
     }
-    void Entidade::colidir()
+    void Entidade::colidir(Entidade* pE)
     {
     }
+    void Entidade::colidir()
+    {
+        
+    }
+
     void Entidade::setPosicao(sf::Vector2f p)
     {
         corpo.setPosition(p);
