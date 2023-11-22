@@ -1,6 +1,7 @@
 #pragma once 
 
 #include "Obstaculo.h"
+#include "../Entidades/Personagens/Personagem.h"
 
 namespace Entidades
 {

@@ -1,4 +1,5 @@
 #include "../Entidades/Personagens/Fantasma.h"
+
 //mudanca
 namespace Entidades
 {
