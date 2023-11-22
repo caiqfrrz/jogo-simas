@@ -115,12 +115,13 @@ namespace Gerenciadores
                 if(aux->ehAtirador())
                 {
                     Entidades::Personagens::Atirador* aux = static_cast<Entidades::Personagens::Atirador*>(*inim);
-                    Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(aux->getProjetil());
+                    //Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(aux->getProjetil());
 
-                    if(colidiu(proj, *obst))
+                    if(colidiu(aux->getProjetil(), *obst))
                     {
-                        proj->colidir();
-                        proj->setAtivo(false);
+                        /*proj->colidir();
+                        proj->setAtivo(false);*/
+                        aux->getProjetil()->colidir();
                     }
                 }
                 obst++;

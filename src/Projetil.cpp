@@ -32,7 +32,7 @@ namespace Entidades
     }
     void Projetil::reset()
     {
-        //corpo.setFillColor(sf::Color::White);
+        corpo.setFillColor(sf::Color::White);
     }
     int Projetil::getDano()
     {
