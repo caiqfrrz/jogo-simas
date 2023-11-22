@@ -41,6 +41,10 @@ namespace Entidades
         {
             morte = true;
         }
+        bool Personagem::getMorto()
+        {
+            return morte;
+        }
         bool Personagem::usaArma()
         {
             return projetil;

@@ -78,8 +78,13 @@ namespace Gerenciadores
                                 if(proj->getAtivo())
                                 {
                                     Entidades::Personagens::Personagem* inimigo = static_cast<Entidades::Personagens::Personagem*>(*inim);
-                                    inimigo->TomarDano((&pVec->at(i))->getDano());
-                                    proj->setAtivo(false);
+                                    if(inimigo->getMorto() == false)
+                                    {
+                                        inimigo->TomarDano((&pVec->at(i))->getDano());
+                                        proj->setAtivo(false);
+                                        proj->colidir();
+                                    }
+                                    
                                  }                   
                             }
                         }
