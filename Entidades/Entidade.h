@@ -21,6 +21,7 @@ namespace Entidades
         virtual void executar() = 0;
         // Colocar a entidade com a qual colidiu para fazer mais ações:
         virtual void colidir();
+        virtual void colidir(Entidade* pE);
         const sf::Vector2f getPosicao() const { return corpo.getPosition(); }
         const sf::Vector2f getTamanho() const { return corpo.getSize(); }
         void setPosicao(sf::Vector2f p);

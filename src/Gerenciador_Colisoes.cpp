@@ -38,25 +38,8 @@ namespace Gerenciadores
                 Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(*jgd);
                 if (colidiu(*jgd, *obst))
                 {
-                    if(aux2->ehGosma())
-                    {
-                        Entidades::Obstaculos::Gosma* aux2 = static_cast<Entidades::Obstaculos::Gosma*>(*obst);
-                        aux2->passando(*jgd, true);
-                    }
-                    else
-                        (aux)->setLento(false);
-                    
-                    if(aux2->ehDanoso())
-                    {
-                        Entidades::Obstaculos::Espinho* aux2 = static_cast<Entidades::Obstaculos::Espinho*>(*obst);
-                        
-                        if(aux->getDamaged() == true)
-                            break;
-
-                        (aux)->TomarDano(aux2->getDano());
-                    }
                     (*jgd)->colidir();
-                    (*obst)->colidir();
+                    (*obst)->colidir(*jgd);
                 }   
                 obst++;
             }

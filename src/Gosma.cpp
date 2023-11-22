@@ -20,10 +20,10 @@ namespace Entidades
         {
 
         }
-        void Gosma::passando(Entidade* pE, bool l)
+        void Gosma::colidir(Entidade* pE)
         {
             Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
-            aux->lentidao(l);
+            aux->lentidao(true);
             /*if(pE->getVelocidade().x > 0)
             {
                 pE->setVelocidade(pE->getVelocidade() - sf::Vector2f(força, 0));
