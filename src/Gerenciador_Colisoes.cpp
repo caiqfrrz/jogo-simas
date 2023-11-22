@@ -73,7 +73,7 @@ namespace Gerenciadores
                         for(int i = 0; i<pVec->size(); i++)
                         {
                             Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(&pVec->at(i));
-                            if(colisao_projetil(*inim, proj))
+                            if(colisao_projetil(proj, *inim) == 1)
                             {
                                 if(proj->getAtivo())
                                 {
@@ -187,7 +187,9 @@ namespace Gerenciadores
             fabs((pos1.y - pos2.y)) - ((tam1.y + tam2.y) / 2.f)
         );
 
-        if (d.x < 0 && d.y < 0)
+        sf::Vector2f somaMetadeRectangle(tam1.x/2.0f + tam2.x/2.0f, tam1.y/2.0f + tam2.y/2.0f);
+
+        if ((d.x - somaMetadeRectangle.x) < 0.0f && (d.y - somaMetadeRectangle.y) < 0.0f)
         {
             return 1;
         }

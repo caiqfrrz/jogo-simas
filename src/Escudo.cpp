@@ -91,10 +91,10 @@ namespace Entidades
         else
             desapareceu = true;
     }
-    void Escudo::getDano()
+    /*void Escudo::getDano()
     {
-
-    }
+        return dano;
+    }*/
     void Escudo::colidir()
     {
 
