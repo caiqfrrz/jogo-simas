@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Personagem.h"
+#include "../Escudo.h"
+#include <iostream>
+#include <deque>
 
 namespace Entidades
 {
@@ -10,11 +13,15 @@ namespace Entidades
         {
         private:
             int pontos;
+            int recarregar;
+            short int direcao;
+            std::deque<Escudo> fila_escudo;
         public:
             Jogador2();
             ~Jogador2();
             void executar();
             void mover();
+            void lancar_escudos();
         };
     }
 }

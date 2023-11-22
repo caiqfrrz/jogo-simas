@@ -23,8 +23,8 @@ namespace Entidades
         {
             if(!morte)
             {
-                mover();
                 desenhar();
+                mover();
             }
         }
 

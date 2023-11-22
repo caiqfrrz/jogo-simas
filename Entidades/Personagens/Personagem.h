@@ -14,7 +14,7 @@ namespace Entidades
             bool morte;
             bool pulando;
             bool projetil;
-            bool espada;
+            bool escudo;
             float pulo;
             int vida; 
             clock_t timer;
@@ -28,7 +28,8 @@ namespace Entidades
             virtual void morreu();
             virtual void ResetColor();
             virtual bool usaArma(); 
-            virtual bool usaEspada();
+            virtual bool usaEscudo();
+            virtual bool getMorte();
             bool getDamaged();
             void lentidao(bool l);
             bool getLento();

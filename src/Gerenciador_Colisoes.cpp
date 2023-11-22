@@ -25,7 +25,7 @@ namespace Gerenciadores
         
         bool gosmento = false;
 
-        if((static_cast<Entidades::Personagens::Personagem*>(*jgd))->usaEspada())
+        if((static_cast<Entidades::Personagens::Personagem*>(*jgd))->usaEscudo())
             std::cout << "entrou" << std::endl;
             
 

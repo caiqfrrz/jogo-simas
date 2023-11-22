@@ -11,7 +11,7 @@ namespace Entidades
         lento(false),
         morte(false),
         projetil(pro),
-        espada(esp),
+        escudo(esp),
         pulando(false),
         pulo(0.f),
         vida(10)
@@ -45,9 +45,13 @@ namespace Entidades
         {
             return projetil;
         }
-        bool Personagem::usaEspada()
+        bool Personagem::usaEscudo()
         {
-            return espada;
+            return escudo;
+        }
+        bool Personagem::getMorte()
+        {
+            return morte;
         }
         void Personagem::ResetColor()
         {
