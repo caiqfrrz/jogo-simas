@@ -7,8 +7,6 @@ namespace Entidades
         Atirador::Atirador(Listas::ListaEntidades*jog, sf::Vector2f pos):
         Inimigo(pos, false, true),
         vida(5),
-        pulando(false),
-        pulo(0.f),
         jogadores(jog),
         dano(2),
         recarregar(0),

@@ -1,6 +1,6 @@
 #pragma once
-#define TEMPO_RECARGA 100
 
+#define TEMPO_RECARGA 100
 
 #include "Inimigo.h"
 #include "../../Listas/ListaEntidades.h"
@@ -16,8 +16,6 @@ namespace Entidades
         {
         private:
             Listas::ListaEntidades* jogadores;
-            float pulo;
-            bool pulando;
             int vida;
             int dano;
             Projetil novo;
