@@ -1,5 +1,5 @@
 #include "../Entidades/Personagens/Jogador2.h"
-#define TEMPO_RECARREGAR 30
+#define TEMPO_RECARREGAR 300
 
 namespace Entidades
 {
@@ -9,6 +9,7 @@ namespace Entidades
         Personagem(sf::Vector2f(0, 0),false, true),
         fila_escudo(),
         direcao(1),
+        escudos(0),
         recarregar(0),
         pontos(0)
         {
@@ -149,7 +150,17 @@ namespace Entidades
                     aux_escudo.lancar();
                     fila_escudo.push_back(aux_escudo);
 
-                    recarregar = TEMPO_RECARREGAR;
+                    if(escudos == 2)
+                    {
+                        recarregar = TEMPO_RECARREGAR;
+                        escudos = 0;
+                    }
+                    else
+                    {
+                        escudos++;
+                        recarregar = 25; 
+                    }
+                           
                 }
             }
             else if(recarregar > 0)

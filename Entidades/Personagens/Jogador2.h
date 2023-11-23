@@ -13,6 +13,7 @@ namespace Entidades
         {
         private:
             int pontos;
+            int escudos;
             int recarregar;
             short int direcao;
             std::deque<Escudo> fila_escudo;
