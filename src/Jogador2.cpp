@@ -13,7 +13,8 @@ namespace Entidades
                                pontos(0)
         {
             corpo.setFillColor(sf::Color::Green);
-            grafico.setPers(static_cast<Personagem *>(this));
+            grafico.setJg2(static_cast<Personagem *>(this));
+            grafico.setPers(static_cast<Personagem*>(this));
         }
         Jogador2::~Jogador2()
         {

@@ -7,7 +7,7 @@ namespace Estados
         Gerenciadores::Gerenciador_Grafico* Menu::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());
 
         Menu::Menu():
-        Estado(0)
+        Estado(1)
         {
             fonte = new sf::Font();
             imagem = new sf::Texture();

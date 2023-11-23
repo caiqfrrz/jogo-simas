@@ -88,4 +88,9 @@ namespace Gerenciadores
         camera.setCenter(p);
         janela->setView(camera);        
     }
+    sf::Vector2f Gerenciador_Grafico::getCentro()
+    {
+        return camera.getCenter();
+    }
+
 }

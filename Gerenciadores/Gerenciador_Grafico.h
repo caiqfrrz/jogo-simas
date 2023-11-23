@@ -35,6 +35,7 @@ namespace Gerenciadores
         void fecharJanela();
         void resetarCamera();
         void centralizarCamera(sf::Vector2f p);
+        sf::Vector2f getCentro();
         sf::RenderWindow* get_Janela() const;
     };
 }
