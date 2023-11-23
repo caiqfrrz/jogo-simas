@@ -79,7 +79,7 @@ namespace Gerenciadores
                     Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(&pVec->at(i));
                     if((*inim)->getMorto() == false)
                     {
-                        if(colisao_projetil(*inim, proj) == 1)
+                        if(colisao_projetil(*inim, proj) == true)
                         { 
                             proj->colidir(*inim);
                         }   
@@ -127,7 +127,7 @@ namespace Gerenciadores
                 for(int i = 0; i<pVec->size(); i++)
                 {
                     Entidades::Entidade* proj = static_cast<Entidades::Entidade*>(&pVec->at(i));
-                    if(colisao_projetil(*obst, proj) == 1)
+                    if(colisao_projetil(*obst, proj) == true)
                     {
                         proj->colidir(*obst);
                     }   
@@ -195,22 +195,23 @@ namespace Gerenciadores
         return 0;
     }
 
-    int Gerenciador_Colisoes::colisao_projetil(Entidades::Entidade* e1, Entidades::Entidade* e2)
+    bool Gerenciador_Colisoes::colisao_projetil(Entidades::Entidade* e1, Entidades::Entidade* e2)
     {
         sf::Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(),
-        tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
-        d(
-            fabs((pos1.x - pos2.x)) - ((tam1.x + tam2.x) / 2.f),
-            fabs((pos1.y - pos2.y)) - ((tam1.y + tam2.y) / 2.f)
-        );
+        tam1 = e1->getTamanho(), tam2 = e2->getTamanho();
 
-        sf::Vector2f somaMetadeRectangle(tam1.x/2.0f + tam2.x/2.0f, tam1.y/2.0f + tam2.y/2.0f);
+        float left1 = pos1.x;
+        float right1 = pos1.x + tam1.x;
+        float top1 = pos1.y;
+        float bottom1 = pos1.y + tam1.y;
 
-        if ((d.x - somaMetadeRectangle.x) < 0.0f && (d.y - somaMetadeRectangle.y) < 0.0f)
-        {
-            return 1;
-        }
+        float left2 = pos2.x;
+        float right2 = pos2.x + tam2.x;
+        float top2 = pos2.y;
+        float bottom2 = pos2.y + tam2.y;
 
-        return 0;
+        // Check for intersection
+        return (right1 >= left2 && left1 <= right2 &&
+            bottom1 >= top2 && top1 <= bottom2);
     }
 }
