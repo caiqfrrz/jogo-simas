@@ -8,7 +8,7 @@ namespace Entidades
     direcao(-1),
     desapareceu(false),
     parou(false),
-    opacidade(255),
+    opacidade(255), 
     contagem(CONTAGEM_PARAR)
     {
     }
@@ -86,7 +86,7 @@ namespace Entidades
         if(opacidade > 0)
         {
             corpo.setFillColor(sf::Color(255, 255, 255, opacidade));
-            opacidade--;
+            opacidade -=0.7;
         }
         else
             desapareceu = true;

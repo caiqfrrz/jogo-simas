@@ -15,7 +15,7 @@ namespace Entidades
         bool lancando;
         bool desapareceu;
         bool parou;
-        short int opacidade;
+        float opacidade;
         short int direcao;
         int contagem;
     public:
