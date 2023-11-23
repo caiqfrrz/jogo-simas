@@ -95,9 +95,24 @@ namespace Entidades
     {
         return dano;
     }*/
-    void Escudo::colidir()
+    void Escudo::colidir(Entidade* pE)
     {
-
+        sf::Vector2f z = this->getPosicao();
+        if(direcao == 1)
+        {
+            z.x += 6.f;
+            pE->setPosicao(z);
+        }
+        else if(direcao == 0)
+        {
+            z.x -= 6.f;
+            pE->setPosicao(z);
+        }
+        else
+        {
+            z.y -= 6.f;
+            pE->setPosicao(z);
+        }
     }
     bool Escudo::getDesapareceu()
     {

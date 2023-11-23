@@ -8,6 +8,7 @@ namespace Entidades
     Ente(sf::Vector2f(TAM, TAM)),
     posicao(pos),
     nochao(true),
+    ativo(true),
     morte(false),
     velocidade(sf::Vector2f(0.f, 0.f))
     {
@@ -42,9 +43,10 @@ namespace Entidades
     }
     void Entidade::setAtivo(bool b)
     {
+        ativo = b;
     }
     bool Entidade::getAtivo()
     {
-        return NULL;
+        return ativo;
     }
 }

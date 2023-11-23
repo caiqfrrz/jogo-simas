@@ -5,35 +5,32 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador2::Jogador2():
-        Personagem(sf::Vector2f(0, 0),false, true),
-        fila_escudo(),
-        direcao(1),
-        escudos(0),
-        recarregar(0),
-        pontos(0)
+        Jogador2::Jogador2() : Personagem(sf::Vector2f(0, 0), false, true),
+                               fila_escudo(),
+                               direcao(1),
+                               escudos(0),
+                               recarregar(0),
+                               pontos(0)
         {
             corpo.setFillColor(sf::Color::Green);
-            grafico.setPers(static_cast<Personagem*>(this));
+            grafico.setPers(static_cast<Personagem *>(this));
         }
         Jogador2::~Jogador2()
         {
-
         }
         void Jogador2::executar()
         {
-            if(!morte)
+            if (!morte)
             {
                 grafico.executar();
                 mover();
 
-                if(damaged)
-                    if(clock() - 750 > timer)
+                if (damaged)
+                    if (clock() - 750 > timer)
                     {
                         ResetColor();
                         damaged = false;
                     }
-            
             }
             else
             {
@@ -42,25 +39,25 @@ namespace Entidades
         }
         void Jogador2::mover()
         {
-            velocidade = sf::Vector2f(0,0);
-            
+            velocidade = sf::Vector2f(0, 0);
+
             if (pulando)
             {
                 velocidade += sf::Vector2f(0, -pulo);
 
                 pulo -= 0.8f;
                 nochao = false;
-                if(pulo <= 0)
+                if (pulo <= 0)
                 {
                     pulando = false;
                 }
             }
             if (!nochao)
                 velocidade += sf::Vector2f(0, 7.f);
-           
+
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             {
-                if(lento)
+                if (lento)
                 {
                     if (!nochao)
                     {
@@ -79,11 +76,10 @@ namespace Entidades
                     }
                 }
                 direcao = 1;
-                
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {
-                if(lento)
+                if (lento)
                 {
                     if (!nochao)
                     {
@@ -106,7 +102,7 @@ namespace Entidades
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && nochao)
             {
-                if(lento)
+                if (lento)
                 {
                     pulando = true;
                     pulo = 15.f;
@@ -117,40 +113,39 @@ namespace Entidades
                     pulo = 21.f;
                     nochao = true;
                 }
-                
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             {
                 direcao = 2;
             }
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
             {
-                if(recarregar == 0)
-                {    
+                if (recarregar == 0)
+                {
                     Escudo aux_escudo = Escudo();
                     aux_escudo.setDirecao(direcao);
-                    switch(direcao)
+                    switch (direcao)
                     {
-                        case(2):
-                        {
-                            aux_escudo.setPosicao(sf::Vector2f(getPosicao().x-2.5f, getPosicao().y-7.f));
-                            break;
-                        }
-                        case(1):
-                        {
-                            aux_escudo.setPosicao(sf::Vector2f(getPosicao().x+57.f, getPosicao().y-2.5f));
-                            break;
-                        }
-                        case(0):
-                        {
-                            aux_escudo.setPosicao(sf::Vector2f(getPosicao().x-7.f, getPosicao().y-2.5f));
-                            break;
-                        }
+                    case (2):
+                    {
+                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x - 2.5f, getPosicao().y - 7.f));
+                        break;
+                    }
+                    case (1):
+                    {
+                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x + 57.f, getPosicao().y - 2.5f));
+                        break;
+                    }
+                    case (0):
+                    {
+                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x - 7.f, getPosicao().y - 2.5f));
+                        break;
+                    }
                     }
                     aux_escudo.lancar();
                     fila_escudo.push_back(aux_escudo);
 
-                    if(escudos == 2)
+                    if (escudos == 2)
                     {
                         recarregar = TEMPO_RECARREGAR;
                         escudos = 0;
@@ -158,27 +153,33 @@ namespace Entidades
                     else
                     {
                         escudos++;
-                        recarregar = 25; 
+                        recarregar = 10;
                     }
-                           
                 }
             }
-            else if(recarregar > 0)
+            else if (recarregar > 0)
                 recarregar--;
 
             lancar_escudos();
             corpo.setPosition(corpo.getPosition() + velocidade);
             nochao = false;
         }
+
         void Jogador2::lancar_escudos()
         {
             std::deque<Escudo>::iterator it;
-            for(it = fila_escudo.begin(); it != fila_escudo.end(); it++)
+            for (it = fila_escudo.begin(); it != fila_escudo.end(); it++)
             {
                 (*it).executar();
-                if((*it).getDesapareceu())
+                if ((*it).getDesapareceu())
                     fila_escudo.pop_front();
             }
         }
+
+        std::deque<Escudo> *Jogador2::getDqEscudo()
+        {
+            return &fila_escudo;
+        }
     }
+
 }

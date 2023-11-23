@@ -23,6 +23,7 @@ namespace Entidades
             void executar();
             void mover();
             void lancar_escudos();
+            std::deque<Escudo>* getDqEscudo();
         };
     }
 }

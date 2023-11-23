@@ -8,7 +8,6 @@ namespace Entidades
     class Projetil : public Entidade
     {
     private:
-        bool ativo;
         int dano;
     public:
         Projetil(sf::Vector2f tam);
@@ -18,7 +17,5 @@ namespace Entidades
         void colidir(Entidade* pE);
         void reset();
         int getDano();
-        bool getAtivo();
-        void setAtivo(bool b);
     };
 }

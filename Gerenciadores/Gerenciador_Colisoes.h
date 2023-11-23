@@ -6,9 +6,12 @@
 #include "../Entidades/Obstaculos/Espinho.h"
 #include "../Entidades/Obstaculos/Gosma.h"
 #include "../Entidades/Projetil.h"
+#include "../Entidades/Escudo.h"
 #include "../Entidades/Personagens/Personagem.h"
 #include "../Entidades/Personagens/Atirador.h"
 #include "../Entidades/Personagens/Jogador.h"
+#include "../Entidades/Personagens/Jogador2.h"
+#include <deque>
 
 
 namespace Gerenciadores
@@ -35,6 +38,7 @@ namespace Gerenciadores
         void colbalaInim();
         void colInimObs();
         void colbalaObs();
+        void colEscInim();
 
     };
 }

@@ -7,8 +7,7 @@
 namespace Entidades
 {
     Projetil::Projetil(sf::Vector2f tam):
-    dano(1),
-    ativo(true)
+    dano(1)
     {
         corpo.setSize(tam);
         velocidade = sf::Vector2f(-12, 0);
@@ -49,14 +48,4 @@ namespace Entidades
     {
         return dano;
     }
-    bool Projetil::getAtivo()
-    {
-        return ativo;
-    }
-
-    void Projetil::setAtivo(bool b)
-    {
-        ativo = b;
-    }
-
 }
