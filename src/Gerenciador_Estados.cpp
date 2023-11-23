@@ -1,5 +1,6 @@
 #include "../Gerenciadores/Gerenciador_Estados.h"
 #include "../Estados/Estado.h"
+#include <iostream>
 
 namespace Gerenciadores
 {

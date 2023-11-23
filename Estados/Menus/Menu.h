@@ -2,6 +2,7 @@
 
 #include "../Estado.h"
 #include "../Gerenciadores/Gerenciador_Grafico.h"
+#include "../Design/Text.h"
 
 namespace Estados
 {
@@ -9,10 +10,11 @@ namespace Estados
     {
         class Menu: public Estado
         {
-        private:
+        protected:
             int pos;
             bool pressionou;
             bool deselecionado;
+            bool saiu;
             static Gerenciadores::Gerenciador_Grafico* pGG;
 
             sf::Font* fonte;
@@ -24,11 +26,11 @@ namespace Estados
             std::vector<sf::Text> textos;
             std::vector<std::size_t> tamanhos;
         public:
-            Menu();
+            Menu(int i = -1);
             ~Menu();
 
-            void set_valores();
-            void loop_eventos();
+            virtual void set_valores() = 0;
+            virtual void loop_eventos() = 0;
             void desenhar();
             void executar();
         };

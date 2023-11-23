@@ -5,7 +5,7 @@ namespace Estados
     namespace Fases
     {
         FaseSegunda::FaseSegunda():
-        Fase(2)
+        Fase(3)
         {
             criarCenario(ARQUIVO_CENARIO_2);
         }
