@@ -31,10 +31,11 @@ namespace Estados
 
             virtual void executar() = 0;
             void gerenciar_colisoes();
+            bool checarVivos();
+            void centraliza_camera();
             void criarJogadores();
             void criarInimMedios();
             void criarCenario(std::string caminho);
-            virtual void checarVivos();
         };
     }    
 }

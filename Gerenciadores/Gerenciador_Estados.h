@@ -10,6 +10,7 @@ namespace Estados
 Estados:
 0 - Menu Principal
 1 - Fase 1
+2 - Fase 2
 */
 
 namespace Gerenciadores

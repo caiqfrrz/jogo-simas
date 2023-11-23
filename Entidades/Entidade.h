@@ -12,7 +12,6 @@ namespace Entidades
     protected:
         sf::Vector2f posicao;
         bool nochao;
-        bool vivo;
         bool morte;
         sf::Vector2f velocidade;
     public:
