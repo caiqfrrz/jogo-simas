@@ -5,7 +5,7 @@ namespace Entidades
     namespace Personagens
     {
         Atirador::Atirador(Listas::ListaEntidades*jog, sf::Vector2f pos):
-        Inimigo(pos, false, true),
+        Inimigo(pos, false),
         vida(5),
         jogadores(jog),
         dano(2),

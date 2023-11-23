@@ -30,5 +30,7 @@ namespace Entidades
         void setVelocidade(sf::Vector2f v);
         virtual bool getAtivo();
         virtual void setAtivo(bool b);
+        virtual void morreu();
+        virtual bool getMorto();
     };
 }

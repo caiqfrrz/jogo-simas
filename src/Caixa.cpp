@@ -8,6 +8,7 @@ namespace Entidades
         Obstaculo(pos, false)
         {
             corpo.setFillColor(sf::Color::Cyan);
+            morreu();
         }
         Caixa::~Caixa()
         {

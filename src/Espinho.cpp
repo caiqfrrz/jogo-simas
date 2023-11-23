@@ -8,6 +8,7 @@ namespace Entidades
         Obstaculo(pos, true)
         {
             corpo.setFillColor(sf::Color::Red);
+            morreu();
         }
         Espinho::~Espinho()
         {

@@ -12,7 +12,6 @@ namespace Entidades
         protected:
             bool damaged;
             bool lento;
-            bool morte;
             bool pulando;
             bool projetil;
             bool escudo;
@@ -27,8 +26,8 @@ namespace Entidades
             virtual int getVida();
             virtual void setVida(int v);
             virtual void TomarDano(int d);
-            virtual void morreu();
-            virtual bool getMorto();
+            void morreu();
+            bool getMorto();
             virtual void ResetColor();
             virtual bool usaArma(); 
             virtual bool usaEscudo();
