@@ -28,12 +28,12 @@ namespace Estados
         }
         void Fase::checarVivos()
         {
-            
+
         }
 
         void Fase::gerenciar_colisoes()
         {
-            gC.colisao_simples();
+            gC.colisao();
         }
         void Fase::criarJogadores()
         {

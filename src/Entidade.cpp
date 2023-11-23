@@ -8,6 +8,7 @@ namespace Entidades
     Ente(sf::Vector2f(TAM, TAM)),
     posicao(pos),
     nochao(true),
+    morte(false),
     velocidade(sf::Vector2f(0.f, 0.f))
     {
         corpo.setPosition(posicao);
@@ -21,9 +22,16 @@ namespace Entidades
     }
     void Entidade::colidir()
     {
-        
-    }
 
+    }
+    void Entidade::morreu()
+    {
+        morte = true;
+    }
+    bool Entidade::getMorto()
+    {
+        return morte;
+    }
     void Entidade::setPosicao(sf::Vector2f p)
     {
         corpo.setPosition(p);

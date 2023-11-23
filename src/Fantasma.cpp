@@ -59,26 +59,28 @@ namespace Entidades
 
                 Entidades::Personagens::Personagem* jogador = static_cast<Entidades::Personagens::Personagem*>(*jgd); 
                 Entidades::Personagens::Personagem* jogador2 = static_cast<Entidades::Personagens::Personagem*>(*jgd2); 
-                            
+                
+                float distMaisProx = 0;
+
                 if(jogador->getMorto() == true)
                 {
                     jogadorMaisProx = *jgd2;
-                    float distMaisProx = dist2;
+                    distMaisProx = dist2;
                 }
                 else if(jogador2->getMorto() == true)
                 {
                     jogadorMaisProx = *jgd;
-                    float distMaisProx = dist1;
+                    distMaisProx = dist1;
                 }
                 else if(dist1 >= dist2)
                 {
                     jogadorMaisProx = *jgd2;
-                    float distMaisProx = dist2;
+                    distMaisProx = dist2;
                 }
                 else
                 {
                     jogadorMaisProx = *jgd;
-                    float distMaisProx = dist1;
+                    distMaisProx = dist1;
                 }
 
                 sf::Vector2f posProx = jogadorMaisProx->getPosicao();
@@ -93,7 +95,8 @@ namespace Entidades
 
                 velocidade = direcao * 1.f;
 
-                corpo.setPosition(corpo.getPosition() + velocidade);
+                if(distMaisProx <= 350)
+                    corpo.setPosition(corpo.getPosition() + velocidade);
             }
             if(jgd2 == nullptr)
             {

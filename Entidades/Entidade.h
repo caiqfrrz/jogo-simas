@@ -13,6 +13,7 @@ namespace Entidades
         sf::Vector2f posicao;
         bool nochao;
         bool vivo;
+        bool morte;
         sf::Vector2f velocidade;
     public:
         Entidade(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
@@ -30,5 +31,7 @@ namespace Entidades
         void setVelocidade(sf::Vector2f v);
         virtual bool getAtivo();
         virtual void setAtivo(bool b);
+        virtual void morreu();
+        virtual bool getMorto();
     };
 }

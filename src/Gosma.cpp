@@ -11,6 +11,7 @@ namespace Entidades
         força(2.f)
         {
             corpo.setFillColor(sf::Color(139,69,19));
+            morreu();
         }
         Gosma::~Gosma()
         {

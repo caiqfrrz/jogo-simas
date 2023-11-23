@@ -9,7 +9,6 @@ namespace Entidades
         damaged((bool)0),
         timer(),
         lento(false),
-        morte(false),
         projetil(pro),
         escudo(esp),
         pulando(false),

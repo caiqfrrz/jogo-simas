@@ -26,13 +26,15 @@ namespace Gerenciadores
         void set_obstaculos(Listas::ListaEntidades *o) { if (o) { obstaculos = o; }}
         void set_jogadores(Listas::ListaEntidades *j) { if (j) { jogadores = j; }}
         void set_inimigos(Listas::ListaEntidades *i) { if (i) { inimigos = i; }}
-        void colisao_simples();
+        void colisao();
         // Tipos de colisão em relação à e1: 0 - sem colisão, 1 - pela esquerda, 2 - por cima, 3 - pela direita, 4 - por baixo.
         int colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2);
         int colisao_projetil(Entidades::Entidade* e1, Entidades::Entidade* e2);
         void colInimJogador();
         void colJogadorObs();
         void colbalaInim();
+        void colInimObs();
+        void colbalaObs();
 
     };
 }

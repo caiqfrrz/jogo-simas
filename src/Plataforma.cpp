@@ -7,7 +7,7 @@ namespace Entidades
         Plataforma::Plataforma(sf::Vector2f pos):
         Obstaculo(pos)
         {
-            
+            morreu();
         }
         Plataforma::~Plataforma()
         {
