@@ -3,7 +3,8 @@
         {
             "name": "Mac",
             "includePath": [
-                "${default}"
+                "${default}",
+                "${workspaceFolder}/Entidades"
             ],
             "defines": [],
             "macFrameworkPath": [

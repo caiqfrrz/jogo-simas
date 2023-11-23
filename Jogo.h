@@ -6,6 +6,7 @@
 #include "Gerenciadores/Gerenciador_Eventos.h"
 #include "Gerenciadores/Gerenciador_Estados.h"
 #include "Estados/Fases/FasePrimeira.h"
+#include "Estados/Fases/FaseSegunda.h"
 
 class Jogo
 {

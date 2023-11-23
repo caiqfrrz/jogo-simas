@@ -16,7 +16,7 @@ namespace Gerenciadores
     Gerenciador_Estados::Gerenciador_Estados():
     estadoAtual(1)
     {
-        estados.resize(2);
+        estados.resize(4);
     }
 
     Gerenciador_Estados::~Gerenciador_Estados()
