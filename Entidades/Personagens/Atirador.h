@@ -18,7 +18,7 @@ namespace Entidades
             Listas::ListaEntidades* jogadores;
             int vida;
             int dano;
-            Projetil novo;
+            std::vector<Projetil> vec_proj;
             int recarregar;
             std::string dir;
         public:

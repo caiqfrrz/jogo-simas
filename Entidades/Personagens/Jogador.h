@@ -16,7 +16,6 @@ namespace Entidades
             int recarga;
             short int last_key;
             std::vector<Projetil> vet_proj;
-            std::vector<sf::Vector2f> vet_pos;
         public:
             Jogador();
             ~Jogador();

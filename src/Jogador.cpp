@@ -141,9 +141,8 @@ namespace Entidades
                     Projetil novoProj(sf::Vector2f(5, 10));
                     novoProj.setDirecao("cima");
                 }
-                novoProj.setPosicao(this->getPosicao())
+                novoProj.setPosicao(sf::Vector2f(this->getPosicao().x+20.f, this->getPosicao().y+15.f));
                 vet_proj.push_back(novoProj);
-                vet_pos.push_back(sf::Vector2f(this->getPosicao().x, this->getPosicao().y + 20.f));
                 recarga = TEMPO_RECARGA_JOG;
             }
 
@@ -153,19 +152,22 @@ namespace Entidades
             corpo.setPosition(corpo.getPosition() + velocidade);
             nochao = false;
             atirar();
-        }*
+        }
         
 
         void Jogador::atirar()
         {
             for(int i = 0; i < vet_proj.size(); i++)
             {
+                vet_proj[i].executar();
+            }
+
+            for(int i = 0; i < vet_proj.size(); i++)
+            {
                 if(fabs(vet_proj[i].getPosicao().x) - fabs(this->getPosicao().x) > 800 || fabs(vet_proj[i].getPosicao().y) - fabs(this->getPosicao().y) > 600)
                 {
                     vet_proj.erase(vet_proj.begin() + i);
-                    vet_pos.erase(vet_pos.begin() + i);
                 }
-                vet_proj[i].executar();
             }
         }
         std::vector<Projetil>* Jogador::getVetProj()
