@@ -28,6 +28,11 @@ namespace Gerenciadores
         if(pR)
             janela->draw(*pR);
     }
+    void Gerenciador_Grafico::desenhar(sf::Sprite *pT)
+    {
+        if(pT)
+            janela->draw(*pT);
+    }
     void Gerenciador_Grafico::desenharText(sf::Text *pT)
     {
         if(pT)
