@@ -1,29 +1,28 @@
-#include "../Estados/Menus/MenuJogadores.h"
-#include <iostream>
+#include "../Estados/Menus/MenuFases.h"
 
 namespace Estados
 {
     namespace Menus
     {
-        MenuJogadores::MenuJogadores():
-        Menu(1)
+        MenuFases::MenuFases():
+        Menu(2)
         {
             set_valores();
         }
-        MenuJogadores::~MenuJogadores()
+        MenuFases::~MenuFases()
         {
 
         }
-        void MenuJogadores::set_valores()
+        void MenuFases::set_valores()
         {
             imagem->loadFromFile("Design/Imagens/menu-jogadores.jpg");
 
             bg->setTexture(*imagem);
 
-            opcoes = {"Um jogador", "Dois jogadores"};
+            opcoes = {"Fase 1", "Fase 2"};
             textos.resize(2);
-            coords = {{368,380}, {365,520}};
-            tamanhos = {22,20};
+            coords = {{388,380}, {385,520}};
+            tamanhos = {22,22};
 
             for(int i = 0; i<textos.size(); i++)
             {
@@ -34,9 +33,8 @@ namespace Estados
             }
             textos[0].setOutlineColor(sf::Color::Green);
             textos[0].setOutlineThickness(5.f);
-
         }
-        void MenuJogadores::loop_eventos()
+        void MenuFases::loop_eventos()
         {
             sf::Event evento;
             while(pGG->get_Janela()->pollEvent(evento))
@@ -78,12 +76,12 @@ namespace Estados
                     deselecionado = true;
                     if(pos == 0)
                     {
-                        pGE->setEstadoAtual(2);
+                        pGE->setEstadoAtual(3);
                         saiu = true;
                     }
                     if(pos == 1)
                     {
-                        pGE->setEstadoAtual(2);
+                        pGE->setEstadoAtual(4);
                         saiu = true;
                     }
                 }

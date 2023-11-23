@@ -8,11 +8,16 @@ namespace Estados
 
         Menu::Menu(int i):
         Estado(i),
+        pos(0),
+        pressionou(false),
+        deselecionado(false),
         saiu(false)
         {
             fonte = new sf::Font();
             imagem = new sf::Texture();
             bg = new sf::Sprite();
+
+            fonte->loadFromFile("Design/Fontes/Dungeon-Depths.ttf");
         }
         Menu::~Menu()
         {

@@ -6,7 +6,7 @@ namespace Estados
     namespace Fases
     {
         FasePrimeira::FasePrimeira():
-        Fase(2)
+        Fase(3)
         {
             criarCenario(ARQUIVO_CENARIO_1);
         }
@@ -25,7 +25,7 @@ namespace Estados
             jogadores.desenhar();
             if(checarVivos())
             {
-                pGE->setEstadoAtual(2);
+                pGE->setEstadoAtual(4);
             }
         }
     }    

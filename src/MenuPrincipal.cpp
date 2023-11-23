@@ -17,11 +17,6 @@ namespace Estados
         }
         void MenuPrincipal::set_valores()
         {
-            pos = 0;
-            pressionou = false;
-            deselecionado = false;
-
-            fonte->loadFromFile("Design/Fontes/Dungeon-Depths.ttf");
             imagem->loadFromFile("Design/Imagens/menu-2.jpg");
 
             bg->setTexture(*imagem);

@@ -122,16 +122,26 @@ namespace Entidades
                 }
                 
             } 
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            {
+                last_key = 3;
+            }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && recarga == 0) 
             {
+                Projetil novoProj(sf::Vector2f(10, 5));
+
                 if(last_key == 0)
                 {
-                    vet_dir.push_back(false);
+                    novoProj.setDirecao("esquerda");
                 }
                 else if (last_key == 1)
-                    vet_dir.push_back(true);
-
-                Projetil novoProj(sf::Vector2f(10, 5));
+                    novoProj.setDirecao("direita");
+                else
+                {
+                    Projetil novoProj(sf::Vector2f(5, 10));
+                    novoProj.setDirecao("cima");
+                }
+                novoProj.setPosicao(this->getPosicao())
                 vet_proj.push_back(novoProj);
                 vet_pos.push_back(sf::Vector2f(this->getPosicao().x, this->getPosicao().y + 20.f));
                 recarga = TEMPO_RECARGA_JOG;
@@ -143,7 +153,7 @@ namespace Entidades
             corpo.setPosition(corpo.getPosition() + velocidade);
             nochao = false;
             atirar();
-        }
+        }*
         
 
         void Jogador::atirar()
@@ -154,21 +164,8 @@ namespace Entidades
                 {
                     vet_proj.erase(vet_proj.begin() + i);
                     vet_pos.erase(vet_pos.begin() + i);
-                    vet_dir.erase(vet_dir.begin() + i);
                 }
-                if(vet_dir[i] == true)
-                {
-                    vet_proj[i].setPosicao(vet_pos[i] + sf::Vector2f(12, 0));
-                    vet_pos[i] = vet_proj[i].getPosicao();
-                    vet_proj[i].desenhar();
-                }
-                else if(vet_dir[i] == false)
-                {
-                    vet_proj[i].setPosicao(vet_pos[i] + sf::Vector2f(-12, 0));
-                    vet_pos[i] = vet_proj[i].getPosicao();
-                    vet_proj[i].desenhar();
-                }
-                
+                vet_proj[i].executar();
             }
         }
         std::vector<Projetil>* Jogador::getVetProj()

@@ -10,7 +10,6 @@ namespace Entidades
     dano(1)
     {
         corpo.setSize(tam);
-        velocidade = sf::Vector2f(-12, 0);
     }
     Projetil::~Projetil()
     {
@@ -23,7 +22,21 @@ namespace Entidades
     }
     void Projetil::atirar()
     {
-        corpo.move(velocidade);
+        if(direcao == "esquerda")
+        {
+            velocidade = sf::Vector2f(-12, 0);
+            corpo.move(velocidade);
+        }
+        else if(direcao == "direita")
+        {
+            velocidade = sf::Vector2f(12, 0);
+            corpo.move(velocidade);
+        }
+        else
+        {
+            velocidade = sf::Vector2f(0, -12);
+            corpo.move(velocidade);
+        }
     }
     void Projetil::colidir(Entidade* pE)
     {
@@ -43,6 +56,10 @@ namespace Entidades
     void Projetil::reset()
     {
         corpo.setFillColor(sf::Color::White);
+    }
+    void Projetil::setDirecao(std::string d)
+    {
+        direcao = d;
     }
     int Projetil::getDano()
     {

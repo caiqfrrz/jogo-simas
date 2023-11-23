@@ -17,7 +17,6 @@ namespace Entidades
             short int last_key;
             std::vector<Projetil> vet_proj;
             std::vector<sf::Vector2f> vet_pos;
-            std::vector<bool> vet_dir;
         public:
             Jogador();
             ~Jogador();
