@@ -5,9 +5,9 @@
 class Ente;
 
 //Dimensões da janela
-#define LARGURA_TELA 800.0
+#define LARGURA_TELA 1024.0
 //Dimensões da janela
-#define ALTURA_TELA 600.0
+#define ALTURA_TELA 1024.0
 
 
 namespace Gerenciadores
@@ -25,6 +25,7 @@ namespace Gerenciadores
 
         void desenharEnte(Ente* pE);
         void desenhar(sf::RectangleShape* pR);
+        void desenhar(sf::Sprite* pT);
         void desenharText(sf::Text* pT);
         void desenharTextura(sf::Texture* pT);
         const bool get_JanelaAberta() const;

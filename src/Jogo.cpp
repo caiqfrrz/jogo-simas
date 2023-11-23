@@ -8,6 +8,7 @@ pEstados(Gerenciadores::Gerenciador_Estados::get_instancia())
 {
     Estados::Fases::FasePrimeira* fase1 = new Estados::Fases::FasePrimeira();
     Estados::Fases::FaseSegunda* fase2 = new Estados::Fases::FaseSegunda();
+    Estados::Menus::Menu* menu = new Estados::Menus::Menu();
     executar();
 }
 
