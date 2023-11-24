@@ -31,5 +31,9 @@ namespace Design
     {
         texto.setFillColor(cor);
     }
+    void Text::setPos(sf::Vector2f pos)
+    {
+        texto.setPosition(pos);
+    }
 
 }

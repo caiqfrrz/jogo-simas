@@ -79,7 +79,8 @@
         "__string": "cpp",
         "chrono": "cpp",
         "xstring": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "list": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

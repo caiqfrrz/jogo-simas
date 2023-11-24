@@ -17,6 +17,7 @@ namespace Design
         void setFont(sf::Font* fonte);
         void setTamanho(unsigned int tam);
         void setCor(sf::Color cor);
+        void setPos(sf::Vector2f pos);
         
     };
 }

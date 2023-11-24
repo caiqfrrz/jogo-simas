@@ -30,7 +30,10 @@ namespace Gerenciadores
     {
         estadoAtual = i;
     }
-
+    int Gerenciador_Estados::getEstadoAtual()
+    {
+        return estadoAtual;
+    }
     void Gerenciador_Estados::addEstado (Estados::Estado* pEstado)
     {
         if (pEstado)

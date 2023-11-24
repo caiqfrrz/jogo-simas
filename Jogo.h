@@ -8,7 +8,6 @@
 #include "Estados/Fases/FasePrimeira.h"
 #include "Estados/Fases/FaseSegunda.h"
 #include "Estados/Menus/MenuPrincipal.h"
-#include "Estados/Menus/MenuJogadores.h"
 #include "Estados/Menus/MenuFases.h"
 
 class Jogo

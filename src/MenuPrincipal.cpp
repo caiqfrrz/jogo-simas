@@ -6,10 +6,15 @@ namespace Estados
     namespace Menus
     {
         MenuPrincipal::MenuPrincipal():
-        Menu(0)
+        Menu(0, 4),
+        num_jogadores(1),
+        pos_horizontal(0),
+        jgd1("Jogadores: 1"),
+        jgd2("Jogadores: 2")
         {
+            pObs = new Observers::MenuPrincipalObserver();
+            pObs->setMenu(this);
             set_valores();
-            std::cout << id << std::endl;
         }
         MenuPrincipal::~MenuPrincipal()
         {
@@ -17,6 +22,13 @@ namespace Estados
         }
         void MenuPrincipal::set_valores()
         {
+            jgd1.setFont(fonte);
+            jgd2.setFont(fonte);
+            jgd1.setTamanho(18);
+            jgd2.setTamanho(18);
+            jgd1.setPos(sf::Vector2f(409, 744));
+            jgd2.setPos(sf::Vector2f(409, 744));
+
             imagem->loadFromFile("Design/Imagens/menu-2.jpg");
 
             bg->setTexture(*imagem);
@@ -36,57 +48,53 @@ namespace Estados
             textos[0].setOutlineColor(sf::Color::Green);
             textos[0].setOutlineThickness(5.f);
         }
-        void MenuPrincipal::loop_eventos()
+        void MenuPrincipal::selecionar()
         {
-            sf::Event evento;
-            while(pGG->get_Janela()->pollEvent(evento))
+            deselecionado = true;
+            if(pos == 0)
             {
-                std::cout << pos << std::endl;
-                if(evento.type == sf::Event::Closed)
-                {
-                    pGG->fecharJanela();
-                }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !pressionou)
-                {
-                    if(pos < 3)
-                    {
-                        pos++;
-                        pressionou = true;
-                        textos[pos].setOutlineColor(sf::Color::Green);
-                        textos[pos].setOutlineThickness(5.f);
-                        textos[pos-1].setOutlineThickness(0);
-                        textos[pos-1].setOutlineColor(sf::Color::Transparent);
-                        pressionou = false;
-                        deselecionado = false;
-                    }
-                }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !pressionou)
-                {
-                    if(pos > 0)
-                    {
-                        pos--;
-                        pressionou = true;
-                        textos[pos].setOutlineColor(sf::Color::Green);
-                        textos[pos].setOutlineThickness(5.f);
-                        textos[pos+1].setOutlineThickness(0);
-                        textos[pos+1].setOutlineColor(sf::Color::Transparent);
-                        pressionou = false;
-                        deselecionado = false;
-                    }
-                }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !deselecionado)
-                {
-                    deselecionado = true;
-                    if(pos == 0)
-                    {
-                        pGE->setEstadoAtual(1);
-                        saiu = true;
-                    }
-                    if(pos == 3)
-                    {
-                        pGG->fecharJanela();
-                    }
-                }
+                pGE->setEstadoAtual(1);
+                saiu = true;
+            }
+            if(pos == 3)
+            {
+                pGG->fecharJanela();
+            }
+        }
+        void MenuPrincipal::sel_player()
+        {
+            if(pos_horizontal == 0)
+            {
+                pos_horizontal = 1;
+                pressionou = true;
+                num_jogadores = 2;
+                pressionou = false;
+                deselecionado = false;
+            }
+            else
+            {
+                pos_horizontal = 0;
+                pressionou = true;
+                num_jogadores = 1;
+                pressionou = false;
+                deselecionado = false;
+            }
+        }
+        void MenuPrincipal::desenhar()
+        {
+            pGG->get_Janela()->clear();
+            pGG->desenhar(bg);
+            for(auto t : textos)
+            {
+                pGG->get_Janela()->draw(t);
+            }
+            if(num_jogadores == 1)
+            {
+                jgd1.executar();
+            }
+            else
+            {
+                jgd2.executar();
             }
         }
     }

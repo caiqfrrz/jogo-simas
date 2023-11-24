@@ -14,6 +14,7 @@ namespace Estados
             ~MenuFases();
             void set_valores();
             void loop_eventos();
+            void selecionar();
         };
     }
 }

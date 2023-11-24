@@ -5,7 +5,7 @@ namespace Estados
     namespace Menus
     {
         MenuFases::MenuFases():
-        Menu(2)
+        Menu(1)
         {
             set_valores();
         }
@@ -76,16 +76,20 @@ namespace Estados
                     deselecionado = true;
                     if(pos == 0)
                     {
-                        pGE->setEstadoAtual(3);
+                        pGE->setEstadoAtual(2);
                         saiu = true;
                     }
                     if(pos == 1)
                     {
-                        pGE->setEstadoAtual(4);
+                        pGE->setEstadoAtual(3);
                         saiu = true;
                     }
                 }
             }
+        }
+        void MenuFases::selecionar()
+        {
+            
         }
     }
 }
