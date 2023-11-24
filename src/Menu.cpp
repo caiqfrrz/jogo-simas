@@ -19,7 +19,7 @@ namespace Estados
             imagem = new sf::Texture();
             bg = new sf::Sprite();
 
-            fonte->loadFromFile("Design/Fontes/Dungeon-Depths.ttf");
+            fonte->loadFromFile("Design/Fontes/Pixel-Digivolve.otf");
         }
         Menu::~Menu()
         {
@@ -48,7 +48,7 @@ namespace Estados
                 {
                     pos--;
                     pressionou = true;
-                    textos[pos].setOutlineColor(sf::Color::Green);
+                    textos[pos].setOutlineColor(sf::Color(72, 221, 137));
                     textos[pos].setOutlineThickness(5.f);
                     textos[pos + 1].setOutlineThickness(0);
                     textos[pos + 1].setOutlineColor(sf::Color::Transparent);
@@ -66,7 +66,7 @@ namespace Estados
                 {
                 pos++;
                 pressionou = true;
-                textos[pos].setOutlineColor(sf::Color::Green);
+                textos[pos].setOutlineColor(sf::Color(72, 221, 137));
                 textos[pos].setOutlineThickness(5.f);
                 textos[pos - 1].setOutlineThickness(0);
                 textos[pos - 1].setOutlineColor(sf::Color::Transparent);
