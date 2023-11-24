@@ -65,10 +65,29 @@ namespace Estados
         {
             if(dois_jogadores)
             {
-                pGG->centralizarCamera((((*(jogadores.get_primeiro()))->getPosicao())+((*(jogadores.get_primeiro()++))->getPosicao()))/(float)2);
+                Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores.get_primeiro();
+                Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores.get_primeiro()++;
+        
+                Entidades::Personagens::Personagem* jogador = static_cast<Entidades::Personagens::Personagem*>(*jgd); 
+                Entidades::Personagens::Personagem* jogador2 = static_cast<Entidades::Personagens::Personagem*>(*jgd2);
+
+                if(jogador->getMorto() && !jogador2->getMorto())
+                {
+                    pGG->centralizarCamera((jogador2)->getPosicao());
+                }
+                else if (!jogador->getMorto() && jogador2->getMorto())
+                {
+                    pGG->centralizarCamera((jogador)->getPosicao());
+                }
+                else if(!jogador->getMorto() && !jogador2->getMorto())
+                {
+                    pGG->centralizarCamera((((*(jogadores.get_primeiro()))->getPosicao())+((*(jogadores.get_primeiro()++))->getPosicao()))/(float)2);
+                }
             }
             else
-                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+            {
+                pGG->centralizarCamera((*jogadores.get_primeiro())->getPosicao());
+            }
         }
         void Fase::criarJogadores()
         {
