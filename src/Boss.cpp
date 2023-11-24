@@ -5,13 +5,13 @@ namespace Entidades
     namespace Personagens
     {
         Boss::Boss(Listas::ListaEntidades *jog, sf::Vector2f pos) : Inimigo(pos, false),
-                                                                            vida(5),
-                                                                            jogadores(jog),
-                                                                            dano(2),
-                                                                            recarregar(0),
-                                                                            dir(""),
-                                                                            firing(false),
-                                                                            vec_proj()
+                                                                    vida(5),
+                                                                    jogadores(jog),
+                                                                    dano(2),
+                                                                    recarregar(0),
+                                                                    dir(""),
+                                                                    firing(false),
+                                                                    vec_proj()
         {
             corpo.setFillColor(sf::Color::Yellow);
             setVida(5);
@@ -34,7 +34,6 @@ namespace Entidades
         {
             if (getMorto() == false)
             {
-
             }
         }
         void Boss::mover()
@@ -126,6 +125,10 @@ namespace Entidades
                         corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
                         atirar();
                     }
+                    else if (dist1 < 800 || dist2 < 800)
+                    {
+                        ultrathrust(); 
+                    }
                     else
                         recarregar = 0;
                 }
@@ -164,6 +167,10 @@ namespace Entidades
                         corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
                         atirar();
                     }
+                    else if (dist1 < 800)
+                    {
+                        ultrathrust();
+                    }
                     else
                         recarregar = 0;
                 }
@@ -198,7 +205,7 @@ namespace Entidades
         }
         void Boss::ultrathrust()
         {
-
+            corpo.setPosition(getPosicao().x + velocidade.x * 5, getPosicao().y + velocidade.y * 5);
         }
         void Boss::bolasdefogo()
         {
@@ -212,7 +219,7 @@ namespace Entidades
             if (recarregar == 0)
             {
                 Projetil novoProj(sf::Vector2f(50, 25));
-                novoProj.setPosicao(sf::Vector2f(this->getPosicao().x + 20.f, this->getPosicao().y + 15.f));
+                novoProj.setPosicao(sf::Vector2f(this->getPosicao().x + 20.f, this->getPosicao().y - 50.f));
                 novoProj.setDirecao(dir);
                 vec_proj.push_back(novoProj);
                 firing = false;
