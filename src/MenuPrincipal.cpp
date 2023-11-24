@@ -24,8 +24,8 @@ namespace Estados
 
             opcoes = {"Novo jogo", "Continuar", "Ranking", "Sair"};
             textos.resize(4);
-            coords = {{342,185}, {366,380}, {400,520}, {450,670}};
-            tamanhos = {30,24,24,24};
+            coords = {{342,155}, {372,353}, {405,500}, {452,645}};
+            tamanhos = {60,50,50,50};
 
             for(int i = 0; i<textos.size(); i++)
             {
@@ -34,7 +34,7 @@ namespace Estados
                 textos[i].setPosition(coords[i]);
                 textos[i].setCharacterSize(tamanhos[i]);
             }
-            textos[0].setOutlineColor(sf::Color::Green);
+            textos[0].setOutlineColor(sf::Color(72, 221, 137));
             textos[0].setOutlineThickness(5.f);
         }
         void MenuPrincipal::selecionar()

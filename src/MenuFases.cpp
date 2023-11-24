@@ -36,8 +36,8 @@ namespace Estados
 
             opcoes = {"Fase 1", "Fase 2"};
             textos.resize(2);
-            coords = {{388,380}, {385,520}};
-            tamanhos = {22,22};
+            coords = {{430,350}, {427,500}};
+            tamanhos = {50,50};
 
             for(int i = 0; i<textos.size(); i++)
             {
@@ -46,7 +46,7 @@ namespace Estados
                 textos[i].setPosition(coords[i]);
                 textos[i].setCharacterSize(tamanhos[i]);
             }
-            textos[0].setOutlineColor(sf::Color::Green);
+            textos[0].setOutlineColor(sf::Color(72, 221, 137));
             textos[0].setOutlineThickness(5.f);
         }
         void MenuFases::desenhar()
