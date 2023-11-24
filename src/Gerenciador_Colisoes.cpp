@@ -193,6 +193,34 @@ namespace Gerenciadores
         }
     }
 
+    void Gerenciador_Colisoes::colEscJgd()
+    {
+        Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
+        Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro()++;
+
+        if (jgd != nullptr)
+        {
+            while (obst != nullptr)
+            {
+                Entidades::Personagens::Jogador2 *jgd_shield = static_cast<Entidades::Personagens::Jogador2 *>(*jgd);
+                std::deque<Entidades::Escudo> *pDq = jgd_shield->getDqEscudo();
+
+                if (pDq->size() > 0)
+                {
+                    for (int i = 0; i < pDq->size(); i++)
+                    {
+                        Entidades::Entidade *escudo = static_cast<Entidades::Entidade *>(&pDq->at(i));
+                        if (colisao_projetil(*obst, escudo))
+                        {
+                            escudo->colidir(*obst);
+                        }
+                    }
+                }
+                obst++;
+            }
+        }
+    }
+
     void Gerenciador_Colisoes::colisao()
     {
         colInimJogador();
@@ -202,6 +230,7 @@ namespace Gerenciadores
         colbalaObs();
         colbalaInimObs();
         colEscInim();
+        colEscJgd();
     }
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade *e1, Entidades::Entidade *e2)
     {
