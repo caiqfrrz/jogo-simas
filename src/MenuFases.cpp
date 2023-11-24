@@ -25,10 +25,10 @@ namespace Estados
         {
             jgd1.setFont(fonte);
             jgd2.setFont(fonte);
-            jgd1.setTamanho(18);
-            jgd2.setTamanho(18);
-            jgd1.setPos(sf::Vector2f(409, 744));
-            jgd2.setPos(sf::Vector2f(409, 744));
+            jgd1.setTamanho(48);
+            jgd2.setTamanho(48);
+            jgd1.setPos(sf::Vector2f(350, 620));
+            jgd2.setPos(sf::Vector2f(350, 620));
 
             imagem->loadFromFile("Design/Imagens/menu-jogadores.jpg");
 
