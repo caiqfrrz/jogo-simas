@@ -10,25 +10,32 @@ namespace Entidades
 {
     namespace Personagens
     {
-        class Jogador: public Personagem
+        class Jogador : public Personagem
         {
         private:
             int pontos;
+            int i;
             int recarga;
             short int last_key;
-            JogadorStrategy* jogador_type;
+            JogadorStrategy *jogador_type;
+
         public:
-            Jogador(JogadorStrategy* jgd = nullptr);
+            static int nume;
+            Jogador(JogadorStrategy *jgd = nullptr, int i = 0);
             ~Jogador();
             void executar();
             void mover();
             void setPosicao(sf::Vector2f pos);
             void setLento(bool b);
             bool getLento();
-            void setPulando(bool p, float força) {pulando = p; pulo = força;}
-            void setPulando(bool p) {pulando = p;}
-            std::vector<Projetil>* getVetProj();
-            std::deque<Escudo>* getDqEscudo();
+            void setPulando(bool p, float força)
+            {
+                pulando = p;
+                pulo = força;
+            }
+            void setPulando(bool p) { pulando = p; }
+            std::vector<Projetil> *getVetProj();
+            std::deque<Escudo> *getDqEscudo();
         };
     }
 }
