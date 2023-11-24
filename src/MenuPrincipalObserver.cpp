@@ -25,7 +25,6 @@ namespace Observers
             return;
         if(tecla == sf::Keyboard::Down)
         {
-            std::cout << "oi";
             pMenu->baixo();
         }
         else if(tecla == sf::Keyboard::Up)

@@ -29,7 +29,6 @@ namespace Gerenciadores
     {
         for (it = lista_observers.begin(); it != lista_observers.end(); it++)
         {
-            std::cout << "oi";
             (*it)->update((tecla));
         } 
     }

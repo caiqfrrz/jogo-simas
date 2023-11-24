@@ -15,11 +15,11 @@ namespace Estados
         }
         void FaseSegunda::executar()
         {
+            centraliza_camera();
             obstaculos.desenhar();
             inimigos.executar();
             jogadores.executar();
             gerenciar_colisoes();
-            centraliza_camera();
             jogadores.desenhar();
             checarVivos();
         }

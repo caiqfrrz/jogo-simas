@@ -50,15 +50,22 @@ namespace Estados
         }
         void MenuPrincipal::selecionar()
         {
-            deselecionado = true;
-            if(pos == 0)
+            if(!deselecionado)
             {
-                pGE->setEstadoAtual(1);
-                saiu = true;
-            }
-            if(pos == 3)
-            {
-                pGG->fecharJanela();
+                deselecionado = true;
+                if(pos == 0)
+                {
+                    if(num_jogadores == 1)
+                        pGE->setEstadoAtual(1);
+
+                    else
+                        pGE->setEstadoAtual(1);
+                    saiu = true;
+                }
+                if(pos == 3)
+                {
+                    pGG->fecharJanela();
+                }
             }
         }
         void MenuPrincipal::sel_player()

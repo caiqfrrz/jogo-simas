@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Menu.h"
+#include "../Observers/MenuFasesObserver.h"
 
 namespace Estados
 {
@@ -9,12 +10,13 @@ namespace Estados
         class MenuFases : public Menu
         {
         private:
+            Observers::MenuFasesObserver* pObs;
         public:
             MenuFases();
             ~MenuFases();
             void set_valores();
-            void loop_eventos();
             void selecionar();
+            void desenhar();
         };
     }
 }

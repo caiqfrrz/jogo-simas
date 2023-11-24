@@ -42,22 +42,28 @@ namespace Estados
         }
         void Menu::cima()
         {
-            if (pos > 0)
+            if(!pressionou)
             {
-                pos--;
-                pressionou = true;
-                textos[pos].setOutlineColor(sf::Color::Green);
-                textos[pos].setOutlineThickness(5.f);
-                textos[pos + 1].setOutlineThickness(0);
-                textos[pos + 1].setOutlineColor(sf::Color::Transparent);
-                pressionou = false;
-                deselecionado = false;
+                if (pos > 0)
+                {
+                    pos--;
+                    pressionou = true;
+                    textos[pos].setOutlineColor(sf::Color::Green);
+                    textos[pos].setOutlineThickness(5.f);
+                    textos[pos + 1].setOutlineThickness(0);
+                    textos[pos + 1].setOutlineColor(sf::Color::Transparent);
+                    pressionou = false;
+                    deselecionado = false;
+                }
             }
+            
         }
         void Menu::baixo()
         {
-            if (pos < n_botoes - 1)
+            if(!pressionou)
             {
+                if (pos < n_botoes - 1)
+                {
                 pos++;
                 pressionou = true;
                 textos[pos].setOutlineColor(sf::Color::Green);
@@ -66,6 +72,7 @@ namespace Estados
                 textos[pos - 1].setOutlineColor(sf::Color::Transparent);
                 pressionou = false;
                 deselecionado = false;
+                } 
             }
         }
     }

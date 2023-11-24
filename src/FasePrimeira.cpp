@@ -17,15 +17,15 @@ namespace Estados
 
         void FasePrimeira::executar()
         { 
+            centraliza_camera();
             obstaculos.desenhar();
             inimigos.executar();
             jogadores.executar();
             gerenciar_colisoes();
-            centraliza_camera();
             jogadores.desenhar();
             if(checarVivos())
             {
-                pGE->setEstadoAtual(4);
+                pGE->setEstadoAtual(3);
             }
         }
     }    
