@@ -18,7 +18,6 @@ namespace Entidades
             Listas::ListaEntidades *jogadores;
             std::vector<Projetil> vec_proj;
             int recarregar;
-            std::string dir;
 
         public:
             bool firing;

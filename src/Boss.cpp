@@ -9,7 +9,6 @@ namespace Entidades
                                                                     jogadores(jog),
                                                                     dano(2),
                                                                     recarregar(0),
-                                                                    dir(""),
                                                                     firing(false),
                                                                     vec_proj()
         {
@@ -108,16 +107,7 @@ namespace Entidades
 
                     if (!firing)
                     {
-                        if (getPosicao().x < posProx.x)
-                        {
-                            firing = true;
-                            dir = "direita";
-                        }
-                        else
-                        {
-                            firing = true;
-                            dir = "esquerda";
-                        }
+                        firing = true;
                     }
 
                     if (dist1 < 350 || dist2 < 350)
@@ -127,7 +117,7 @@ namespace Entidades
                     }
                     else if (dist1 < 800 || dist2 < 800)
                     {
-                        ultrathrust(); 
+                        ultrathrust();
                     }
                     else
                         recarregar = 0;
@@ -150,16 +140,7 @@ namespace Entidades
 
                     if (!firing)
                     {
-                        if (getPosicao().x < pos.x)
-                        {
-                            firing = true;
-                            dir = "direita";
-                        }
-                        else
-                        {
-                            firing = true;
-                            dir = "esquerda";
-                        }
+                        firing = true;
                     }
 
                     if (dist1 < 450)
@@ -209,18 +190,10 @@ namespace Entidades
         }
         void Boss::bolasdefogo()
         {
-            sf::Vector2f z = this->getTamanho() / 2.f;
-
-            if (dir == "direita")
-                z.x += 50;
-            else
-                z.x -= 50;
-
             if (recarregar == 0)
             {
                 Projetil novoProj(sf::Vector2f(50, 25));
                 novoProj.setPosicao(sf::Vector2f(this->getPosicao().x + 20.f, this->getPosicao().y - 50.f));
-                novoProj.setDirecao(dir);
                 vec_proj.push_back(novoProj);
                 firing = false;
                 recarregar = TEMPO_RECARGA;
