@@ -6,6 +6,10 @@ namespace Estados
     namespace Menus
     {
         MenuFases::MenuFases():
+        num_jogadores(1),
+        pos_horizontal(0),
+        jgd1("Jogadores: 1"),
+        jgd2("Jogadores: 2"),
         Menu(1, 2)
         {
             deselecionado = true;
@@ -19,6 +23,13 @@ namespace Estados
         }
         void MenuFases::set_valores()
         {
+            jgd1.setFont(fonte);
+            jgd2.setFont(fonte);
+            jgd1.setTamanho(18);
+            jgd2.setTamanho(18);
+            jgd1.setPos(sf::Vector2f(409, 744));
+            jgd2.setPos(sf::Vector2f(409, 744));
+
             imagem->loadFromFile("Design/Imagens/menu-jogadores.jpg");
 
             bg->setTexture(*imagem);
@@ -47,6 +58,33 @@ namespace Estados
             {
                 pGG->get_Janela()->draw(t);
             }
+            if(num_jogadores == 1)
+            {
+                jgd1.executar();
+            }
+            else
+            {
+                jgd2.executar();
+            }
+        }
+        void MenuFases::sel_player()
+        {
+            if(pos_horizontal == 0)
+            {
+                pos_horizontal = 1;
+                pressionou = true;
+                num_jogadores = 2;
+                pressionou = false;
+                deselecionado = false;
+            }
+            else
+            {
+                pos_horizontal = 0;
+                pressionou = true;
+                num_jogadores = 1;
+                pressionou = false;
+                deselecionado = false;
+            }
         }
         
         void MenuFases::selecionar()
@@ -56,11 +94,19 @@ namespace Estados
                 deselecionado = true;
                 if(pos == 0)
                 {
-                    pGE->setEstadoAtual(2);
+                    if(num_jogadores == 1)
+                        pGE->setEstadoAtual(2);
+                    
+                    else
+                        pGE->setEstadoAtual(3);
                 }
                 else
                 {
-                    pGE->setEstadoAtual(3);
+                    if(num_jogadores == 1)
+                        pGE->setEstadoAtual(4);
+                    
+                    else
+                        pGE->setEstadoAtual(5);
                 }
             }
         }

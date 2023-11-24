@@ -12,7 +12,7 @@ namespace Estados
         {
         private:
         public:
-            FaseSegunda();
+            FaseSegunda(int id = -1, bool dois_jgd = false);
             ~FaseSegunda();
             void executar();
         };

@@ -10,10 +10,6 @@ namespace Estados
         {
         private:
             Observers::MenuPrincipalObserver* pObs;
-            int num_jogadores;
-            int pos_horizontal;
-            Design::Text jgd1;
-            Design::Text jgd2;
 
         public:
             MenuPrincipal();
@@ -21,7 +17,6 @@ namespace Estados
             void set_valores();
             void desenhar();
             void selecionar();
-            void sel_player();
         };
     }
 }

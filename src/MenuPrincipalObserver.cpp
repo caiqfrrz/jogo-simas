@@ -31,7 +31,5 @@ namespace Observers
             pMenu->cima();
         else if(tecla == sf::Keyboard::Enter)
             pMenu->selecionar();
-        else if(tecla == sf::Keyboard::Right || tecla == sf::Keyboard::Left)
-            pMenu->sel_player();
     }
 }

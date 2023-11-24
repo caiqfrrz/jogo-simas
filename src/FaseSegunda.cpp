@@ -4,8 +4,8 @@ namespace Estados
 {
     namespace Fases
     {
-        FaseSegunda::FaseSegunda():
-        Fase(3)
+        FaseSegunda::FaseSegunda(int id, bool dois_jgd):
+        Fase(id, dois_jgd)
         {
             criarCenario(ARQUIVO_CENARIO_2);
         }

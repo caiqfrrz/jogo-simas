@@ -6,11 +6,7 @@ namespace Estados
     namespace Menus
     {
         MenuPrincipal::MenuPrincipal():
-        Menu(0, 4),
-        num_jogadores(1),
-        pos_horizontal(0),
-        jgd1("Jogadores: 1"),
-        jgd2("Jogadores: 2")
+        Menu(0, 4)
         {
             pObs = new Observers::MenuPrincipalObserver();
             pObs->setMenu(this);
@@ -22,13 +18,6 @@ namespace Estados
         }
         void MenuPrincipal::set_valores()
         {
-            jgd1.setFont(fonte);
-            jgd2.setFont(fonte);
-            jgd1.setTamanho(18);
-            jgd2.setTamanho(18);
-            jgd1.setPos(sf::Vector2f(409, 744));
-            jgd2.setPos(sf::Vector2f(409, 744));
-
             imagem->loadFromFile("Design/Imagens/menu-2.jpg");
 
             bg->setTexture(*imagem);
@@ -55,36 +44,12 @@ namespace Estados
                 deselecionado = true;
                 if(pos == 0)
                 {
-                    if(num_jogadores == 1)
-                        pGE->setEstadoAtual(1);
-
-                    else
-                        pGE->setEstadoAtual(1);
-                    saiu = true;
+                    pGE->setEstadoAtual(1);
                 }
                 if(pos == 3)
                 {
                     pGG->fecharJanela();
                 }
-            }
-        }
-        void MenuPrincipal::sel_player()
-        {
-            if(pos_horizontal == 0)
-            {
-                pos_horizontal = 1;
-                pressionou = true;
-                num_jogadores = 2;
-                pressionou = false;
-                deselecionado = false;
-            }
-            else
-            {
-                pos_horizontal = 0;
-                pressionou = true;
-                num_jogadores = 1;
-                pressionou = false;
-                deselecionado = false;
             }
         }
         void MenuPrincipal::desenhar()
@@ -94,14 +59,6 @@ namespace Estados
             for(auto t : textos)
             {
                 pGG->get_Janela()->draw(t);
-            }
-            if(num_jogadores == 1)
-            {
-                jgd1.executar();
-            }
-            else
-            {
-                jgd2.executar();
             }
         }
     }
