@@ -21,7 +21,7 @@ namespace Entidades
 
         public:
             static int nume;
-            Jogador(JogadorStrategy *jgd = nullptr, int i = 0);
+            Jogador(JogadorStrategy *jgd = nullptr, int id = 0);
             ~Jogador();
             void executar();
             void mover();

@@ -103,11 +103,11 @@ namespace Entidades
             }
             else if (last_key == 1)
                 novoProj.setDirecao("direita");
-            else
+            else 
             {
-                Projetil novoProj(sf::Vector2f(5, 10));
                 novoProj.setDirecao("cima");
             }
+            
             novoProj.setPosicao(sf::Vector2f(pJog->getPosicao().x+20.f, pJog->getPosicao().y+15.f));
             vet_proj.push_back(novoProj);
         }

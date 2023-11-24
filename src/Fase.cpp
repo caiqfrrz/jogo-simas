@@ -103,7 +103,7 @@ namespace Estados
             else
             {
                 Entidades::Personagens::JogadorProjetil* jgd1 = new Entidades::Personagens::JogadorProjetil();
-                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(jgd1)));
+                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(jgd1, 1)));
                 jgd1->setJog(static_cast<Entidades::Personagens::Jogador*>(*(jogadores.get_primeiro())));
             }
         }

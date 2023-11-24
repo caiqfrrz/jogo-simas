@@ -34,7 +34,6 @@ namespace Entidades
         {
             if (getMorto() == false)
             {
-
             }
         }
         void Atirador::mover()
@@ -56,8 +55,8 @@ namespace Entidades
                         pulando = false;
                     }
                 }
-                if (!nochao)
-                    velocidade += sf::Vector2f(0, 7.f);
+
+                velocidade += sf::Vector2f(0, 7.f);
 
                 if (jgd != nullptr && jgd2 != nullptr)
                 {
@@ -143,7 +142,7 @@ namespace Entidades
                     {
                         direcao /= comprimento;
                     }
-                    velocidade = direcao * 1.f;
+                    velocidade.x = direcao.x * 1.f;
 
                     if (!firing)
                     {

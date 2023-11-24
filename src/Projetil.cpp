@@ -30,11 +30,13 @@ namespace Entidades
             velocidade = sf::Vector2f(12, 0);
             corpo.move(velocidade);
         }
-        else
+        else if (direcao == "cima")
         {
             velocidade = sf::Vector2f(0, -12);
             corpo.move(velocidade);
         }
+        else
+           corpo.move(velocidade);
     }
     void Projetil::colidir(Entidade *pE, bool b)
     {

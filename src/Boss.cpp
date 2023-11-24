@@ -6,6 +6,7 @@ namespace Entidades
     {
         Boss::Boss(Listas::ListaEntidades *jog, sf::Vector2f pos) : Inimigo(pos, false),
                                                                     vida(5),
+                                                                    velocidadeDir(),
                                                                     jogadores(jog),
                                                                     dano(2),
                                                                     recarregar(0),
@@ -192,8 +193,79 @@ namespace Entidades
         {
             if (recarregar == 0)
             {
+                Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
+                Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores->get_primeiro()++;
+
+                if (jgd != nullptr && jgd2 != nullptr)
+                {
+                    Entidade *jogadorMaisProx;
+
+                    sf::Vector2f pos1 = sf::Vector2f((*jgd)->getPosicao().x, (*jgd)->getPosicao().y);
+                    sf::Vector2f pos2 = sf::Vector2f((*jgd2)->getPosicao().x, (*jgd2)->getPosicao().y);
+
+                    sf::Vector2f cords = sf::Vector2f(this->getPosicao().x, this->getPosicao().y - 50.f);
+
+                    float dist1 = sqrt(pow(pos1.x - cords.x, 2) + pow(pos1.y - cords.y, 2));
+                    float dist2 = sqrt(pow(pos2.x - cords.x, 2) + pow(pos2.y - cords.y, 2));
+
+                    Entidades::Personagens::Personagem *jogador = static_cast<Entidades::Personagens::Personagem *>(*jgd);
+                    Entidades::Personagens::Personagem *jogador2 = static_cast<Entidades::Personagens::Personagem *>(*jgd2);
+
+                    if (jogador->getMorto() == true)
+                    {
+                        jogadorMaisProx = *jgd2;
+                        float distMaisProx = dist2;
+                    }
+                    else if (jogador2->getMorto() == true)
+                    {
+                        jogadorMaisProx = *jgd;
+                        float distMaisProx = dist1;
+                    }
+                    else if (dist1 >= dist2)
+                    {
+                        jogadorMaisProx = *jgd2;
+                        float distMaisProx = dist2;
+                    }
+                    else
+                    {
+                        jogadorMaisProx = *jgd;
+                        float distMaisProx = dist1;
+                    }
+
+                    sf::Vector2f posProx = jogadorMaisProx->getPosicao();
+                    sf::Vector2f direcao = posProx - cords;
+
+                    float comprimento = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
+
+                    if (comprimento != 0)
+                    {
+                        direcao /= comprimento;
+                    }
+
+                    velocidade = direcao * 1.f;
+                    velocidadeDir = velocidade;
+                }
+                if (jgd2 == nullptr)
+                {
+                    sf::Vector2f pos = sf::Vector2f((*jgd)->getPosicao().x, (*jgd)->getPosicao().y);
+                    sf::Vector2f cords = sf::Vector2f(this->getPosicao().x, this->getPosicao().y - 50.f);
+
+                    sf::Vector2f direcao = pos - cords;
+
+                    float dist1 = sqrt(pow(pos.x - cords.x, 2) + pow(pos.y - cords.y, 2));
+                    float comprimento = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
+
+                    if (comprimento != 0)
+                    {
+                        direcao /= comprimento;
+                    }
+                    velocidade = direcao * 1.f;
+                    velocidadeDir = velocidade;
+                }
+
                 Projetil novoProj(sf::Vector2f(50, 25));
-                novoProj.setPosicao(sf::Vector2f(this->getPosicao().x + 20.f, this->getPosicao().y - 50.f));
+                novoProj.setPosicao(sf::Vector2f(this->getPosicao().x, this->getPosicao().y - 50.f));
+                novoProj.setVelocidade(sf::Vector2f(velocidadeDir.x * 6, velocidadeDir.y * 6));
                 vec_proj.push_back(novoProj);
                 firing = false;
                 recarregar = TEMPO_RECARGA;
