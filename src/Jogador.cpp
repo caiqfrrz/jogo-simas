@@ -8,15 +8,20 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(JogadorStrategy* jgd):
+        Jogador::Jogador(JogadorStrategy* jgd, int i):
         Personagem(sf::Vector2f(0, 0),true, false),
         jogador_type(jgd),
+        i(i),
         recarga(0),
         last_key(1),
         pontos(0)
         {
+            if(i == 1)
+                grafico.setJg1(static_cast<Personagem*>(this));
+            else
+                grafico.setJg2(static_cast<Personagem*>(this));
+
             corpo.setFillColor(sf::Color::Green);
-            grafico.setJg1(static_cast<Personagem*>(this));
             grafico.setPers(static_cast<Personagem*>(this));
         }
         Jogador::~Jogador()
