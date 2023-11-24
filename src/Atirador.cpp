@@ -56,7 +56,7 @@ namespace Entidades
                     }
                 }
 
-                velocidade += sf::Vector2f(0, 7.f);
+                velocidade += sf::Vector2f(velocidade.x, 7.f);
 
                 if (jgd != nullptr && jgd2 != nullptr)
                 {
