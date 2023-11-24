@@ -8,8 +8,9 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador():
+        Jogador::Jogador(JogadorStrategy* jgd):
         Personagem(sf::Vector2f(0, 0),true, false),
+        jogador_type(jgd),
         recarga(0),
         last_key(1),
         pontos(0)
@@ -45,7 +46,7 @@ namespace Entidades
         }
         void Jogador::mover()
         {
-            velocidade = sf::Vector2f(0,0);
+            velocidade = sf::Vector2f(0, 0);
             
             if (pulando)
             {
@@ -60,119 +61,31 @@ namespace Entidades
             }
             if (!nochao)
                 velocidade += sf::Vector2f(0, 7.f);
-           
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
-                if(lento)
-                {
-                    if (!nochao)
-                    {
-                        velocidade += sf::Vector2f(2.f, 0);
-                    }
-                }
-                else
-                {
-                    if (nochao)
-                    {
-                        velocidade = sf::Vector2f(6.f, 0);
-                    }
-                    else if (!nochao)
-                    {
-                        velocidade += sf::Vector2f(6.f, 0);
-                    }
-                }
-                last_key = 1;
-                
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                if(lento)
-                {
-                    if (!nochao)
-                    {
-                        velocidade += sf::Vector2f(-2.f, 0);
-                    }
-                }
-                else
-                {
-                    if (nochao)
-                    {
-                        velocidade = sf::Vector2f(-6.f, 0);
-                    }
-                    else if (!nochao)
-                    {
-                        velocidade += sf::Vector2f(-6.f, 0);
-                    }
-                }
-                last_key = 0;
-            }
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && nochao)
-            {
-                if(lento)
-                {
-                    pulando = true;
-                    pulo = 15.f;
-                }
-                else
-                {
-                    pulando = true;
-                    pulo = 21.f;
-                    nochao = true;
-                }
-                
-            } 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            {
-                last_key = 3;
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && recarga == 0) 
-            {
-                Projetil novoProj(sf::Vector2f(10, 5));
-
-                if(last_key == 0)
-                {
-                    novoProj.setDirecao("esquerda");
-                }
-                else if (last_key == 1)
-                    novoProj.setDirecao("direita");
-                else
-                {
-                    Projetil novoProj(sf::Vector2f(5, 10));
-                    novoProj.setDirecao("cima");
-                }
-                novoProj.setPosicao(sf::Vector2f(this->getPosicao().x+20.f, this->getPosicao().y+15.f));
-                vet_proj.push_back(novoProj);
-                recarga = TEMPO_RECARGA_JOG;
-            }
-
-            if(recarga > 0)
-                recarga--;
-
-            corpo.setPosition(corpo.getPosition() + velocidade);
-            nochao = false;
-            atirar();
+            jogador_type->mover();
         }
-        
-
-        void Jogador::atirar()
+        void Jogador::setPosicao(sf::Vector2f pos)
         {
-            for(int i = 0; i < vet_proj.size(); i++)
-            {
-                vet_proj[i].executar();
-            }
-
-            for(int i = 0; i < vet_proj.size(); i++)
-            {
-                if(fabs(vet_proj[i].getPosicao().x) - fabs(this->getPosicao().x) > 800 || fabs(vet_proj[i].getPosicao().y) - fabs(this->getPosicao().y) > 600)
-                {
-                    vet_proj.erase(vet_proj.begin() + i);
-                }
-            }
+            corpo.setPosition(pos);
         }
+
+        void Jogador::setLento(bool b)
+        {
+            lento = b;
+        }
+        bool Jogador::getLento()
+        {
+            return lento;
+        }
+
         std::vector<Projetil>* Jogador::getVetProj()
         {
-            return &vet_proj;
+            return jogador_type->getVetProj();
         }
+        std::deque<Escudo>* Jogador::getDqEscudo()
+        {
+            return jogador_type->getFilaEsc();
+        }
+
     }
 }

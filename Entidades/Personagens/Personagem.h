@@ -33,7 +33,6 @@ namespace Entidades
             virtual bool usaEscudo();
             virtual bool getMorte();
             bool getDamaged();
-            void lentidao(bool l);
             bool getLento();
             void setLento(bool b);
         };

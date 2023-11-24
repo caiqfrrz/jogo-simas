@@ -23,6 +23,7 @@ namespace Observers
 
         if(pGE->getEstadoAtual() != 0)
             return;
+            
         if(tecla == sf::Keyboard::Down)
         {
             pMenu->baixo();

@@ -70,10 +70,6 @@ namespace Entidades
         {
             return damaged;
         }
-        void Personagem::lentidao(bool l)
-        {
-            lento = l;
-        }
 
         bool Personagem::getLento()
         {

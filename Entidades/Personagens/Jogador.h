@@ -4,6 +4,7 @@
 #include "Personagem.h"
 #include "../Projetil.h"
 #include "../../Design/Text.h"
+#include "JogadorStrategy.h"
 
 namespace Entidades
 {
@@ -15,14 +16,19 @@ namespace Entidades
             int pontos;
             int recarga;
             short int last_key;
-            std::vector<Projetil> vet_proj;
+            JogadorStrategy* jogador_type;
         public:
-            Jogador();
+            Jogador(JogadorStrategy* jgd = nullptr);
             ~Jogador();
             void executar();
             void mover();
-            void atirar();
+            void setPosicao(sf::Vector2f pos);
+            void setLento(bool b);
+            bool getLento();
+            void setPulando(bool p, float força) {pulando = p; pulo = força;}
+            void setPulando(bool p) {pulando = p;}
             std::vector<Projetil>* getVetProj();
+            std::deque<Escudo>* getDqEscudo();
         };
     }
 }

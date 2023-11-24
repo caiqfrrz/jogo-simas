@@ -93,11 +93,19 @@ namespace Estados
         {
             if(dois_jogadores)
             {
-                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
-                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
+                Entidades::Personagens::JogadorProjetil* jgd1 = new Entidades::Personagens::JogadorProjetil();
+                Entidades::Personagens::JogadorEscudo* jgd2 = new Entidades::Personagens::JogadorEscudo();
+                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(jgd2)));
+                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(jgd1)));
+                jgd1->setJog(static_cast<Entidades::Personagens::Jogador*>(*(jogadores.get_primeiro())));
+                jgd2->setJog(static_cast<Entidades::Personagens::Jogador*>(*(jogadores.get_primeiro()++)));
             }
             else
-                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
+            {
+                Entidades::Personagens::JogadorProjetil* jgd1 = new Entidades::Personagens::JogadorProjetil();
+                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(jgd1)));
+                jgd1->setJog(static_cast<Entidades::Personagens::Jogador*>(*(jogadores.get_primeiro())));
+            }
         }
         void Fase::criarInimMedios()
         {

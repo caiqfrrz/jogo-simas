@@ -2,7 +2,7 @@
 
 #include "../../Entidades/Entidade.h"
 #include "../../Entidades/Personagens/Jogador.h"
-#include "../../Entidades/Personagens/Jogador2.h"
+
 #include "../../Entidades/Personagens/Fantasma.h"
 #include "../../Entidades/Personagens/Boss.h"
 #include "../../Entidades/Obstaculos/Caixa.h"
@@ -11,6 +11,8 @@
 #include "../../Entidades/Obstaculos/Plataforma.h"
 #include "../../Listas/ListaEntidades.h"
 #include "../../Gerenciadores/Gerenciador_Colisoes.h"
+#include "../../Entidades/Personagens/JogadorProjetil.h"
+#include "../../Entidades/Personagens/JogadorEscudo.h"
 #include "../Estado.h"
 
 namespace Estados
