@@ -10,7 +10,7 @@
 #include "../Entidades/Personagens/Personagem.h"
 #include "../Entidades/Personagens/Atirador.h"
 #include "../Entidades/Personagens/Jogador.h"
-#include "../Entidades/Personagens/Jogador2.h"
+
 #include <deque>
 
 

@@ -65,10 +65,10 @@ namespace Gerenciadores
 
         while (inim != nullptr)
         {
-            Entidades::Personagens::Jogador *jgd_atira = static_cast<Entidades::Personagens::Jogador *>(*jgd);
+            Entidades::Personagens::Jogador *jgd_atira = static_cast<Entidades::Personagens::Jogador*>(*jgd);
             std::vector<Entidades::Projetil> *pVec = jgd_atira->getVetProj();
 
-            if (pVec->size() > 0)
+            if (pVec != nullptr)
             {
                 for (int i = 0; i < pVec->size(); i++)
                 {
@@ -207,10 +207,10 @@ namespace Gerenciadores
         {
             while (inim != nullptr)
             {
-                Entidades::Personagens::Jogador2 *jgd_shield = static_cast<Entidades::Personagens::Jogador2 *>(*jgd);
+                Entidades::Personagens::Jogador *jgd_shield = static_cast<Entidades::Personagens::Jogador*>(*jgd);
                 std::deque<Entidades::Escudo> *pDq = jgd_shield->getDqEscudo();
 
-                if (pDq->size() > 0)
+                if (pDq != nullptr)
                 {
                     for (int i = 0; i < pDq->size(); i++)
                     {
@@ -235,10 +235,10 @@ namespace Gerenciadores
         {
             while (jgd != nullptr)
             {
-                Entidades::Personagens::Jogador2 *jgd_shield = static_cast<Entidades::Personagens::Jogador2 *>(*jgd2);
+                Entidades::Personagens::Jogador *jgd_shield = static_cast<Entidades::Personagens::Jogador*>(*jgd2);
                 std::deque<Entidades::Escudo> *pDq = jgd_shield->getDqEscudo();
 
-                if (pDq->size() > 0)
+                if (pDq != nullptr)
                 {
                     for (int i = 0; i < pDq->size(); i++)
                     {
@@ -262,10 +262,10 @@ namespace Gerenciadores
         if (jgd2 != nullptr)
         {
 
-            Entidades::Personagens::Jogador2 *jgd_shield = static_cast<Entidades::Personagens::Jogador2 *>(*jgd2);
+            Entidades::Personagens::Jogador *jgd_shield = static_cast<Entidades::Personagens::Jogador *>(*jgd2);
             std::deque<Entidades::Escudo> *pDq = jgd_shield->getDqEscudo();
 
-            if (pDq->size() > 0)
+            if (pDq != nullptr)
             {
                 for (int i = 0; i < pDq->size(); i++)
                 {
@@ -299,7 +299,7 @@ namespace Gerenciadores
     }
 
     void Gerenciador_Colisoes::colisao()
-    {
+    { 
         chamarColBalas();
         chamarColCorpos();
         chamarColEscudo();
