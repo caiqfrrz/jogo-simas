@@ -13,7 +13,7 @@ namespace Estados
         {
         private:
         public:
-            FasePrimeira();
+            FasePrimeira(int id = -1,bool dois_jgd = false);
             ~FasePrimeira();
             void executar();
         };

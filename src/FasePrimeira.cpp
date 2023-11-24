@@ -5,8 +5,8 @@ namespace Estados
 {
     namespace Fases
     {
-        FasePrimeira::FasePrimeira():
-        Fase(3)
+        FasePrimeira::FasePrimeira(int id, bool dois_jgd):
+        Fase(id, dois_jgd)
         {
             criarCenario(ARQUIVO_CENARIO_1);
         }
@@ -17,15 +17,18 @@ namespace Estados
 
         void FasePrimeira::executar()
         { 
+            centraliza_camera();
             obstaculos.desenhar();
             inimigos.executar();
             jogadores.executar();
             gerenciar_colisoes();
-            centraliza_camera();
             jogadores.desenhar();
             if(checarVivos())
             {
-                pGE->setEstadoAtual(4);
+                if(dois_jogadores)
+                    pGE->setEstadoAtual(5);
+                else
+                    pGE->setEstadoAtual(4);
             }
         }
     }    

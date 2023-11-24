@@ -1,13 +1,15 @@
 #include "../Estados/Menus/Menu.h"
+#include <iostream>
 
 namespace Estados
 {
     namespace Menus
     {
-        Gerenciadores::Gerenciador_Grafico* Menu::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());
+        Gerenciadores::Gerenciador_Grafico *Menu::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());
 
-        Menu::Menu(int i):
+        Menu::Menu(int i, int nb) : 
         Estado(i),
+        n_botoes(nb),
         pos(0),
         pressionou(false),
         deselecionado(false),
@@ -27,20 +29,50 @@ namespace Estados
         }
         void Menu::desenhar()
         {
-            pGG->get_Janela()->clear();
+            /*pGG->get_Janela()->clear();
             pGG->desenhar(bg);
-            for(auto t : textos)
+            for (auto t : textos)
             {
                 pGG->get_Janela()->draw(t);
-            }
-            pGG->mostrar();
+            }*/
         }
         void Menu::executar()
         {
-            while(pGG->get_JanelaAberta() && !saiu)
+            desenhar();
+        }
+        void Menu::cima()
+        {
+            if(!pressionou)
             {
-                this->loop_eventos();
-                this->desenhar();
+                if (pos > 0)
+                {
+                    pos--;
+                    pressionou = true;
+                    textos[pos].setOutlineColor(sf::Color::Green);
+                    textos[pos].setOutlineThickness(5.f);
+                    textos[pos + 1].setOutlineThickness(0);
+                    textos[pos + 1].setOutlineColor(sf::Color::Transparent);
+                    pressionou = false;
+                    deselecionado = false;
+                }
+            }
+            
+        }
+        void Menu::baixo()
+        {
+            if(!pressionou)
+            {
+                if (pos < n_botoes - 1)
+                {
+                pos++;
+                pressionou = true;
+                textos[pos].setOutlineColor(sf::Color::Green);
+                textos[pos].setOutlineThickness(5.f);
+                textos[pos - 1].setOutlineThickness(0);
+                textos[pos - 1].setOutlineColor(sf::Color::Transparent);
+                pressionou = false;
+                deselecionado = false;
+                } 
             }
         }
     }

@@ -10,7 +10,8 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase::Fase(int i):
+        Fase::Fase(int i, bool dois_jgd):
+        dois_jogadores(dois_jgd),
         jogadores(),
         obstaculos(),
         inimigos(),
@@ -62,32 +63,26 @@ namespace Estados
         }
         void Fase::centraliza_camera()
         {
-            Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores.get_primeiro();
-            Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores.get_primeiro()++;
-        
-            Entidades::Personagens::Personagem* jogador = static_cast<Entidades::Personagens::Personagem*>(*jgd); 
-            Entidades::Personagens::Personagem* jogador2 = static_cast<Entidades::Personagens::Personagem*>(*jgd2);
-            
-            if((jogadores.get_primeiro()++) != nullptr && jogador2->getMorto() == false && jogador->getMorto() == false)
-                pGG->centralizarCamera((((*(jogadores.get_primeiro()))->getPosicao())+((*(jogadores.get_primeiro()++))->getPosicao()))/(float)2);
-            else if (jogadores.get_primeiro()++ == nullptr && jogadores.get_primeiro() != nullptr)
-                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
-            else if(jogador->getMorto() == true && jogadores.get_primeiro()++ != nullptr)
-                pGG->centralizarCamera((*(jogadores.get_primeiro()++))->getPosicao());
-            else if(jogador2->getMorto() == true)
-                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
-            else 
+            if(dois_jogadores)
             {
-                pGG->centralizarCamera(sf::Vector2f(0.f , 0.f));
+                pGG->centralizarCamera((((*(jogadores.get_primeiro()))->getPosicao())+((*(jogadores.get_primeiro()++))->getPosicao()))/(float)2);
             }
+            else
+                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
         }
         void Fase::criarJogadores()
         {
-            jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
-            jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
+            if(dois_jogadores)
+            {
+                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
+                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
+            }
+            else
+                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
         }
         void Fase::criarInimMedios()
         {
+
         }
         void Fase::criarCenario(std::string caminho)
         {

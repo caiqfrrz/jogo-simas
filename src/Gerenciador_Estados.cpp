@@ -17,7 +17,7 @@ namespace Gerenciadores
     Gerenciador_Estados::Gerenciador_Estados():
     estadoAtual(0)
     {
-        estados.resize(5);
+        estados.resize(6);
     }
 
     Gerenciador_Estados::~Gerenciador_Estados()
@@ -30,7 +30,10 @@ namespace Gerenciadores
     {
         estadoAtual = i;
     }
-
+    int Gerenciador_Estados::getEstadoAtual()
+    {
+        return estadoAtual;
+    }
     void Gerenciador_Estados::addEstado (Estados::Estado* pEstado)
     {
         if (pEstado)

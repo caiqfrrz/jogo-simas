@@ -4,8 +4,8 @@ namespace Estados
 {
     namespace Fases
     {
-        FaseSegunda::FaseSegunda():
-        Fase(4)
+        FaseSegunda::FaseSegunda(int id, bool dois_jgd):
+        Fase(id, dois_jgd)
         {
             criarCenario(ARQUIVO_CENARIO_2);
         }
@@ -15,11 +15,11 @@ namespace Estados
         }
         void FaseSegunda::executar()
         {
+            centraliza_camera();
             obstaculos.desenhar();
             inimigos.executar();
             jogadores.executar();
             gerenciar_colisoes();
-            centraliza_camera();
             jogadores.desenhar();
             checarVivos();
         }

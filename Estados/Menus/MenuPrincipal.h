@@ -1,5 +1,6 @@
 #pragma once
 #include "Menu.h"
+#include "../Observers/MenuPrincipalObserver.h"
 
 namespace Estados
 {
@@ -8,11 +9,14 @@ namespace Estados
         class MenuPrincipal : public Menu
         {
         private:
+            Observers::MenuPrincipalObserver* pObs;
+
         public:
             MenuPrincipal();
             ~MenuPrincipal();
             void set_valores();
-            void loop_eventos();
+            void desenhar();
+            void selecionar();
         };
     }
 }

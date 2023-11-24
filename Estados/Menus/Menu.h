@@ -12,6 +12,7 @@ namespace Estados
         {
         protected:
             int pos;
+            int n_botoes;
             bool pressionou;
             bool deselecionado;
             bool saiu;
@@ -26,13 +27,14 @@ namespace Estados
             std::vector<sf::Text> textos;
             std::vector<std::size_t> tamanhos;
         public:
-            Menu(int i = -1);
+            Menu(int i = -1, int nb = 0);
             ~Menu();
 
-            virtual void set_valores() = 0;
-            virtual void loop_eventos() = 0;
-            void desenhar();
-            void executar();
+            virtual void selecionar() = 0;
+            virtual void desenhar();
+            virtual void executar();
+            void cima();
+            void baixo();
         };
     }
 }

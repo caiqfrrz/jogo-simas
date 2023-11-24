@@ -6,10 +6,11 @@ namespace Estados
     namespace Menus
     {
         MenuPrincipal::MenuPrincipal():
-        Menu(0)
+        Menu(0, 4)
         {
+            pObs = new Observers::MenuPrincipalObserver();
+            pObs->setMenu(this);
             set_valores();
-            std::cout << id << std::endl;
         }
         MenuPrincipal::~MenuPrincipal()
         {
@@ -36,57 +37,28 @@ namespace Estados
             textos[0].setOutlineColor(sf::Color::Green);
             textos[0].setOutlineThickness(5.f);
         }
-        void MenuPrincipal::loop_eventos()
+        void MenuPrincipal::selecionar()
         {
-            sf::Event evento;
-            while(pGG->get_Janela()->pollEvent(evento))
+            if(!deselecionado)
             {
-                std::cout << pos << std::endl;
-                if(evento.type == sf::Event::Closed)
+                deselecionado = true;
+                if(pos == 0)
+                {
+                    pGE->setEstadoAtual(1);
+                }
+                if(pos == 3)
                 {
                     pGG->fecharJanela();
                 }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !pressionou)
-                {
-                    if(pos < 3)
-                    {
-                        pos++;
-                        pressionou = true;
-                        textos[pos].setOutlineColor(sf::Color::Green);
-                        textos[pos].setOutlineThickness(5.f);
-                        textos[pos-1].setOutlineThickness(0);
-                        textos[pos-1].setOutlineColor(sf::Color::Transparent);
-                        pressionou = false;
-                        deselecionado = false;
-                    }
-                }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !pressionou)
-                {
-                    if(pos > 0)
-                    {
-                        pos--;
-                        pressionou = true;
-                        textos[pos].setOutlineColor(sf::Color::Green);
-                        textos[pos].setOutlineThickness(5.f);
-                        textos[pos+1].setOutlineThickness(0);
-                        textos[pos+1].setOutlineColor(sf::Color::Transparent);
-                        pressionou = false;
-                        deselecionado = false;
-                    }
-                }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !deselecionado)
-                {
-                    deselecionado = true;
-                    if(pos == 0)
-                    {
-                        pGE->setEstadoAtual(1);
-                        saiu = true;
-                    }
-                    if(pos == 3)
-                    {
-                        pGG->fecharJanela();
-                    }
-                }
+            }
+        }
+        void MenuPrincipal::desenhar()
+        {
+            pGG->get_Janela()->clear();
+            pGG->desenhar(bg);
+            for(auto t : textos)
+            {
+                pGG->get_Janela()->draw(t);
             }
         }
     }

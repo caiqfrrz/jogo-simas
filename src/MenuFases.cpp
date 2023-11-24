@@ -1,12 +1,20 @@
 #include "../Estados/Menus/MenuFases.h"
+#include <iostream>
 
 namespace Estados
 {
     namespace Menus
     {
         MenuFases::MenuFases():
-        Menu(2)
+        num_jogadores(1),
+        pos_horizontal(0),
+        jgd1("Jogadores: 1"),
+        jgd2("Jogadores: 2"),
+        Menu(1, 2)
         {
+            deselecionado = true;
+            pObs = new Observers::MenuFasesObserver();
+            pObs->setMenu(this);
             set_valores();
         }
         MenuFases::~MenuFases()
@@ -15,6 +23,13 @@ namespace Estados
         }
         void MenuFases::set_valores()
         {
+            jgd1.setFont(fonte);
+            jgd2.setFont(fonte);
+            jgd1.setTamanho(18);
+            jgd2.setTamanho(18);
+            jgd1.setPos(sf::Vector2f(409, 744));
+            jgd2.setPos(sf::Vector2f(409, 744));
+
             imagem->loadFromFile("Design/Imagens/menu-jogadores.jpg");
 
             bg->setTexture(*imagem);
@@ -34,56 +49,64 @@ namespace Estados
             textos[0].setOutlineColor(sf::Color::Green);
             textos[0].setOutlineThickness(5.f);
         }
-        void MenuFases::loop_eventos()
+        void MenuFases::desenhar()
         {
-            sf::Event evento;
-            while(pGG->get_Janela()->pollEvent(evento))
+            deselecionado = false;
+            pGG->get_Janela()->clear();
+            pGG->desenhar(bg);
+            for(auto t : textos)
             {
-                if(evento.type == sf::Event::Closed)
+                pGG->get_Janela()->draw(t);
+            }
+            if(num_jogadores == 1)
+            {
+                jgd1.executar();
+            }
+            else
+            {
+                jgd2.executar();
+            }
+        }
+        void MenuFases::sel_player()
+        {
+            if(pos_horizontal == 0)
+            {
+                pos_horizontal = 1;
+                pressionou = true;
+                num_jogadores = 2;
+                pressionou = false;
+                deselecionado = false;
+            }
+            else
+            {
+                pos_horizontal = 0;
+                pressionou = true;
+                num_jogadores = 1;
+                pressionou = false;
+                deselecionado = false;
+            }
+        }
+        
+        void MenuFases::selecionar()
+        {
+            if(!deselecionado)
+            {
+                deselecionado = true;
+                if(pos == 0)
                 {
-                    pGG->fecharJanela();
-                }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !pressionou)
-                {
-                    if(pos < 1)
-                    {
-                        pos++;
-                        pressionou = true;
-                        textos[pos].setOutlineColor(sf::Color::Green);
-                        textos[pos].setOutlineThickness(5.f);
-                        textos[pos-1].setOutlineThickness(0);
-                        textos[pos-1].setOutlineColor(sf::Color::Transparent);
-                        pressionou = false;
-                        deselecionado = false;
-                    }
-                }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !pressionou)
-                {
-                    if(pos > 0)
-                    {
-                        pos--;
-                        pressionou = true;
-                        textos[pos].setOutlineColor(sf::Color::Green);
-                        textos[pos].setOutlineThickness(5.f);
-                        textos[pos+1].setOutlineThickness(0);
-                        textos[pos+1].setOutlineColor(sf::Color::Transparent);
-                        pressionou = false;
-                        deselecionado = false;
-                    }
-                }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !deselecionado)
-                {
-                    deselecionado = true;
-                    if(pos == 0)
-                    {
+                    if(num_jogadores == 1)
+                        pGE->setEstadoAtual(2);
+                    
+                    else
                         pGE->setEstadoAtual(3);
-                        saiu = true;
-                    }
-                    if(pos == 1)
-                    {
+                }
+                else
+                {
+                    if(num_jogadores == 1)
                         pGE->setEstadoAtual(4);
-                        saiu = true;
-                    }
+                    
+                    else
+                        pGE->setEstadoAtual(5);
                 }
             }
         }
