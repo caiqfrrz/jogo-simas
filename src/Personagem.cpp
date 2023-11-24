@@ -4,19 +4,17 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Personagem::Personagem(sf::Vector2f pos, bool pro, bool esp):
-        Entidade(pos),
-        damaged((bool)0),
-        timer(),
-        lento(false),
-        projetil(pro),
-        escudo(esp),
-        pulando(false),
-        pulo(0.f),
-        grafico(),
-        vida(10)
+        Personagem::Personagem(sf::Vector2f pos, bool pro, bool esp) : Entidade(pos),
+                                                                       damaged((bool)0),
+                                                                       timer(),
+                                                                       lento(false),
+                                                                       projetil(pro),
+                                                                       escudo(esp),
+                                                                       pulando(false),
+                                                                       pulo(0.f),
+                                                                       grafico(),
+                                                                       vida(10)
         {
-
         }
         Personagem::~Personagem()
         {
@@ -30,12 +28,18 @@ namespace Entidades
         {
             vida = v;
         }
-        void Personagem::TomarDano(int d)
+        void Personagem::TomarDano(int d, bool b)
         {
-            setVida(getVida() - d);
-            /*corpo.setFillColor(sf::Color::Red);
-            damaged = true;
-            timer = clock();*/
+            if (!damaged)
+            {
+                setVida(getVida() - d);
+                if (b)
+                {
+                    corpo.setFillColor(sf::Color::Red);
+                    damaged = true;
+                    timer = clock();
+                }
+            }
         }
         void Personagem::morreu()
         {
@@ -59,8 +63,8 @@ namespace Entidades
         }
         void Personagem::ResetColor()
         {
-             corpo.setFillColor(sf::Color::Green);
-             damaged = false;
+            corpo.setFillColor(sf::Color::Green);
+            damaged = false;
         }
         bool Personagem::getDamaged()
         {

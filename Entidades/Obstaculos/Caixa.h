@@ -14,7 +14,7 @@ namespace Entidades
             Caixa(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
             ~Caixa();
             void executar();
-            void colidir(Entidade* pE);
+            void colidir(Entidade* pE, bool b);
         };
     }
 }

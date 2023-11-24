@@ -16,7 +16,7 @@ namespace Entidades
             ~Espinho();
             void executar();
             int getDano();
-            void colidir(Entidade* pE);
+            void colidir(Entidade* pE, bool b);
         };
     }
 }

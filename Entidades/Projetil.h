@@ -15,7 +15,7 @@ namespace Entidades
         ~Projetil();
         void executar();
         void atirar();
-        void colidir(Entidade* pE);
+        void colidir(Entidade* pE, bool b);
         void reset();
         void setDirecao(std::string d);
         int getDano();

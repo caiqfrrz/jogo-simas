@@ -18,7 +18,7 @@ namespace Entidades
     {
         
     }
-    void Entidade::colidir(Entidade* pE)
+    void Entidade::colidir(Entidade* pE, bool b)
     {
     }
     void Entidade::colidir()

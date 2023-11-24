@@ -28,7 +28,7 @@ namespace Gerenciadores
                 {
                     if (colidiu(*jgd, *inim))
                     {
-                        (*inim)->colidir(*jgd);
+                        (*inim)->colidir(*jgd, true);
                     }
                 }
                 inim++;
@@ -50,7 +50,7 @@ namespace Gerenciadores
             {
                 if (colidiu(*jgd, *obst))
                 {
-                    (*obst)->colidir(*jgd);
+                    (*obst)->colidir(*jgd, true);
                 }
                 obst++;
             }
@@ -77,7 +77,7 @@ namespace Gerenciadores
                     {
                         if (colisao_projetil(*inim, proj) == true)
                         {
-                            proj->colidir(*inim);
+                            proj->colidir(*inim, false);
                         }
                     }
                 }
@@ -108,7 +108,7 @@ namespace Gerenciadores
                             Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
                             if (colisao_projetil(*jgd, proj) == true)
                             {
-                                proj->colidir(*jgd);
+                                proj->colidir(*jgd, true);
                             }
                         }
                     }
@@ -157,7 +157,7 @@ namespace Gerenciadores
                     Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
                     if (colisao_projetil(*obst, proj) == true)
                     {
-                        proj->colidir(*obst);
+                        proj->colidir(*obst, false);
                     }
                 }
             }
@@ -187,7 +187,7 @@ namespace Gerenciadores
                             Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
                             if (colisao_projetil(*obst, proj) == true)
                             {
-                                proj->colidir(*obst);
+                                proj->colidir(*obst, false);
                             }
                         }
                     }
@@ -217,7 +217,7 @@ namespace Gerenciadores
                         Entidades::Entidade *escudo = static_cast<Entidades::Entidade *>(&pDq->at(i));
                         if (colisao_projetil(*inim, escudo))
                         {
-                            escudo->colidir(*inim);
+                            escudo->colidir(*inim, false);
                         }
                     }
                 }
@@ -245,7 +245,7 @@ namespace Gerenciadores
                         Entidades::Entidade *escudo = static_cast<Entidades::Entidade *>(&pDq->at(i));
                         if (colisao_projetil(*jgd, escudo))
                         {
-                            escudo->colidir(*jgd);
+                            escudo->colidir(*jgd, false);
                         }
                     }
                 }
@@ -286,7 +286,7 @@ namespace Gerenciadores
                                     Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
                                     if (colisao_projetil(escudo, proj) == true)
                                     {
-                                        proj->colidir(nullptr);
+                                        proj->colidir(nullptr, false);
                                     }
                                 }
                             }

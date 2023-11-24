@@ -18,7 +18,7 @@ namespace Entidades
         {
             
         }
-        void Caixa::colidir(Entidade* pE)
+        void Caixa::colidir(Entidade* pE, bool b)
         {
             Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
 

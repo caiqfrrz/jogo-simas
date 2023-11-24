@@ -20,12 +20,12 @@ namespace Entidades
         {
 
         }
-        void Fantasma::colidir(Entidade* pE)
+        void Fantasma::colidir(Entidade* pE, bool b)
         {
             Personagem* jogador = static_cast<Personagem*>(pE);
 
             if(getMorto() == false)
-                jogador->TomarDano(dano);
+                jogador->TomarDano(dano, b);
         }
 
         void Fantasma::executar()

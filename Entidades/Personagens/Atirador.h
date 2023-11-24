@@ -28,7 +28,7 @@ namespace Entidades
             void executar();
             void mover();
             void atirar();
-            void colidir();
+            void colidir(Entidade* pE, bool b);
             std::vector<Projetil>* getVetProj();
         };
     }

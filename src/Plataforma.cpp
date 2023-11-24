@@ -17,7 +17,7 @@ namespace Entidades
         {
 
         }
-        void Plataforma::colidir(Entidade* pE)
+        void Plataforma::colidir(Entidade* pE, bool b)
         {
             Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
 

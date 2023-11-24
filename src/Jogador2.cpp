@@ -27,7 +27,7 @@ namespace Entidades
                 mover();
 
                 if (damaged)
-                    if (clock() - 750 > timer)
+                    if (clock() - 1500 > timer)
                     {
                         ResetColor();
                         damaged = false;

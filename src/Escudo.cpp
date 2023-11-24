@@ -93,7 +93,7 @@ namespace Entidades
     {
         return dano;
     }*/
-    void Escudo::colidir(Entidade *pE)
+    void Escudo::colidir(Entidade *pE, bool b)
     {
         sf::Vector2f z = pE->getPosicao();
         pE->setVelocidade(sf::Vector2f(0, 0));

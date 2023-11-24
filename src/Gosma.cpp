@@ -21,7 +21,7 @@ namespace Entidades
         {
 
         }
-        void Gosma::colidir(Entidade* pE)
+        void Gosma::colidir(Entidade* pE, bool b)
         {
             Entidades::Personagens::Personagem* jogador = static_cast<Entidades::Personagens::Personagem*>(pE);
 

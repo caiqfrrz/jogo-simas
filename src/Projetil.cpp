@@ -36,19 +36,19 @@ namespace Entidades
             corpo.move(velocidade);
         }
     }
-    void Projetil::colidir(Entidade *pE)
+    void Projetil::colidir(Entidade *pE, bool b)
     {
         if (getAtivo() == true)
         {
             corpo.setFillColor(sf::Color::Transparent);
-            
+
             if (pE != nullptr)
             {
                 Entidades::Personagens::Personagem *aux = static_cast<Entidades::Personagens::Personagem *>(pE);
 
                 if (aux->getMorto() == false)
                 {
-                    aux->TomarDano(dano);
+                    aux->TomarDano(dano, b);
                 }
             }
         }

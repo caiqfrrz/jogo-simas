@@ -27,6 +27,6 @@ namespace Entidades
         void lancar();
         void desaparecer();
         bool getDesapareceu();
-        void colidir(Entidade* pE);
+        void colidir(Entidade* pE, bool b);
     };
 }

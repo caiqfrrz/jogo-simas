@@ -22,9 +22,9 @@ namespace Entidades
         {
             return dano;
         }
-        void Espinho::colidir(Entidade* pE)
+        void Espinho::colidir(Entidade* pE, bool b)
         {
-            static_cast<Personagens::Personagem*>(pE)->TomarDano(dano);
+            static_cast<Personagens::Personagem*>(pE)->TomarDano(dano, b);
         }
         int Espinho::dano = 1;
     }
