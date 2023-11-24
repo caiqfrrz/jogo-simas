@@ -41,6 +41,11 @@ namespace Gerenciadores
         void colEscInim();
         void colbalaInimObs();
         void colEscJgd();
+        void colEscbalaInim();
+        void colbalaJgd();
+        void chamarColBalas();
+        void chamarColEscudo();
+        void chamarColCorpos();
 
     };
 }

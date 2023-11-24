@@ -1,29 +1,28 @@
 #include "../Entidades/Escudo.h"
+#include <iostream>
 
 namespace Entidades
 {
-    Escudo::Escudo():
-    Entidade(),
-    lancando(false),
-    direcao(-1),
-    desapareceu(false),
-    parou(false),
-    opacidade(255), 
-    contagem(CONTAGEM_PARAR)
+    Escudo::Escudo() : Entidade(),
+                       lancando(false),
+                       direcao(-1),
+                       desapareceu(false),
+                       parou(false),
+                       opacidade(255),
+                       contagem(CONTAGEM_PARAR)
     {
     }
     Escudo::~Escudo()
     {
-
     }
     void Escudo::executar()
     {
-        if(lancando)
+        if (lancando)
         {
-            if(direcao == 1)
+            if (direcao == 1)
             {
                 corpo.setSize(sf::Vector2f(LARGURA_ESCUDO, COMPRIMENTO_ESCUDO));
-                if(contagem >= 0)
+                if (contagem >= 0)
                 {
                     corpo.move(sf::Vector2f(VEL_ESCUDO, 0));
                     contagem--;
@@ -35,10 +34,10 @@ namespace Entidades
                     contagem = CONTAGEM_PARAR;
                 }
             }
-            else if(direcao == 0)
+            else if (direcao == 0)
             {
                 corpo.setSize(sf::Vector2f(LARGURA_ESCUDO, COMPRIMENTO_ESCUDO));
-                if(contagem >= 0)
+                if (contagem >= 0)
                 {
                     corpo.move(sf::Vector2f(-VEL_ESCUDO, 0));
                     contagem--;
@@ -53,7 +52,7 @@ namespace Entidades
             else
             {
                 corpo.setSize(sf::Vector2f(COMPRIMENTO_ESCUDO, LARGURA_ESCUDO));
-                if(contagem >= 0)
+                if (contagem >= 0)
                 {
                     corpo.move(sf::Vector2f(0, -VEL_ESCUDO));
                     contagem--;
@@ -66,12 +65,11 @@ namespace Entidades
                 }
             }
         }
-        if(parou)
+        if (parou)
         {
             desaparecer();
         }
         desenhar();
-
     }
     void Escudo::setDirecao(short int dir)
     {
@@ -83,10 +81,10 @@ namespace Entidades
     }
     void Escudo::desaparecer()
     {
-        if(opacidade > 0)
+        if (opacidade > 0)
         {
             corpo.setFillColor(sf::Color(255, 255, 255, opacidade));
-            opacidade -=0.7;
+            opacidade -= 0.7;
         }
         else
             desapareceu = true;
@@ -95,19 +93,36 @@ namespace Entidades
     {
         return dano;
     }*/
-    void Escudo::colidir(Entidade* pE)
+    void Escudo::colidir(Entidade *pE)
     {
         sf::Vector2f z = pE->getPosicao();
-        pE->setVelocidade(sf::Vector2f(0,0));
-        if(direcao == 1)
+        pE->setVelocidade(sf::Vector2f(0, 0));
+        pE->setNochao(true);
+        if (direcao == 1)
         {
-            z.x += 7.f;
-            pE->setPosicao(z);
+            if (z.y + pE->getTamanho().y >= this->getPosicao().y + 5)
+            {
+                z.x += 7.f;
+                pE->setPosicao(z);
+            }
+            else
+            {
+                z.y -= 7.f;
+                pE->setPosicao(z);
+            }
         }
-        else if(direcao == 0)
+        else if (direcao == 0)
         {
-            z.x -= 7.f;
-            pE->setPosicao(z);
+            if (z.y + pE->getTamanho().y >= this->getPosicao().y + 5)
+            {
+                z.x -= 7.f;
+                pE->setPosicao(z);
+            }
+            else
+            {
+                z.y -= 7.f;
+                pE->setPosicao(z);
+            }
         }
         else
         {

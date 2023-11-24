@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include <time.h>
 #include <stdlib.h>
 
@@ -6,14 +6,12 @@
 
 namespace Entidades
 {
-    Projetil::Projetil(sf::Vector2f tam):
-    dano(1)
+    Projetil::Projetil(sf::Vector2f tam) : dano(1)
     {
         corpo.setSize(tam);
     }
     Projetil::~Projetil()
     {
-        
     }
     void Projetil::executar()
     {
@@ -22,12 +20,12 @@ namespace Entidades
     }
     void Projetil::atirar()
     {
-        if(direcao == "esquerda")
+        if (direcao == "esquerda")
         {
             velocidade = sf::Vector2f(-12, 0);
             corpo.move(velocidade);
         }
-        else if(direcao == "direita")
+        else if (direcao == "direita")
         {
             velocidade = sf::Vector2f(12, 0);
             corpo.move(velocidade);
@@ -38,19 +36,23 @@ namespace Entidades
             corpo.move(velocidade);
         }
     }
-    void Projetil::colidir(Entidade* pE)
+    void Projetil::colidir(Entidade *pE)
     {
-        if(getAtivo() == true)
+        if (getAtivo() == true)
         {
             corpo.setFillColor(sf::Color::Transparent);
-            Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
-
-            if(aux->getMorto() == false)
+            
+            if (pE != nullptr)
             {
-                aux->TomarDano(dano);
+                Entidades::Personagens::Personagem *aux = static_cast<Entidades::Personagens::Personagem *>(pE);
+
+                if (aux->getMorto() == false)
+                {
+                    aux->TomarDano(dano);
+                }
             }
         }
-        
+
         setAtivo(false);
     }
     void Projetil::reset()

@@ -139,7 +139,7 @@ namespace Entidades
                     }
                     case (0):
                     {
-                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x - 20.f, getPosicao().y - 2.5f));
+                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x - 40.f, getPosicao().y - 2.5f));
                         break;
                     }
                     }
