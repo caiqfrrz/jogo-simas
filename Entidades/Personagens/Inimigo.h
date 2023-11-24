@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Personagem.h"
+#include "../Projetil.h"
+
 
 namespace Entidades
 {
@@ -16,6 +18,7 @@ namespace Entidades
             ~Inimigo();
             virtual void executar();
             virtual bool ehFantasma();
+            virtual std::vector<Projetil>* getVetProj();
         };
     }
 }

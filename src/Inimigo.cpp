@@ -23,5 +23,9 @@ namespace Entidades
         {
             return fantasma;
         }
+        std::vector<Projetil>* Inimigo::getVetProj()
+        {
+            return nullptr;
+        }
     }
 }
