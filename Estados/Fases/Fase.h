@@ -4,6 +4,7 @@
 #include "../../Entidades/Personagens/Jogador.h"
 
 #include "../../Entidades/Personagens/Fantasma.h"
+#include "../../Entidades/Personagens/Boss.h"
 #include "../../Entidades/Obstaculos/Caixa.h"
 #include "../../Entidades/Obstaculos/Espinho.h"
 #include "../../Entidades/Obstaculos/Gosma.h"
