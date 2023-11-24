@@ -195,14 +195,14 @@ namespace Gerenciadores
 
     void Gerenciador_Colisoes::colEscJgd()
     {
-        Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
-        Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro()++;
+        Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores->get_primeiro()++;
+        Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
 
-        if (jgd != nullptr)
+        if (jgd2 != nullptr)
         {
-            while (obst != nullptr)
+            while (jgd != nullptr)
             {
-                Entidades::Personagens::Jogador2 *jgd_shield = static_cast<Entidades::Personagens::Jogador2 *>(*jgd);
+                Entidades::Personagens::Jogador2 *jgd_shield = static_cast<Entidades::Personagens::Jogador2 *>(*jgd2);
                 std::deque<Entidades::Escudo> *pDq = jgd_shield->getDqEscudo();
 
                 if (pDq->size() > 0)
@@ -210,13 +210,13 @@ namespace Gerenciadores
                     for (int i = 0; i < pDq->size(); i++)
                     {
                         Entidades::Entidade *escudo = static_cast<Entidades::Entidade *>(&pDq->at(i));
-                        if (colisao_projetil(*obst, escudo))
+                        if (colisao_projetil(*jgd, escudo))
                         {
-                            escudo->colidir(*obst);
+                            escudo->colidir(*jgd);
                         }
                     }
                 }
-                obst++;
+                jgd++;
             }
         }
     }

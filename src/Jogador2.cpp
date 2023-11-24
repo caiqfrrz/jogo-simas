@@ -129,17 +129,17 @@ namespace Entidades
                     {
                     case (2):
                     {
-                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x - 2.5f, getPosicao().y - 7.f));
+                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x - 2.5f, getPosicao().y - 20.f));
                         break;
                     }
                     case (1):
                     {
-                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x + 57.f, getPosicao().y - 2.5f));
+                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x + 70.f, getPosicao().y - 2.5f));
                         break;
                     }
                     case (0):
                     {
-                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x - 7.f, getPosicao().y - 2.5f));
+                        aux_escudo.setPosicao(sf::Vector2f(getPosicao().x - 20.f, getPosicao().y - 2.5f));
                         break;
                     }
                     }
