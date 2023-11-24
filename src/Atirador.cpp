@@ -212,9 +212,9 @@ namespace Entidades
                 recarregar--;
             }
         }
-        Projetil* Atirador::getProjetil()
+        std::vector<Projetil>* Atirador::getVetProj()
         {
-           // return &novo;
+            return &vec_proj;
         }
     }
 }

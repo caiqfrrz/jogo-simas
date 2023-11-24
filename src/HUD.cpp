@@ -30,8 +30,8 @@ namespace Design
 
             barra_verde.setTexture(hp);
             barra_verde.setTextureRect(sf::IntRect(10,22,26,8));
-            barra_verde.setSize(sf::Vector2f(pPersonagem->getVida()*var * 4, 30));
-            barra_vermelha.setSize(sf::Vector2f(200, 30));
+            barra_verde.setSize(sf::Vector2f(pPersonagem->getVida()*var * 5, 30));
+            barra_vermelha.setSize(sf::Vector2f(250, 30));
         }
         else
             barra_verde.setSize(sf::Vector2f(pPersonagem->getVida()*var, 5));
@@ -72,8 +72,8 @@ namespace Design
         }
         else if(pPersonagem == pJogador2)
         {
-            barra_verde.setPosition(sf::Vector2f(pGG->getCentro().x + 300,pGG->getCentro().y - 500));
-            barra_vermelha.setPosition(sf::Vector2f(pGG->getCentro().x + 300,pGG->getCentro().y - 500));
+            barra_verde.setPosition(sf::Vector2f(pGG->getCentro().x + 250,pGG->getCentro().y - 500));
+            barra_vermelha.setPosition(sf::Vector2f(pGG->getCentro().x + 250,pGG->getCentro().y - 500));
         }
         else
         {

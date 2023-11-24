@@ -29,7 +29,7 @@ namespace Entidades
             void mover();
             void atirar();
             void colidir();
-            Projetil* getProjetil();
+            std::vector<Projetil>* getVetProj();
         };
     }
 }

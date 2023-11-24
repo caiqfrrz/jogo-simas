@@ -97,20 +97,21 @@ namespace Entidades
     }*/
     void Escudo::colidir(Entidade* pE)
     {
-        sf::Vector2f z = this->getPosicao();
+        sf::Vector2f z = pE->getPosicao();
+        pE->setVelocidade(sf::Vector2f(0,0));
         if(direcao == 1)
         {
-            z.x += 6.f;
+            z.x += 7.f;
             pE->setPosicao(z);
         }
         else if(direcao == 0)
         {
-            z.x -= 6.f;
+            z.x -= 7.f;
             pE->setPosicao(z);
         }
         else
         {
-            z.y -= 6.f;
+            z.y -= 7.f;
             pE->setPosicao(z);
         }
     }

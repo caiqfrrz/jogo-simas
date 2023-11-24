@@ -1,8 +1,8 @@
 #pragma once
 
 #define CONTAGEM_PARAR 12
-#define COMPRIMENTO_ESCUDO 55
-#define LARGURA_ESCUDO 7
+#define COMPRIMENTO_ESCUDO 85
+#define LARGURA_ESCUDO 15
 #define VEL_ESCUDO 5.f
 
 #include "Entidade.h"

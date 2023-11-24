@@ -42,7 +42,7 @@ namespace Entidades
     {
         if(getAtivo() == true)
         {
-            //corpo.setFillColor(sf::Color::Transparent);
+            corpo.setFillColor(sf::Color::Transparent);
             Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
 
             if(aux->getMorto() == false)

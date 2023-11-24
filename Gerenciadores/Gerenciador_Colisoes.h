@@ -39,6 +39,7 @@ namespace Gerenciadores
         void colInimObs();
         void colbalaObs();
         void colEscInim();
+        void colbalaInimObs();
 
     };
 }
