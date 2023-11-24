@@ -180,6 +180,18 @@ namespace Estados
                         }
                         break;
                     }
+
+                    case 'B':
+                    {
+                        if(1)
+                        {
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Boss(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                            if(aux)
+                                inimigos.incluir(aux);
+                            
+                        }
+                        break;
+                    }
                     
                     default:
                         break;
