@@ -28,22 +28,25 @@ namespace Estados
 
             bg->setTexture(*imagem);
 
-            opcoes = {"dafne,0", "dafne,0", "dafne,0", "dafne,0", "dafne,0", "dafne,0", "dafne,0"};
             textos.resize(7);
-            coords = {{150, 40}, {1415, 100}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {150, 730}};
-            tamanhos = {170, 20, 20, 20, 20, 20, 35};
+            coords = {{100, 220}, {100, 300}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {150, 730}};
+            tamanhos = {20, 20, 20, 20, 20, 20, 20};
 
             for (int i = 0; i < textos.size(); i++)
             {
                 textos[i].setFont(*fonte);
-                textos[i].setString(opcoes[i]);
                 textos[i].setPosition(coords[i]);
                 textos[i].setCharacterSize(tamanhos[i]);
                 textos[i].setFillColor(sf::Color::White);
                 textos[i].setOutlineColor(sf::Color::Black);
             }
-            textos[0].setOutlineColor(sf::Color(72, 221, 137));
-            textos[0].setOutlineThickness(5.f);
+        
+            titulo.setString("RANKINGS");
+            titulo.setOutlineColor(sf::Color(72, 221, 137));
+            titulo.setOutlineThickness(5.f);
+            titulo.setPosition({150, 40});
+            titulo.setCharacterSize(170);
+            titulo.setFillColor(sf::Color::White);
 
             pos = 5;
         }
@@ -62,22 +65,12 @@ namespace Estados
             pGG->resetarCamera();
             pGG->desenhar(bg);
 
-            if (power == 0)
+            for (auto t : textos)
             {
-                for (int i = 0; i < textos.size(); i++)
-                {
-                    sf::Text texto = textos[i];
-                    pGG->get_Janela()->draw(texto);
-                }
-                
+                pGG->get_Janela()->draw(t);
             }
-            else
-            {
-                for(auto t : textos)
-                {
-                    pGG->get_Janela()->draw(t);
-                }
-            }
+
+            pGG->get_Janela()->draw(titulo);
         }
         void Ranking::loop_evento()
         {
@@ -133,7 +126,7 @@ namespace Estados
                                     linha1 = linha2;
                                     linha11 = linha22;
                                 }
-
+                                
                                 i++;
                             }
 

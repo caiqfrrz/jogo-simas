@@ -13,6 +13,7 @@ namespace Estados
         protected:
             sf::Font *fonte2;
             int power;
+            sf::Text titulo;
             // Observers::MenuFasesObserver *pObs;
 
         public:
