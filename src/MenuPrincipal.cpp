@@ -46,6 +46,10 @@ namespace Estados
                 {
                     pGE->setEstadoAtual(1);
                 }
+                if(pos == 2)
+                {
+                    pGE->setEstadoAtual(6);
+                }
                 if(pos == 3)
                 {
                     pGG->fecharJanela();

@@ -12,6 +12,7 @@ namespace Estados
         {
         protected:
             sf::Font *fonte2;
+            int power;
             // Observers::MenuFasesObserver *pObs;
 
         public:

@@ -14,7 +14,8 @@ namespace Estados
 {
     namespace Menus
     {
-        Ranking::Ranking(int i, int nb) : Menu(i, 7)
+        Ranking::Ranking(int i, int nb) : Menu(i, 7),
+                                          power(1)
         {
             set_valores();
         }
@@ -27,8 +28,8 @@ namespace Estados
 
             bg->setTexture(*imagem);
 
-            opcoes = {"Ranking", "Fase 1", "1", "2", "3", "4", "Aperte enter para sair..."};
-            textos.resize(25);
+            opcoes = {"dafne,0", "dafne,0", "dafne,0", "dafne,0", "dafne,0", "dafne,0", "dafne,0"};
+            textos.resize(7);
             coords = {{150, 40}, {1415, 100}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {150, 730}};
             tamanhos = {170, 20, 20, 20, 20, 20, 35};
 
@@ -56,13 +57,26 @@ namespace Estados
         }
         void Ranking::desenhar()
         {
+            sortRank(ARQUIVO_COLOCACAO_1);
             pGG->limpar();
             pGG->resetarCamera();
             pGG->desenhar(bg);
-            sortRank(ARQUIVO_COLOCACAO_1);
-            for (auto t : textos)
+
+            if (power == 0)
             {
-                pGG->get_Janela()->draw(t);
+                for (int i = 0; i < textos.size(); i++)
+                {
+                    sf::Text texto = textos[i];
+                    pGG->get_Janela()->draw(texto);
+                }
+                
+            }
+            else
+            {
+                for(auto t : textos)
+                {
+                    pGG->get_Janela()->draw(t);
+                }
             }
         }
         void Ranking::loop_evento()
@@ -86,51 +100,75 @@ namespace Estados
             std::string linha22;
             int i = 0;
             bool trocou = false;
-            if (!txt)
-            {
-                std::cout << "error ao abrir";
-            }
-            else
-            {
-                if (getline(txt, linha1, ','))
-                {
-                    getline(txt, linha11);
-                    while (getline(txt, linha2, ','))
-                    {
-                        getline(txt, linha22);
-                        if (std::stoi(linha11) < std::stoi(linha22))
-                        {
-                            trocou = true;
-                            textos[i + 2].setString(linha2 + linha22);
-                            textos[i + 3].setString(linha1 + linha11);
-                        }
-                        else
-                        {
-                            linha1 = linha2;
-                            linha11 = linha22;
-                        }
 
-                        i++;
-                    }
-                    std::cout << "hehe ";
-                }
-                txt.close();
-                std::ofstream outputFile(ARQUIVO_COLOCACAO_1, std::ios::trunc);
-
-                if (!outputFile)
+            if (power == 1)
+            {
+                if (!txt)
                 {
-                    std::cout << "error ao abrir";
+                    std::cout << "Error ao abrir o arquivo." << std::endl;
                 }
                 else
                 {
-                    for (int j = 0; j < i; j++)
+                    try
                     {
-                        const sf::String sfmlString = textos[j + 2].getString();
-                        std::basic_string<unsigned char> utf8String = sfmlString.toUtf8();
-                        std::string stdString(utf8String.begin(), utf8String.end());
-                        outputFile << stdString << std::endl;
+                        if (getline(txt, linha1, ','))
+                        {
+                            getline(txt, linha11);
+
+                            while (getline(txt, linha2, ','))
+                            {
+                                getline(txt, linha22);
+
+                                int value1 = std::stoi(linha11);
+                                int value2 = std::stoi(linha22);
+
+                                if (value1 < value2)
+                                {
+                                    trocou = true;
+                                    textos[i].setString(linha2 + "," + linha22);
+                                    textos[i + 1].setString(linha1 + "," + linha11);
+                                }
+                                else
+                                {
+                                    linha1 = linha2;
+                                    linha11 = linha22;
+                                }
+
+                                i++;
+                            }
+
+                            std::cout << "hehe ";
+                        }
                     }
-                    outputFile.close();
+                    catch (const std::invalid_argument &e)
+                    {
+                        std::cerr << "Invalid argument during numeric conversion: " << e.what() << std::endl;
+                        // Handle the error or add more detailed error reporting.
+                    }
+
+                    txt.close();
+
+                    std::ofstream outputFile(ARQUIVO_COLOCACAO_1, std::ios::trunc);
+
+                    if (!outputFile)
+                    {
+                        std::cout << "Error ao abrir o arquivo para escrita." << std::endl;
+                    }
+                    else
+                    {
+                        for (int j = 0; j <= i; j++)
+                        {
+                            const sf::String sfmlString = textos[j].getString();
+                            std::basic_string<unsigned char> utf8String = sfmlString.toUtf8();
+                            std::string stdString(utf8String.begin(), utf8String.end());
+                            outputFile << stdString << std::endl;
+                        }
+                        outputFile.close();
+                    }
+                }
+                if (trocou == false)
+                {
+                    power = 0;
                 }
             }
         }
@@ -139,7 +177,7 @@ namespace Estados
             std::ifstream txt(caminho);
             std::string linha;
             std::string espaco = "  ";
-            int i = 2;
+            int i = 0;
             if (!txt)
             {
                 std::cout << "error ao abrir";
@@ -148,7 +186,7 @@ namespace Estados
             {
                 while (getline(txt, linha) && i < 6)
                 {
-                    textos[i].setString(opcoes[i] + espaco + linha);
+                    textos[i].setString(linha);
                     textos[i].setFont(*fonte);
                     i++;
                 }
