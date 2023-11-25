@@ -28,7 +28,7 @@ namespace Estados
             Listas::ListaEntidades inimigos;
             Gerenciadores::Gerenciador_Colisoes gC;
             bool dois_jogadores;
-
+            int points;
         public:
             Fase(int i = - 1, bool dois_jgd = false);
             ~Fase();

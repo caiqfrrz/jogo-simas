@@ -22,6 +22,10 @@ namespace Estados
             gerenciar_colisoes();
             jogadores.desenhar();
             checarVivos();
+            if(checarVivos())
+            {
+                pGE->setEstadoAtual(6);
+            }
         }
     }
 }

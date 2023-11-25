@@ -12,6 +12,7 @@ namespace Estados
         class FasePrimeira: public Fase
         {
         private:
+            int points;
         public:
             FasePrimeira(int id = -1,bool dois_jgd = false);
             ~FasePrimeira();

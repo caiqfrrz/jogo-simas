@@ -6,7 +6,7 @@ namespace Estados
     namespace Fases
     {
         FasePrimeira::FasePrimeira(int id, bool dois_jgd):
-        Fase(id, dois_jgd)
+        Fase(id, dois_jgd),
         {
             criarCenario(ARQUIVO_CENARIO_1);
         }

@@ -5,12 +5,11 @@ namespace Estados
 {
     namespace Menus
     {
-        MenuFases::MenuFases():
-        num_jogadores(1),
-        pos_horizontal(0),
-        jgd1("Jogadores: 1"),
-        jgd2("Jogadores: 2"),
-        Menu(1, 2)
+        MenuFases::MenuFases() : num_jogadores(1),
+                                 pos_horizontal(0),
+                                 jgd1("Jogadores: 1"),
+                                 jgd2("Jogadores: 2"),
+                                 Menu(1, 2)
         {
             deselecionado = true;
             pObs = new Observers::MenuFasesObserver();
@@ -19,7 +18,6 @@ namespace Estados
         }
         MenuFases::~MenuFases()
         {
-
         }
         void MenuFases::set_valores()
         {
@@ -36,10 +34,10 @@ namespace Estados
 
             opcoes = {"Fase 1", "Fase 2"};
             textos.resize(2);
-            coords = {{430,350}, {427,500}};
-            tamanhos = {50,50};
+            coords = {{430, 350}, {427, 500}};
+            tamanhos = {50, 50};
 
-            for(int i = 0; i<textos.size(); i++)
+            for (int i = 0; i < textos.size(); i++)
             {
                 textos[i].setFont(*fonte);
                 textos[i].setString(opcoes[i]);
@@ -54,11 +52,11 @@ namespace Estados
             deselecionado = false;
             pGG->get_Janela()->clear();
             pGG->desenhar(bg);
-            for(auto t : textos)
+            for (auto t : textos)
             {
                 pGG->get_Janela()->draw(t);
             }
-            if(num_jogadores == 1)
+            if (num_jogadores == 1)
             {
                 jgd1.executar();
             }
@@ -69,7 +67,7 @@ namespace Estados
         }
         void MenuFases::sel_player()
         {
-            if(pos_horizontal == 0)
+            if (pos_horizontal == 0)
             {
                 pos_horizontal = 1;
                 pressionou = true;
@@ -86,27 +84,39 @@ namespace Estados
                 deselecionado = false;
             }
         }
-        
+
         void MenuFases::selecionar()
         {
-            if(!deselecionado)
+            if (!deselecionado)
             {
                 deselecionado = true;
-                if(pos == 0)
+                if (pos == 0)
                 {
-                    if(num_jogadores == 1)
+                    if (num_jogadores == 1)
+                    {
+                        Estados::FasePrimeira::FasePrimeira* aux = new Estados::FasePrimeira::FasePrimeira(2, false);
                         pGE->setEstadoAtual(2);
-                    
+                    }
                     else
+                    {
+                        Estados::FasePrimeira::FasePrimeira* aux = new Estados::FasePrimeira::FasePrimeira(3, true);
                         pGE->setEstadoAtual(3);
+                    }
+                        
+                    
                 }
                 else
                 {
-                    if(num_jogadores == 1)
+                    if (num_jogadores == 1)
+                    {
+                        Estados::FasePrimeira::FasePrimeira* aux = new Estados::FasePrimeira::FasePrimeira(4, false);
                         pGE->setEstadoAtual(4);
-                    
+                    }
                     else
+                    {
+                        Estados::FasePrimeira::FasePrimeira* aux = new Estados::FasePrimeira::FasePrimeira(5, true);
                         pGE->setEstadoAtual(5);
+                    }
                 }
             }
         }

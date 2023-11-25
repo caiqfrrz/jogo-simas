@@ -14,6 +14,7 @@ namespace Estados
         dois_jogadores(dois_jgd),
         jogadores(),
         obstaculos(),
+        points(0),
         inimigos(),
         Estado(i)
         {
@@ -54,6 +55,7 @@ namespace Estados
                 if((inimigos)->getVida() <= 0)
                 {
                     inimigos->morreu();
+                    points += 23;
                 }
                 else
                     acabou = false;

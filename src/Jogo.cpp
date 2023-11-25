@@ -14,6 +14,8 @@ pEstados(Gerenciadores::Gerenciador_Estados::get_instancia())
 
     Estados::Fases::FaseSegunda* fase2_1p = new Estados::Fases::FaseSegunda(4, false);
     Estados::Fases::FaseSegunda* fase2_2p = new Estados::Fases::FaseSegunda(5, true);
+
+    Estados::Menus::Ranking* rankings = new Estados::Fases::FaseSegunda(6, true);
     executar();
 }
 
