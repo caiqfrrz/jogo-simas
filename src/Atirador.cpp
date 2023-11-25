@@ -123,7 +123,7 @@ namespace Entidades
 
                     if (dist1 < 350 || dist2 < 350)
                     {
-                        corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y + velocidade.y);
+                        corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
                         atirar();
                     }
                     else
@@ -161,7 +161,7 @@ namespace Entidades
 
                     if (dist1 < 450)
                     {
-                        corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y + velocidade.y);
+                        corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
                         atirar();
                     }
                     else
@@ -189,6 +189,7 @@ namespace Entidades
             }
 
             nochao = false;
+            corpo.setPosition(getPosicao().x, getPosicao().y + velocidade.y);
         }
         void Atirador::atirar()
         {

@@ -94,12 +94,10 @@ namespace Estados
                 {
                     if (num_jogadores == 1)
                     {
-                        Estados::Fases::FasePrimeira* aux = new Estados::Fases::FasePrimeira(2, false);
                         pGE->setEstadoAtual(2);
                     }
                     else
                     {
-                        Estados::Fases::FasePrimeira* aux = new Estados::Fases::FasePrimeira(3, true);
                         pGE->setEstadoAtual(3);
                     }
                         
@@ -109,12 +107,10 @@ namespace Estados
                 {
                     if (num_jogadores == 1)
                     {
-                        Estados::Fases::FaseSegunda* aux = new Estados::Fases::FaseSegunda(4, false);
                         pGE->setEstadoAtual(4);
                     }
                     else
                     {
-                        Estados::Fases::FaseSegunda* aux = new Estados::Fases::FaseSegunda(5, true);
                         pGE->setEstadoAtual(5);
                     }
                 }

@@ -69,6 +69,26 @@ namespace Entidades
 
             jogador_type->mover();
         }
+         void Jogador::salvar_tempo(string caminho)
+        {
+            fstream arquivoOutput(caminho, ios::app);
+            std::string linha =  "";
+            std::string bolinhas = ".....";
+            if(!arquivoOutput)
+            {
+                std::cout  << " erro!";
+            }
+            else
+            {  
+
+                linha += this->get_nome() + bolinhas;
+                arquivoOutput << linha;
+                arquivoOutput << this->get_tempo();
+                arquivoOutput << "s" << endl;
+               
+
+            }
+        }
         void Jogador::setPosicao(sf::Vector2f pos)
         {
             corpo.setPosition(pos);

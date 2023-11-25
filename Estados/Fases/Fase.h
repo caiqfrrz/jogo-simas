@@ -2,7 +2,7 @@
 
 #include "../../Entidades/Entidade.h"
 #include "../../Entidades/Personagens/Jogador.h"
-
+#include "../Estados/Menus/Ranking.h"
 #include "../../Entidades/Personagens/Fantasma.h"
 #include "../../Entidades/Personagens/Boss.h"
 #include "../../Entidades/Obstaculos/Caixa.h"
@@ -26,11 +26,14 @@ namespace Estados
             Listas::ListaEntidades obstaculos;
             Listas::ListaEntidades jogadores;
             Listas::ListaEntidades inimigos;
+            Estados::Menus::Ranking* pRanking;
+            std::string playerName;
             Gerenciadores::Gerenciador_Colisoes gC;
+            sf::Font* fonte;
             bool dois_jogadores;
             int points;
         public:
-            Fase(int i = - 1, bool dois_jgd = false);
+            Fase(int i = - 1, bool dois_jgd = false,Estados::Menus::Ranking* pR = nullptr);
             ~Fase();
 
             virtual void executar() = 0;
@@ -40,6 +43,9 @@ namespace Estados
             void criarJogadores();
             void criarInimMedios();
             void criarCenario(std::string caminho);
+            void salvar_pontuacao(std::string caminho);
+            void getName();
+            void usarfuncaoCriarTextos(Estados::Menus::Ranking* objRanking);
         };
     }    
 }
