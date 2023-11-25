@@ -40,8 +40,6 @@ namespace Entidades
         {
             if (getAtivo() == true)
             {
-                velocidade = sf::Vector2f(1.f, 0);
-
                 Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
                 Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores->get_primeiro()++;
 
@@ -55,8 +53,11 @@ namespace Entidades
                         pulando = false;
                     }
                 }
+
                 if (!nochao)
-                    velocidade += sf::Vector2f(0, 7.f);
+                    velocidade += sf::Vector2f(0, 0.1f);
+                else
+                    velocidade.y = 0;
 
                 if (jgd != nullptr && jgd2 != nullptr)
                 {
@@ -104,7 +105,7 @@ namespace Entidades
                         direcao /= comprimento;
                     }
 
-                    velocidade = direcao * 1.f;
+                    velocidade.x = direcao.x * 1.f;
 
                     if (!firing)
                     {
@@ -118,6 +119,7 @@ namespace Entidades
                     }
                     else if (dist1 < 800 || dist2 < 800)
                     {
+                        velocidade = direcao;
                         ultrathrust();
                     }
                     else
@@ -137,7 +139,7 @@ namespace Entidades
                     {
                         direcao /= comprimento;
                     }
-                    velocidade = direcao * 1.f;
+                    velocidade.x = direcao.x * 1.f;
 
                     if (!firing)
                     {
@@ -151,6 +153,7 @@ namespace Entidades
                     }
                     else if (dist1 < 800)
                     {
+                        velocidade = direcao;
                         ultrathrust();
                     }
                     else
@@ -163,6 +166,8 @@ namespace Entidades
                 if (recarregar == 0)
                     setAtivo(true);
             }
+            
+            corpo.setPosition(getPosicao().x, getPosicao().y + velocidade.y);
 
             for (int i = 0; i < vec_proj.size(); i++)
             {
@@ -176,6 +181,8 @@ namespace Entidades
                     vec_proj.erase(vec_proj.begin() + i);
                 }
             }
+
+            nochao = false;
         }
         void Boss::atirar()
         {

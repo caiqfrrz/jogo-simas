@@ -11,13 +11,12 @@ namespace Entidades
         int dano;
         std::string direcao;
     public:
-        Projetil(sf::Vector2f tam);
+        Projetil(sf::Vector2f tam = {0,0}, std::string dir = "");
         ~Projetil();
         void executar();
         void atirar();
         void colidir(Entidade* pE, bool b);
         void reset();
-        void setDirecao(std::string d);
         int getDano();
     };
 }

@@ -40,8 +40,6 @@ namespace Entidades
         {
             if (getAtivo() == true)
             {
-                velocidade = sf::Vector2f(1.f, 0);
-
                 Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
                 Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores->get_primeiro()++;
 
@@ -56,7 +54,10 @@ namespace Entidades
                     }
                 }
 
-                velocidade += sf::Vector2f(velocidade.x, 7.f);
+                if(!nochao)
+                    velocidade += sf::Vector2f(0, 0.1f);
+                else
+                    velocidade.y = 0;
 
                 if (jgd != nullptr && jgd2 != nullptr)
                 {
@@ -186,6 +187,8 @@ namespace Entidades
                     vec_proj.erase(vec_proj.begin() + i);
                 }
             }
+
+            nochao = false;
         }
         void Atirador::atirar()
         {
@@ -198,9 +201,8 @@ namespace Entidades
 
             if (recarregar == 0)
             {
-                Projetil novoProj(sf::Vector2f(10, 5));
+                Projetil novoProj(sf::Vector2f(10, 5), dir);
                 novoProj.setPosicao(sf::Vector2f(this->getPosicao().x + 20.f, this->getPosicao().y + 15.f));
-                novoProj.setDirecao(dir);
                 vec_proj.push_back(novoProj);
                 firing = false;
                 recarregar = TEMPO_RECARGA;
