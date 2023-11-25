@@ -2,6 +2,8 @@
 
 #include "Menu.h"
 #include "../Observers/MenuFasesObserver.h"
+#include "../Estados/Fases/FasePrimeira.h"
+#include "../Estados/Fases/FaseSegunda.h"
 
 namespace Estados
 {
