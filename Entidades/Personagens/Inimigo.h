@@ -19,6 +19,7 @@ namespace Entidades
             virtual void executar();
             virtual bool ehFantasma();
             virtual std::vector<Projetil>* getVetProj();
+            void salvar(std::ostringstream* entrada);
         };
     }
 }

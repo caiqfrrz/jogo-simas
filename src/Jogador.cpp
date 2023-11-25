@@ -8,7 +8,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(JogadorStrategy* jgd, int id):
+        Jogador::Jogador(JogadorStrategy* jgd, int id, sf::Vector2f pos, sf::Vector2f vel):
         Personagem(sf::Vector2f(0, 0),true, false),
         jogador_type(jgd),
         i(id),
@@ -21,6 +21,8 @@ namespace Entidades
             else if(i == 2)
                 grafico.setJg2(static_cast<Personagem*>(this));
 
+            setVelocidade(vel);
+            setPosicao(pos);
             corpo.setFillColor(sf::Color::Green);
             grafico.setPers(static_cast<Personagem*>(this));
         }
@@ -101,7 +103,7 @@ namespace Entidades
         }
         void Jogador::salvar(std::ostringstream* entrada)
         {
-            
+            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
         }
 
     }

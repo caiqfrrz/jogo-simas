@@ -26,12 +26,70 @@ namespace Estados
         }
         Fase::~Fase()
         {
-
+            salvar();
         }
 
         void Fase::gerenciar_colisoes()
         {
             gC.colisao();
+        }
+        void Fase::salvar()
+        {
+            // Salvando Jogadores:
+            std::ofstream arquivo(ARQUIVO_JOGADOR);  
+            if (!arquivo)
+            {
+                std::cout << "Problema em salvar o arquivo" << std::endl;
+                exit(1);
+            }
+
+            Listas::Lista<Entidades::Entidade>::Iterador j = jogadores.get_primeiro();
+            buffer.str("");
+            buffer << "[";
+            if (j != nullptr)
+            {
+                (*j)->salvar(&buffer);
+                j++;
+            }
+            while (j != nullptr)
+            {
+                buffer << ",";
+                (*j)->salvar(&buffer);
+                j++;
+            }
+            buffer << "]";
+
+            arquivo << buffer.str();
+
+            arquivo.close();
+            // Salvando inimigos: 
+
+            std::ofstream arquivo_inimigo(ARQUIVO_INIMIGO);  
+            if (!arquivo_inimigo)
+            {
+                std::cout << "Problema em salvar o arquivo" << std::endl;
+                exit(1);
+            }
+
+            Listas::Lista<Entidades::Entidade>::Iterador i = inimigos.get_primeiro();
+            buffer.str("");
+            buffer << "[";
+            if (i != nullptr)
+            {
+                (*i)->salvar(&buffer);
+                i++;
+            }
+            while (i != nullptr)
+            {
+                buffer << ",";
+                (*i)->salvar(&buffer);
+                i++;
+            }
+            buffer << "]";
+
+            arquivo_inimigo << buffer.str();
+
+            arquivo_inimigo.close();
         }
         bool Fase::checarVivos()
         {
@@ -93,9 +151,10 @@ namespace Estados
         }
         void Fase::criarJogadores()
         {
+            Entidades::Personagens::JogadorProjetil* jgd1 = new Entidades::Personagens::JogadorProjetil();
+
             if(dois_jogadores)
             {
-                Entidades::Personagens::JogadorProjetil* jgd1 = new Entidades::Personagens::JogadorProjetil();
                 Entidades::Personagens::JogadorEscudo* jgd2 = new Entidades::Personagens::JogadorEscudo();
                 jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(jgd2, 2)));
                 jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(jgd1, 1)));
@@ -104,7 +163,7 @@ namespace Estados
             }
             else
             {
-                Entidades::Personagens::JogadorProjetil* jgd1 = new Entidades::Personagens::JogadorProjetil();
+
                 jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(jgd1, 1)));
                 jgd1->setJog(static_cast<Entidades::Personagens::Jogador*>(*(jogadores.get_primeiro())));
             }

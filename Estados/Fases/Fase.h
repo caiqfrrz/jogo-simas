@@ -1,8 +1,12 @@
 #pragma once
 
+#include "json.hpp"
+
+#define ARQUIVO_JOGADOR "Saves/jogadores.json"
+#define ARQUIVO_INIMIGO "Saves/inimigos.json"
+
 #include "../../Entidades/Entidade.h"
 #include "../../Entidades/Personagens/Jogador.h"
-
 #include "../../Entidades/Personagens/Fantasma.h"
 #include "../../Entidades/Personagens/Boss.h"
 #include "../../Entidades/Obstaculos/Caixa.h"
@@ -27,6 +31,7 @@ namespace Estados
             Listas::ListaEntidades jogadores;
             Listas::ListaEntidades inimigos;
             Gerenciadores::Gerenciador_Colisoes gC;
+            std::ostringstream buffer;
             bool dois_jogadores;
             int points;
         public:
@@ -35,6 +40,7 @@ namespace Estados
 
             virtual void executar() = 0;
             void gerenciar_colisoes();
+            void salvar();
             bool checarVivos();
             void centraliza_camera();
             void criarJogadores();

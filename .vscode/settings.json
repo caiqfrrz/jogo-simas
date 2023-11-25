@@ -80,7 +80,13 @@
         "chrono": "cpp",
         "xstring": "cpp",
         "format": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "any": "cpp",
+        "codecvt": "cpp",
+        "forward_list": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "valarray": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
