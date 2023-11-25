@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Ente.h"
+#include <sstream>
 
 // Largura e Altura padrão para as entidades
 #define TAM 50.f
@@ -18,21 +19,21 @@ namespace Entidades
     public:
         Entidade(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
         ~Entidade();
-        // Se for virtual puro n dá para fazer o cast (n sei o pq);
+
         virtual void executar() = 0;
-        // Colocar a entidade com a qual colidiu para fazer mais ações:
         virtual void colidir(Entidade* pE, bool b);
         virtual void colidir();
-        const sf::Vector2f getPosicao() const { return corpo.getPosition(); }
-        const sf::Vector2f getTamanho() const { return corpo.getSize(); }
-        void setPosicao(sf::Vector2f p);
-        void setNochao(bool n) { nochao = n; }
-        bool getNochao() {return nochao;}
-        const sf::Vector2f getVelocidade () const { return velocidade; }
-        void setVelocidade(sf::Vector2f v);
         virtual bool getAtivo();
         virtual void setAtivo(bool b);
         virtual void morreu();
         virtual bool getMorto();
+        virtual void salvar(std::ostringstream* entrada);
+        const sf::Vector2f getPosicao() const { return corpo.getPosition(); }
+        const sf::Vector2f getTamanho() const { return corpo.getSize(); }
+        const sf::Vector2f getVelocidade () const { return velocidade; }
+        void setPosicao(sf::Vector2f p);
+        void setNochao(bool n) { nochao = n; }
+        bool getNochao() {return nochao;}
+        void setVelocidade(sf::Vector2f v);
     };
 }

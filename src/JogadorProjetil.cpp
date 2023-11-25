@@ -21,7 +21,7 @@ namespace Entidades
             {
                 if(pJog->getLento())
                 {
-                    if (pJog->getNochao())
+                    if (!pJog->getNochao())
                     {
                         pJog->setVelocidade(pJog->getVelocidade() + sf::Vector2f(2.f, 0));
                     }

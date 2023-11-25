@@ -73,7 +73,15 @@ namespace Entidades
         {
             corpo.setPosition(pos);
         }
-
+        void Jogador::setPulando(bool p, float força)
+        {
+            pulando = p;
+            pulo = força;
+        }
+        void Jogador::setPulando(bool p)
+        {
+            pulando = p;
+        }
         void Jogador::setLento(bool b)
         {
             lento = b;
@@ -90,6 +98,10 @@ namespace Entidades
         std::deque<Escudo>* Jogador::getDqEscudo()
         {
             return jogador_type->getFilaEsc();
+        }
+        void Jogador::salvar(std::ostringstream* entrada)
+        {
+            
         }
 
     }

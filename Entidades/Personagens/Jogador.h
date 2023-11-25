@@ -28,12 +28,9 @@ namespace Entidades
             void setPosicao(sf::Vector2f pos);
             void setLento(bool b);
             bool getLento();
-            void setPulando(bool p, float força)
-            {
-                pulando = p;
-                pulo = força;
-            }
-            void setPulando(bool p) { pulando = p; }
+            void setPulando(bool p, float força);
+            void setPulando(bool p);
+            void salvar(std::ostringstream* entrada);
             std::vector<Projetil> *getVetProj();
             std::deque<Escudo> *getDqEscudo();
         };

@@ -20,6 +20,11 @@ namespace Entidades
     }
     void Entidade::colidir(Entidade* pE, bool b)
     {
+
+    }
+    void salvar(std::ostringstream* entrada)
+    {
+
     }
     void Entidade::colidir()
     {
