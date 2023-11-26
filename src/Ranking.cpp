@@ -29,10 +29,10 @@ namespace Estados
             bg->setTexture(*imagem);
 
             textos.resize(7);
-            coords = {{100, 220}, {100, 300}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {150, 730}};
+            coords = {{100, 220}, {100, 300}, {100, 380}, {100, 462}, {100, 549}, {100, 635}, {100, 715}};
             tamanhos = {20, 20, 20, 20, 20, 20, 20};
 
-            for (int i = 0; i < textos.size(); i++)
+            for (int i = 0; i < 7; i++)
             {
                 textos[i].setFont(*fonte);
                 textos[i].setPosition(coords[i]);
@@ -41,6 +41,7 @@ namespace Estados
                 textos[i].setOutlineColor(sf::Color::Black);
             }
         
+            titulo.setFont(*fonte);
             titulo.setString("RANKINGS");
             titulo.setOutlineColor(sf::Color(72, 221, 137));
             titulo.setOutlineThickness(5.f);
@@ -65,9 +66,9 @@ namespace Estados
             pGG->resetarCamera();
             pGG->desenhar(bg);
 
-            for (auto t : textos)
+            for (int i = 0; i < 7; i++)
             {
-                pGG->get_Janela()->draw(t);
+                pGG->get_Janela()->draw(textos[i]);
             }
 
             pGG->get_Janela()->draw(titulo);
@@ -177,7 +178,7 @@ namespace Estados
             }
             else
             {
-                while (getline(txt, linha) && i < 6)
+                while (getline(txt, linha) && i < textos.size())
                 {
                     textos[i].setString(linha);
                     textos[i].setFont(*fonte);
@@ -186,5 +187,27 @@ namespace Estados
                 txt.close();
             }
         }
+        int Ranking::reSize(std::string caminho)
+        {
+            std::ifstream txt(caminho);
+            std::string linha;
+            std::string espaco = "  ";
+            int i = 0;
+            if (!txt)
+            {
+                std::cout << "error ao abrir";
+            }
+            else
+            {
+                while (getline(txt, linha))
+                {
+                    i++;
+                }
+                txt.close();
+            }
+            textos.resize(i);
+            return i;
+        }
+        
     }
 }

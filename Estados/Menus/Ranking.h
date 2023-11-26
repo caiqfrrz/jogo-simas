@@ -27,6 +27,7 @@ namespace Estados
             void executar();
             void CriarTextos(std::string caminho);
             void sortRank(std::string caminho);
+            int reSize(std::string caminho);
         };
     }
 }

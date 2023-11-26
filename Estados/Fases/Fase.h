@@ -31,21 +31,24 @@ namespace Estados
             Gerenciadores::Gerenciador_Colisoes gC;
             sf::Font* fonte;
             bool dois_jogadores;
-            int points;
+            static int points;
         public:
             Fase(int i = - 1, bool dois_jgd = false,Estados::Menus::Ranking* pR = nullptr);
             ~Fase();
 
             virtual void executar() = 0;
             void gerenciar_colisoes();
-            bool checarVivos();
+            int checarVivos();
             void centraliza_camera();
             void criarJogadores();
             void criarInimMedios();
             void criarCenario(std::string caminho);
             void salvar_pontuacao(std::string caminho);
             void getName();
-            void usarfuncaoCriarTextos(Estados::Menus::Ranking* objRanking);
+            void usarfuncaoCriarTextos(Estados::Menus::Ranking* objRanking, std::string caminho);
+            void usarfuncaoreSize(Estados::Menus::Ranking* objRanking, std::string caminho);
+            void setpoints(const int p);
+            int getpoints();
         };
     }    
 }

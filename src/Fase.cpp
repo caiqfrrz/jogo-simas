@@ -7,18 +7,20 @@
 
 #define ARQUIVO_COLOCACAO_1 "Design/Imagens/ranking.txt"
 
+int Estados::Fases::Fase::points(0);
+
 namespace Estados
 {
     namespace Fases
     {
-        Fase::Fase(int i, bool dois_jgd, Estados::Menus::Ranking* pR) : dois_jogadores(dois_jgd),
-                                           jogadores(),
-                                           obstaculos(),
-                                           pRanking(pR),
-                                           points(0),
-                                           inimigos(),
-                                           Estado(i)
+        Fase::Fase(int i, bool dois_jgd, Estados::Menus::Ranking *pR) : dois_jogadores(dois_jgd),
+                                                                        jogadores(),
+                                                                        obstaculos(),
+                                                                        pRanking(pR),
+                                                                        inimigos(),
+                                                                        Estado(i)
         {
+            setpoints(0);
             fonte = new sf::Font();
             fonte->loadFromFile("Design/Fontes/Pixel-Digivolve.otf");
             gC.set_inimigos(&inimigos);
@@ -36,36 +38,80 @@ namespace Estados
         {
             gC.colisao();
         }
-        bool Fase::checarVivos()
+        int Fase::checarVivos()
         {
             Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores.get_primeiro();
-            bool acabou = true;
+            int acabou = 0;
 
             while (jgd != nullptr)
             {
-                Entidades::Personagens::Personagem *jogadores = static_cast<Entidades::Personagens::Personagem *>(*jgd);
-                if ((jogadores)->getVida() <= 0)
+                Entidades::Personagens::Personagem *jogador = static_cast<Entidades::Personagens::Personagem *>(*jgd);
                 {
-                    jogadores->morreu();
+                    if ((jogador)->getVida() <= 0)
+                    {
+                        jogador->morreu();
+                    }
                 }
                 jgd++;
             }
+            jgd = jogadores.get_primeiro();
+
+            while (jgd != nullptr)
+            {
+                Entidades::Personagens::Personagem *jogador = static_cast<Entidades::Personagens::Personagem *>(*jgd);
+                jgd++;
+                if (jgd != nullptr)
+                {
+                    Entidades::Personagens::Personagem *jogador2 = static_cast<Entidades::Personagens::Personagem *>(*jgd);
+                    if ((jogador)->getVida() <= 0 && (jogador2)->getVida() <= 0)
+                    {
+                        acabou = 2;
+                    }
+                }
+                else
+                {
+                    if ((jogador)->getVida() <= 0)
+                    {
+                        acabou = 2;
+                    }
+                }
+            }
             Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos.get_primeiro();
+            jgd = jogadores.get_primeiro();
+            Entidades::Personagens::Jogador *jogador = static_cast<Entidades::Personagens::Jogador *>(*jgd);
+            bool vivos = false;
 
             while (inim != nullptr)
             {
                 Entidades::Personagens::Personagem *inimigos = static_cast<Entidades::Personagens::Personagem *>(*inim);
                 if ((inimigos)->getVida() <= 0)
                 {
-                    inimigos->morreu();
-                    points += 23;
+                    if (inimigos->getMorto() == false)
+                    {
+                        inimigos->morreu();
+                        points += 11;
+                        (*jogador).setpoints(points);
+                    }
                 }
                 else
-                    acabou = false;
+                {
+                    vivos = true;
+                }
+
                 inim++;
             }
+            if (acabou == 0 && vivos == false)
+            {
+                acabou = 1;
+            }
+
             return acabou;
         }
+        void Fase::usarfuncaoreSize(Estados::Menus::Ranking* objRanking, std::string caminho)
+        {
+            objRanking->reSize(caminho);
+        }
+
         void Fase::centraliza_camera()
         {
             if (dois_jogadores)
@@ -164,14 +210,22 @@ namespace Estados
                 pGG->get_Janela()->display();
             }
         }
-        void Fase::usarfuncaoCriarTextos(Estados::Menus::Ranking* objRanking)
+        void Fase::usarfuncaoCriarTextos(Estados::Menus::Ranking *objRanking, std::string caminho)
         {
-            objRanking->CriarTextos(ARQUIVO_COLOCACAO_1);
+            objRanking->CriarTextos(caminho);
         }
 
+        void Fase::setpoints(const int p)
+        {
+            points = p;
+        }
+        int Fase::getpoints()
+        {
+            return points;
+        }
         void Fase::salvar_pontuacao(std::string caminho)
         {
-            std::fstream arquivoOutput(caminho, std::ios::app);
+            std::ofstream arquivoOutput(caminho, std::ios::app);
             std::string linha = "";
             std::string bolinhas = ",";
             if (!arquivoOutput)
@@ -183,8 +237,9 @@ namespace Estados
                 linha += playerName + bolinhas;
                 arquivoOutput << linha;
                 arquivoOutput << points;
-                arquivoOutput << "\n";
             }
+
+            arquivoOutput.close();
         }
         void Fase::criarCenario(std::string caminho)
         {

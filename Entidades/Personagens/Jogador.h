@@ -28,6 +28,8 @@ namespace Entidades
             void setPosicao(sf::Vector2f pos);
             void setLento(bool b);
             bool getLento();
+            void setpoints(int p);
+            int getpoints();
             void setPulando(bool p, float força);
             void setPulando(bool p);
             void salvar(std::ostringstream* entrada);
