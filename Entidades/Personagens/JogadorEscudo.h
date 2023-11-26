@@ -1,6 +1,6 @@
 #pragma once
 
-#define TEMPO_RECARGA_JOG2 300
+#define TEMPO_RECARGA_JOG2 600
 
 #include "JogadorStrategy.h"
 

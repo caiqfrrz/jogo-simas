@@ -21,7 +21,6 @@ namespace Entidades
             int dano;
             Listas::ListaEntidades *jogadores;
             Listas::ListaEntidades *inimigos;
-            std::vector<Projetil> vec_proj;
             int recarregar;
             sf::Vector2f velocidadeDir;
 
@@ -34,8 +33,6 @@ namespace Entidades
             void colidir(Entidade *pE, bool b);
             void atirar();
             void ultrathrust();
-            void bolasdefogo();
-            std::vector<Projetil> *getVetProj();
             // Entidade* getJogadorProx();
         };
     }
