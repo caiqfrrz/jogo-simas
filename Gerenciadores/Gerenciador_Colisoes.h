@@ -8,8 +8,9 @@
 #include "../Entidades/Projetil.h"
 #include "../Entidades/Escudo.h"
 #include "../Entidades/Personagens/Personagem.h"
-#include "../Entidades/Personagens/Atirador.h"
+#include "../Entidades/Personagens/Inimigo.h"
 #include "../Entidades/Personagens/Boss.h"
+#include "../Entidades/Personagens/Atirador.h"
 #include "../Entidades/Personagens/Jogador.h"
 
 #include <deque>
