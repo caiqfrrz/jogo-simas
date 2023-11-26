@@ -4,14 +4,15 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Boss::Boss(Listas::ListaEntidades *jog, sf::Vector2f pos) : Inimigo(pos, false),
-                                                                    vida(5),
-                                                                    velocidadeDir({0, 0}),
-                                                                    jogadores(jog),
-                                                                    dano(3),
-                                                                    recarregar(0),
-                                                                    firing(false),
-                                                                    vec_proj()
+        Boss::Boss(Listas::ListaEntidades *jog, Listas::ListaEntidades *inim, sf::Vector2f pos) : Inimigo(pos, false),
+                                                                                                  vida(5),
+                                                                                                  velocidadeDir({0, 0}),
+                                                                                                  jogadores(jog),
+                                                                                                  inimigos(inim),
+                                                                                                  dano(3),
+                                                                                                  recarregar(0),
+                                                                                                  firing(false),
+                                                                                                  vec_proj()
         {
             corpo.setFillColor(sf::Color::Yellow);
             setVida(5);
@@ -34,6 +35,10 @@ namespace Entidades
         {
             if (getMorto() == false)
             {
+                Personagem *jogador = static_cast<Personagem *>(pE);
+
+                if (getMorto() == false)
+                    jogador->TomarDano(dano, b);
             }
         }
         void Boss::mover()
@@ -188,7 +193,20 @@ namespace Entidades
         }
         void Boss::atirar()
         {
-            bolasdefogo();
+            //bolasdefogo();
+
+            if (recarregar == 0)
+            {
+                auto aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Fantasma(jogadores, sf::Vector2f(this->getPosicao().x, this->getPosicao().y - 70.f)));
+                if (aux)
+                    inimigos->incluir(aux);
+                firing = false;
+                recarregar = TEMPO_RECARGABOSS;
+            }
+            else
+            {
+                recarregar--;
+            }
         }
         std::vector<Projetil> *Boss::getVetProj()
         {
@@ -277,7 +295,7 @@ namespace Entidades
                 novoProj.setVelocidade(sf::Vector2f(velocidadeDir.x * 6, velocidadeDir.y * 6));
                 vec_proj.push_back(novoProj);
                 firing = false;
-                recarregar = TEMPO_RECARGA;
+                recarregar = TEMPO_RECARGABOSS;
             }
             else
             {

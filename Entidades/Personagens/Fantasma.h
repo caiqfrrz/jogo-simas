@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Inimigo.h"
-#include "../../Estados/Fases/Fase.h"
 #include "../../Listas/ListaEntidades.h"
 #include <math.h>
 

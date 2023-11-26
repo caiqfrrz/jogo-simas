@@ -323,7 +323,7 @@ namespace Estados
                     {
                         if (cont[2] < num[2])
                         {
-                            aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Boss(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                            aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Boss(&jogadores, &inimigos, sf::Vector2f(j * TAM, i * TAM)));
                             if (aux)
                                 inimigos.incluir(aux);
                             cont[2]++;
