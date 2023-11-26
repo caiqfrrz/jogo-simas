@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Atirador::Atirador(Listas::ListaEntidades *jog, sf::Vector2f pos) : Inimigo(pos, false),
+        Atirador::Atirador(Listas::ListaEntidades *jog, sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel, false),
                                                                             vida(5),
                                                                             jogadores(jog),
                                                                             dano(2),
@@ -20,6 +20,7 @@ namespace Entidades
 
         Atirador::~Atirador()
         {
+            jogadores = nullptr;
         }
         void Atirador::executar()
         {
@@ -190,6 +191,25 @@ namespace Entidades
 
             nochao = false;
         }
+        void Atirador::salvar(std::ostringstream* entrada)
+        {
+
+            (*entrada) << "{\"id\": \"atirador\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "], \"projeteis\": [";
+
+            std::vector<Projetil>::iterator it;
+            for(it = vec_proj.begin(); it != vec_proj.end(); it++)
+            {
+                (*it).salvar(entrada);
+                if(it != vec_proj.end() - 1 && (*it).getAtivo() == true)
+                {
+                    (*entrada << ", ");
+                }
+            }
+
+            (*entrada) << "]}";
+
+            n_atiradores_salvos++;
+        }
         void Atirador::atirar()
         {
             sf::Vector2f z = this->getTamanho() / 2.f;
@@ -201,7 +221,7 @@ namespace Entidades
 
             if (recarregar == 0)
             {
-                Projetil novoProj(sf::Vector2f(10, 5), dir);
+                Projetil novoProj(dir, sf::Vector2f(10, 5));
                 novoProj.setPosicao(sf::Vector2f(this->getPosicao().x + 20.f, this->getPosicao().y + 15.f));
                 vec_proj.push_back(novoProj);
                 firing = false;
@@ -216,5 +236,6 @@ namespace Entidades
         {
             return &vec_proj;
         }
+        int Atirador::n_atiradores_salvos(0);
     }
 }

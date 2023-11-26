@@ -1,15 +1,17 @@
 #include <iostream>
 #include <time.h>
 #include <stdlib.h>
+#include <sstream>
 
 #include "../Entidades/Projetil.h"
 
 namespace Entidades
 {
-    Projetil::Projetil(sf::Vector2f tam, std::string dir) : dano(1),
+    Projetil::Projetil(std::string dir, sf::Vector2f tam, sf::Vector2f pos) : dano(1),
                                                             direcao(dir)
     {
         corpo.setSize(tam);
+        setPosicao(pos);
 
         if (direcao == "esquerda")
         {
@@ -23,6 +25,12 @@ namespace Entidades
         {
             velocidade = sf::Vector2f(0, -12);
         }
+    }
+    Projetil::Projetil(sf::Vector2f tam, sf::Vector2f pos, sf::Vector2f vel): dano(1)
+    {
+        corpo.setSize(tam);
+        setPosicao(pos);
+        setVelocidade(vel);
     }
     Projetil::~Projetil()
     {
@@ -63,5 +71,21 @@ namespace Entidades
     int Projetil::getDano()
     {
         return dano;
+    }
+    void Projetil::salvar(std::ostringstream* entrada)
+    {
+        if(corpo.getFillColor() != sf::Color::Transparent)
+        {
+            std::cout << direcao;
+            (*entrada) << "{\"posicao\": [" << getPosicao().x << "," << getPosicao().y << "], \"dano\": " << getDano() << ", \"direcao\": \"" << direcao << "\"}";
+        }
+    }
+    void Projetil::salvar(std::ostringstream* entrada, bool chefao)
+    {
+        if(chefao)
+        {
+            std::cout << direcao;
+            (*entrada) << "{\"posicao\": [" << getPosicao().x << "," << getPosicao().y << "], \"velocidade\": [" << getVelocidade().x << "," << getVelocidade().y << "], \"dano\": " << getDano() << "}";
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace Observers
     class MenuFasesObserver : public Observer
     {
     private:
-        Estados::Menus::MenuFases* pMenu;
+        Estados::Menus::MenuFases* pMenuFases;
     public:
         MenuFasesObserver();
         ~MenuFasesObserver();

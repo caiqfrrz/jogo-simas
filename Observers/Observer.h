@@ -1,8 +1,9 @@
 #pragma once
 
 #include "../Gerenciadores/Gerenciador_Estados.h"
-#include "../Gerenciadores/Gerenciador_Eventos.h"
 #include "../Gerenciadores/Gerenciador_Grafico.h"
+#include "../Gerenciadores/Gerenciador_Eventos.h"
+
 
 namespace Observers
 {

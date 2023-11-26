@@ -14,7 +14,7 @@ namespace Estados
         private:
             int points;
         public:
-            FasePrimeira(int id = -1,bool dois_jgd = false);
+            FasePrimeira(int id = -1,bool dois_jgd = false, bool crg = false);
             ~FasePrimeira();
             void executar();
         };

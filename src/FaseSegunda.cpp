@@ -4,14 +4,16 @@ namespace Estados
 {
     namespace Fases
     {
-        FaseSegunda::FaseSegunda(int id, bool dois_jgd):
-        Fase(id, dois_jgd)
+        FaseSegunda::FaseSegunda(int id, bool dois_jgd, bool crg):
+        Fase(id, dois_jgd, crg)
         {
             criarCenario(ARQUIVO_CENARIO_2);
+            if(!carregamento)
+                criarInimigos(ARQUIVO_CENARIO_2);
         }
         FaseSegunda::~FaseSegunda()
         {
-
+            
         }
         void FaseSegunda::executar()
         {

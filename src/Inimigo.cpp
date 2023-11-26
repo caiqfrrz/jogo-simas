@@ -4,8 +4,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Inimigo::Inimigo(sf::Vector2f pos, bool fant):
-        Personagem(pos),
+        Inimigo::Inimigo(sf::Vector2f pos,sf::Vector2f vel, bool fant):
+        Personagem(pos, vel),
         fantasma(fant),
         nivel_maldade(10)
         {

@@ -1,4 +1,5 @@
 #include "../Gerenciadores/Gerenciador_Eventos.h"
+#include "../Observers/Observer.h"
 
 #include <iostream>
 
@@ -14,7 +15,7 @@ namespace Gerenciadores
     }
     Gerenciador_Eventos::~Gerenciador_Eventos()
     {
-        pGrafico = nullptr;
+        pGrafico = nullptr;   
     }
     Gerenciador_Eventos* Gerenciador_Eventos::get_instancia()
     {
@@ -24,6 +25,7 @@ namespace Gerenciadores
     }
     void Gerenciador_Eventos::executar()
     {
+        sf::Event evento;
         while (pGrafico->get_Janela()->pollEvent(evento))
             switch (evento.type)
             {

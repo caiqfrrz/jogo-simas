@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Personagem::Personagem(sf::Vector2f pos, bool pro, bool esp) : Entidade(pos),
+        Personagem::Personagem(sf::Vector2f pos,sf::Vector2f vel, bool pro, bool esp) : Entidade(pos),
                                                                        damaged((bool)0),
                                                                        timer(),
                                                                        lento(false),
@@ -15,6 +15,7 @@ namespace Entidades
                                                                        grafico(),
                                                                        vida(10)
         {
+            setVelocidade(vel);
         }
         Personagem::~Personagem()
         {

@@ -33,10 +33,14 @@ namespace Estados
             Gerenciadores::Gerenciador_Colisoes gC;
             std::ostringstream buffer;
             bool dois_jogadores;
+            bool carregamento;
+            int n_atiradores;
+            int n_chefoes;
+            int n_fantasmas;
             int points;
         public:
-            Fase(int i = - 1, bool dois_jgd = false);
-            ~Fase();
+            Fase(int i = - 1, bool dois_jgd = false, bool crg = false);
+            virtual ~Fase();
 
             virtual void executar() = 0;
             void gerenciar_colisoes();
@@ -44,8 +48,10 @@ namespace Estados
             bool checarVivos();
             void centraliza_camera();
             void criarJogadores();
-            void criarInimMedios();
+            void criarInimigos(std::string caminho);
             void criarCenario(std::string caminho);
+            void carregarJogadores();
+            void carregarInimigos();
         };
     }    
 }

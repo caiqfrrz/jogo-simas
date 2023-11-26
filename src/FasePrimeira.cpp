@@ -5,14 +5,16 @@ namespace Estados
 {
     namespace Fases
     {
-        FasePrimeira::FasePrimeira(int id, bool dois_jgd):
-        Fase(id, dois_jgd)
+        FasePrimeira::FasePrimeira(int id, bool dois_jgd, bool crg):
+        Fase(id, dois_jgd, crg)
         {
             criarCenario(ARQUIVO_CENARIO_1);
+            if(!carregamento)
+                criarInimigos(ARQUIVO_CENARIO_1);
         }
         FasePrimeira::~FasePrimeira()
         {
-
+            
         }
 
         void FasePrimeira::executar()
@@ -25,10 +27,7 @@ namespace Estados
             jogadores.desenhar();
             if(checarVivos())
             {
-                if(dois_jogadores)
-                    pGE->setEstadoAtual(5);
-                else
-                    pGE->setEstadoAtual(4);
+                pGE->setEstadoAtual(4);
             }
         }
     }    

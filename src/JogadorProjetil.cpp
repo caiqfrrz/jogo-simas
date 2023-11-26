@@ -103,7 +103,7 @@ namespace Entidades
                 s = "cima";
             }
 
-            Projetil novoProj(sf::Vector2f(10, 5), s);
+            Projetil novoProj(s, sf::Vector2f(10, 5));
 
             novoProj.setPosicao(sf::Vector2f(pJog->getPosicao().x + 20.f, pJog->getPosicao().y + 15.f));
             vet_proj.push_back(novoProj);

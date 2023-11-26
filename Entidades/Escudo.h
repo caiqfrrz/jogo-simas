@@ -28,5 +28,6 @@ namespace Entidades
         void desaparecer();
         bool getDesapareceu();
         void colidir(Entidade* pE, bool b);
+        void salvar(std::ostringstream* entrada) {}
     };
 }

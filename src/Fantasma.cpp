@@ -5,8 +5,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Fantasma::Fantasma(Listas::ListaEntidades*jog, sf::Vector2f pos):
-        Inimigo(pos, true),
+        Fantasma::Fantasma(Listas::ListaEntidades*jog, sf::Vector2f pos, sf::Vector2f vel):
+        Inimigo(pos, vel, true),
         jogadores(jog),
         vida(2),
         dano(1)
@@ -114,6 +114,13 @@ namespace Entidades
                 corpo.setPosition(corpo.getPosition() + velocidade);
             }
         }
+        void Fantasma::salvar(std::ostringstream* entrada)
+        {
+
+            (*entrada) << "{\"id\": \"fantasma\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "] }";
+            n_fantasmas_salvos++;
+        }
+        int Fantasma::n_fantasmas_salvos(0);
     }
 }
 

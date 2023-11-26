@@ -1,1 +1,2 @@
-[]
+{ "jogo": "jogo" ,"fase": 1, "n_jogadores": 1, "jogadores": [{ "posicao": [1170,150], "velocidade": [0,-1.4] }
+]}

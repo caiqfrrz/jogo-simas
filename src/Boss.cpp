@@ -1,10 +1,11 @@
 #include "../Entidades/Personagens/Boss.h"
+#include <sstream>
 
 namespace Entidades
 {
     namespace Personagens
     {
-        Boss::Boss(Listas::ListaEntidades *jog, sf::Vector2f pos) : Inimigo(pos, false),
+        Boss::Boss(Listas::ListaEntidades *jog, sf::Vector2f pos, sf::Vector2f vel) : Inimigo(pos, vel, false),
                                                                     vida(5),
                                                                     velocidadeDir(),
                                                                     jogadores(jog),
@@ -197,6 +198,7 @@ namespace Entidades
             corpo.setPosition(getPosicao().x + velocidade.x * 5, getPosicao().y + velocidade.y * 5);
         }
         void Boss::bolasdefogo()
+
         {
             if (recarregar == 0)
             {
@@ -282,5 +284,24 @@ namespace Entidades
                 recarregar--;
             }
         }
+        void Boss::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{\"id\": \"chefao\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "], \"projeteis\": [";
+
+            std::vector<Projetil>::iterator it;
+            for(it = vec_proj.begin(); it != vec_proj.end(); it++)
+            {
+                (*it).salvar(entrada, true);
+                if(it != vec_proj.end() - 1) 
+                {
+                    (*entrada << ", "); 
+                }
+            }
+
+            (*entrada) << "]}";
+
+            n_boss_salvos++;
+        }
+        int Boss::n_boss_salvos(0);
     }
 }

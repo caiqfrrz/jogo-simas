@@ -17,13 +17,16 @@ namespace Gerenciadores
     Gerenciador_Estados::Gerenciador_Estados():
     estadoAtual(0)
     {
-        estados.resize(7);
+        estados.resize(6);
     }
 
     Gerenciador_Estados::~Gerenciador_Estados()
     {
+        std::cout <<"teste";
         for (int i = 0; i < estados.size(); i++)
+        {
             delete estados[i];  
+        }
     }
 
     void Gerenciador_Estados::setEstadoAtual(int i)

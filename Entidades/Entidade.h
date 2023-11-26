@@ -21,13 +21,13 @@ namespace Entidades
         ~Entidade();
 
         virtual void executar() = 0;
+        virtual void salvar(std::ostringstream* entrada) = 0;
         virtual void colidir(Entidade* pE, bool b);
         virtual void colidir();
         virtual bool getAtivo();
         virtual void setAtivo(bool b);
         virtual void morreu();
         virtual bool getMorto();
-        void salvar(std::ostringstream* entrada) {}
         const sf::Vector2f getPosicao() const { return corpo.getPosition(); }
         const sf::Vector2f getTamanho() const { return corpo.getSize(); }
         const sf::Vector2f getVelocidade () const { return velocidade; }
