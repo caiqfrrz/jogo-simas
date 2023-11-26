@@ -1,6 +1,6 @@
 #pragma once
 
-#define TEMPO_RECARGABOSS 350
+#define TEMPO_RECARGABOSS 700
 
 #include "Inimigo.h"
 #include "../../Listas/ListaEntidades.h"
