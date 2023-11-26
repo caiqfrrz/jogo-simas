@@ -14,6 +14,9 @@ namespace Estados
 {
     namespace Menus
     {
+        Ranking* Ranking::instancia(nullptr);
+
+
         Ranking::Ranking(int i, int nb) : Menu(i, 7),
                                           power(1)
         {
@@ -21,6 +24,12 @@ namespace Estados
         }
         Ranking::~Ranking()
         {
+        }
+        Ranking *Ranking::get_instancia(int i, int nb)
+        {
+            if (!instancia)
+                instancia = new Ranking(i, nb);
+            return instancia;
         }
         void Ranking::set_valores()
         {
@@ -40,7 +49,7 @@ namespace Estados
                 textos[i].setFillColor(sf::Color::White);
                 textos[i].setOutlineColor(sf::Color::Black);
             }
-        
+
             titulo.setFont(*fonte);
             titulo.setString("RANKINGS");
             titulo.setOutlineColor(sf::Color(72, 221, 137));
@@ -127,7 +136,7 @@ namespace Estados
                                     linha1 = linha2;
                                     linha11 = linha22;
                                 }
-                                
+
                                 i++;
                             }
 
@@ -208,6 +217,6 @@ namespace Estados
             textos.resize(i);
             return i;
         }
-        
+
     }
 }

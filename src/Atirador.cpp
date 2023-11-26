@@ -54,7 +54,7 @@ namespace Entidades
                     }
                 }
 
-                if(!nochao)
+                if (!nochao)
                     velocidade += sf::Vector2f(0, 0.1f);
                 else
                     velocidade.y = 0;

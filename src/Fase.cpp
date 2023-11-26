@@ -198,8 +198,8 @@ namespace Estados
                 // Display the entered string on the screen
                 if (1)
                 {
-                    sf::Text text("\n Enter your name... \n Type F5 to continue...", *fonte, 30);
-                    sf::Text tex(playerName, *fonte, 30);
+                    sf::Text text("Escreva seu nome jogador... \n\nAperte F5 para Continuar...", *fonte, 30);
+                    sf::Text tex("\n" + playerName, *fonte, 30);
                     pGG->get_Janela()->draw(text);
                     pGG->get_Janela()->draw(tex);
                 }
@@ -245,10 +245,10 @@ namespace Estados
         {
             srand(time(0));
 
-            int cont[2] = {0, 0};
-            int num[2];
+            int cont[3] = {0, 0, 0};
+            int num[3];
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 num[i] = (int)rand() % 3 + 3;
             }
@@ -321,11 +321,12 @@ namespace Estados
 
                     case 'B':
                     {
-                        if (1)
+                        if (cont[2] < num[2])
                         {
                             aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Boss(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
                             if (aux)
                                 inimigos.incluir(aux);
+                            cont[2]++;
                         }
                         break;
                     }

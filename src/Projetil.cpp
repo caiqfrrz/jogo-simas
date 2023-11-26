@@ -23,9 +23,15 @@ namespace Entidades
         {
             velocidade = sf::Vector2f(0, -12);
         }
+        else
+            velocidade = sf::Vector2f(0, 0);
     }
     Projetil::~Projetil()
     {
+    }
+    void Projetil::setVelocidade(sf::Vector2f v)
+    {
+        velocidade = v;
     }
     void Projetil::executar()
     {
@@ -34,7 +40,7 @@ namespace Entidades
     }
     void Projetil::atirar()
     {
-        velocidade += sf::Vector2f(0, 0.05);
+        velocidade += sf::Vector2f(0, 0.02);
         corpo.move(velocidade);
     }
     void Projetil::colidir(Entidade *pE, bool b)

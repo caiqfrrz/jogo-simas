@@ -1,9 +1,12 @@
 #pragma once
 
+#define TEMPO_RECARGA 100
+
 #include "Inimigo.h"
-#include "../../Estados/Fases/Fase.h"
 #include "../../Listas/ListaEntidades.h"
+#include "../Entidades/Projetil.h"
 #include <math.h>
+#include <iostream>
 
 namespace Entidades
 {
@@ -19,6 +22,7 @@ namespace Entidades
             std::vector<Projetil> vec_proj;
             int recarregar;
             sf::Vector2f velocidadeDir;
+
         public:
             bool firing;
             Boss(Listas::ListaEntidades *jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));

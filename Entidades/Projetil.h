@@ -18,5 +18,6 @@ namespace Entidades
         void colidir(Entidade* pE, bool b);
         void reset();
         int getDano();
+        void setVelocidade(sf::Vector2f v);
     };
 }

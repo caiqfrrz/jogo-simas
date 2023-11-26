@@ -6,9 +6,9 @@ namespace Entidades
     {
         Boss::Boss(Listas::ListaEntidades *jog, sf::Vector2f pos) : Inimigo(pos, false),
                                                                     vida(5),
-                                                                    velocidadeDir(),
+                                                                    velocidadeDir({0, 0}),
                                                                     jogadores(jog),
-                                                                    dano(2),
+                                                                    dano(3),
                                                                     recarregar(0),
                                                                     firing(false),
                                                                     vec_proj()
@@ -112,7 +112,7 @@ namespace Entidades
                         firing = true;
                     }
 
-                    if (dist1 < 350 || dist2 < 350)
+                    if (dist1 < 450 || dist2 < 450)
                     {
                         corpo.setPosition(getPosicao().x + velocidade.x, getPosicao().y);
                         atirar();
@@ -120,6 +120,7 @@ namespace Entidades
                     else if (dist1 < 800 || dist2 < 800)
                     {
                         velocidade = direcao;
+                        recarregar = 0;
                         ultrathrust();
                     }
                     else
@@ -154,6 +155,7 @@ namespace Entidades
                     else if (dist1 < 800)
                     {
                         velocidade = direcao;
+                        recarregar = 0;
                         ultrathrust();
                     }
                     else
@@ -166,7 +168,7 @@ namespace Entidades
                 if (recarregar == 0)
                     setAtivo(true);
             }
-            
+
             corpo.setPosition(getPosicao().x, getPosicao().y + velocidade.y);
 
             for (int i = 0; i < vec_proj.size(); i++)
@@ -270,7 +272,7 @@ namespace Entidades
                     velocidadeDir = velocidade;
                 }
 
-                Projetil novoProj(sf::Vector2f(50, 25));
+                Projetil novoProj(sf::Vector2f(50, 25), "");
                 novoProj.setPosicao(sf::Vector2f(this->getPosicao().x, this->getPosicao().y - 50.f));
                 novoProj.setVelocidade(sf::Vector2f(velocidadeDir.x * 6, velocidadeDir.y * 6));
                 vec_proj.push_back(novoProj);

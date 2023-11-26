@@ -4,9 +4,9 @@
 
 #include "Inimigo.h"
 #include "../../Listas/ListaEntidades.h"
-#include "../Projetil.h"
+#include "../Entidades/Projetil.h"
 #include <math.h>
-#include<iostream>
+#include <iostream>
 
 namespace Entidades
 {
@@ -15,21 +15,22 @@ namespace Entidades
         class Atirador : public Inimigo
         {
         private:
-            Listas::ListaEntidades* jogadores;
+            Listas::ListaEntidades *jogadores;
             int vida;
             int dano;
             std::vector<Projetil> vec_proj;
             int recarregar;
             std::string dir;
+
         public:
             bool firing;
-            Atirador(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
+            Atirador(Listas::ListaEntidades *jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
             ~Atirador();
             void executar();
             void mover();
             void atirar();
-            void colidir(Entidade* pE, bool b);
-            std::vector<Projetil>* getVetProj();
+            void colidir(Entidade *pE, bool b);
+            std::vector<Projetil> *getVetProj();
         };
     }
 }

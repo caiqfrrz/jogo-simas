@@ -17,6 +17,7 @@ private:
     Gerenciadores::Gerenciador_Grafico* pGrafico;
     Gerenciadores::Gerenciador_Eventos* pEventos;
     Gerenciadores::Gerenciador_Estados* pEstados;
+    Estados::Menus::Ranking* pRank;
 
 public:
     Jogo();

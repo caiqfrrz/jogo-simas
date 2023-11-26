@@ -15,9 +15,9 @@ namespace Estados
             int power;
             sf::Text titulo;
             // Observers::MenuFasesObserver *pObs;
-
-        public:
+            static Ranking* instancia;
             Ranking(int i = -1, int nb = 0);
+        public:
             ~Ranking();
             void selecionar();
             void desenhar();
@@ -28,6 +28,7 @@ namespace Estados
             void CriarTextos(std::string caminho);
             void sortRank(std::string caminho);
             int reSize(std::string caminho);
+            static Ranking* get_instancia(int i, int nb);
         };
     }
 }
