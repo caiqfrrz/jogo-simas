@@ -5,11 +5,9 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Fantasma::Fantasma(Listas::ListaEntidades*jog, sf::Vector2f pos):
-        Inimigo(pos, true),
-        jogadores(jog),
-        vida(2),
-        dano(1)
+        Fantasma::Fantasma(Listas::ListaEntidades*jog, sf::Vector2f pos, int dano):
+        Inimigo(pos, true, dano),
+        jogadores(jog)
         {
             setVida(2);
             corpo.setFillColor(sf::Color::Magenta);

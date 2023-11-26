@@ -16,15 +16,13 @@ namespace Entidades
         {
         private:
             Listas::ListaEntidades *jogadores;
-            int vida;
-            int dano;
             std::vector<Projetil> vec_proj;
             int recarregar;
             std::string dir;
 
         public:
             bool firing;
-            Atirador(Listas::ListaEntidades *jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
+            Atirador(Listas::ListaEntidades *jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), int dano = 0);
             ~Atirador();
             void executar();
             void mover();

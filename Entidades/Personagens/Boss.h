@@ -17,8 +17,6 @@ namespace Entidades
         class Boss : public Inimigo
         {
         private:
-            int vida;
-            int dano;
             Listas::ListaEntidades *jogadores;
             Listas::ListaEntidades *inimigos;
             int recarregar;
@@ -26,7 +24,7 @@ namespace Entidades
 
         public:
             bool firing;
-            Boss(Listas::ListaEntidades *jog, Listas::ListaEntidades *inim, sf::Vector2f pos);
+            Boss(Listas::ListaEntidades *jog, Listas::ListaEntidades *inim, sf::Vector2f pos, int dano = 3);
             ~Boss();
             void executar();
             void mover();

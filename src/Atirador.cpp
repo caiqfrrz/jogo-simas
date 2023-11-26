@@ -4,10 +4,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Atirador::Atirador(Listas::ListaEntidades *jog, sf::Vector2f pos) : Inimigo(pos, false),
-                                                                            vida(5),
+        Atirador::Atirador(Listas::ListaEntidades *jog, sf::Vector2f pos, int dano) : Inimigo(pos, false, dano),
                                                                             jogadores(jog),
-                                                                            dano(2),
                                                                             recarregar(0),
                                                                             dir(""),
                                                                             firing(false),

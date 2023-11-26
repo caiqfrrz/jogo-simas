@@ -4,17 +4,15 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Boss::Boss(Listas::ListaEntidades *jog, Listas::ListaEntidades *inim, sf::Vector2f pos) : Inimigo(pos, false),
-                                                                                                  vida(10),
+        Boss::Boss(Listas::ListaEntidades *jog, Listas::ListaEntidades *inim, sf::Vector2f pos, int dano) : Inimigo(pos, false, dano),
                                                                                                   velocidadeDir({0, 0}),
                                                                                                   jogadores(jog),
                                                                                                   inimigos(inim),
-                                                                                                  dano(3),
                                                                                                   recarregar(0),
                                                                                                   firing(false)
         {
             corpo.setFillColor(sf::Color::Yellow);
-            setVida(5);
+            setVida(10);
             grafico.setPers(static_cast<Personagem *>(this));
         }
 

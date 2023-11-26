@@ -13,8 +13,9 @@ namespace Entidades
         protected:
             int nivel_maldade;
             bool fantasma;
+            int dano;
         public:
-            Inimigo(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), bool fant = false);
+            Inimigo(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), bool fant = false, int dano = 0);
             ~Inimigo();
             virtual void executar();
             virtual bool ehFantasma();
