@@ -113,7 +113,6 @@ namespace Gerenciadores
                             if (colisao_projetil(*jgd, proj) == true)
                             {
                                 proj->colidir(*jgd, true);
-                                std::cout << " usou ";
                             }
                         }
                     }
@@ -193,7 +192,6 @@ namespace Gerenciadores
                             if (colisao_projetil(*obst, proj) == true)
                             {
                                 proj->colidir(*obst, false);
-                                std::cout << "ya  ";
                             }
                         }
                     }
