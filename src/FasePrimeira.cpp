@@ -8,7 +8,7 @@ namespace Estados
 {
     namespace Fases
     {
-        FasePrimeira::FasePrimeira(int id, bool dois_jgd, bool crg, Estados::Menus::Ranking *pR) : Fase(id, dois_jgd, crg, pR)
+        FasePrimeira::FasePrimeira(int id, bool dois_jgd, bool crg) : Fase(id, dois_jgd, crg)
         {
             criarCenario(ARQUIVO_CENARIO_1);
             if(!carregamento)

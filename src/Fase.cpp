@@ -13,14 +13,14 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase::Fase(int i, bool dois_jgd, bool crg, Estados::Menus::Ranking* pR):
-        carregamento(crg),
-        dois_jogadores(dois_jgd),
-        jogadores(),
-        obstaculos(),
-        inimigos(),
-        Estado(i)
+        Fase::Fase(int i, bool dois_jgd, bool crg) : carregamento(crg),
+                                                     dois_jogadores(dois_jgd),
+                                                     jogadores(),
+                                                     obstaculos(),
+                                                     inimigos(),
+                                                     Estado(i)
         {
+            pRanking = Estados::Menus::Ranking::get_instancia(5);
             fundo.setSize(sf::Vector2f(6000, 1600));
 
             setpoints(0);
@@ -32,8 +32,7 @@ namespace Estados
 
             pObs = new Observers::ObserverTecla();
 
-
-            if(!carregamento)
+            if (!carregamento)
             {
                 criarJogadores();
             }
@@ -45,7 +44,8 @@ namespace Estados
         }
         Fase::~Fase()
         {
-            salvar();            delete fonte;
+            salvar();
+            delete fonte;
         }
 
         void Fase::gerenciar_colisoes()
@@ -55,7 +55,7 @@ namespace Estados
         void Fase::salvar()
         {
             // Salvando Jogadores:
-            std::ofstream arquivo(ARQUIVO_JOGADOR);  
+            std::ofstream arquivo(ARQUIVO_JOGADOR);
             if (!arquivo)
             {
                 std::cout << "Problema em salvar o arquivo" << std::endl;
@@ -69,23 +69,23 @@ namespace Estados
             buffer.str("");
             buffer << "{ \"jogo\": \"jogo\" ,\"fase\":";
 
-            if(pGE->getEstadoAtual() == 4)
+            if (pGE->getEstadoAtual() == 4)
             {
-                if(pGE->getEstadoAnterior() == 2)
+                if (pGE->getEstadoAnterior() == 2)
                     buffer << " 1, ";
                 else if (pGE->getEstadoAnterior() == 3)
                     buffer << " 2, ";
             }
-            else if(pGE->getEstadoAtual() == 2)
+            else if (pGE->getEstadoAtual() == 2)
             {
                 buffer << " 1, ";
             }
-            else if(pGE->getEstadoAtual() == 3)
+            else if (pGE->getEstadoAtual() == 3)
             {
                 buffer << " 2, ";
             }
 
-            if(dois_jogadores)
+            if (dois_jogadores)
             {
                 buffer << "\"n_jogadores\": 2, \"jogadores\": [";
             }
@@ -111,10 +111,9 @@ namespace Estados
             buffer.str("");
 
             arquivo.close();
-            // Salvando inimigos: 
+            // Salvando inimigos:
 
-            
-            std::ofstream arquivo_inimigo(ARQUIVO_INIMIGO);  
+            std::ofstream arquivo_inimigo(ARQUIVO_INIMIGO);
             if (!arquivo_inimigo)
             {
                 std::cout << "Problema em salvar o arquivo" << std::endl;
@@ -123,7 +122,7 @@ namespace Estados
 
             Listas::Lista<Entidades::Entidade>::Iterador i = inimigos.get_primeiro();
             buffer.str("");
-            buffer << "{\"membros\": [ " ;
+            buffer << "{\"membros\": [ ";
             if (i != nullptr)
             {
                 (*i)->salvar(&buffer);
@@ -212,7 +211,7 @@ namespace Estados
 
             return acabou;
         }
-        void Fase::usarfuncaoreSize(Estados::Menus::Ranking* objRanking, std::string caminho)
+        void Fase::usarfuncaoreSize(Estados::Menus::Ranking *objRanking, std::string caminho)
         {
             objRanking->reSize(caminho);
         }
@@ -247,7 +246,7 @@ namespace Estados
         }
         void Fase::criarJogadores()
         {
-            if  (dois_jogadores)
+            if (dois_jogadores)
             {
                 Entidades::Personagens::JogadorProjetil *jgd1 = new Entidades::Personagens::JogadorProjetil();
                 Entidades::Personagens::JogadorEscudo *jgd2 = new Entidades::Personagens::JogadorEscudo();
@@ -267,10 +266,10 @@ namespace Estados
         {
             srand(time(0));
 
-            int cont[2] = {0,0};
+            int cont[2] = {0, 0};
             int num[2];
 
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 num[i] = (int)rand() % 3 + 3;
             }
@@ -279,12 +278,12 @@ namespace Estados
 
             if (!arquivo)
             {
-                std::cout<<"Não foi possível acessar o arquivo de cenário."<<std::endl;
+                std::cout << "Não foi possível acessar o arquivo de cenário." << std::endl;
                 exit(1);
             }
             std::string linha;
-            
-            Entidades::Entidade* aux = nullptr;
+
+            Entidades::Entidade *aux = nullptr;
 
             int j = 0;
             for (int i = 0; std::getline(arquivo, linha); i++)
@@ -296,31 +295,31 @@ namespace Estados
                     {
                     case 'F':
                     {
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Fantasma(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                        aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Fantasma(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
                         if (aux)
                             inimigos.incluir(aux);
                         cont[0]++;
-                        
+
                         break;
                     }
-                    
+
                     case 'I':
                     {
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Atirador(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
-                        if(aux)
+                        aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Atirador(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                        if (aux)
                             inimigos.incluir(aux);
                         cont[1]++;
-                        
+
                         break;
                     }
                     case 'B':
                     {
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Boss(&jogadores, &inimigos, sf::Vector2f(j * TAM, i * TAM)));
-                        if(aux)
+                        aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Boss(&jogadores, &inimigos, sf::Vector2f(j * TAM, i * TAM)));
+                        if (aux)
                             inimigos.incluir(aux);
-                        
+
                         break;
-                    } 
+                    }
                     default:
                         break;
                     }
@@ -334,7 +333,7 @@ namespace Estados
             std::ifstream arquivo(ARQUIVO_JOGADOR);
             if (!arquivo)
             {
-                std::cout << "Arquivo não existe" << std::endl;   
+                std::cout << "Arquivo não existe" << std::endl;
                 exit(2);
             }
 
@@ -350,7 +349,7 @@ namespace Estados
             float vely = jogador["velocidade"][1];
             int morto = jogador["morto"];
 
-            if(dois_jogadores)
+            if (dois_jogadores)
             {
                 auto jogador2 = jogadores_json[1];
 
@@ -362,10 +361,10 @@ namespace Estados
 
                 auto escudos = jogador2["escudos"];
 
-                Entidades::Personagens::JogadorEscudo* jgd2_strategy = new Entidades::Personagens::JogadorEscudo();
-                std::deque<Entidades::Escudo>* fila_esc = jgd2_strategy->getFilaEsc();
+                Entidades::Personagens::JogadorEscudo *jgd2_strategy = new Entidades::Personagens::JogadorEscudo();
+                std::deque<Entidades::Escudo> *fila_esc = jgd2_strategy->getFilaEsc();
 
-                for(int i = 0; i < escudos.size(); i++)
+                for (int i = 0; i < escudos.size(); i++)
                 {
                     float posx_esc = escudos[i]["posicao"][0];
                     float posy_esc = escudos[i]["posicao"][1];
@@ -377,26 +376,26 @@ namespace Estados
 
                     sf::Vector2f pos_esc = sf::Vector2f(posx_esc, posy_esc);
 
-                    Entidades::Escudo* esc = new Entidades::Escudo(dir, pos_esc, (bool)lancando, contagem, opacidade, (bool)parou);
+                    Entidades::Escudo *esc = new Entidades::Escudo(dir, pos_esc, (bool)lancando, contagem, opacidade, (bool)parou);
                     fila_esc->push_back(*esc);
                 }
 
-                Entidades::Personagens::Jogador* jgd2 = new Entidades::Personagens::Jogador(jgd2_strategy, 2,sf::Vector2f(posx2, posy2), sf::Vector2f(velx2, vely2));
+                Entidades::Personagens::Jogador *jgd2 = new Entidades::Personagens::Jogador(jgd2_strategy, 2, sf::Vector2f(posx2, posy2), sf::Vector2f(velx2, vely2));
 
                 jgd2_strategy->setJog(jgd2);
 
-                if(morto)
+                if (morto)
                     jgd2->morreu();
 
-                jogadores.incluir(static_cast<Entidades::Entidade*>(jgd2));
-            }         
-            
-            Entidades::Personagens::JogadorProjetil* jgd1 = new Entidades::Personagens::JogadorProjetil();
-            std::vector<Entidades::Projetil>* vec_proj = jgd1->getVetProj();
+                jogadores.incluir(static_cast<Entidades::Entidade *>(jgd2));
+            }
+
+            Entidades::Personagens::JogadorProjetil *jgd1 = new Entidades::Personagens::JogadorProjetil();
+            std::vector<Entidades::Projetil> *vec_proj = jgd1->getVetProj();
 
             auto projeteis = jogador["projeteis"];
 
-            for(int i = 0; i < projeteis.size(); i++)
+            for (int i = 0; i < projeteis.size(); i++)
             {
                 float posx_proj = projeteis[i]["posicao"][0];
                 float posy_proj = projeteis[i]["posicao"][1];
@@ -404,18 +403,18 @@ namespace Estados
 
                 sf::Vector2f pos_proj = sf::Vector2f(posx_proj, posy_proj);
 
-                Entidades::Projetil* proj = new Entidades::Projetil(dir, sf::Vector2f(10, 5), pos_proj);
+                Entidades::Projetil *proj = new Entidades::Projetil(dir, sf::Vector2f(10, 5), pos_proj);
                 vec_proj->push_back(*proj);
-            }  
+            }
 
-            Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(jgd1, 1,sf::Vector2f(posx, posy), sf::Vector2f(velx, vely));
+            Entidades::Personagens::Jogador *jgd = new Entidades::Personagens::Jogador(jgd1, 1, sf::Vector2f(posx, posy), sf::Vector2f(velx, vely));
 
             jgd1->setJog(jgd);
 
-            if(morto)
-                    jgd->morreu();
+            if (morto)
+                jgd->morreu();
 
-            jogadores.incluir(static_cast<Entidades::Entidade*>(jgd));       
+            jogadores.incluir(static_cast<Entidades::Entidade *>(jgd));
         }
         void Fase::carregarInimigos()
         {
@@ -423,18 +422,18 @@ namespace Estados
             std::ifstream arquivo(ARQUIVO_INIMIGO);
             if (!arquivo)
             {
-                std::cout << "Arquivo não existe" << std::endl;   
+                std::cout << "Arquivo não existe" << std::endl;
                 exit(2);
             }
 
             nlohmann::json json = nlohmann::json::parse(arquivo);
 
             auto membros = json["membros"];
-            for(int i = 0; i < membros.size(); i++)
+            for (int i = 0; i < membros.size(); i++)
             {
                 int morto = membros[i]["morto"];
 
-                if(morto == 0)
+                if (morto == 0)
                 {
                     std::string identificador = membros[i]["id"];
 
@@ -446,18 +445,18 @@ namespace Estados
                     sf::Vector2f pos = sf::Vector2f(posx, posy);
                     sf::Vector2f vel = sf::Vector2f(velx, vely);
 
-                    if(identificador == "fantasma")
+                    if (identificador == "fantasma")
                     {
-                        inimigos.incluir(static_cast<Entidades::Entidade*> (new Entidades::Personagens::Fantasma(&jogadores, pos, vel)));
+                        inimigos.incluir(static_cast<Entidades::Entidade *>(new Entidades::Personagens::Fantasma(&jogadores, pos, vel)));
                     }
-                    else if(identificador == "atirador")
+                    else if (identificador == "atirador")
                     {
-                        Entidades::Personagens::Atirador* atir = new Entidades::Personagens::Atirador(&jogadores, pos, vel);
-                        std::vector<Entidades::Projetil>* pVec_proj = atir->getVetProj();
+                        Entidades::Personagens::Atirador *atir = new Entidades::Personagens::Atirador(&jogadores, pos, vel);
+                        std::vector<Entidades::Projetil> *pVec_proj = atir->getVetProj();
 
                         auto projeteis = membros[i]["projeteis"];
 
-                        for(int j = 0; i < projeteis.size(); i++)
+                        for (int j = 0; i < projeteis.size(); i++)
                         {
                             float posx_proj = projeteis[j]["posicao"][0];
                             float posy_proj = projeteis[j]["posicao"][1];
@@ -465,19 +464,20 @@ namespace Estados
 
                             sf::Vector2f pos_proj = sf::Vector2f(posx_proj, posy_proj);
 
-                            Entidades::Projetil* proj = new Entidades::Projetil(dir, sf::Vector2f(10, 5), pos_proj);
+                            Entidades::Projetil *proj = new Entidades::Projetil(dir, sf::Vector2f(10, 5), pos_proj);
                             pVec_proj->push_back(*proj);
                         }
-                        inimigos.incluir(static_cast<Entidades::Entidade*>(atir));
+                        inimigos.incluir(static_cast<Entidades::Entidade *>(atir));
                     }
                     else if (identificador == "chefao")
                     {
-                        Entidades::Personagens::Boss* chef = new Entidades::Personagens::Boss(&jogadores, &inimigos, pos, vel);
+                        Entidades::Personagens::Boss *chef = new Entidades::Personagens::Boss(&jogadores, &inimigos, pos, vel);
 
-                        inimigos.incluir(static_cast<Entidades::Entidade*>(chef));
+                        inimigos.incluir(static_cast<Entidades::Entidade *>(chef));
                     }
                 }
-            }        }
+            }
+        }
         void Fase::getName()
         {
             while (!(sf::Keyboard::isKeyPressed(sf::Keyboard::F5)))
@@ -605,17 +605,17 @@ namespace Estados
                         aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Espinho(sf::Vector2f(j * TAM, i * TAM)));
                         if (aux)
                             obstaculos.incluir(aux);
-                        
+
                         break;
 
                     case 'G':
                         aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Gosma(sf::Vector2f(j * TAM, i * TAM)));
                         if (aux)
                             obstaculos.incluir(aux);
-                        break;   
+                        break;
                     case 'L':
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Coracao(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
-                        if(aux)
+                        aux = static_cast<Entidades::Entidade *>(new Entidades::Obstaculos::Coracao(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                        if (aux)
                             obstaculos.incluir(aux);
                     default:
                         break;

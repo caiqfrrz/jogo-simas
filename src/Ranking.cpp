@@ -16,8 +16,7 @@ namespace Estados
     {
         Ranking* Ranking::instancia(nullptr);
 
-
-        Ranking::Ranking(int i, int nb) : Menu(i, 7),
+        Ranking::Ranking(int i) : Menu(i, 7),
                                           power(1)
         {
             set_valores();
@@ -25,10 +24,10 @@ namespace Estados
         Ranking::~Ranking()
         {
         }
-        Ranking *Ranking::get_instancia(int i, int nb)
+        Ranking *Ranking::get_instancia(int i)
         {
             if (!instancia)
-                instancia = new Ranking(i, nb);
+                instancia = new Ranking(i);
             return instancia;
         }
         void Ranking::set_valores()
