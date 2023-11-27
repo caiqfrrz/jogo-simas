@@ -15,6 +15,7 @@
 
 #include <deque>
 
+//Fortemente adaptado do código base fornecido pelo PETECO
 
 namespace Gerenciadores
 {

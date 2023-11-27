@@ -14,6 +14,9 @@ namespace Gerenciadores
     }
     Gerenciador_Colisoes::~Gerenciador_Colisoes()
     {
+        jogadores = nullptr;
+        inimigos = nullptr;
+        obstaculos = nullptr;
     }
 
     void Gerenciador_Colisoes::colInimJogador()

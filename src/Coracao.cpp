@@ -15,7 +15,7 @@ namespace Entidades
         }
         Coracao::~Coracao()
         {
-
+            jogadores = nullptr;
         }
         void Coracao::executar()
         {

@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+//Adaptado do código base fornecido pelo PETECO
+
 class Ente;
 
 //Dimensões da janela

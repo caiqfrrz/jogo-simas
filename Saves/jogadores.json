@@ -1,1 +1,1 @@
-{ "jogo": "jogo" ,"fase": 2, "n_jogadores": 1, "jogadores": [{"morto": 0,"vida": 4, "posicao": [2330, 450], "velocidade": [0, 0], "projeteis": [{"posicao": [1144,645.9],"ativo": 0, "dano": 1, "direcao": "esquerda"}]}]}
+{ "jogo": "jogo" ,"fase": 1, "n_jogadores": 1, "jogadores": [{"morto": 0,"vida": 10, "posicao": [426, 500], "velocidade": [0, 0], "projeteis": []}]}

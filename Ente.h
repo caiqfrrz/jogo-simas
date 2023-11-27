@@ -1,5 +1,7 @@
 #pragma once
 
+//Adaptado do código base fornecido pelo PETECO
+
 #include "Gerenciadores/Gerenciador_Grafico.h"
 #include <SFML/Graphics.hpp>
 #include <stdio.h>

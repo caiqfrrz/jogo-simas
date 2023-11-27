@@ -1,5 +1,7 @@
 #pragma once
 
+//Moderadamente adaptado do código base fornecido pelo PETECO
+
 #include <vector>
 
 namespace Estados

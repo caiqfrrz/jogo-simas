@@ -47,6 +47,8 @@ namespace Estados
         {
             salvar();
             delete fonte;
+            pRanking = nullptr;
+            pObs = nullptr;
         }
 
         void Fase::gerenciar_colisoes()

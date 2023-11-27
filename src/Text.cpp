@@ -12,7 +12,7 @@ namespace Design
     }
     Text::~Text()
     {
-
+        pGG = nullptr;
     }
     void Text::executar()
     {

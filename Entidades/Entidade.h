@@ -2,7 +2,7 @@
 
 #include "../Ente.h"
 #include <sstream>
-
+//Fortemente adaptado do código base fornecido pelo PETECO
 // Largura e Altura padrão para as entidades
 #define TAM 50.f
 
