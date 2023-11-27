@@ -17,7 +17,7 @@ namespace Estados
             Observers::MenuPrincipalObserver* pObs;
             Estados::Menus::Ranking* pRanking;
         public:
-            MenuPrincipal(Estados::Menus::Ranking* pR = nullptr);
+            MenuPrincipal();
             ~MenuPrincipal();
             void set_valores();
             void desenhar();
