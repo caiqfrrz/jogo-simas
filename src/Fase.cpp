@@ -13,12 +13,11 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase::Fase(int i, bool dois_jgd, bool crg):
+        Fase::Fase(int i, bool dois_jgd, bool crg, Estados::Menus::Ranking* pR):
         carregamento(crg),
         dois_jogadores(dois_jgd),
         jogadores(),
         obstaculos(),
-        points(0),
         inimigos(),
         Estado(i)
         {
@@ -316,7 +315,7 @@ namespace Estados
                     }
                     case 'B':
                     {
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Boss(&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Personagens::Boss(&jogadores, &inimigos, sf::Vector2f(j * TAM, i * TAM)));
                         if(aux)
                             inimigos.incluir(aux);
                         
@@ -473,24 +472,8 @@ namespace Estados
                     }
                     else if (identificador == "chefao")
                     {
-                        Entidades::Personagens::Boss* chef = new Entidades::Personagens::Boss(&jogadores, pos, vel);
-                        std::vector<Entidades::Projetil>* pVec_proj = chef->getVetProj();
+                        Entidades::Personagens::Boss* chef = new Entidades::Personagens::Boss(&jogadores, &inimigos, pos, vel);
 
-                        auto projeteis = membros[i]["projeteis"];
-
-                        for(int j = 0; j < projeteis.size(); j++)
-                        {
-                            float posx_proj = projeteis[j]["posicao"][0];
-                            float posy_proj = projeteis[j]["posicao"][1];
-                            float velx_proj = projeteis[j]["velocidade"][0];
-                            float vely_proj = projeteis[j]["velocidade"][1];
-
-                            sf::Vector2f pos_proj = sf::Vector2f(posx_proj, posy_proj);
-                            sf::Vector2f vel_proj = sf::Vector2f(velx_proj, vely_proj);
-
-                            Entidades::Projetil* proj = new Entidades::Projetil(sf::Vector2f(50, 25), pos_proj, vel_proj);
-                            pVec_proj->push_back(*proj);
-                        }
                         inimigos.incluir(static_cast<Entidades::Entidade*>(chef));
                     }
                 }

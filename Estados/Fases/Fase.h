@@ -45,7 +45,7 @@ namespace Estados
             bool carregamento;
             static int points;
         public:
-            Fase(int i = - 1, bool dois_jgd = false, bool crg = false,Estados::Menus::Ranking* pR = nullptr);
+            Fase(int i = - 1, bool dois_jgd = false, bool crg = false, Estados::Menus::Ranking* pR = nullptr);
             virtual ~Fase();
             virtual void executar() = 0;
             void gerenciar_colisoes();

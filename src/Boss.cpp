@@ -178,8 +178,6 @@ namespace Entidades
         }
         void Boss::atirar()
         {
-            //bolasdefogo();
-
             if (recarregar == 0)
             {
                 auto aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Fantasma(jogadores, sf::Vector2f(this->getPosicao().x, this->getPosicao().y - 70.f)));
@@ -195,7 +193,7 @@ namespace Entidades
         }
         void Boss::salvar(std::ostringstream* entrada)
         {
-            (*entrada) << "{\"id\": \"chefao\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "]";
+            (*entrada) << "{\"id\": \"chefao\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "]}";
 
         }
         void Boss::ultrathrust()
