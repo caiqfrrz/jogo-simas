@@ -500,13 +500,6 @@ namespace Estados
             }
             nlohmann::json json = nlohmann::json::parse(arquivo);
 
-            int n_jogadores = json["n_jogadores"];
-
-            if(n_jogadores == 1)
-                dois_jogadores = false;
-            else
-                dois_jogadores = true;
-
             auto jogadores_json = json["jogadores"];
 
             auto jogador = jogadores_json[0];

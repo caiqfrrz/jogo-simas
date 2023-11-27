@@ -96,7 +96,7 @@ namespace Entidades
 
                 velocidade = direcao * 1.f;
 
-                if(distMaisProx <= 500)
+                if(distMaisProx <= 600)
                 {
                     corpo.setPosition(corpo.getPosition() + velocidade);
                 }
@@ -117,7 +117,7 @@ namespace Entidades
                 }
                 velocidade = direcao * 1.f;
 
-                if(dist1 <= 500)
+                if(dist1 <= 600)
                     corpo.setPosition(corpo.getPosition() + velocidade);
             }
             if(velocidade.x > 0)
