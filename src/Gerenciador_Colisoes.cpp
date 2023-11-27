@@ -164,6 +164,7 @@ namespace Gerenciadores
                         if (colisao_projetil(*obst, proj) == true)
                         {
                             proj->colidir(*obst, false);
+                            (*obst)->colidir();
                         }
                     }
                 }

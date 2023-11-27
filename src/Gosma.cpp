@@ -27,7 +27,7 @@ namespace Entidades
         {
             Entidades::Personagens::Personagem* jogador = static_cast<Entidades::Personagens::Personagem*>(pE);
 
-            jogador->setLento(true);;
+            jogador->setLento(true);
         }
     }
 }

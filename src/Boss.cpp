@@ -14,14 +14,12 @@ namespace Entidades
                                                                                                                               recarregar(0),
                                                                                                                               firing(false)
         {
+            textura.loadFromFile("Design/Imagens/boss.png");
+            corpo.setSize(sf::Vector2f(70, 70));
+            corpo.setTexture(&textura);
             corpo.setFillColor(sf::Color::Yellow);
             setVida(10);
             grafico.setPers(static_cast<Personagem *>(this));
-
-            if (!texture.loadFromFile("Design/Imagens/boss.gif"))
-            {
-                std::cout << "deu ruim no gif do boss";
-            }
         }
 
         Boss::~Boss()
@@ -50,20 +48,6 @@ namespace Entidades
         {
             if (getAtivo() == true)
             {
-                // Atualizar a animação
-                if (animationClock.getElapsedTime().asSeconds() >= frameDuration)
-                {
-                    std::cout << "FR";
-                    // Avançar para o próximo frame
-                    currentFrame = (currentFrame + 1) % numFrames;
-
-                    // Atualizar a textura do RectangleShape
-                    sf::IntRect textureRect(currentFrame * 440, 0, 440, 220);
-                    corpo.setTextureRect(textureRect);
-
-                    // Redefinir o temporizador
-                    animationClock.restart();
-                }
 
                 Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
                 Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores->get_primeiro()++;

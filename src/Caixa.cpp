@@ -26,6 +26,9 @@ namespace Entidades
             Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
 
             aux->setLento(false);
+            vida -=1;
+            if(vida <= 0)
+                setAtivo(false);
         }
     }
 }
