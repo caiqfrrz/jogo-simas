@@ -192,8 +192,8 @@ namespace Estados
                 jgd++;
             }
             jgd = jogadores.get_primeiro();
-
-            while (jgd != nullptr)
+            bool keep;
+            while (keep == true)
             {
                 Entidades::Personagens::Personagem *jogador = static_cast<Entidades::Personagens::Personagem *>(*jgd);
                 jgd++;
@@ -212,6 +212,7 @@ namespace Estados
                         acabou = 2;
                     }
                 }
+                keep = false;
             }
             Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos.get_primeiro();
             jgd = jogadores.get_primeiro();
