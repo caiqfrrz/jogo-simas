@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Atirador::Atirador(Listas::ListaEntidades *jog, sf::Vector2f pos, int dano) : Inimigo(pos, false, dano),
+        Atirador::Atirador(Listas::ListaEntidades *jog, sf::Vector2f pos, sf::Vector2f vel, int dano) : Inimigo(pos, vel, false, dano),
                                                                             jogadores(jog),
                                                                             recarregar(0),
                                                                             dir(""),
@@ -18,6 +18,7 @@ namespace Entidades
 
         Atirador::~Atirador()
         {
+            jogadores = nullptr;
         }
         void Atirador::executar()
         {
@@ -189,6 +190,24 @@ namespace Entidades
             nochao = false;
             corpo.setPosition(getPosicao().x, getPosicao().y + velocidade.y);
         }
+        void Atirador::salvar(std::ostringstream* entrada)
+        {
+
+            (*entrada) << "{\"id\": \"atirador\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "], \"projeteis\": [";
+
+            std::vector<Projetil>::iterator it;
+            for(it = vec_proj.begin(); it != vec_proj.end(); it++)
+            {
+                (*it).salvar(entrada);
+                if(it != vec_proj.end() - 1 && (*it).getAtivo() == true)
+                {
+                    if(vec_proj.size() != 1)
+                        (*entrada << ", ");
+                }
+            }
+
+            (*entrada) << "]}";
+        }
         void Atirador::atirar()
         {
             sf::Vector2f z = this->getTamanho() / 2.f;
@@ -200,7 +219,7 @@ namespace Entidades
 
             if (recarregar == 0)
             {
-                Projetil novoProj(sf::Vector2f(10, 5), dir);
+                Projetil novoProj(dir, sf::Vector2f(10, 5));
                 novoProj.setPosicao(sf::Vector2f(this->getPosicao().x + 20.f, this->getPosicao().y + 15.f));
                 vec_proj.push_back(novoProj);
                 firing = false;

@@ -1,4 +1,5 @@
 #include "../Estados/Fases/FasePrimeira.h"
+#include "../Estados/Fases/FaseSegunda.h"
 #include "../Estados/Fases/Fase.h"
 
 #define ARQUIVO_COLOCACAO_1 "Design/Imagens/ranking.txt"
@@ -7,18 +8,26 @@ namespace Estados
 {
     namespace Fases
     {
-        FasePrimeira::FasePrimeira(int id, bool dois_jgd, Estados::Menus::Ranking *pR) : Fase(id, dois_jgd, pR)
+        FasePrimeira::FasePrimeira(int id, bool dois_jgd, bool crg, Estados::Menus::Ranking *pR) : Fase(id, dois_jgd, crg, pR)
         {
             criarCenario(ARQUIVO_CENARIO_1);
+            if(!carregamento)
+                criarInimigos(ARQUIVO_CENARIO_1);
+            
+            text_fundo.loadFromFile("Design/Imagens/bg.jpg");
+            fundo.setTexture(&text_fundo);
+            fundo.setPosition(sf::Vector2f(-500, -500));
             setpoints(0);
         }
         FasePrimeira::~FasePrimeira()
         {
+
         }
 
         void FasePrimeira::executar()
         {
             centraliza_camera();
+            pGG->get_Janela()->draw(fundo);
             obstaculos.desenhar();
             inimigos.executar();
             jogadores.executar();
@@ -27,25 +36,13 @@ namespace Estados
             if (checarVivos() == 1)
             {
                 if (dois_jogadores)
-                    pGE->setEstadoAtual(5);
+                    Estados::Fases::FaseSegunda* fase2_2p = new Estados::Fases::FaseSegunda(3, true, false);
                 else
-                    pGE->setEstadoAtual(4);
-            }
-            else if (checarVivos() == 2)
-            {
-                getName();
-                salvar_pontuacao(ARQUIVO_COLOCACAO_1);
-                usarfuncaoreSize(pRanking, ARQUIVO_COLOCACAO_1);
-                usarfuncaoCriarTextos(pRanking, ARQUIVO_COLOCACAO_1);
-                setpoints(0);
-                std::cout << getpoints() << " ";
+                    Estados::Fases::FaseSegunda* fase2_1p = new Estados::Fases::FaseSegunda(3, false, false);
 
-                Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores.get_primeiro();
-                Entidades::Personagens::Jogador *jogador = static_cast<Entidades::Personagens::Jogador *>(*jgd);
-                (*jogador).setpoints(0);
-
-                pGE->setEstadoAtual(6);
+                pGE->setEstadoAtual(3);
             }
+
         }
     }
 }

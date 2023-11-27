@@ -103,7 +103,7 @@ namespace Entidades
                 s = "cima";
             }
 
-            Projetil novoProj(sf::Vector2f(10, 5), s);
+            Projetil novoProj(s, sf::Vector2f(10, 5));
 
             novoProj.setPosicao(sf::Vector2f(pJog->getPosicao().x + 20.f, pJog->getPosicao().y + 15.f));
             vet_proj.push_back(novoProj);
@@ -134,6 +134,26 @@ namespace Entidades
         std::deque<Escudo> *JogadorProjetil::getFilaEsc()
         {
             return nullptr;
+        }
+        void JogadorProjetil::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{\"morto\": " << pJog->getMorte() << ", \"posicao\": [" << pJog->getPosicao().x << ", " << pJog->getPosicao().y << "], \"velocidade\": [" << pJog->getVelocidade().x << ", " << pJog->getVelocidade().y << "], \"projeteis\": [";
+
+            std::vector<Projetil>::iterator it;
+            for(it = vet_proj.begin(); it != vet_proj.end(); it++)
+            {
+                (*it).salvar(entrada);
+                if(it != vet_proj.end() - 1 && (*it).getAtivo() == true)
+                {
+                    if(it != vet_proj.end() - 1) 
+                    {
+                        if(vet_proj.size() != 1)
+                            (*entrada << ", ");
+                    }
+                }
+            }
+
+            (*entrada) << "]}";
         }
     }
 }

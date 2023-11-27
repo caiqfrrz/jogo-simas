@@ -4,8 +4,8 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Inimigo::Inimigo(sf::Vector2f pos, bool fant, int dan):
-        Personagem(pos),
+        Inimigo::Inimigo(sf::Vector2f pos,sf::Vector2f vel, bool fant, int dan):
+        Personagem(pos, vel),
         dano(dan),
         fantasma(fant),
         nivel_maldade(10)
@@ -27,6 +27,10 @@ namespace Entidades
         std::vector<Projetil>* Inimigo::getVetProj()
         {
             return nullptr;
+        }
+        void Inimigo::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{ \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"] }" << std::endl;
         }
     }
 }

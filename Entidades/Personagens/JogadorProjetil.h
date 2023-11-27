@@ -24,6 +24,7 @@ namespace Entidades
             void setJog(Jogador* jgd);
             std::vector<Projetil>* getVetProj();
             std::deque<Escudo>* getFilaEsc();
+            void salvar(std::ostringstream* entrada);
         };
     }
 }

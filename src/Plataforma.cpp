@@ -7,6 +7,8 @@ namespace Entidades
         Plataforma::Plataforma(sf::Vector2f pos):
         Obstaculo(pos)
         {
+            textura.loadFromFile("Design/Imagens/plataforma.jpg");
+            corpo.setTexture(&textura);
             morreu();
         }
         Plataforma::~Plataforma()

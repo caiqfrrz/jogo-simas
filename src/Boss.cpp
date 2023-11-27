@@ -1,10 +1,11 @@
 #include "../Entidades/Personagens/Boss.h"
+#include <sstream>
 
 namespace Entidades
 {
     namespace Personagens
     {
-        Boss::Boss(Listas::ListaEntidades *jog, Listas::ListaEntidades *inim, sf::Vector2f pos, int dano) : Inimigo(pos, false, dano),
+        Boss::Boss(Listas::ListaEntidades *jog, Listas::ListaEntidades *inim, sf::Vector2f pos, sf::Vector2f vel, int dano) : Inimigo(pos, vel, false, dano),
                                                                                                   velocidadeDir({0, 0}),
                                                                                                   jogadores(jog),
                                                                                                   inimigos(inim),
@@ -18,6 +19,7 @@ namespace Entidades
 
         Boss::~Boss()
         {
+            vec_proj.clear();
         }
         void Boss::executar()
         {
@@ -189,6 +191,24 @@ namespace Entidades
             {
                 recarregar--;
             }
+        }
+        void Boss::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{\"id\": \"chefao\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "], \"projeteis\": [";
+
+            std::vector<Projetil>::iterator it;
+            for(it = vec_proj.begin(); it != vec_proj.end(); it++)
+            {
+                (*it).salvar(entrada, true);
+                if(it != vec_proj.end() - 1) 
+                {
+                    if(vec_proj.size() != 1)
+                        (*entrada << ", ");
+                }
+            }
+
+            (*entrada) << "]}";
+
         }
         void Boss::ultrathrust()
         {

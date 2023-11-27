@@ -4,7 +4,9 @@
 
 namespace Observers
 {
-    MenuPrincipalObserver::MenuPrincipalObserver()
+    MenuPrincipalObserver::MenuPrincipalObserver():
+    Observer(),
+    pMenu(nullptr)
     {
         pGEv->add_obs(this);
     }

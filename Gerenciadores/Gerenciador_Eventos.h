@@ -12,7 +12,6 @@ namespace Gerenciadores
         Gerenciador_Grafico *pGrafico;
         static Gerenciador_Eventos* instancia;
         Gerenciador_Eventos();
-        sf::Event evento;
     public:
         ~Gerenciador_Eventos();
         void executar();     

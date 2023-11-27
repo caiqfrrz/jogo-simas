@@ -5,12 +5,15 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Fantasma::Fantasma(Listas::ListaEntidades*jog, sf::Vector2f pos, int dano):
-        Inimigo(pos, true, dano),
+        Fantasma::Fantasma(Listas::ListaEntidades*jog, sf::Vector2f pos, sf::Vector2f vel, int dano):
+        Inimigo(pos, vel, true, dano),
         jogadores(jog)
         {
+            textura.loadFromFile("Design/Imagens/fantasma.png");
+            corpo.setTexture(&textura);
+            corpo.setFillColor(sf::Color(255, 255, 255 ,170));
+
             setVida(2);
-            corpo.setFillColor(sf::Color::Magenta);
             grafico.setPers(static_cast<Personagem*>(this));
         }
 
@@ -94,7 +97,13 @@ namespace Entidades
                 velocidade = direcao * 1.f;
 
                 if(distMaisProx <= 350)
+                {
                     corpo.setPosition(corpo.getPosition() + velocidade);
+                    if(velocidade.x > 0)
+                    {
+                        
+                    }
+                }
             }
             if(jgd2 == nullptr)
             {
@@ -111,6 +120,11 @@ namespace Entidades
 
                 corpo.setPosition(corpo.getPosition() + velocidade);
             }
+        }
+        void Fantasma::salvar(std::ostringstream* entrada)
+        {
+
+            (*entrada) << "{\"id\": \"fantasma\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "] }";
         }
     }
 }

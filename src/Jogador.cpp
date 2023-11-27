@@ -8,7 +8,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(JogadorStrategy *jgd, int id) : Personagem(sf::Vector2f(0, 0), true, false),
+        Jogador::Jogador(JogadorStrategy *jgd, int id, sf::Vector2f pos, sf::Vector2f vel) : Personagem(pos, vel,  true, false),
                                                          jogador_type(jgd),
                                                          i(id),
                                                          recarga(0),
@@ -123,8 +123,9 @@ namespace Entidades
         {
             return jogador_type->getFilaEsc();
         }
-        void Jogador::salvar(std::ostringstream *entrada)
+        void Jogador::salvar(std::ostringstream* entrada) 
         {
+            jogador_type->salvar(entrada);
         }
 
     }

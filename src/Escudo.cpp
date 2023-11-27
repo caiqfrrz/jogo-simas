@@ -3,14 +3,15 @@
 
 namespace Entidades
 {
-    Escudo::Escudo() : Entidade(),
-                       lancando(false),
-                       direcao(-1),
+    Escudo::Escudo(std::string dir, sf::Vector2f pos, bool lanc, int cont, short int opac, bool par) : Entidade(pos),
+                       lancando(lanc),
+                       direcao(dir),
                        desapareceu(false),
-                       parou(false),
-                       opacidade(255),
-                       contagem(CONTAGEM_PARAR)
+                       parou(par),
+                       opacidade(opac),
+                       contagem(cont)
     {
+        ajustarTam();
     }
     Escudo::~Escudo()
     {
@@ -19,9 +20,8 @@ namespace Entidades
     {
         if (lancando)
         {
-            if (direcao == 1)
+            if (direcao == "direita")
             {
-                corpo.setSize(sf::Vector2f(LARGURA_ESCUDO, COMPRIMENTO_ESCUDO));
                 if (contagem >= 0)
                 {
                     corpo.move(sf::Vector2f(VEL_ESCUDO, 0));
@@ -34,9 +34,8 @@ namespace Entidades
                     contagem = CONTAGEM_PARAR;
                 }
             }
-            else if (direcao == 0)
+            else if (direcao == "esquerda")
             {
-                corpo.setSize(sf::Vector2f(LARGURA_ESCUDO, COMPRIMENTO_ESCUDO));
                 if (contagem >= 0)
                 {
                     corpo.move(sf::Vector2f(-VEL_ESCUDO, 0));
@@ -49,9 +48,8 @@ namespace Entidades
                     contagem = CONTAGEM_PARAR;
                 }
             }
-            else
+            else if(direcao == "cima")
             {
-                corpo.setSize(sf::Vector2f(COMPRIMENTO_ESCUDO, LARGURA_ESCUDO));
                 if (contagem >= 0)
                 {
                     corpo.move(sf::Vector2f(0, -VEL_ESCUDO));
@@ -71,9 +69,25 @@ namespace Entidades
         }
         desenhar();
     }
-    void Escudo::setDirecao(short int dir)
+    void Escudo::setDirecao(std::string dir)
     {
         direcao = dir;
+        ajustarTam();
+    }
+    void Escudo::ajustarTam()
+    {
+        if(direcao == "esquerda")
+        {
+            corpo.setSize(sf::Vector2f(LARGURA_ESCUDO, COMPRIMENTO_ESCUDO));
+        }
+        else if (direcao == "direita")
+        {
+            corpo.setSize(sf::Vector2f(LARGURA_ESCUDO, COMPRIMENTO_ESCUDO));
+        }
+        else if (direcao == "cima")
+        {
+            corpo.setSize(sf::Vector2f(COMPRIMENTO_ESCUDO, LARGURA_ESCUDO));
+        }
     }
     void Escudo::lancar()
     {
@@ -89,16 +103,12 @@ namespace Entidades
         else
             desapareceu = true;
     }
-    /*void Escudo::getDano()
-    {
-        return dano;
-    }*/
     void Escudo::colidir(Entidade *pE, bool b)
     {
         sf::Vector2f z = pE->getPosicao();
         pE->setVelocidade(sf::Vector2f(0, 0));
         pE->setNochao(true);
-        if (direcao == 1)
+        if (direcao == "direita")
         {
             if (z.y + pE->getTamanho().y >= this->getPosicao().y + 5)
             {
@@ -111,7 +121,7 @@ namespace Entidades
                 pE->setPosicao(z);
             }
         }
-        else if (direcao == 0)
+        else if (direcao == "esquerda")
         {
             if (z.y + pE->getTamanho().y >= this->getPosicao().y + 5)
             {
@@ -124,7 +134,7 @@ namespace Entidades
                 pE->setPosicao(z);
             }
         }
-        else
+        else if(direcao == "cima")
         {
             z.y -= 7.f;
             pE->setPosicao(z);
@@ -133,5 +143,12 @@ namespace Entidades
     bool Escudo::getDesapareceu()
     {
         return desapareceu;
+    }
+    void Escudo::salvar(std::ostringstream* entrada)
+    {
+        if(!desapareceu)
+        {
+            (*entrada) << "{\"posicao\": [" << getPosicao().x << "," << getPosicao().y << "], \"direcao\": \"" << direcao << "\", \"contagem\": "<< contagem << ",\"opacidade\": "<< opacidade <<", \"lancando\": "<< lancando <<", \"parou\": " << parou << "}";
+        }
     }
 }

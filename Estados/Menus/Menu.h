@@ -28,7 +28,7 @@ namespace Estados
             std::vector<std::size_t> tamanhos;
         public:
             Menu(int i = -1, int nb = 0);
-            ~Menu();
+            virtual ~Menu();
 
             virtual void selecionar() = 0;
             virtual void desenhar();

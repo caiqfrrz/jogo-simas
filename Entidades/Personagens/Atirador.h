@@ -22,13 +22,14 @@ namespace Entidades
 
         public:
             bool firing;
-            Atirador(Listas::ListaEntidades *jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), int dano = 0);
+            Atirador(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));
             ~Atirador();
             void executar();
             void mover();
             void atirar();
-            void colidir(Entidade *pE, bool b);
-            std::vector<Projetil> *getVetProj();
+            void colidir(Entidade* pE, bool b);
+            void salvar(std::ostringstream* entrada);
+            std::vector<Projetil>* getVetProj();
         };
     }
 }

@@ -22,10 +22,6 @@ namespace Entidades
     {
 
     }
-    void salvar(std::ostringstream* entrada)
-    {
-
-    }
     void Entidade::colidir()
     {
 

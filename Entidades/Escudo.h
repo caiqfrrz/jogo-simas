@@ -16,17 +16,19 @@ namespace Entidades
         bool desapareceu;
         bool parou;
         float opacidade;
-        short int direcao;
+        std::string direcao;
         int contagem;
     public:
-        Escudo();
+        Escudo(std::string dir = "direita", sf::Vector2f pos = {0, 0}, bool lanc = false, int cont = CONTAGEM_PARAR, short int opac = 255, bool par = false);
         ~Escudo();
 
         void executar();
-        void setDirecao(short int dir);
+        void setDirecao(std::string dir);
+        void ajustarTam();
         void lancar();
         void desaparecer();
         bool getDesapareceu();
         void colidir(Entidade* pE, bool b);
+        void salvar(std::ostringstream* entrada);
     };
 }

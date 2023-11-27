@@ -18,6 +18,7 @@ namespace Estados
         }
         MenuFases::~MenuFases()
         {
+            pObs = nullptr;
         }
         void MenuFases::set_valores()
         {
@@ -94,11 +95,13 @@ namespace Estados
                 {
                     if (num_jogadores == 1)
                     {
+                        Estados::Fases::FasePrimeira* fase1_1p = new Estados::Fases::FasePrimeira(2, false, false);  
                         pGE->setEstadoAtual(2);
                     }
                     else
                     {
-                        pGE->setEstadoAtual(3);
+                        Estados::Fases::FasePrimeira* fase1_2p = new Estados::Fases::FasePrimeira(2, true, false);
+                        pGE->setEstadoAtual(2);
                     }
                         
                     
@@ -107,11 +110,13 @@ namespace Estados
                 {
                     if (num_jogadores == 1)
                     {
-                        pGE->setEstadoAtual(4);
+                        Estados::Fases::FaseSegunda* fase2_1p = new Estados::Fases::FaseSegunda(3, false, false);
+                        pGE->setEstadoAtual(3);
                     }
                     else
                     {
-                        pGE->setEstadoAtual(5);
+                        Estados::Fases::FaseSegunda* fase2_2p = new Estados::Fases::FaseSegunda(3, true, false);
+                        pGE->setEstadoAtual(3);
                     }
                 }
             }

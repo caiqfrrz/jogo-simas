@@ -1,4 +1,5 @@
 #include "../Observers/Observer.h"
+#include <iostream>
 
 namespace Observers
 {

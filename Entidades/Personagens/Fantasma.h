@@ -14,11 +14,12 @@ namespace Entidades
         private:
             Listas::ListaEntidades* jogadores;
         public:
-            Fantasma(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), int dano = 1);
+            Fantasma(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));
             ~Fantasma();
             void executar();
             void mover();
             void colidir(Entidade* pE, bool b);
+            void salvar(std::ostringstream* entrada);
             //Entidade* getJogadorProx();
         };
     }

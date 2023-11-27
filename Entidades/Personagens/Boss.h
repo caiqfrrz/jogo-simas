@@ -24,14 +24,16 @@ namespace Entidades
 
         public:
             bool firing;
-            Boss(Listas::ListaEntidades *jog, Listas::ListaEntidades *inim, sf::Vector2f pos, int dano = 3);
+            Boss(Listas::ListaEntidades *jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));
             ~Boss();
             void executar();
             void mover();
             void colidir(Entidade *pE, bool b);
             void atirar();
             void ultrathrust();
-            // Entidade* getJogadorProx();
+            void bolasdefogo();
+            void salvar(std::ostringstream* entrada);
+            std::vector<Projetil> *getVetProj();
         };
     }
 }

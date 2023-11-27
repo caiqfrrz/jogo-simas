@@ -1,6 +1,9 @@
 #include "../Estados/Menus/MenuPrincipal.h"
 #include <iostream>
 #include <fstream>
+
+#define ARQUIVO_JOGADOR "Saves/jogadores.json"
+#include <fstream>
 #include <string>
 #include <stdlib.h>
 #include <time.h>
@@ -20,6 +23,7 @@ namespace Estados
         }
         MenuPrincipal::~MenuPrincipal()
         {
+            pObs = nullptr;
         }
         void MenuPrincipal::set_valores()
         {
@@ -51,6 +55,10 @@ namespace Estados
                 {
                     pGE->setEstadoAtual(1);
                 }
+                if(pos == 1)
+                {
+                    infosSave();
+                }
                 if (pos == 2)
                 {
                     usarfuncaoreSize(pRanking, ARQUIVO_COLOCACAO_1);
@@ -78,6 +86,49 @@ namespace Estados
             for (auto t : textos)
             {
                 pGG->get_Janela()->draw(t);
+            }
+        }
+        void MenuPrincipal::infosSave()
+        {
+            std::ifstream arquivo(ARQUIVO_JOGADOR);
+            nlohmann::json json;
+
+            if (!arquivo.is_open()) {
+                std::cout << "Falha ao abrir o arquivo JSON" << std::endl;
+                exit(1);
+            }
+
+            if (!(arquivo >> json)) {
+                std::cout << "Erro ao fazer parsing do JSON" << std::endl;
+                exit(2);
+            }
+
+            int fase = json["fase"];
+            int n_jogadores = json["n_jogadores"];
+
+            if(fase == 1)
+            {
+                if(n_jogadores == 1)
+                {
+                    Estados::Fases::FasePrimeira* fase1_1p = new Estados::Fases::FasePrimeira(2, false, true);
+                }
+                else
+                {
+                    Estados::Fases::FasePrimeira* fase1_2p = new Estados::Fases::FasePrimeira(2, true, true);
+                }
+                pGE->setEstadoAtual(2);
+            }
+            else
+            {
+                if(n_jogadores == 1)
+                {
+                    Estados::Fases::FaseSegunda* fase2_1p = new Estados::Fases::FaseSegunda(3, false, true);
+                }
+                else
+                {
+                    Estados::Fases::FaseSegunda* fase2_2p = new Estados::Fases::FaseSegunda(3, true, true);
+                }
+                pGE->setEstadoAtual(3);
             }
         }
     }

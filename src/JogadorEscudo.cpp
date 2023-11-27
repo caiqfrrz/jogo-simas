@@ -20,7 +20,15 @@ namespace Entidades
             if (recarga == 0)
                 {
                     Escudo aux_escudo = Escudo();
-                    aux_escudo.setDirecao(last_key);
+                    if(last_key == 0)
+                        aux_escudo.setDirecao("esquerda");
+                    
+                    else if(last_key == 1)
+                        aux_escudo.setDirecao("direita");
+
+                    else 
+                        aux_escudo.setDirecao("cima");
+
                     switch (last_key)
                     {
                     case (2):
@@ -151,6 +159,26 @@ namespace Entidades
         std::deque<Escudo>* JogadorEscudo::getFilaEsc()
         {
             return &fila_esc;
+        }
+        void JogadorEscudo::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{\"morto\": " << pJog->getMorte() << ", \"posicao\": [" << pJog->getPosicao().x << ", " << pJog->getPosicao().y << "], \"velocidade\": [" << pJog->getVelocidade().x << ", " << pJog->getVelocidade().y << "], \"escudos\": [";
+
+            std::deque<Escudo>::iterator it;
+            for(it = fila_esc.begin(); it != fila_esc.end(); it++)
+            {
+                (*it).salvar(entrada);
+                if(it != fila_esc.end() - 1 && (*it).getAtivo() == true)
+                {
+                    if(it != fila_esc.end() - 1) 
+                    {
+                        if(fila_esc.size() != 1)
+                            (*entrada << ", ");
+                    }
+                }
+            }
+
+            (*entrada) << "]}";
         }
     }
 }
