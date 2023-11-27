@@ -25,5 +25,9 @@ namespace Entidades
 
             aux->setLento(false);
         }
+        void Plataforma::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{\"id\": \"plataforma\", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "]}";
+        }
     }
 }

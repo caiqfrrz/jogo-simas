@@ -4,9 +4,10 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Caixa::Caixa(sf::Vector2f pos):
+        Caixa::Caixa(sf::Vector2f pos, bool ativo):
         Obstaculo(pos, false)
         {
+            setAtivo(ativo);
             textura.loadFromFile("Design/Imagens/caixa.png");
             corpo.setTexture(&textura);
             corpo.setFillColor(sf::Color(82, 16, 16));
@@ -26,6 +27,10 @@ namespace Entidades
             Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
 
             aux->setLento(false);
+        }
+        void Caixa::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{\"id\": \"caixa\", \"ativo\": " << ativo << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "]}";
         }
     }
 }

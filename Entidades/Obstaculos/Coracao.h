@@ -13,11 +13,12 @@ namespace Entidades
             int cura;
             Listas::ListaEntidades* jogadores;
         public:
-            Coracao(Listas::ListaEntidades* jog = nullptr, sf::Vector2f pos = {0,0});
+            Coracao(Listas::ListaEntidades* jog = nullptr, sf::Vector2f pos = {0,0}, bool ativo = true);
             ~Coracao();
             void executar();
             void colidir(Entidades::Entidade* pE, bool b);
-            void salvar(std::ostringstream* entrada) {}
+            void salvar(std::ostringstream* entrada);
+            bool ehPlataforma() {return false;}
         };
     }
 }

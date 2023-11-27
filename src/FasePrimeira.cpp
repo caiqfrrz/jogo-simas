@@ -10,9 +10,13 @@ namespace Estados
     {
         FasePrimeira::FasePrimeira(int id, bool dois_jgd, bool crg) : Fase(id, dois_jgd, crg)
         {
-            criarCenario(ARQUIVO_CENARIO_1);
+    
             if(!carregamento)
+            {
+                criarCenario(ARQUIVO_CENARIO_1);
                 criarInimigos(ARQUIVO_CENARIO_1);
+                criarObstaculos(ARQUIVO_CENARIO_1);
+            }
             
             text_fundo.loadFromFile("Design/Imagens/bg.jpg");
             fundo.setTexture(&text_fundo);

@@ -162,20 +162,23 @@ namespace Entidades
         }
         void JogadorEscudo::salvar(std::ostringstream* entrada)
         {
-            (*entrada) << "{\"morto\": " << pJog->getMorte() << ", \"posicao\": [" << pJog->getPosicao().x << ", " << pJog->getPosicao().y << "], \"velocidade\": [" << pJog->getVelocidade().x << ", " << pJog->getVelocidade().y << "], \"escudos\": [";
+            (*entrada) << "{\"morto\": " << pJog->getMorte() << ", \"vida\": " << pJog->getVida() << ", \"posicao\": [" << pJog->getPosicao().x << ", " << pJog->getPosicao().y << "], \"velocidade\": [" << pJog->getVelocidade().x << ", " << pJog->getVelocidade().y << "], \"escudos\": [";
 
             std::deque<Escudo>::iterator it;
-            for(it = fila_esc.begin(); it != fila_esc.end(); it++)
+            it = fila_esc.begin();
+            if(fila_esc.size() != 0)
             {
                 (*it).salvar(entrada);
-                if(it != fila_esc.end() - 1 && (*it).getAtivo() == true)
+                it++;
+            }
+            while(it != fila_esc.end())
+            {
+                if((*it).getAtivo() == true)
                 {
-                    if(it != fila_esc.end() - 1) 
-                    {
-                        if(fila_esc.size() != 1)
-                            (*entrada << ", ");
-                    }
+                    (*entrada << ", ");
+                    (*it).salvar(entrada);
                 }
+                it++;
             }
 
             (*entrada) << "]}";

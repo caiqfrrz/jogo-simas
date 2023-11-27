@@ -137,20 +137,23 @@ namespace Entidades
         }
         void JogadorProjetil::salvar(std::ostringstream* entrada)
         {
-            (*entrada) << "{\"morto\": " << pJog->getMorte() << ", \"posicao\": [" << pJog->getPosicao().x << ", " << pJog->getPosicao().y << "], \"velocidade\": [" << pJog->getVelocidade().x << ", " << pJog->getVelocidade().y << "], \"projeteis\": [";
+            (*entrada) << "{\"morto\": " << pJog->getMorte() << ",\"vida\": " << pJog->getVida() << ", \"posicao\": [" << pJog->getPosicao().x << ", " << pJog->getPosicao().y << "], \"velocidade\": [" << pJog->getVelocidade().x << ", " << pJog->getVelocidade().y << "], \"projeteis\": [";
 
             std::vector<Projetil>::iterator it;
-            for(it = vet_proj.begin(); it != vet_proj.end(); it++)
+            it = vet_proj.begin();
+            if(vet_proj.size() != 0)
             {
                 (*it).salvar(entrada);
-                if(it != vet_proj.end() - 1 && (*it).getAtivo() == true)
+                it++;
+            }
+            while(it != vet_proj.end())
+            {
+                if((*it).getAtivo() == true)
                 {
-                    if(it != vet_proj.end() - 1) 
-                    {
-                        if(vet_proj.size() != 1)
-                            (*entrada << ", ");
-                    }
+                    (*entrada << ", ");
+                    (*it).salvar(entrada);
                 }
+                it++;
             }
 
             (*entrada) << "]}";

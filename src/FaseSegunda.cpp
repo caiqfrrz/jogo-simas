@@ -8,11 +8,13 @@ namespace Estados
     namespace Fases
     {
         FaseSegunda::FaseSegunda(int id, bool dois_jgd, bool crg) : Fase(id, dois_jgd, crg)
-        {
-            criarCenario(ARQUIVO_CENARIO_2);
-            
+        {   
             if(!carregamento)
+            {
+                criarCenario(ARQUIVO_CENARIO_2);
                 criarInimigos(ARQUIVO_CENARIO_2);
+                criarObstaculos(ARQUIVO_CENARIO_2);
+            }
             setpoints(0);
         }
         FaseSegunda::~FaseSegunda()
