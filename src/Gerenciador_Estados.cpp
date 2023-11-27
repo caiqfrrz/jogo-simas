@@ -26,11 +26,11 @@ namespace Gerenciadores
             delete estados[i];  
     }
 
-    void Gerenciador_Estados::setEstadoAtual(int i)
+    void Gerenciador_Estados::setEstadoAtual(const int i)
     {
         estadoAtual = i;
     }
-    int Gerenciador_Estados::getEstadoAtual()
+    const int Gerenciador_Estados::getEstadoAtual()
     {
         return estadoAtual;
     }
