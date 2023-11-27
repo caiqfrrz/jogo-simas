@@ -61,7 +61,7 @@ namespace Entidades
             {
                 Entidades::Personagens::Personagem *aux = static_cast<Entidades::Personagens::Personagem *>(pE);
 
-                if (aux->getMorto() == false)
+                if (aux->getMorte() == false)
                 {
                     aux->TomarDano(dano, b);
                 }

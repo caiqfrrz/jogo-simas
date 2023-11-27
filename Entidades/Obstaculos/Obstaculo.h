@@ -17,8 +17,6 @@ namespace Entidades
             ~Obstaculo();
             virtual void executar() = 0;
             virtual void salvar(std::ostringstream* entrada) = 0;
-            virtual bool ehDanoso();
-            virtual bool ehGosma();
         };
     }
 }

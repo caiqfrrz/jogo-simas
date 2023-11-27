@@ -191,7 +191,7 @@ namespace Estados
                 Entidades::Personagens::Personagem *inimigos = static_cast<Entidades::Personagens::Personagem *>(*inim);
                 if ((inimigos)->getVida() <= 0)
                 {
-                    if (inimigos->getMorto() == false)
+                    if (inimigos->getMorte() == false)
                     {
                         inimigos->morreu();
                         points += 11;
@@ -227,15 +227,15 @@ namespace Estados
                 Entidades::Personagens::Personagem *jogador = static_cast<Entidades::Personagens::Personagem *>(*jgd);
                 Entidades::Personagens::Personagem *jogador2 = static_cast<Entidades::Personagens::Personagem *>(*jgd2);
 
-                if (jogador->getMorto() && !jogador2->getMorto())
+                if (jogador->getMorte() && !jogador2->getMorte())
                 {
                     pGG->centralizarCamera((jogador2)->getPosicao());
                 }
-                else if (!jogador->getMorto() && jogador2->getMorto())
+                else if (!jogador->getMorte() && jogador2->getMorte())
                 {
                     pGG->centralizarCamera((jogador)->getPosicao());
                 }
-                else if (!jogador->getMorto() && !jogador2->getMorto())
+                else if (!jogador->getMorte() && !jogador2->getMorte())
                 {
                     pGG->centralizarCamera((((*(jogadores.get_primeiro()))->getPosicao()) + ((*(jogadores.get_primeiro()++))->getPosicao())) / (float)2);
                 }

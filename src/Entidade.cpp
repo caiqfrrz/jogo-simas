@@ -30,7 +30,7 @@ namespace Entidades
     {
         morte = true;
     }
-    bool Entidade::getMorto()
+    bool Entidade::getMorte()
     {
         return morte;
     }

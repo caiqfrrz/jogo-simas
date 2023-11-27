@@ -25,7 +25,7 @@ namespace Gerenciadores
         {
             while (inim != nullptr)
             {
-                if ((*inim)->getMorto() == false)
+                if ((*inim)->getMorte() == false)
                 {
                     if (colidiu(*jgd, *inim))
                     {
@@ -77,7 +77,7 @@ namespace Gerenciadores
                 for (int i = 0; i < pVec->size(); i++)
                 {
                     Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
-                    if ((*inim)->getMorto() == false)
+                    if ((*inim)->getMorte() == false)
                     {
                         if (colisao_projetil(*inim, proj) == true)
                         {

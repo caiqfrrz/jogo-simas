@@ -15,13 +15,5 @@ namespace Entidades
         {
             
         }
-        bool Obstaculo::ehDanoso()
-        {
-            return danoso;
-        }
-        bool Obstaculo::ehGosma()
-        {
-            return lento;
-        }
     }
 }

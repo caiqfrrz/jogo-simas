@@ -4,12 +4,10 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Personagem::Personagem(sf::Vector2f pos,sf::Vector2f vel, bool pro, bool esp) : Entidade(pos),
+        Personagem::Personagem(sf::Vector2f pos,sf::Vector2f vel) : Entidade(pos),
                                                                        damaged((bool)0),
                                                                        timer(),
                                                                        lento(false),
-                                                                       projetil(pro),
-                                                                       escudo(esp),
                                                                        pulando(false),
                                                                        pulo(0.f),
                                                                        grafico(),
@@ -50,18 +48,6 @@ namespace Entidades
         {
             vida = 10;
             morte = false;
-        }
-        bool Personagem::getMorto()
-        {
-            return morte;
-        }
-        bool Personagem::usaArma()
-        {
-            return projetil;
-        }
-        bool Personagem::usaEscudo()
-        {
-            return escudo;
         }
         bool Personagem::getMorte()
         {

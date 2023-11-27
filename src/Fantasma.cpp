@@ -25,7 +25,7 @@ namespace Entidades
         {
             Personagem* jogador = static_cast<Personagem*>(pE);
 
-            if(getMorto() == false)
+            if(getMorte() == false)
                 jogador->TomarDano(dano, b);
         }
 
@@ -63,12 +63,12 @@ namespace Entidades
                 
                 float distMaisProx = 0;
 
-                if(jogador->getMorto() == true)
+                if(jogador->getMorte() == true)
                 {
                     jogadorMaisProx = *jgd2;
                     distMaisProx = dist2;
                 }
-                else if(jogador2->getMorto() == true)
+                else if(jogador2->getMorte() == true)
                 {
                     jogadorMaisProx = *jgd;
                     distMaisProx = dist1;

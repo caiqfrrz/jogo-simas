@@ -32,7 +32,6 @@ namespace Entidades
             void atirar();
             void ultrathrust();
             void salvar(std::ostringstream* entrada);
-            std::vector<Projetil> *getVetProj();
         };
     }
 }

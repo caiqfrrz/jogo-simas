@@ -28,7 +28,7 @@ namespace Entidades
         virtual bool getAtivo();
         virtual void setAtivo(bool b);
         virtual void morreu();
-        virtual bool getMorto();
+        virtual bool getMorte();
         const sf::Vector2f getPosicao() const { return corpo.getPosition(); }
         const sf::Vector2f getTamanho() const { return corpo.getSize(); }
         const sf::Vector2f getVelocidade () const { return velocidade; }

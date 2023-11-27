@@ -20,7 +20,6 @@ namespace Entidades
             void mover();
             void colidir(Entidade* pE, bool b);
             void salvar(std::ostringstream* entrada);
-            //Entidade* getJogadorProx();
         };
     }
 }
