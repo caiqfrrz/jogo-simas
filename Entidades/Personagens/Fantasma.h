@@ -14,7 +14,7 @@ namespace Entidades
         private:
             Listas::ListaEntidades* jogadores;
         public:
-            Fantasma(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));
+            Fantasma(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f), int dano = 2);
             ~Fantasma();
             void executar();
             void mover();
