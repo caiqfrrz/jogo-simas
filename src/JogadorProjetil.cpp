@@ -135,5 +135,25 @@ namespace Entidades
         {
             return nullptr;
         }
+        void JogadorProjetil::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{\"morto\": " << pJog->getMorte() << ", \"posicao\": [" << pJog->getPosicao().x << ", " << pJog->getPosicao().y << "], \"velocidade\": [" << pJog->getVelocidade().x << ", " << pJog->getVelocidade().y << "], \"projeteis\": [";
+
+            std::vector<Projetil>::iterator it;
+            for(it = vet_proj.begin(); it != vet_proj.end(); it++)
+            {
+                (*it).salvar(entrada);
+                if(it != vet_proj.end() - 1 && (*it).getAtivo() == true)
+                {
+                    if(it != vet_proj.end() - 1) 
+                    {
+                        if(vet_proj.size() != 1)
+                            (*entrada << ", ");
+                    }
+                }
+            }
+
+            (*entrada) << "]}";
+        }
     }
 }

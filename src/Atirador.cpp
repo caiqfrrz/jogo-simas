@@ -202,13 +202,12 @@ namespace Entidades
                 (*it).salvar(entrada);
                 if(it != vec_proj.end() - 1 && (*it).getAtivo() == true)
                 {
-                    (*entrada << ", ");
+                    if(vec_proj.size() != 1)
+                        (*entrada << ", ");
                 }
             }
 
             (*entrada) << "]}";
-
-            n_atiradores_salvos++;
         }
         void Atirador::atirar()
         {
@@ -236,6 +235,5 @@ namespace Entidades
         {
             return &vec_proj;
         }
-        int Atirador::n_atiradores_salvos(0);
     }
 }

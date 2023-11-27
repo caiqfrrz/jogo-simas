@@ -89,5 +89,5 @@
         "valarray": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled",
-    "editor.inlineSuggest.showToolbar": "onHover"
+    "editor.inlineSuggest.showToolbar": "always"
 }

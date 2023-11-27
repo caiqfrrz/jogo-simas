@@ -11,8 +11,11 @@ namespace Entidades
         vida(2),
         dano(1)
         {
+            textura.loadFromFile("Design/Imagens/fantasma.png");
+            corpo.setTexture(&textura);
+            corpo.setFillColor(sf::Color(255, 255, 255 ,170));
+
             setVida(2);
-            corpo.setFillColor(sf::Color::Magenta);
             grafico.setPers(static_cast<Personagem*>(this));
         }
 
@@ -96,7 +99,13 @@ namespace Entidades
                 velocidade = direcao * 1.f;
 
                 if(distMaisProx <= 350)
+                {
                     corpo.setPosition(corpo.getPosition() + velocidade);
+                    if(velocidade.x > 0)
+                    {
+                        
+                    }
+                }
             }
             if(jgd2 == nullptr)
             {
@@ -118,9 +127,7 @@ namespace Entidades
         {
 
             (*entrada) << "{\"id\": \"fantasma\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "] }";
-            n_fantasmas_salvos++;
         }
-        int Fantasma::n_fantasmas_salvos(0);
     }
 }
 

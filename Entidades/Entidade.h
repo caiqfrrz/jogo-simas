@@ -12,6 +12,7 @@ namespace Entidades
     {
     protected:
         sf::Vector2f posicao;
+        sf::Texture textura;
         bool nochao;
         bool morte;
         bool ativo;

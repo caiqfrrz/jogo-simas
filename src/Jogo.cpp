@@ -8,6 +8,7 @@ pEstados(Gerenciadores::Gerenciador_Estados::get_instancia())
 {
     Estados::Menus::MenuPrincipal* menu_principal = new Estados::Menus::MenuPrincipal();
     Estados::Menus::MenuFases* menu_fases = new Estados::Menus::MenuFases();
+    Estados::Menus::MenuPausa* menu_pausa = new Estados::Menus::MenuPausa();
 
     //Estados::Menus::Ranking* rankings = new Estados::Menus::Ranking(6, true);
     executar();

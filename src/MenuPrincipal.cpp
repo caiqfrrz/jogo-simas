@@ -102,13 +102,13 @@ namespace Estados
             {
                 if(n_jogadores == 1)
                 {
-                    Estados::Fases::FaseSegunda* fase2_1p = new Estados::Fases::FaseSegunda(4, false, true);
+                    Estados::Fases::FaseSegunda* fase2_1p = new Estados::Fases::FaseSegunda(3, false, true);
                 }
                 else
                 {
-                    Estados::Fases::FaseSegunda* fase2_2p = new Estados::Fases::FaseSegunda(4, true, true);
+                    Estados::Fases::FaseSegunda* fase2_2p = new Estados::Fases::FaseSegunda(3, true, true);
                 }
-                pGE->setEstadoAtual(4);
+                pGE->setEstadoAtual(3);
             }
         }
     }

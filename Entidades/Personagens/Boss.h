@@ -19,7 +19,6 @@ namespace Entidades
             std::vector<Projetil> vec_proj;
             int recarregar;
             sf::Vector2f velocidadeDir;
-            static int n_boss_salvos;
         public:
             bool firing;
             Boss(Listas::ListaEntidades *jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));
@@ -32,7 +31,6 @@ namespace Entidades
             void bolasdefogo();
             void salvar(std::ostringstream* entrada);
             std::vector<Projetil> *getVetProj();
-            // Entidade* getJogadorProx();
         };
     }
 }

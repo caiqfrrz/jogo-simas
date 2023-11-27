@@ -46,6 +46,11 @@ namespace Entidades
         {
             morte = true;
         }
+        void Personagem::reviver()
+        {
+            vida = 10;
+            morte = false;
+        }
         bool Personagem::getMorto()
         {
             return morte;

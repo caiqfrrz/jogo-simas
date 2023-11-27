@@ -21,7 +21,6 @@ namespace Entidades
             std::vector<Projetil> vec_proj;
             int recarregar;
             std::string dir;
-            static int n_atiradores_salvos;
         public:
             bool firing;
             Atirador(Listas::ListaEntidades*jog = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f));

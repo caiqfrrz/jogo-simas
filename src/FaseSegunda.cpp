@@ -8,6 +8,7 @@ namespace Estados
         Fase(id, dois_jgd, crg)
         {
             criarCenario(ARQUIVO_CENARIO_2);
+            
             if(!carregamento)
                 criarInimigos(ARQUIVO_CENARIO_2);
         }
@@ -26,7 +27,7 @@ namespace Estados
             checarVivos();
             if(checarVivos())
             {
-                pGE->setEstadoAtual(6);
+                //pGE->setEstadoAtual(6);
             }
         }
     }

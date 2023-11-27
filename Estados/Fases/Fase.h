@@ -13,10 +13,13 @@
 #include "../../Entidades/Obstaculos/Espinho.h"
 #include "../../Entidades/Obstaculos/Gosma.h"
 #include "../../Entidades/Obstaculos/Plataforma.h"
+#include "../../Entidades/Obstaculos/Coracao.h"
 #include "../../Listas/ListaEntidades.h"
 #include "../../Gerenciadores/Gerenciador_Colisoes.h"
 #include "../../Entidades/Personagens/JogadorProjetil.h"
 #include "../../Entidades/Personagens/JogadorEscudo.h"
+#include "../../Gerenciadores/Gerenciador_Grafico.h"
+#include "../../Observers/ObserverTecla.h"
 #include "../Estado.h"
 
 namespace Estados
@@ -30,18 +33,17 @@ namespace Estados
             Listas::ListaEntidades obstaculos;
             Listas::ListaEntidades jogadores;
             Listas::ListaEntidades inimigos;
+            Observers::ObserverTecla* pObs;
             Gerenciadores::Gerenciador_Colisoes gC;
             std::ostringstream buffer;
+            sf::RectangleShape fundo;
+            sf::Texture text_fundo;
             bool dois_jogadores;
             bool carregamento;
-            int n_atiradores;
-            int n_chefoes;
-            int n_fantasmas;
             int points;
         public:
             Fase(int i = - 1, bool dois_jgd = false, bool crg = false);
             virtual ~Fase();
-
             virtual void executar() = 0;
             void gerenciar_colisoes();
             void salvar();

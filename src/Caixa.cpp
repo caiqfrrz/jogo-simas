@@ -7,7 +7,10 @@ namespace Entidades
         Caixa::Caixa(sf::Vector2f pos):
         Obstaculo(pos, false)
         {
-            corpo.setFillColor(sf::Color::Cyan);
+            textura.loadFromFile("Design/Imagens/caixa.png");
+            corpo.setTexture(&textura);
+            corpo.setFillColor(sf::Color(82, 16, 16));
+
             morreu();
         }
         Caixa::~Caixa()

@@ -29,6 +29,7 @@ namespace Entidades
             virtual void TomarDano(int d, bool b);
             void morreu();
             bool getMorto();
+            void reviver();
             virtual void ResetColor();
             virtual bool usaArma(); 
             virtual bool usaEscudo();

@@ -25,6 +25,7 @@ namespace Entidades
             virtual void mover() = 0;
             virtual std::vector<Projetil>* getVetProj() = 0;
             virtual std::deque<Escudo>* getFilaEsc() = 0;
+            virtual void salvar(std::ostringstream* entrada) = 0;
         };
     }
 }

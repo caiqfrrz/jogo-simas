@@ -13,7 +13,6 @@ namespace Observers
     MenuPrincipalObserver::~MenuPrincipalObserver()
     {
         pMenu = nullptr;
-        std::cout << "porraaaaaaaaaaaaaaaaaaaaa" ;
     }
     void MenuPrincipalObserver::setMenu(Estados::Menus::MenuPrincipal* pM)
     {

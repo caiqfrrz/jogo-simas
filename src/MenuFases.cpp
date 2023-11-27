@@ -95,16 +95,12 @@ namespace Estados
                 {
                     if (num_jogadores == 1)
                     {
-                        Estados::Fases::FasePrimeira* fase1_1p = new Estados::Fases::FasePrimeira(2, false, false);
-                        Estados::Fases::FaseSegunda* fase2_1p = new Estados::Fases::FaseSegunda(4, false, false);
-
+                        Estados::Fases::FasePrimeira* fase1_1p = new Estados::Fases::FasePrimeira(2, false, false);  
                         pGE->setEstadoAtual(2);
                     }
                     else
                     {
                         Estados::Fases::FasePrimeira* fase1_2p = new Estados::Fases::FasePrimeira(2, true, false);
-                        Estados::Fases::FaseSegunda* fase2_2p = new Estados::Fases::FaseSegunda(4, true, false);
-
                         pGE->setEstadoAtual(2);
                     }
                         
@@ -114,13 +110,13 @@ namespace Estados
                 {
                     if (num_jogadores == 1)
                     {
-                        Estados::Fases::FaseSegunda* fase2_1p = new Estados::Fases::FaseSegunda(4, false, false);
-                        pGE->setEstadoAtual(4);
+                        Estados::Fases::FaseSegunda* fase2_1p = new Estados::Fases::FaseSegunda(3, false, false);
+                        pGE->setEstadoAtual(3);
                     }
                     else
                     {
-                        Estados::Fases::FaseSegunda* fase2_2p = new Estados::Fases::FaseSegunda(4, true, false);
-                        pGE->setEstadoAtual(4);
+                        Estados::Fases::FaseSegunda* fase2_2p = new Estados::Fases::FaseSegunda(3, true, false);
+                        pGE->setEstadoAtual(3);
                     }
                 }
             }

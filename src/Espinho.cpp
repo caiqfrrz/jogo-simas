@@ -7,6 +7,9 @@ namespace Entidades
         Espinho::Espinho(sf::Vector2f pos):
         Obstaculo(pos, true)
         {
+            textura.loadFromFile("Design/Imagens/espinhos.png");
+            corpo.setTexture(&textura);
+
             corpo.setFillColor(sf::Color::Red);
             morreu();
         }

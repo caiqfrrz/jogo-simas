@@ -76,7 +76,6 @@ namespace Entidades
     {
         if(corpo.getFillColor() != sf::Color::Transparent)
         {
-            std::cout << direcao;
             (*entrada) << "{\"posicao\": [" << getPosicao().x << "," << getPosicao().y << "], \"dano\": " << getDano() << ", \"direcao\": \"" << direcao << "\"}";
         }
     }
@@ -84,7 +83,6 @@ namespace Entidades
     {
         if(chefao)
         {
-            std::cout << direcao;
             (*entrada) << "{\"posicao\": [" << getPosicao().x << "," << getPosicao().y << "], \"velocidade\": [" << getVelocidade().x << "," << getVelocidade().y << "], \"dano\": " << getDano() << "}";
         }
     }

@@ -10,7 +10,9 @@ namespace Entidades
         Obstaculo(pos, false, true),
         força(2.f)
         {
-            corpo.setFillColor(sf::Color(139,69,19));
+            textura.loadFromFile("Design/Imagens/gosma.png");
+            corpo.setTexture(&textura);
+
             morreu();
         }
         Gosma::~Gosma()

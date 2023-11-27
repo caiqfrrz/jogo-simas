@@ -101,7 +101,7 @@ namespace Entidades
         }
         void Jogador::salvar(std::ostringstream* entrada) 
         {
-            (*entrada) << "{ \"posicao\": [" << getPosicao().x <<","<< getPosicao().y <<"], \"velocidade\": ["<<getVelocidade().x<<","<< getVelocidade().y <<"] }" << std::endl;
+            jogador_type->salvar(entrada);
         }
 
     }

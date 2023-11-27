@@ -21,6 +21,7 @@ namespace Entidades
 
         Boss::~Boss()
         {
+            vec_proj.clear();
         }
         void Boss::executar()
         {
@@ -294,14 +295,13 @@ namespace Entidades
                 (*it).salvar(entrada, true);
                 if(it != vec_proj.end() - 1) 
                 {
-                    (*entrada << ", "); 
+                    if(vec_proj.size() != 1)
+                        (*entrada << ", ");
                 }
             }
 
             (*entrada) << "]}";
 
-            n_boss_salvos++;
         }
-        int Boss::n_boss_salvos(0);
     }
 }
