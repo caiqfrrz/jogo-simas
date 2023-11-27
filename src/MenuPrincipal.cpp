@@ -63,7 +63,7 @@ namespace Estados
                 {
                     usarfuncaoreSize(pRanking, ARQUIVO_COLOCACAO_1);
                     usarfuncaoCriarTextos(pRanking, ARQUIVO_COLOCACAO_1);
-                    pGE->setEstadoAtual(6);
+                    pGE->setEstadoAtual(5);
                 }
                 if (pos == 3)
                 {
