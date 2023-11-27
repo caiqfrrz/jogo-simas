@@ -34,13 +34,12 @@ namespace Estados
                 salvar_pontuacao(ARQUIVO_COLOCACAO_1);
                 usarfuncaoreSize(pRanking, ARQUIVO_COLOCACAO_1);
                 usarfuncaoCriarTextos(pRanking, ARQUIVO_COLOCACAO_1);
-                setpoints(0);
-                std::cout << getpoints() << " ";
+                
                 Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores.get_primeiro();
                 Entidades::Personagens::Jogador *jogador = static_cast<Entidades::Personagens::Jogador *>(*jgd);
                 (*jogador).setpoints(0);
 
-                pGE->setEstadoAtual(6);
+                pGE->setEstadoAtual(5);
             }
         }
     }

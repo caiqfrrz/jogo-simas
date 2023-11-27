@@ -42,6 +42,19 @@ namespace Estados
 
                 pGE->setEstadoAtual(3);
             }
+            else if(checarVivos() == 2)
+            {
+                getName();
+                salvar_pontuacao(ARQUIVO_COLOCACAO_1);
+                usarfuncaoreSize(pRanking, ARQUIVO_COLOCACAO_1);
+                usarfuncaoCriarTextos(pRanking, ARQUIVO_COLOCACAO_1);
+                
+                Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores.get_primeiro();
+                Entidades::Personagens::Jogador *jogador = static_cast<Entidades::Personagens::Jogador *>(*jgd);
+                (*jogador).setpoints(0);
+
+                pGE->setEstadoAtual(5);
+            }
 
         }
     }

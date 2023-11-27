@@ -29,7 +29,6 @@ namespace Entidades
             bool getMorte();
             void reviver();
             virtual void ResetColor();
-            virtual bool getMorte();
             bool getDamaged();
             bool getLento();
             void setLento(bool b);
