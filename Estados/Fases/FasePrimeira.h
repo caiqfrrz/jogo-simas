@@ -14,8 +14,7 @@ namespace Estados
         private:
             //int points;
         public:
-            FasePrimeira(int id = -1,bool dois_jgd = false, Estados::Menus::Ranking* pR = nullptr);
-            FasePrimeira(int id = -1,bool dois_jgd = false, bool crg = false);
+            FasePrimeira(int id = -1, bool dois_jgd = false, bool crg, Estados::Menus::Ranking* pR = nullptr);
             ~FasePrimeira();
             void executar();
         };
