@@ -30,6 +30,7 @@ namespace Gerenciadores
         static Gerenciador_Estados* get_instancia();
         void setEstadoAtual (const int i);
         const int getEstadoAtual();
+        void setEstadoAtual (int i);
         int getEstadoAnterior();
         void pausePMenu();
         void addEstado (Estados::Estado* pEstado);

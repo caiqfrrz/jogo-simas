@@ -4,12 +4,13 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Atirador::Atirador(Listas::ListaEntidades *jog, sf::Vector2f pos, sf::Vector2f vel, int dano) : Inimigo(pos, vel, false, dano),
-                                                                            jogadores(jog),
-                                                                            recarregar(0),
-                                                                            dir(""),
-                                                                            firing(false),
-                                                                            vec_proj()
+        Atirador::Atirador(Listas::ListaEntidades *jog, sf::Vector2f pos, sf::Vector2f vel, int dano) : 
+        Inimigo(pos, vel, false, dano),
+        jogadores(jog),
+        recarregar(0),
+        dir(""),
+        firing(false),
+        vec_proj()
         {
             corpo.setFillColor(sf::Color::Yellow);
             setVida(5);
