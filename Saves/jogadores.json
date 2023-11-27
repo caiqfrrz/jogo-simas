@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 { "jogo": "jogo" ,"fase": 1, "n_jogadores": 1, "jogadores": [{"morto": 0,"vida": 10, "posicao": [1186, 500], "velocidade": [0, -1.4], "projeteis": []}]}
+=======
+{ "jogo": "jogo" ,"fase": 1, "n_jogadores": 1, "jogadores": [{"morto": 0,"vida": 9, "posicao": [382, 200], "velocidade": [0, -1.4], "projeteis": []}]}
+>>>>>>> 9bab857ae5c2e3818de73cf97eec710225903ec1

@@ -94,11 +94,12 @@ namespace Gerenciadores
     {
         Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
         Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
+        std::vector<Entidades::Projetil> *pVec;
 
         while (inim != nullptr)
         {
             Entidades::Personagens::Inimigo *inim_atira = static_cast<Entidades::Personagens::Inimigo *>(*inim);
-            std::vector<Entidades::Projetil> *pVec = inim_atira->getVetProj();
+            pVec = inim_atira->getVetProj();
 
             if (pVec != nullptr)
             {
@@ -148,11 +149,12 @@ namespace Gerenciadores
     {
         Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
         Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
+        std::vector<Entidades::Projetil> *pVec;
 
         while (obst != nullptr)
         {
             Entidades::Personagens::Jogador *jgd_atira = static_cast<Entidades::Personagens::Jogador *>(*jgd);
-            std::vector<Entidades::Projetil> *pVec = jgd_atira->getVetProj();
+            pVec = jgd_atira->getVetProj();
 
             if (pVec->size() > 0)
             {
@@ -177,6 +179,7 @@ namespace Gerenciadores
     {
         Listas::Lista<Entidades::Entidade>::Iterador obst = obstaculos->get_primeiro();
         Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+        std::vector<Entidades::Projetil> *pVec;
 
         while (inim != nullptr)
         {
