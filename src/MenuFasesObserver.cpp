@@ -12,7 +12,6 @@ namespace Observers
     }
     MenuFasesObserver::~MenuFasesObserver()
     {
-        std::cout<< "fases";
         pMenuFases = nullptr;
     }
     void MenuFasesObserver::setMenu(Estados::Menus::MenuFases* pM)
