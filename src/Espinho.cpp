@@ -29,6 +29,10 @@ namespace Entidades
         {
             static_cast<Personagens::Personagem*>(pE)->TomarDano(dano, b);
         }
+        void Espinho::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{\"id\": \"espinho\", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "]}";
+        }
         int Espinho::dano = 1;
     }
 }

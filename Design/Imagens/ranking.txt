@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+caique,275
+caique,55
+caique,22
+=======
 hhtht,44
 eragrwg,22
 bubu,11
@@ -10,3 +15,4 @@ cnmuuuu,0
 rgwgrmgtekmr,0
 <<<<<<< HEAD
              caique,0
+>>>>>>> 72c49b21fe5874a6b20419f14dab6aa79b513715

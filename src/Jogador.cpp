@@ -8,13 +8,14 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador(JogadorStrategy *jgd, int id, sf::Vector2f pos, sf::Vector2f vel) : Personagem(pos, vel),
+        Jogador::Jogador(JogadorStrategy *jgd, int id, sf::Vector2f pos, sf::Vector2f vel, int vida) : Personagem(pos, vel),
                                                                                              jogador_type(jgd),
                                                                                              i(id),
                                                                                              recarga(0),
                                                                                              last_key(1),
                                                                                              pontos(0)
         {
+            setVida(vida);
             textura.loadFromFile("Design/Imagens/jogador.png");
             corpo.setTexture(&textura);
 

@@ -29,5 +29,9 @@ namespace Entidades
 
             jogador->setLento(true);
         }
+        void Gosma::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{\"id\": \"gosma\", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "]}";
+        }
     }
 }

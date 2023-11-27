@@ -4,10 +4,11 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        Coracao::Coracao(Listas::ListaEntidades* jog, sf::Vector2f pos):
+        Coracao::Coracao(Listas::ListaEntidades* jog, sf::Vector2f pos, bool ativo):
         Obstaculo(pos),
         jogadores(jog)
         {
+            setAtivo(ativo);
             textura.loadFromFile("Design/Imagens/coracao.png");
             corpo.setTexture(&textura);
             corpo.setFillColor(sf::Color::Magenta);
@@ -58,6 +59,10 @@ namespace Entidades
                 }
                 ativo = false;
             }
+        }
+        void Coracao::salvar(std::ostringstream* entrada)
+        {
+            (*entrada) << "{\"id\": \"coracao\", \"ativo\": " << ativo << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "]}";
         }
     }
 }

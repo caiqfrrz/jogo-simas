@@ -7,9 +7,14 @@
 
 namespace Entidades
 {
-    Projetil::Projetil(std::string dir, sf::Vector2f tam, sf::Vector2f pos) : dano(1),
+    Projetil::Projetil(std::string dir, sf::Vector2f tam, sf::Vector2f pos, bool at) : dano(1),
                                                             direcao(dir)
     {
+        setAtivo(at);
+        if(at == false)
+        {
+            corpo.setFillColor(sf::Color::Transparent);
+        }
         corpo.setSize(tam);
         setPosicao(pos);
 
@@ -70,6 +75,14 @@ namespace Entidades
 
         setAtivo(false);
     }
+    void Projetil::colidir()
+    {
+        if(getAtivo() == true)
+        {
+            corpo.setFillColor(sf::Color::Transparent);
+            setAtivo(false);
+        }
+    }
     void Projetil::reset()
     {
         corpo.setFillColor(sf::Color::White);
@@ -80,16 +93,8 @@ namespace Entidades
     }
     void Projetil::salvar(std::ostringstream* entrada)
     {
-        if(corpo.getFillColor() != sf::Color::Transparent)
-        {
-            (*entrada) << "{\"posicao\": [" << getPosicao().x << "," << getPosicao().y << "], \"dano\": " << getDano() << ", \"direcao\": \"" << direcao << "\"}";
-        }
-    }
-    void Projetil::salvar(std::ostringstream* entrada, bool chefao)
-    {
-        if(chefao)
-        {
-            (*entrada) << "{\"posicao\": [" << getPosicao().x << "," << getPosicao().y << "], \"velocidade\": [" << getVelocidade().x << "," << getVelocidade().y << "], \"dano\": " << getDano() << "}";
-        }
+        
+        (*entrada) << "{\"posicao\": [" << getPosicao().x << "," << getPosicao().y << "],\"ativo\": "<< getAtivo() << ", \"dano\": " << getDano() << ", \"direcao\": \"" << direcao << "\"}";
+        
     }
 }

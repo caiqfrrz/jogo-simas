@@ -4,7 +4,7 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Atirador::Atirador(Listas::ListaEntidades *jog, sf::Vector2f pos, sf::Vector2f vel, int dano) : 
+        Atirador::Atirador(int vida, Listas::ListaEntidades *jog, sf::Vector2f pos, sf::Vector2f vel, int dano) : 
         Inimigo(pos, vel, false, dano),
         jogadores(jog),
         recarregar(0),
@@ -14,7 +14,7 @@ namespace Entidades
         {
             textura.loadFromFile("Design/Imagens/atirador.png");
             corpo.setTexture(&textura);
-            setVida(5);
+            setVida(vida);
             grafico.setPers(static_cast<Personagem *>(this));
         }
 
@@ -181,7 +181,7 @@ namespace Entidades
                 vec_proj[i].executar();
             }
 
-            if (vec_proj.size() > 50)
+            if (vec_proj.size() > 6)
             {
                 for (int i = 0; i < vec_proj.size() / 2; i++)
                 {
@@ -195,17 +195,23 @@ namespace Entidades
         void Atirador::salvar(std::ostringstream* entrada)
         {
 
-            (*entrada) << "{\"id\": \"atirador\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "], \"projeteis\": [";
+            (*entrada) << "{\"id\": \"atirador\", \"morto\": " << morte << ", \"vida\": " << getVida() << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "], \"projeteis\": [";
 
             std::vector<Projetil>::iterator it;
-            for(it = vec_proj.begin(); it != vec_proj.end(); it++)
+            it = vec_proj.begin();
+            if(vec_proj.size() != 0)
             {
                 (*it).salvar(entrada);
-                if(it != vec_proj.end() - 1 && (*it).getAtivo() == true)
+                it++;
+            }
+            while(it != vec_proj.end())
+            {
+                if((*it).getAtivo() == true)
                 {
-                    if(vec_proj.size() != 1)
-                        (*entrada << ", ");
+                    (*entrada << ", ");
+                    (*it).salvar(entrada);
                 }
+                it++;
             }
 
             (*entrada) << "]}";

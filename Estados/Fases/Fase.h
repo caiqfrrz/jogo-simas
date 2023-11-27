@@ -4,6 +4,7 @@
 
 #define ARQUIVO_JOGADOR "Saves/jogadores.json"
 #define ARQUIVO_INIMIGO "Saves/inimigos.json"
+#define ARQUIVO_OBSTACULO "Saves/obstaculos.json"
 
 #include "../../Entidades/Entidade.h"
 #include "../../Entidades/Personagens/Jogador.h"
@@ -55,8 +56,10 @@ namespace Estados
             void criarJogadores();
             void criarInimigos(std::string caminho);
             void criarCenario(std::string caminho);
+            void criarObstaculos(std::string caminho);
             void carregarJogadores();
             void carregarInimigos();
+            void carregarObstaculos();
             void salvar_pontuacao(std::string caminho);
             void getName();
             void usarfuncaoCriarTextos(Estados::Menus::Ranking* objRanking, std::string caminho);
