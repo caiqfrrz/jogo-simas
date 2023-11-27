@@ -67,7 +67,6 @@ namespace Gerenciadores
             delete estados[3];
             estados[3] = nullptr;
         }
-        
         setEstadoAtual(0);
     }
     void Gerenciador_Estados::executar()

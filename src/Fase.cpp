@@ -192,28 +192,18 @@ namespace Estados
                 jgd++;
             }
             jgd = jogadores.get_primeiro();
-            bool keep;
-            while (keep == true)
+            bool todos_jgd_mortos = true;
+            
+            while (jgd != nullptr)
             {
                 Entidades::Personagens::Personagem *jogador = static_cast<Entidades::Personagens::Personagem *>(*jgd);
+                if ((jogador)->getVida() > 0)
+                {
+                    todos_jgd_mortos = false;
+                }
                 jgd++;
-                if (jgd != nullptr)
-                {
-                    Entidades::Personagens::Personagem *jogador2 = static_cast<Entidades::Personagens::Personagem *>(*jgd);
-                    if ((jogador)->getVida() <= 0 && (jogador2)->getVida() <= 0)
-                    {
-                        acabou = 2;
-                    }
-                }
-                else
-                {
-                    if ((jogador)->getVida() <= 0)
-                    {
-                        acabou = 2;
-                    }
-                }
-                keep = false;
             }
+            
             Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos.get_primeiro();
             jgd = jogadores.get_primeiro();
             Entidades::Personagens::Jogador *jogador = static_cast<Entidades::Personagens::Jogador *>(*jgd);
@@ -242,6 +232,8 @@ namespace Estados
             {
                 acabou = 1;
             }
+            if(todos_jgd_mortos)
+                acabou = 2;
 
             return acabou;
         }
@@ -506,8 +498,14 @@ namespace Estados
                 std::cout << "Arquivo não existe" << std::endl;
                 exit(2);
             }
-
             nlohmann::json json = nlohmann::json::parse(arquivo);
+
+            int n_jogadores = json["n_jogadores"];
+
+            if(n_jogadores == 1)
+                dois_jogadores = false;
+            else
+                dois_jogadores = true;
 
             auto jogadores_json = json["jogadores"];
 
@@ -580,14 +578,18 @@ namespace Estados
                 vec_proj->push_back(*proj);
             }
 
+
             Entidades::Personagens::Jogador *jgd = new Entidades::Personagens::Jogador(jgd1, 1, sf::Vector2f(posx, posy), sf::Vector2f(velx, vely), vida);
 
+
             jgd1->setJog(jgd);
+
 
             if (morto)
                 jgd->morreu();
 
-            jogadores.incluir(static_cast<Entidades::Entidade *>(jgd));
+
+            jogadores.incluir(static_cast<Entidades::Entidade*>(jgd));
         }
         void Fase::carregarInimigos()
         {

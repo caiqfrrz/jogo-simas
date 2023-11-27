@@ -135,10 +135,8 @@ namespace Estados
                                     linha1 = linha2;
                                     linha11 = linha22;
                                 }
-
                                 i++;
                             }
-
                         }
                     }
                     catch (const std::invalid_argument &e)
