@@ -1,26 +1,31 @@
 #include "../Entidades/Personagens/Boss.h"
+#include <SFML/Graphics.hpp>
 #include <sstream>
 
 namespace Entidades
 {
     namespace Personagens
     {
-        Boss::Boss(Listas::ListaEntidades *jog, Listas::ListaEntidades *inim, sf::Vector2f pos, sf::Vector2f vel, int dano) :
-        Inimigo(pos, vel, false, dano),
-        velocidadeDir({0, 0}),
-        jogadores(jog),
-        inimigos(inim),
-        recarregar(0),
-        firing(false)
+        Boss::Boss(Listas::ListaEntidades *jog, Listas::ListaEntidades *inim, sf::Vector2f pos, sf::Vector2f vel, int dano) : Inimigo(pos, vel, false, dano),
+                                                                                                                              velocidadeDir({0, 0}),
+                                                                                                                              pGrafico(Gerenciadores::Gerenciador_Grafico::get_instancia()),
+                                                                                                                              jogadores(jog),
+                                                                                                                              inimigos(inim),
+                                                                                                                              recarregar(0),
+                                                                                                                              firing(false)
         {
             corpo.setFillColor(sf::Color::Yellow);
             setVida(10);
             grafico.setPers(static_cast<Personagem *>(this));
+
+            if (!texture.loadFromFile("Design/Imagens/boss.gif"))
+            {
+                std::cout << "deu ruim no gif do boss";
+            }
         }
 
         Boss::~Boss()
         {
-            
         }
         void Boss::executar()
         {
@@ -45,6 +50,21 @@ namespace Entidades
         {
             if (getAtivo() == true)
             {
+                // Atualizar a animação
+                if (animationClock.getElapsedTime().asSeconds() >= frameDuration)
+                {
+                    std::cout << "FR";
+                    // Avançar para o próximo frame
+                    currentFrame = (currentFrame + 1) % numFrames;
+
+                    // Atualizar a textura do RectangleShape
+                    sf::IntRect textureRect(currentFrame * 440, 0, 440, 220);
+                    corpo.setTextureRect(textureRect);
+
+                    // Redefinir o temporizador
+                    animationClock.restart();
+                }
+
                 Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
                 Listas::Lista<Entidades::Entidade>::Iterador jgd2 = jogadores->get_primeiro()++;
 
@@ -191,10 +211,9 @@ namespace Entidades
                 recarregar--;
             }
         }
-        void Boss::salvar(std::ostringstream* entrada)
+        void Boss::salvar(std::ostringstream *entrada)
         {
             (*entrada) << "{\"id\": \"chefao\", \"morto\": " << morte << ", \"posicao\": [" << getPosicao().x << ", " << getPosicao().y << "], \"velocidade\": [" << velocidade.x << ", " << velocidade.y << "]}";
-
         }
         void Boss::ultrathrust()
         {
