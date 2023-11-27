@@ -139,13 +139,11 @@ namespace Estados
                                 i++;
                             }
 
-                            std::cout << "hehe ";
                         }
                     }
                     catch (const std::invalid_argument &e)
                     {
                         std::cerr << "Invalid argument during numeric conversion: " << e.what() << std::endl;
-                        // Handle the error or add more detailed error reporting.
                     }
 
                     txt.close();

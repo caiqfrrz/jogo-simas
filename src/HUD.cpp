@@ -17,6 +17,10 @@ namespace Design
     }
     HUD::~HUD()
     {
+        pGG = nullptr;
+        pJogador2 = nullptr;
+        pJogador = nullptr;
+        pPersonagem = nullptr;
     }
     void HUD::executar()
     {

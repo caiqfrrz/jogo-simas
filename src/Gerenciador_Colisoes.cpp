@@ -98,6 +98,7 @@ namespace Gerenciadores
 
         while (inim != nullptr)
         {
+            jgd = jogadores->get_primeiro();
             Entidades::Personagens::Inimigo *inim_atira = static_cast<Entidades::Personagens::Inimigo *>(*inim);
             pVec = inim_atira->getVetProj();
 
@@ -183,6 +184,7 @@ namespace Gerenciadores
 
         while (inim != nullptr)
         {
+            obst = obstaculos->get_primeiro();
             Entidades::Personagens::Inimigo *inim_atira = static_cast<Entidades::Personagens::Inimigo*>(*inim);
             std::vector<Entidades::Projetil> *pVec = inim_atira->getVetProj();
 
