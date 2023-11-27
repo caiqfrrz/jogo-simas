@@ -12,7 +12,8 @@ namespace Entidades
         firing(false),
         vec_proj()
         {
-            corpo.setFillColor(sf::Color::Yellow);
+            textura.loadFromFile("Design/Imagens/atirador.png");
+            corpo.setTexture(&textura);
             setVida(5);
             grafico.setPers(static_cast<Personagem *>(this));
         }

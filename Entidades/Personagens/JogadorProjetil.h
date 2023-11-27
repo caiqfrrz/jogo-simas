@@ -15,16 +15,17 @@ namespace Entidades
         {
         private:
             std::vector<Projetil> vet_proj;
+
         public:
             JogadorProjetil();
             ~JogadorProjetil();
             void atacar();
             void executar();
             void mover();
-            void setJog(Jogador* jgd);
-            std::vector<Projetil>* getVetProj();
-            std::deque<Escudo>* getFilaEsc();
-            void salvar(std::ostringstream* entrada);
+            void setJog(Jogador *jgd);
+            std::vector<Projetil> *getVetProj();
+            std::deque<Escudo> *getFilaEsc();
+            void salvar(std::ostringstream *entrada);
         };
     }
 }
