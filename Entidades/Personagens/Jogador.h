@@ -20,7 +20,6 @@ namespace Entidades
             JogadorStrategy *jogador_type;
 
         public:
-            static int nume;
             Jogador(JogadorStrategy *jgd = nullptr, int id = 0, sf::Vector2f pos = {0, 0}, sf::Vector2f vel = {0, 0});
             ~Jogador();
             void executar();
