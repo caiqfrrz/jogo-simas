@@ -7,7 +7,7 @@ namespace Estados
 {
     namespace Fases
     {
-        FaseSegunda::FaseSegunda(int id, bool dois_jgd, bool crg, Estados::Menus::Ranking *pR) : Fase(id, dois_jgd, crg, pR)
+        FaseSegunda::FaseSegunda(int id, bool dois_jgd, bool crg) : Fase(id, dois_jgd, crg)
         {
             criarCenario(ARQUIVO_CENARIO_2);
             

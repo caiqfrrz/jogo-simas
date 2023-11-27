@@ -12,7 +12,7 @@ namespace Estados
         {
         private:
         public:
-            FaseSegunda(int id = -1, bool dois_jgd = false, bool crg = false, Estados::Menus::Ranking* pR = nullptr);
+            FaseSegunda(int id = -1, bool dois_jgd = false, bool crg = false);
             ~FaseSegunda();
             void executar();
         };
