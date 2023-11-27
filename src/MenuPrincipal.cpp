@@ -14,9 +14,9 @@ namespace Estados
 {
     namespace Menus
     {
-        MenuPrincipal::MenuPrincipal(Estados::Menus::Ranking *pR) : Menu(0, 4),
-                                                                    pRanking(pR)
+        MenuPrincipal::MenuPrincipal() : Menu(0, 4)     
         {
+            pRanking = Estados::Menus::Ranking::get_instancia(5);
             pObs = new Observers::MenuPrincipalObserver();
             pObs->setMenu(this);
             set_valores();
@@ -63,7 +63,7 @@ namespace Estados
                 {
                     usarfuncaoreSize(pRanking, ARQUIVO_COLOCACAO_1);
                     usarfuncaoCriarTextos(pRanking, ARQUIVO_COLOCACAO_1);
-                    pGE->setEstadoAtual(6);
+                    pGE->setEstadoAtual(5);
                 }
                 if (pos == 3)
                 {

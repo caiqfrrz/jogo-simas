@@ -163,7 +163,8 @@ namespace Gerenciadores
                         Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
                         if (colisao_projetil(*obst, proj) == true)
                         {
-                            proj->colidir();
+                            proj->colidir(*obst, false);
+                            (*obst)->colidir();
                         }
                     }
                 }

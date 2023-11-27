@@ -30,6 +30,7 @@ namespace Entidades
             bool getLento();
             void setpoints(int p);
             int getpoints();
+            void ResetColor();
             void setPulando(bool p, float força);
             void setPulando(bool p);
             void salvar(std::ostringstream* entrada);
