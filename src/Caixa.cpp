@@ -5,7 +5,8 @@ namespace Entidades
     namespace Obstaculos
     {
         Caixa::Caixa(sf::Vector2f pos, bool ativo):
-        Obstaculo(pos, false)
+        Obstaculo(pos, false),
+        vida(1)
         {
             setAtivo(ativo);
             textura.loadFromFile("Design/Imagens/caixa.png");
@@ -27,7 +28,7 @@ namespace Entidades
             Entidades::Personagens::Personagem* aux = static_cast<Entidades::Personagens::Personagem*>(pE);
 
             aux->setLento(false);
-            vida -=1;
+            vida -= 1;
             if(vida <= 0)
                 setAtivo(false);
         }

@@ -96,19 +96,18 @@ namespace Entidades
 
                 velocidade = direcao * 1.f;
 
-                if(distMaisProx <= 350)
+                if(distMaisProx <= 400)
                 {
                     corpo.setPosition(corpo.getPosition() + velocidade);
-                    if(velocidade.x > 0)
-                    {
-                        
-                    }
                 }
             }
             if(jgd2 == nullptr)
             {
                 sf::Vector2f pos = (*jgd)->getPosicao();
                 sf::Vector2f direcao = pos - getPosicao();
+
+                sf::Vector2f cords = this->getPosicao();
+                float dist1 = sqrt(pow(pos.x - cords.x, 2) + pow(pos.y - cords.y, 2));
 
                 float comprimento = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
 
@@ -118,7 +117,18 @@ namespace Entidades
                 }
                 velocidade = direcao * 1.f;
 
-                corpo.setPosition(corpo.getPosition() + velocidade);
+                if(dist1 <= 400)
+                    corpo.setPosition(corpo.getPosition() + velocidade);
+            }
+            if(velocidade.x > 0)
+            {
+                textura.loadFromFile("Design/Imagens/fantasma-invertido.png");
+                corpo.setTexture(&textura);
+            }
+            else
+            {
+                textura.loadFromFile("Design/Imagens/fantasma.png");
+                corpo.setTexture(&textura);
             }
         }
         void Fantasma::salvar(std::ostringstream* entrada)
