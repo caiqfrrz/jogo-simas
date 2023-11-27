@@ -30,6 +30,7 @@ namespace Estados
             checarVivos();
             if (checarVivos() > 0)
             {
+                std::cout << "be";
                 getName();
                 salvar_pontuacao(ARQUIVO_COLOCACAO_1);
                 usarfuncaoreSize(pRanking, ARQUIVO_COLOCACAO_1);

@@ -113,7 +113,6 @@ namespace Gerenciadores
                             if (colisao_projetil(*jgd, proj) == true)
                             {
                                 proj->colidir(*jgd, true);
-                                std::cout << " usou ";
                             }
                         }
                     }
@@ -136,7 +135,7 @@ namespace Gerenciadores
             {
                 Entidades::Personagens::Inimigo *ini = static_cast<Entidades::Personagens::Inimigo *>(*inim);
 
-                if (ini->ehFantasma() == false)
+                if (ini->ehFantasma() == false && (*obst)->getAtivo())
                     colidiu(*inim, *obst);
 
                 obst++;
@@ -159,10 +158,13 @@ namespace Gerenciadores
             {
                 for (int i = 0; i < pVec->size(); i++)
                 {
-                    Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
-                    if (colisao_projetil(*obst, proj) == true)
+                    if((*obst)->getAtivo())
                     {
-                        proj->colidir(*obst, false);
+                        Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
+                        if (colisao_projetil(*obst, proj) == true)
+                        {
+                            proj->colidir(*obst, false);
+                        }
                     }
                 }
             }
@@ -189,11 +191,13 @@ namespace Gerenciadores
                     {
                         for (int i = 0; i < pVec->size(); i++)
                         {
-                            Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
-                            if (colisao_projetil(*obst, proj) == true)
+                            if((*obst)->getAtivo())
                             {
-                                proj->colidir(*obst, false);
-                                std::cout << "ya  ";
+                                Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
+                                if (colisao_projetil(*obst, proj) == true)
+                                {
+                                    proj->colidir(*obst, false);
+                                }
                             }
                         }
                     }
