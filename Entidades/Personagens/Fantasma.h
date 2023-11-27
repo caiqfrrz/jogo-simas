@@ -20,6 +20,7 @@ namespace Entidades
             void mover();
             void colidir(Entidade* pE, bool b);
             void salvar(std::ostringstream* entrada);
+            std::vector<Projetil>* getVetProj() {return nullptr;}
         };
     }
 }

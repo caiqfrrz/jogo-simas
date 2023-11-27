@@ -17,11 +17,10 @@ namespace Estados
                 criarInimigos(ARQUIVO_CENARIO_1);
                 criarObstaculos(ARQUIVO_CENARIO_1);
             }
-            
+            setpoints(0);
             text_fundo.loadFromFile("Design/Imagens/bg.jpg");
             fundo.setTexture(&text_fundo);
             fundo.setPosition(sf::Vector2f(-500, -500));
-            setpoints(0);
         }
         FasePrimeira::~FasePrimeira()
         {

@@ -16,6 +16,12 @@ namespace Estados
                 criarObstaculos(ARQUIVO_CENARIO_2);
             }
             setpoints(0);
+            pGG->limpar();
+            pGG->resetarCamera();
+            if(!text_fundo.loadFromFile("Design/Imagens/bg.jpg"))
+                std::cout <<"ruim";
+            fundo.setTexture(&text_fundo);
+            fundo.setPosition(sf::Vector2f(-500, -500));
         }
         FaseSegunda::~FaseSegunda()
         {
@@ -24,6 +30,7 @@ namespace Estados
         void FaseSegunda::executar()
         {
             centraliza_camera();
+            pGG->get_Janela()->draw(fundo);
             obstaculos.desenhar();
             inimigos.executar();
             jogadores.executar();

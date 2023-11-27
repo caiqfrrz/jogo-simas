@@ -328,7 +328,7 @@ namespace Estados
                     {
                         if(cont[0] < num[0])
                         {
-                            aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Fantasma(2 ,&jogadores, sf::Vector2f(j * TAM, i * TAM)));
+                            aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Fantasma(2 , &jogadores, sf::Vector2f(j * TAM, i * TAM)));
                             if (aux)
                                 inimigos.incluir(aux);
                             cont[0]++;
@@ -344,9 +344,9 @@ namespace Estados
                             aux = static_cast<Entidades::Entidade *>(new Entidades::Personagens::Atirador(5 , &jogadores, sf::Vector2f(j * TAM, i * TAM)));
                             if (aux)
                                 inimigos.incluir(aux);
+
                             cont[1]++;
                         }
-
                         break;
                     }
                     case 'B':

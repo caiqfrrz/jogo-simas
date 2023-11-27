@@ -33,7 +33,7 @@ namespace Entidades
 
         public:
             bool firing;
-            Boss(int vida = 10, Listas::ListaEntidades *jog = nullptr, Listas::ListaEntidades *inim = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f), int dano = -1);
+            Boss(int vida = 10, Listas::ListaEntidades *jog = nullptr, Listas::ListaEntidades *inim = nullptr, sf::Vector2f pos = sf::Vector2f(0.f, 0.f), sf::Vector2f vel = sf::Vector2f(0.f, 0.f), int dano = 1);
             ~Boss();
             void executar();
             void mover();
@@ -41,6 +41,7 @@ namespace Entidades
             void atirar();
             void ultrathrust();
             void salvar(std::ostringstream *entrada);
+            std::vector<Projetil>* getVetProj() {return nullptr;}
         };
     }
 }

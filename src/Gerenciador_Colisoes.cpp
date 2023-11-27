@@ -163,7 +163,7 @@ namespace Gerenciadores
                         Entidades::Entidade *proj = static_cast<Entidades::Entidade *>(&pVec->at(i));
                         if (colisao_projetil(*obst, proj) == true)
                         {
-                            proj->colidir(*obst, false);
+                            proj->colidir();
                             (*obst)->colidir();
                         }
                     }
@@ -180,14 +180,13 @@ namespace Gerenciadores
 
         while (inim != nullptr)
         {
-            Entidades::Personagens::Inimigo *inim_atira = static_cast<Entidades::Personagens::Inimigo *>(*inim);
+            Entidades::Personagens::Inimigo *inim_atira = static_cast<Entidades::Personagens::Inimigo*>(*inim);
             std::vector<Entidades::Projetil> *pVec = inim_atira->getVetProj();
 
             if (pVec != nullptr)
             {
                 while (obst != nullptr)
                 {
-
                     if (pVec->size() > 0)
                     {
                         for (int i = 0; i < pVec->size(); i++)

@@ -72,7 +72,6 @@ namespace Entidades
                 }
             }
         }
-
         setAtivo(false);
     }
     void Projetil::colidir()
