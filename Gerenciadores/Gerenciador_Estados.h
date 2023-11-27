@@ -31,7 +31,6 @@ namespace Gerenciadores
         void setEstadoAtual (const int i);
         const int getEstadoAtual();
         void setEstadoAtual (int i);
-        int getEstadoAtual();
         int getEstadoAnterior();
         void pausePMenu();
         void addEstado (Estados::Estado* pEstado);

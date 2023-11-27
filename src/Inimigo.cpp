@@ -10,7 +10,7 @@ namespace Entidades
         fantasma(fant),
         nivel_maldade(10)
         {
-
+            
         }
         Inimigo::~Inimigo()
         {
