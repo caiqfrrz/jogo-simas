@@ -542,9 +542,9 @@ namespace Estados
                     Entidades::Escudo *esc = new Entidades::Escudo(dir, pos_esc, (bool)lancando, contagem, opacidade, (bool)parou);
                     fila_esc->push_back(*esc);
                 }
-
+                std::cout << "oi1" << std::endl;
                 Entidades::Personagens::Jogador *jgd2 = new Entidades::Personagens::Jogador(jgd2_strategy, 2, sf::Vector2f(posx2, posy2), sf::Vector2f(velx2, vely2), vida);
-
+                std::cout << "oi2" << std::endl;
                 jgd2_strategy->setJog(jgd2);
 
                 if (morto)

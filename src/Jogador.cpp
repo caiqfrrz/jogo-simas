@@ -21,15 +21,15 @@ namespace Entidades
 
             if (i == 1)
             {
-                grafico.setJg1(static_cast<Personagem *>(this));
+                grafico.setJg1(static_cast<Personagem*>(this));
                 corpo.setFillColor(sf::Color::White);
             }
             else if (i == 2)
             {
-                grafico.setJg2(static_cast<Personagem *>(this));
+                grafico.setJg2(static_cast<Personagem*>(this));
                 corpo.setFillColor(sf::Color::Cyan);
             }
-            grafico.setPers(static_cast<Personagem *>(this));
+            grafico.setPers(static_cast<Personagem*>(this));
         }
         Jogador::~Jogador()
         {
@@ -49,6 +49,14 @@ namespace Entidades
         {
             if (!morte)
             {
+                if (i == 1)
+                {
+                    corpo.setFillColor(sf::Color::White);
+                }
+                else if (i == 2)
+                {
+                    corpo.setFillColor(sf::Color::Cyan);
+                }
 
                 grafico.executar();
                 mover();

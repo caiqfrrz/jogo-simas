@@ -1,4 +1,5 @@
 #include "../Entidades/Personagens/Personagem.h"
+#include <iostream>
 
 namespace Entidades
 {
@@ -48,6 +49,7 @@ namespace Entidades
         {
             vida = 10;
             morte = false;
+            
         }
         bool Personagem::getMorte()
         {

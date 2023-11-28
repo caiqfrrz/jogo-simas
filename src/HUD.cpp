@@ -42,23 +42,32 @@ namespace Design
     void HUD::setPers(Entidades::Personagens::Personagem *pPers)
     {
         if (pPers)
+        {
             pPersonagem = pPers;
-
-        var = 50 / pPersonagem->getVida();
+            if(pPersonagem->getVida() > 0)
+                var = 50 / pPersonagem->getVida();
+            else
+                barra_verde.setSize(sf::Vector2f(0,0));
+        }
     }
     void HUD::setJg1(Entidades::Personagens::Personagem *pPers)
     {
         if (pPers)
+        {
             pJogador = pPers;
+            if(pJogador->getVida() > 0)
+                var = 50 / pJogador->getVida();
 
-        var = 50 / pJogador->getVida();
+        }
     }
     void HUD::setJg2(Entidades::Personagens::Personagem *pPers)
     {
         if (pPers)
+        {
             pJogador2 = pPers;
-
-        var = 50 / pJogador2->getVida();
+            if(pJogador2->getVida() > 0)
+                var = 50 / pJogador2->getVida();
+        }
     }
     void HUD::desenhar()
     {
