@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{ "jogo": "jogo" ,"fase": 1, "n_jogadores": 2, "jogadores": [{"morto": 0,"vida": 8, "posicao": [1346, 465.8], "velocidade": [0, 7], "projeteis": [{"posicao": [1990,494.36],"ativo": 0, "dano": 1, "direcao": "direita"}]},{"morto": 0, "vida": 9, "posicao": [1524, 500], "velocidade": [0, 0], "escudos": [{"posicao": [1679,497.5], "direcao": "direita", "contagem": 12,"opacidade": 28.9008, "lancando": 0, "parou": 1}, {"posicao": [1659,435.3], "direcao": "direita", "contagem": 12,"opacidade": 103.101, "lancando": 0, "parou": 1}]}]}
-=======
-{ "jogo": "jogo" ,"fase": 2, "n_jogadores": 1, "jogadores": [{"morto": 0,"vida": 7, "posicao": [5000, 250], "velocidade": [0, 0], "projeteis": []}]}
->>>>>>> 3089f0cd80c9e28d0dd650e972a8533c0d082fac
+{ "jogo": "jogo" ,"fase": 1, "n_jogadores": 1, "jogadores": [{"morto": 0,"vida": 10, "posicao": [830, 200], "velocidade": [0, -1.4], "projeteis": []}]}

@@ -90,7 +90,7 @@ namespace Estados
                     pGG->fecharJanela();
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-                    pGE->setEstadoAtual(0);
+                    pGE->pausePMenu();
             }
         }
         void Ranking::sortRank(std::string caminho)

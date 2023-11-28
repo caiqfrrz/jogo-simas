@@ -16,8 +16,6 @@ namespace Entidades
             Obstaculo(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), bool dano = false, bool l = false);
             ~Obstaculo();
             virtual void executar() = 0;
-            virtual void salvar(std::ostringstream* entrada) = 0;
-            virtual bool ehPlataforma() = 0;
         };
     }
 }

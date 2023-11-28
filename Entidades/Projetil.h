@@ -22,6 +22,6 @@ namespace Entidades
         int getDano();
         void setVelocidade(sf::Vector2f v);
         void salvar(std::ostringstream* entrada);
-        void salvar(std::ostringstream* entrada, bool chefao);
+        //void salvar(std::ostringstream* entrada, bool chefao);
     };
 }
