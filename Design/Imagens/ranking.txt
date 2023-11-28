@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 adwa,33
 caique,33
 dwadaw,0
 d,0
+=======
+ddddef,198
+vknrn,154
+dwadawda,45
+
+>>>>>>> 3089f0cd80c9e28d0dd650e972a8533c0d082fac
