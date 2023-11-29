@@ -49,15 +49,6 @@ namespace Entidades
         {
             if (!morte)
             {
-                if (i == 1)
-                {
-                    corpo.setFillColor(sf::Color::White);
-                }
-                else if (i == 2)
-                {
-                    corpo.setFillColor(sf::Color::Cyan);
-                }
-
                 grafico.executar();
                 mover();
 
