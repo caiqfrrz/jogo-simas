@@ -17,7 +17,6 @@ namespace Entidades
             void colidir(Entidade* pE, bool b);
             void executar();
             void salvar(std::ostringstream* entrada);
-            bool ehPlataforma() {return false;}
         };
     }
 }

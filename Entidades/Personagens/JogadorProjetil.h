@@ -15,7 +15,6 @@ namespace Entidades
         {
         private:
             std::vector<Projetil> vet_proj;
-
         public:
             JogadorProjetil();
             ~JogadorProjetil();
